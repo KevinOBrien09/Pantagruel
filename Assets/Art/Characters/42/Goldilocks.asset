@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11aedf986ff0234c99d4109067c43ca, type: 3}
+  m_Name: Goldilocks
+  m_EditorClassIdentifier: 
+  beastData:
+    beastName: Goldilocks
+    flavourText: '"Don''t mind me, just taking my fair share."'
+    beastGraphicPrefab: {fileID: 0}
+    uiPicture: {fileID: 7059393366267629080, guid: 35269af888f421c4f900db37118bc8d8,
+      type: 3}
+    mainSprite: {fileID: 7071976772054288028, guid: 35269af888f421c4f900db37118bc8d8,
+      type: 3}
+    bestiaryID: 42
+    stats:
+      maxHealth: 0
+      physical: 0
+      magic: 0
+      toughness: 0
+      charisma: 0
+      resolve: 0
+    mainFamily: 1
+    secondaryFamily: 0
+    resource:
+      resource: 0
+      amount: 0
+    skills: []
+    pips: []

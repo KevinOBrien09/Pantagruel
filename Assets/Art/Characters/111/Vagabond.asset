@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11aedf986ff0234c99d4109067c43ca, type: 3}
+  m_Name: Vagabond
+  m_EditorClassIdentifier: 
+  beastData:
+    beastName: Vagabond
+    flavourText: 
+    beastGraphicPrefab: {fileID: 0}
+    uiPicture: {fileID: 7199705072138568028, guid: 66b4f792dcdcbc940880bdc16c85731a,
+      type: 3}
+    mainSprite: {fileID: -8120009013454381639, guid: 66b4f792dcdcbc940880bdc16c85731a,
+      type: 3}
+    bestiaryID: 111
+    stats:
+      maxHealth: 0
+      physical: 0
+      magic: 0
+      toughness: 0
+      charisma: 0
+      resolve: 0
+    mainFamily: 4
+    secondaryFamily: 0
+    resource:
+      resource: 0
+      amount: 0
+    skills: []
+    pips: []

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11aedf986ff0234c99d4109067c43ca, type: 3}
+  m_Name: Guildmaster
+  m_EditorClassIdentifier: 
+  beastData:
+    beastName: Guildmaster
+    flavourText: 
+    beastGraphicPrefab: {fileID: 0}
+    uiPicture: {fileID: -4014971448327936346, guid: 079e074ff16bc1b47ad106fa15d60d9f,
+      type: 3}
+    mainSprite: {fileID: 1734083152993632163, guid: 079e074ff16bc1b47ad106fa15d60d9f,
+      type: 3}
+    bestiaryID: 65
+    stats:
+      maxHealth: 0
+      physical: 0
+      magic: 0
+      toughness: 0
+      charisma: 0
+      resolve: 0
+    mainFamily: 6
+    secondaryFamily: 14
+    resource:
+      resource: 0
+      amount: 0
+    skills: []
+    pips: []

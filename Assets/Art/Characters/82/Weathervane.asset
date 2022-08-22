@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11aedf986ff0234c99d4109067c43ca, type: 3}
+  m_Name: Weathervane
+  m_EditorClassIdentifier: 
+  beastData:
+    beastName: Weathervane
+    flavourText: 
+    beastGraphicPrefab: {fileID: 0}
+    uiPicture: {fileID: -1635963809266141271, guid: 58584b85d46e9ab4685b121923724e55,
+      type: 3}
+    mainSprite: {fileID: 8874457585157493471, guid: 58584b85d46e9ab4685b121923724e55,
+      type: 3}
+    bestiaryID: 82
+    stats:
+      maxHealth: 0
+      physical: 0
+      magic: 0
+      toughness: 0
+      charisma: 0
+      resolve: 0
+    mainFamily: 8
+    secondaryFamily: 10
+    resource:
+      resource: 0
+      amount: 0
+    skills: []
+    pips: []

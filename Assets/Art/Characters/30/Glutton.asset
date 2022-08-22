@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11aedf986ff0234c99d4109067c43ca, type: 3}
+  m_Name: Glutton
+  m_EditorClassIdentifier: 
+  beastData:
+    beastName: Glutton
+    flavourText: '"I LOVE FOOD, GIVE ME FOOD"'
+    beastGraphicPrefab: {fileID: 0}
+    uiPicture: {fileID: -5023399773449032848, guid: c59ef772b4c339540a2aa8c12a0a41c3,
+      type: 3}
+    mainSprite: {fileID: -8038976213705442086, guid: c59ef772b4c339540a2aa8c12a0a41c3,
+      type: 3}
+    bestiaryID: 30
+    stats:
+      maxHealth: 0
+      physical: 0
+      magic: 0
+      toughness: 0
+      charisma: 0
+      resolve: 0
+    mainFamily: 12
+    secondaryFamily: 13
+    resource:
+      resource: 0
+      amount: 0
+    skills: []
+    pips: []

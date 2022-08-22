@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11aedf986ff0234c99d4109067c43ca, type: 3}
+  m_Name: Shepherd
+  m_EditorClassIdentifier: 
+  beastData:
+    ANIMATED_PREFAB_DONE: 1
+    renderCamY: 0
+    beastName: Shepherd
+    flavourText: '"I''m just a humble Shepherd tending to my flock"'
+    beastGraphicPrefab: {fileID: 127073746498302318, guid: 2a536497c6fe05c40a715da84a65fa29,
+      type: 3}
+    uiPicture: {fileID: -855298285791758126, guid: e5c5237a5426de24e841df28ce97de04,
+      type: 3}
+    mainSprite: {fileID: 9180251791023625898, guid: e5c5237a5426de24e841df28ce97de04,
+      type: 3}
+    bestiaryID: 1
+    stats:
+      maxHealth: 60
+      physical: 5
+      magic: 15
+      toughness: 5
+      charisma: 5
+      resolve: 7
+    mainFamily: 21
+    secondaryFamily: 20
+    resource:
+      resource: 0
+      amount: 120
+    skills:
+    - {fileID: 11400000, guid: d9ff1b82a09505a448a60f1fc585874a, type: 2}
+    - {fileID: 11400000, guid: 14d0508e2ba24ff4ea9e94b1695389b3, type: 2}
+    - {fileID: 11400000, guid: f4811559e74dd6841b20aef0318f199e, type: 2}
+    - {fileID: 11400000, guid: e0f33bafe61a36b4591e6996c99902f4, type: 2}
+    pips:
+    - number: 0
+      result: 0
+    - number: 1
+      result: 0
+    - number: 2
+      result: 0
+    - number: 3
+      result: 0
+    - number: 4
+      result: 0
+    - number: 5
+      result: 0

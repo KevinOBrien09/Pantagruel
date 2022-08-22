@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11aedf986ff0234c99d4109067c43ca, type: 3}
+  m_Name: Baker
+  m_EditorClassIdentifier: 
+  beastData:
+    beastName: Baker
+    flavourText: 
+    beastGraphicPrefab: {fileID: 0}
+    uiPicture: {fileID: 5181654206020448988, guid: 780fdea7a546ed248b0aa3270e242ae9,
+      type: 3}
+    mainSprite: {fileID: -2129540830080489608, guid: 780fdea7a546ed248b0aa3270e242ae9,
+      type: 3}
+    bestiaryID: 29
+    stats:
+      maxHealth: 0
+      physical: 0
+      magic: 0
+      toughness: 0
+      charisma: 0
+      resolve: 0
+    mainFamily: 12
+    secondaryFamily: 0
+    resource:
+      resource: 0
+      amount: 0
+    skills: []
+    pips: []

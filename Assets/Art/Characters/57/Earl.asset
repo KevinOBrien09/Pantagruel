@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11aedf986ff0234c99d4109067c43ca, type: 3}
+  m_Name: Earl
+  m_EditorClassIdentifier: 
+  beastData:
+    ANIMATED_PREFAB_DONE: 1
+    renderCamY: 1.35
+    beastName: Earl
+    flavourText: '"Look, just gimme til tommorrow and I''ll have your money."'
+    beastGraphicPrefab: {fileID: 3564542200555348178, guid: 22f73a346260ecb42948198e4a327e7b,
+      type: 3}
+    uiPicture: {fileID: 3448682008534971580, guid: 01a55064ac578094a98f7b3900a0dd02,
+      type: 3}
+    mainSprite: {fileID: -3606383029764839114, guid: 01a55064ac578094a98f7b3900a0dd02,
+      type: 3}
+    bestiaryID: 57
+    stats:
+      maxHealth: 55
+      physical: 7
+      magic: 3
+      toughness: 5
+      charisma: 7
+      resolve: 3
+    mainFamily: 13
+    secondaryFamily: 0
+    resource:
+      resource: 0
+      amount: 110
+    skills:
+    - {fileID: 11400000, guid: c4327ee7818384d40b36faa6c30b44e2, type: 2}
+    - {fileID: 11400000, guid: 463f580fc3738dd4ab2a00eee174ed46, type: 2}
+    - {fileID: 11400000, guid: 1681ec1717b6fea4c9ea4af5dfc28ad7, type: 2}
+    - {fileID: 11400000, guid: d9ff1b82a09505a448a60f1fc585874a, type: 2}
+    pips: []

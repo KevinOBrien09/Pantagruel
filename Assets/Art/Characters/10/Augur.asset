@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11aedf986ff0234c99d4109067c43ca, type: 3}
+  m_Name: Augur
+  m_EditorClassIdentifier: 
+  beastData:
+    beastName: Augur
+    flavourText: '"3 bird fly ahead sire... I''m afraid your finances aren''t looking
+      too well..."'
+    beastGraphicPrefab: {fileID: 0}
+    uiPicture: {fileID: -5099292496197868168, guid: 5092fbe24fdd8b749a25bc8124486123,
+      type: 3}
+    mainSprite: {fileID: -6666162448854811074, guid: 5092fbe24fdd8b749a25bc8124486123,
+      type: 3}
+    bestiaryID: 10
+    stats:
+      maxHealth: 0
+      physical: 0
+      magic: 0
+      toughness: 0
+      charisma: 0
+      resolve: 0
+    mainFamily: 1
+    secondaryFamily: 15
+    resource:
+      resource: 0
+      amount: 0
+    skills: []
+    pips: []
