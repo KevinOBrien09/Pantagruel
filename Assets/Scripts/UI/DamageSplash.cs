@@ -21,13 +21,14 @@ public class DamageSplash : MonoBehaviour
     public void Shake()
     {
         MainCameraManager.inst.Shake();
-        viewPortHolder.DOShakeAnchorPos(shakeTime,40,50);
+        //viewPortHolder.DOShakeAnchorPos(shakeTime,40,50);
         rt.DOShakeAnchorPos(shakeTime,40,50);
         cam.transform.DOShakePosition(shakeTime,1,30);
         StartCoroutine(Blood());
     }
 
     public void SoloBlood(){
+        blood.DOKill();
            StartCoroutine(Blood());
     }
 

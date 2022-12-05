@@ -41,12 +41,12 @@ public class DungeonTextInput : MonoBehaviour
             {
                 if(input.Contains(prompt))
                 {
-                    Debug.Log("valid");
                     logString += "<br><color=red>" + action.logString + "</color>";
                     UpdateLog();
                     DungeonManager.inst.ParseAction(action);
                     goto end;
                 }
+                
             }
         }
         end:

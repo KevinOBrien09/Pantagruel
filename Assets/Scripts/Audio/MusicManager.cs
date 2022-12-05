@@ -5,58 +5,36 @@ using DG.Tweening;
 
 public class MusicManager : Singleton<MusicManager>
 {
-    [SerializeField] Song dungeon;
-    [SerializeField] Song battle;
-
+    [SerializeField] AudioSource dungeon;
+    [SerializeField]  AudioSource battle;
+    float battlevol,dungvol;
     Song currentSong;
-    [SerializeField] AudioSource introSource;
-    [SerializeField] AudioSource mainSource;
+    
 
     void Start()
-    { Set(dungeon);}
+    { 
+        battlevol = battle.volume;
+        dungvol = dungeon.volume;
+        battle.Play();
+        dungeon.Play();
+        
+      battle.DOFade(0,0);
+    }
 
-    public void ChangeToDungeon(){
- Set(dungeon);
+    public void ChangeToDungeon()
+    {
+
+        battle.DOFade(0,1).OnComplete(() => dungeon.DOFade(dungvol,1));
     }
 
     public void ChangeToBattle()
-    {Set(battle);}
-
-    public void Set(Song s)
-    { 
-        introSource.Stop();
-        mainSource.Stop();
-        if(s.intro != null)
-        {
-            introSource.volume = s.volume;
-            mainSource.volume = s.volume;
-            introSource.clip = s.intro;
-            mainSource.clip = s.main;
-          
-            introSource.loop = false;
-            mainSource.loop = true;
-             
-             
-            StartCoroutine(PlayAfterDelay(s.intro.length));
-            introSource.Play();
-           
-        }
-        else
-        {
-            mainSource.volume = s.volume;
-            mainSource.clip = s.main;
-            mainSource.loop = true;
-            mainSource.Play();
-        }
-        currentSong = s;
+    {   
+        battle.Play();
+       dungeon.DOFade(0,.2f).OnComplete(() => battle.DOFade(battlevol,.2f));
     }
 
-    IEnumerator PlayAfterDelay(float delay)
-    {
-        
-        yield return new WaitForSecondsRealtime(delay);
-        mainSource.Play();
-    }
+   
 
+ 
    
 }

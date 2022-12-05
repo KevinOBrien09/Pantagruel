@@ -41,4 +41,16 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 463f580fc3738dd4ab2a00eee174ed46, type: 2}
     - {fileID: 11400000, guid: 1681ec1717b6fea4c9ea4af5dfc28ad7, type: 2}
     - {fileID: 11400000, guid: d9ff1b82a09505a448a60f1fc585874a, type: 2}
-    pips: []
+    pips:
+    - number: 0
+      result: 0
+    - number: 0
+      result: 0
+    - number: 0
+      result: 0
+    - number: 4
+      result: 0
+    - number: 0
+      result: 0
+    - number: 0
+      result: 0

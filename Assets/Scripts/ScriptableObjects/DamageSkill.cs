@@ -24,14 +24,11 @@ public class DamageSkill : Skill
     public List<StatusEffectData> nonRewardEffect = new List<StatusEffectData>();
     public int baseHowManyTurns;
     
-
-    
-    
     public override float Go(CastData castData)
     {
         base.Go(castData);
         int mainValue = base.GetMainValue(castData);
-
+ MainCameraManager.inst.SmallShake();
         switch (skillData.miniGame)
         {
             case SkillMiniGame.Basic:

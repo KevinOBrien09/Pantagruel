@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: DebugDungeon
   m_EditorClassIdentifier: 
   startingRoom: {fileID: 11400000, guid: 30d1b908d1698dc4d8cf50c9e96ebea5, type: 2}
+  encounterRoom: {fileID: 6318876857863814629, guid: aa20b7a0e62f7d84f9d2cb8ac74bffec,
+    type: 3}

@@ -7,6 +7,7 @@ using UnityEngine;
 public class Dungeon : ScriptableObject
 {
     public DungeonRoom startingRoom;
+    public GameObject encounterRoom;
     
 
 }

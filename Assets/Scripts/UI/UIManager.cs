@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class UIManager:Singleton<UIManager>                   
 {
     public enum UIState{Normal,Inventory,Swap,Strat,Hidden}
+    public enum MainDisplayAreaState{TextInput,Battle}
     public enum SideState{Normal,Cast,Hide}
     public UIState currentUIState;
     public SideState currentSideState;
     public GameObject[] uiStates;
     public GameObject[] sideStateGOS;
+    public GameObject[] mainDisplays;
     Dictionary<UIState,GameObject> mainStates = new Dictionary<UIState, GameObject>();
     Dictionary<SideState,GameObject> sideStates = new Dictionary<SideState, GameObject>();
+
+    [SerializeField] Button swapBeastButton;
     
     void Start()
     {
@@ -93,6 +99,37 @@ public class UIManager:Singleton<UIManager>
             }
 
         }
+    }
+
+
+    public void MainInfoAreaSwap(MainDisplayAreaState mainDisplayAreaState)
+    {
+        foreach (var item in mainDisplays)
+        {item.SetActive(false);
+        item.GetComponent<RectTransform>().DOAnchorPosX(-555,.2f);}
+
+        switch(mainDisplayAreaState)
+        {
+            case MainDisplayAreaState.TextInput:
+            mainDisplays[0].gameObject.SetActive(true);
+            mainDisplays[0].GetComponent<RectTransform>().DOAnchorPosX(0,.2f);
+            break;
+
+            case MainDisplayAreaState.Battle:
+            mainDisplays[1].gameObject.SetActive(true);
+            mainDisplays[1].GetComponent<RectTransform>().DOAnchorPosX(0,.2f);
+            break;
+
+        }
+
+    }
+
+    public void DeactivateSwapBeastButton()
+    {swapBeastButton.interactable = false;}
+    public void ReactivateSwapBeastButton()
+    {
+        if(!swapBeastButton.interactable)
+        {swapBeastButton.interactable = true;}
     }
 
     

@@ -30,6 +30,7 @@ public class SkillDisplay : Singleton<SkillDisplay>
 
     }
     
+    
     public void Show(SkillData s)
     {
         if(c!= null)

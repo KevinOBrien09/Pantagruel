@@ -14,4 +14,9 @@ public class FadeToBlack:Singleton<FadeToBlack>
         image.DOFade(1,time);
     }
 
+    public void UnFade(float time)
+    {
+        image.DOFade(0,time);
+    }
+
 }

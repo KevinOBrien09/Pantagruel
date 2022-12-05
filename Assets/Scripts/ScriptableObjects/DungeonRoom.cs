@@ -16,6 +16,7 @@ public class ExplorationAction
 {
     public List<string> validResponse = new List<string>();
     public string logString;
+    public int encounterChanceWhenGoingToNextRoom;
     public DungeonRoom nextRoom;
     public ExplorationResult result;
 

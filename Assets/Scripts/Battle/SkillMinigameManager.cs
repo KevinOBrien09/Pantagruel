@@ -11,34 +11,42 @@ public class MiniGameStates
 
 }
 
-public enum SkillMiniGame{Hidden,Basic,Dice_DigitalRoot,Coin_HeadTails,Gauge}
+public enum SkillMiniGame{BeastFace,Basic,Dice_DigitalRoot,Coin_HeadTails,Gauge,CharacterFace}
 public class SkillMinigameManager : Singleton<SkillMinigameManager>
 {
     public Vector2 hidden;
     Dictionary<SkillMiniGame,MiniGameStates> miniGameDict = new Dictionary<SkillMiniGame, MiniGameStates>();
     public MiniGameStates Dice_DR;
     public MiniGameStates Coin_HT;
-    public MiniGameStates Hidden;
+    public MiniGameStates beastFace;
     public MiniGameStates basicState;
     public MiniGameStates gauge;
     public MiniGameStates currentDisplay;
+    public MiniGameStates characterFace;
     float s =.2f;
 
     protected override void Awake()
     {
         base.Awake();
-        miniGameDict.Add(SkillMiniGame.Hidden,Hidden);
+        miniGameDict.Add(SkillMiniGame.BeastFace,beastFace);
         miniGameDict.Add(SkillMiniGame.Dice_DigitalRoot,Dice_DR);
         miniGameDict.Add(SkillMiniGame.Coin_HeadTails,Coin_HT);
         miniGameDict.Add(SkillMiniGame.Basic,basicState);
         miniGameDict.Add(SkillMiniGame.Gauge,gauge);
+        miniGameDict.Add(SkillMiniGame.CharacterFace,characterFace);
         
         foreach(var item in miniGameDict)
         {item.Value.rt.DOAnchorPos(hidden,0);}
-        miniGameDict[SkillMiniGame.Hidden].rt.DOAnchorPos(miniGameDict[SkillMiniGame.Hidden].pos,.2f);
-        currentDisplay = miniGameDict[SkillMiniGame.Hidden];
-        //ChangeState(SkillMiniGame.Hidden,false);
+       
+     
     }
+
+    public void StartingMiniGame(SkillMiniGame g){
+ currentDisplay = miniGameDict[g];
+        
+       miniGameDict[g].rt.DOAnchorPos(miniGameDict[g].pos,.2f);
+    }
+    
 
     public bool ChangeState(SkillMiniGame miniGame,bool player)
     { 
@@ -47,7 +55,7 @@ public class SkillMinigameManager : Singleton<SkillMinigameManager>
         }
         if(currentDisplay != miniGameDict[miniGame]) //if current state not same as incoming state
         {
-            if(currentDisplay != miniGameDict[SkillMiniGame.Hidden]) // if the current state is not hidden do stuff
+            if(currentDisplay != miniGameDict[SkillMiniGame.BeastFace]) // if the current state is not hidden do stuff
             {
                 MiniGameStates smg = miniGameDict[miniGame];
                 currentDisplay.rt.DOAnchorPos(hidden,s).OnComplete(() => smg.rt.DOAnchorPos(smg.pos,s).OnComplete(()=> SkillCaster.inst.StartMiniGame(miniGame,player)));
@@ -81,7 +89,7 @@ public class SkillMinigameManager : Singleton<SkillMinigameManager>
                     BattleManager.inst.miniGameResultHandler.QuestionMark(true);
                     break;
 
-                    case SkillMiniGame.Hidden:
+                    case SkillMiniGame.BeastFace:
                     BattleManager.inst.miniGameResultHandler.ChangeHeader("Hidden");
                     BattleManager.inst.miniGameResultHandler.QuestionMark(true);
                     break;
@@ -91,6 +99,11 @@ public class SkillMinigameManager : Singleton<SkillMinigameManager>
                     BattleManager.inst.miniGameResultHandler.QuestionMark(true);
                       GaugeTicker.inst.Reset();
 
+                    break;
+
+                    case SkillMiniGame.CharacterFace:
+                    BattleManager.inst.miniGameResultHandler.ChangeHeader("Hidden");
+                    BattleManager.inst.miniGameResultHandler.QuestionMark(true);
                     break;
 
 
@@ -118,7 +131,7 @@ public class SkillMinigameManager : Singleton<SkillMinigameManager>
                     BattleManager.inst.miniGameResultHandler.QuestionMark(false);
                     break;
 
-                    case SkillMiniGame.Hidden:
+                    case SkillMiniGame.BeastFace:
                     BattleManager.inst.miniGameResultHandler.ChangeHeader("Hidden");
                     BattleManager.inst.miniGameResultHandler.QuestionMark(false);
                     break;

@@ -7,5 +7,6 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "Item", menuName ="Items/Capture")]
 public class CaptureBeastItem : Item
 {
+    public int catchPercent;
 
 }

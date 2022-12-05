@@ -24,7 +24,7 @@ public class CustomScroll:MonoBehaviour
         int startingHeight = -peepee;
         maxLength = y;
         int lastHeight = startingHeight;
-        Debug.Log(y);
+      
         for (int i = 0; i < y; i++)
         {
             int j = lastHeight+(int)columnLength;

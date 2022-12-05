@@ -13,6 +13,16 @@ public class BeastStatusEffectHandler
         b = beast;
     }
 
+    public void Wipe(){
+        Debug.Log(dict.Count +"cunt");
+        foreach (var item in dict)
+        {
+            Debug.Log(item.Value.gameObject.name);
+            Object.Destroy(item.Value.gameObject);
+        }
+      //  dict.Clear();
+    }
+
     public void ApplyStatusEffect(StatusEffectInstance i,string cause)
     {
         if(b.allience == Alliance.Player)
@@ -28,13 +38,13 @@ public class BeastStatusEffectHandler
                 StatusEffectMonoBehaviour mb = StatusEffectManager.inst.MakeIcon(i);
                 mb.statusEffectInstances.Add(i);
                 dict.Add(cause,mb);
+           
                 dict[cause].UpdateInfoDisplay();
                 i.Apply(this);
             }
         }
         else
         {
-            Debug.Log("EnemyStatusEffect");
 
             if(dict.ContainsKey(cause))
             {
@@ -141,7 +151,7 @@ public class BeastStatusEffectHandler
 
     public void Bleed(int amount)
     {
-        Debug.Log(b.data.beastName);
+       // Debug.Log(b.data.beastName);
         b.IgnoreArmour(amount,true);
         b.HitVisual(amount);
     }

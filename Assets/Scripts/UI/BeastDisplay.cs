@@ -23,6 +23,7 @@ public class BeastDisplay : MonoBehaviour
             var n = i;
             faces.Add(n,sprites[n]);
         }
+ 
     }
     
     public void Apply(Beast b)

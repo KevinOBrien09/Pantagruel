@@ -9,13 +9,17 @@ public class ItemCaster : Singleton<ItemCaster>
 {
     public void Use(Item i)
     {
+        UIManager.inst.Normal();
+        BattleManager.inst.skillHandler.DeActivateSkillButtons();
         switch (i)
         {
             case ItemHeal h:
             StartCoroutine(Heal(i));
             break;
             case CaptureBeastItem captureBeastItem:
-            Debug.Log("Capture");
+            MainTextTicker.inst.Type(i.data.itemName+".");
+            CaptureBeastItem cbi = (CaptureBeastItem)i;
+            BeastCaptureManager.inst.StartCapture(cbi.catchPercent);
             break;
             case Item it:
             Debug.Log("Base");
@@ -25,13 +29,12 @@ public class ItemCaster : Singleton<ItemCaster>
         }
 
     }
-
-
+    
     IEnumerator Heal(Item i)
     {
         ItemHeal ih = (ItemHeal)i;
-        UIManager.inst.Normal();
-        BattleManager.inst.skillHandler.DeActivateSkillButtons();
+     
+     
         yield return new WaitForSeconds(.2f);
         MainTextTicker.inst.Type(i.data.itemName+".");
         yield return new WaitForSeconds(.2f);

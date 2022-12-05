@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour
 
 
 	void IdleBounce(){
-		transform.DOMoveY(ogY+.5f,2).OnComplete(()=> transform.DOMoveY(ogY,2).OnComplete(()=>IdleBounce()));
+		transform.DOMoveY(ogY+.33f,2).OnComplete(()=> transform.DOMoveY(ogY,2).OnComplete(()=>IdleBounce()));
 	}
 
 }

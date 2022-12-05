@@ -25,7 +25,7 @@ MonoBehaviour:
       type: 3}
     bestiaryID: 50
     stats:
-      maxHealth: 55
+      maxHealth: 1
       physical: 5
       magic: 7
       toughness: 5

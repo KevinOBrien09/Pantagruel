@@ -66,6 +66,9 @@ public class BeastData
             skills = new List<Skill>(b.beastData.skills);
             pips = new List<HitPip>(b.beastData.pips);
             renderCamY = BD.renderCamY;
+            bestiaryID = BD.bestiaryID;
+            mainFamily = BD.mainFamily;
+            secondaryFamily = BD.secondaryFamily;
         }
     }
 }

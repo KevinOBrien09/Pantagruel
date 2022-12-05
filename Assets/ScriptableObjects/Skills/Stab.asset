@@ -42,7 +42,7 @@ MonoBehaviour:
   desiredResult: 0
   applyEffect: 1
   effectTarget: 0
-  percentChance: 33
+  percentChance: 100
   nonRewardEffect:
   - statusEffectType: 1
     howManyTurns: 0

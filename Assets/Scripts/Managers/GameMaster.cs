@@ -8,6 +8,7 @@ public class GameMaster:Singleton<GameMaster>
     public enum GameState{Overworld,Battle,Menu}
     public GameState currentGameState;
     void Start(){
+        SkillMinigameManager.inst.StartingMiniGame(SkillMiniGame.CharacterFace);
         ChangeGameState(GameState.Overworld);
     }
 
@@ -19,7 +20,7 @@ public class GameMaster:Singleton<GameMaster>
             OverWorldManager.inst.SwapToOverworld();
             break;
             case GameState.Battle:
-            BattleManager.inst.InitBattle();
+            OverWorldManager.inst.SwapToBattle();
             break;
             
            
@@ -27,6 +28,8 @@ public class GameMaster:Singleton<GameMaster>
         currentGameState = newGameState;
 
     }
+
+    
     
 
 }

@@ -23,6 +23,7 @@ public class Beast : MonoBehaviour
     [SerializeField] List<SoundData> sfx = new List<SoundData>();
     [SerializeField] List<SoundData> bleedSound = new List<SoundData>();
     [SerializeField] ParticleSystem bleed;
+    public bool isDead;
   //  public List<StatusEffect> statusEffects = new List<StatusEffect>();
     
     void Awake()
@@ -32,22 +33,13 @@ public class Beast : MonoBehaviour
         onHeal += HealHealth;
     }
 
-    void Start()
-    {
-        if(allience == Alliance.Player)
-        {
-            data = new BeastData(DEBUGOBJECT);
-            Init(DEBUGOBJECT,Alliance.Player);
-            BattleManager.inst.ApplyPlayerBeastInfo(this);
-        }
-    }
-
+ 
     public void Init(BeastScriptableObject bso,Alliance a)
     {
         data = new BeastData(bso);
         gameObject.name = data.beastName;
         currentHealth = data.stats.maxHealth;
-
+        allience = a;
         if(data.resource.resource == ResourceCurrency.SP)
         {currentSP = data.resource.amount;}  
 
@@ -113,6 +105,15 @@ public class Beast : MonoBehaviour
         if( dmg > 0)
         {BattleManager.inst.splash.Shake();}
     }
+
+    public IEnumerator Die()
+    {
+        isDead = true;
+        graphic.Fade();
+        yield return new WaitForSeconds(.75f);
+        statusEffectHandler.Wipe();
+    }
+ 
     
     public void DeduceHealth(int dmg)
     {
@@ -126,7 +127,7 @@ public class Beast : MonoBehaviour
         currentHealth = (int)Mathf.Clamp((float)currentHealth, (float)0, (float)data.stats.maxHealth);
 
         if(currentHealth <= 0){
-            graphic.Fade();
+              StartCoroutine( Die());
         }
     }
 
@@ -146,7 +147,7 @@ public class Beast : MonoBehaviour
         BattleManager.inst.BattleMusic();
         healthBar.UpdateHealthBar();
         if(currentHealth <= 0){
-            graphic.Fade();
+             StartCoroutine( Die());
         }
     }
 

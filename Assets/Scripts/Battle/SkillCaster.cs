@@ -11,6 +11,7 @@ public class SkillCaster : Singleton<SkillCaster>
 
     public void Precast(Skill s)
     {
+        MainCameraManager.inst.ChangeFOV(60);
         if(CheckSkillCost.canCast(BattleManager.inst.activePlayerBeast,s))
         {
             if(UIManager.inst.currentUIState == UIManager.UIState.Normal)
@@ -54,10 +55,7 @@ public class SkillCaster : Singleton<SkillCaster>
         if(miniGame == SkillMiniGame.Basic){
             return;
         }
-        // else if(miniGame == SkillMiniGame.Coin_HeadTails){
-        //        UIManager.inst.SideHide();
-        //        return;
-        // }
+       
         if(player)
         {StartCoroutine(StartDelay(miniGame));}
     }
@@ -88,7 +86,13 @@ public class SkillCaster : Singleton<SkillCaster>
           
             GaugeTicker.inst.Move();
             UIManager.inst.SideCast();
-            break;            
+            break;  
+            case SkillMiniGame.BeastFace:
+           // Debug.Log("Beast Face");
+            break;
+            case SkillMiniGame.CharacterFace:
+           // Debug.Log("Char Face");
+            break;          
             default: Debug.LogAssertion("DefaultCase"); break;
         }
     
@@ -101,7 +105,7 @@ public class SkillCaster : Singleton<SkillCaster>
             GaugeTicker.inst.Stop();
         // return;
         }
-
+  MainCameraManager.inst.ChangeFOV(50);
         if(skillToBeCast != null)
         {
             if(skillToBeCast.skillData.target == Target.Opposition){
@@ -129,7 +133,8 @@ public class SkillCaster : Singleton<SkillCaster>
             )
             );
             UIManager.inst.SideHide();
-           // UIManager.inst.Normal();
+           // UIManager.inst.Normal();   
+         
             BattleManager.inst.StartCoroutine(BattleManager.inst.EndOfTurnDelay(i));
             }
            

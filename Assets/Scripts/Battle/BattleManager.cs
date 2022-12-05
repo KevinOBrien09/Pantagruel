@@ -6,7 +6,7 @@ using System;
 public class BattleManager:Singleton<BattleManager>
 {
     public enum BattleState{Start,PlayerTurn,EnemyTurn,Win,Lose}
-    public enum BattleEndCause{Continue,Win,Lose,Draw}
+    public enum BattleEndCause{Continue,Win,Lose,Draw,Swap}
     public BattleState currentBattleState;
     public Beast activePlayerBeast;
     public Beast activeEnemyBeast;
@@ -24,6 +24,7 @@ public class BattleManager:Singleton<BattleManager>
     [SerializeField] AudioSource drumSound;
     public int turn;
     bool battleMusic;
+    public bool callBM;
     [SerializeField] bool NODEATH;
     
 
@@ -32,22 +33,19 @@ public class BattleManager:Singleton<BattleManager>
          base.Awake();
        
     }
-
-    public void InitBattle(){
-        StartCoroutine(RealInitBattle());
-    }
-
-  
-    public IEnumerator RealInitBattle(){
+    public void CreateEnemy(){
         enemyBeasts = rivalBeastSpawner.Spawn();
         activeEnemyBeast = enemyBeasts[0];
+        activeEnemyBeast.allience = Alliance.Enemy;
         activeEnemyBeast.MakeActive();
-        yield return new WaitForEndOfFrame();
-         skillHandler.DeActivateSkillButtons();
+    }
+  
+    public void StartBattle()
+    {
+        skillHandler.DeActivateSkillButtons();
         currentBattleState = BattleState.Start;
         MainTextTicker.inst.Type("The Game begins!");
-          NewTurn();
-        
+        NewTurn();
     }
     
     IEnumerator OnBattleStart()
@@ -85,8 +83,9 @@ public class BattleManager:Singleton<BattleManager>
     
     public void NewTurn()
     {
-       
-        if(BattleCanContinue() == BattleEndCause.Continue)
+       BattleEndCause bec = BattleCanContinue();
+        PlayerInventory.inst.UpdateBeastStatus();
+        if(bec == BattleEndCause.Continue)
         {
         //   drumSound.Play();
             turn++;
@@ -105,7 +104,19 @@ public class BattleManager:Singleton<BattleManager>
                 break;
                 
                 case BattleState.EnemyTurn:
-               
+                List<bool> b = new List<bool>();
+                for (int i = 0; i < PlayerInventory.inst.beasts.Count; i++)
+                {
+                    if(PlayerInventory.inst.beasts[i].isDead == false){
+ b.Add(true);
+                    }
+                   
+                }
+                Debug.Log(b.Count);
+                if(b.Count >= 2){
+  UIManager.inst.ReactivateSwapBeastButton();
+                }
+              
                 if(TickUpdate(activePlayerBeast))
                 {StartCoroutine(Tick(activePlayerBeast));}
                 else
@@ -118,9 +129,10 @@ public class BattleManager:Singleton<BattleManager>
                 break;
             }
         }
-        else
+        else if (bec == BattleEndCause.Swap)
         {
-            
+            Debug.Log("Swap");
+            UIManager.inst.Swap();
         }
     }
 
@@ -128,7 +140,7 @@ public class BattleManager:Singleton<BattleManager>
     {
         if(b.allience == Alliance.Player)
         {
-            SkillMinigameManager.inst.ChangeState(SkillMiniGame.Hidden,false);
+            SkillMinigameManager.inst.ChangeState(SkillMiniGame.BeastFace,false);
            
             MainTextTicker.inst.Type("Bleed");
             yield return new WaitForSeconds(.5f);  
@@ -163,7 +175,7 @@ public class BattleManager:Singleton<BattleManager>
         activePlayerBeast.statusEffectHandler.Tick();
         MainTextTicker.inst.Type("Make your move.");
         skillHandler.ReActivateSkillButtons(activePlayerBeast);
-        SkillMinigameManager.inst.ChangeState(SkillMiniGame.Hidden,false);
+        SkillMinigameManager.inst.ChangeState(SkillMiniGame.BeastFace,false);
         UIManager.inst.SideNormal();
         currentBattleState = BattleState.PlayerTurn;
     }
@@ -192,19 +204,41 @@ public class BattleManager:Singleton<BattleManager>
         }
         else
         {
+           
             if(activePlayerBeast.currentHealth <= 0 && activeEnemyBeast.currentHealth <= 0)
             {
                 StartCoroutine(Draw());
+                 Reset();
                 return BattleEndCause.Draw;
             }
             else if(activePlayerBeast.currentHealth <= 0)
             {
-                StartCoroutine(Lose());
-                return BattleEndCause.Lose;
+                List<bool> b = new List<bool>();
+                for (int i = 0; i < PlayerInventory.inst.beasts.Count; i++)
+                {
+                    b.Add( PlayerInventory.inst.beasts[i].isDead);
+                }
+
+                if(b.Contains(false))
+                {
+                    MainTextTicker.inst.Type("Send out new beast!");
+                    activePlayerBeast = null;
+                    callBM = true;
+                    return BattleEndCause.Swap;
+                }
+                else
+                {
+                    StartCoroutine(Lose());
+                    Reset();
+                    return BattleEndCause.Lose;
+                }
+             
+               
             }
             else if (activeEnemyBeast.currentHealth <= 0)
             {
                 StartCoroutine(Win());
+                 Reset();
                 return BattleEndCause.Win;
             }
             else
@@ -216,9 +250,14 @@ public class BattleManager:Singleton<BattleManager>
 
     IEnumerator Win()
     {
-        yield return new WaitForSeconds(1);
+        
     	MainTextTicker.inst.Type("Victory.");
+        yield return new WaitForSeconds(2);
         MusicManager.inst.ChangeToDungeon();
+        Debug.LogWarning("Add level up here");
+        OverWorldManager.inst.s();
+        ///GameMaster.inst.ChangeGameState(GameMaster.GameState.Overworld);
+
     }
 
     IEnumerator Lose()
@@ -245,6 +284,14 @@ public class BattleManager:Singleton<BattleManager>
 
     }
 
+    public void Reset()
+    {
+        battleMusic = false;
+        activeEnemyBeast = null;
+    }
+
+
+
     public bool TickUpdate(Beast b)
     {
         foreach (var item in b.statusEffectHandler.dict)
@@ -262,5 +309,6 @@ public class BattleManager:Singleton<BattleManager>
         return false;
     }
 
+  
   
 }
