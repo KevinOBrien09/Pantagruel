@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec03d198f138b2c4099b0c760090b965, type: 3}
+  m_Name: Cleave
+  m_EditorClassIdentifier: 
+  cardID: 2
+  cardName: Cleave
+  picture: {fileID: 21300000, guid: 2f4e8fedb2f09b247a7f6ca5234f0a82, type: 3}
+  manaCost: 1
+  effects:
+  - {fileID: 11400000, guid: fe6edcc5763623c42bbe9eeb914fd185, type: 2}
+  - {fileID: 11400000, guid: 555e23be6d6ab4d46b1ec190b599830f, type: 2}
+  desc: Deal 20 RAW damage.
+  deckCost: 5

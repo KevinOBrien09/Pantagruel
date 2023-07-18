@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11aedf986ff0234c99d4109067c43ca, type: 3}
+  m_Name: Inquisitor
+  m_EditorClassIdentifier: 
+  beastData:
+    ANIMATED_PREFAB_DONE: 1
+    beastName: Inquisitor
+    flavourText: '"Butcher them all. God will be their judge"'
+    bottomCornerPos: {x: 0, y: -0.5}
+    battlePos: {x: 0, y: 0, z: 2}
+    beastGraphicPrefab: {fileID: 7239769961303039187, guid: c2cabca1198a0074a81184f868a59744,
+      type: 3}
+    uiPicture: {fileID: -9142641608525391146, guid: 03009ee19b26f6b41916b9a5c042ae5d,
+      type: 3}
+    mainSprite: {fileID: 8950671513123133910, guid: 03009ee19b26f6b41916b9a5c042ae5d,
+      type: 3}
+    bestiaryID: 112
+    wildDeck:
+      cards: []
+    stats:
+      maxHealth: 65

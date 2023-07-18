@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11aedf986ff0234c99d4109067c43ca, type: 3}
+  m_Name: Seeker
+  m_EditorClassIdentifier: 
+  beastData:
+    ANIMATED_PREFAB_DONE: 1
+    beastName: Seeker
+    flavourText: '"I will find the truth, no matter the cost"'
+    bottomCornerPos: {x: 0, y: -1.5}
+    battlePos: {x: 0, y: -0.2, z: 2}
+    beastGraphicPrefab: {fileID: 4826513455982107778, guid: 86c9e707c7dd64845960b12dc5c23090,
+      type: 3}
+    uiPicture: {fileID: 1376466379556473284, guid: 2a8f660a812a42c4a9eebc8986a24584,
+      type: 3}
+    mainSprite: {fileID: 699588328120191376, guid: 2a8f660a812a42c4a9eebc8986a24584,
+      type: 3}
+    facingRight: 1
+    bestiaryID: 113
+    wildDeck:
+      cards:
+      - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
+      - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+      - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+      - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+      - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+      - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+      - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+    stats:
+      maxHealth: 90
