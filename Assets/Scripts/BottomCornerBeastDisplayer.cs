@@ -9,7 +9,7 @@ public class BottomCornerBeastDisplayer: Singleton<BottomCornerBeastDisplayer>
 {
     public Transform animatedPrefabHolder;
     public SpriteRenderer basicRenderer;    
-    public GameObject animatedInstance;
+    public BeastAnimatedInstance animatedInstance;
     public TextMeshProUGUI beastName;
     public HealthBar healthBar;
 
@@ -23,20 +23,27 @@ public class BottomCornerBeastDisplayer: Singleton<BottomCornerBeastDisplayer>
         if(b.scriptableObject.beastData.ANIMATED_PREFAB_DONE)
         {
             GameObject g =  Instantiate(b.scriptableObject.beastData.beastGraphicPrefab,animatedPrefabHolder);
-            animatedInstance = g;
             g.transform.localPosition = b.scriptableObject.beastData.bottomCornerPos;
-            //g.layer = playerBeastLayer;
+            BeastAnimatedInstance AI =   g.AddComponent<BeastAnimatedInstance>();
+            AI.Init(b);
+            animatedInstance = AI;
             basicRenderer.enabled = false;
+            //g.layer = playerBeastLayer;
         } 
         else
         {
             basicRenderer.enabled = true;
             basicRenderer.sprite = b.scriptableObject.beastData.mainSprite;
             basicRenderer.transform.localPosition = b.scriptableObject.beastData.bottomCornerPos;
+
+            BeastAnimatedInstance AI =   basicRenderer.gameObject.AddComponent<BeastAnimatedInstance>();
+            AI.Init(b);
+            animatedInstance = AI;
         }
 
         beastName.text = b.scriptableObject.beastData.beastName;
         healthBar.beast = b;
+        b.currentHealthBar = healthBar;
         healthBar.onInit.Invoke();
     }
 

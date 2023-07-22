@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Slash
   m_EditorClassIdentifier: 
   cardID: 1
-  cardName: SlashySlash
-  picture: {fileID: 21300000, guid: 3ee4517f3541ecd429dd5d02a5f8159a, type: 3}
+  cardName: Slash
+  picture: {fileID: -272967660809606887, guid: 930ae5d37239bb5458482166cdcb9e94, type: 3}
   manaCost: 1
+  effects: []
   desc: 
   deckCost: 99

@@ -14,43 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beastData:
     ANIMATED_PREFAB_DONE: 1
-    renderCamY: 0
     beastName: Dame
     flavourText: 
+    bottomCornerPos: {x: 0, y: -1.5}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 360358364193378434, guid: b38a26f098c0586418253f458d2b742d,
       type: 3}
     uiPicture: {fileID: -7127183229904908337, guid: 80e2e0104e476eb4b8680b533e11569b,
       type: 3}
     mainSprite: {fileID: -1783808350427418317, guid: 80e2e0104e476eb4b8680b533e11569b,
       type: 3}
+    facingRight: 0
     bestiaryID: 50
+    wildDeck: {fileID: 11400000, guid: 80d5131422f00c4458ffe3c9b0906f53, type: 2}
     stats:
       maxHealth: 1
-      physical: 5
-      magic: 7
-      toughness: 5
-      charisma: 17
-      resolve: 10
-    mainFamily: 13
-    secondaryFamily: 15
-    resource:
-      resource: 0
-      amount: 110
-    skills:
-    - {fileID: 11400000, guid: d3f7c72945f48824c8eee044627d344c, type: 2}
-    - {fileID: 11400000, guid: b5854769a6f3f7b4fbda479cc8e36b0c, type: 2}
-    - {fileID: 11400000, guid: 1681ec1717b6fea4c9ea4af5dfc28ad7, type: 2}
-    - {fileID: 11400000, guid: d9ff1b82a09505a448a60f1fc585874a, type: 2}
-    pips:
-    - number: 0
-      result: 0
-    - number: 1
-      result: 0
-    - number: 2
-      result: 0
-    - number: 3
-      result: 1
-    - number: 4
-      result: 1
-    - number: 5
-      result: 1

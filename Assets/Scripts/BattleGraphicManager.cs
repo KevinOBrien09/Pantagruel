@@ -8,6 +8,7 @@ public class BattleGraphicManager : Singleton<BattleGraphicManager>
     public Transform holder;
     public int battleLayer;
     public SpriteRenderer basicRenderer;
+    public BeastAnimatedInstance animatedInstance;
     public void Init(BeastScriptableObject scriptableObject)
     {
         if(currentBeast != null)
@@ -25,11 +26,21 @@ public class BattleGraphicManager : Singleton<BattleGraphicManager>
             {
                 item.gameObject.layer = battleLayer;
             }
+
+            BeastAnimatedInstance AI =   newBeast.AddComponent<BeastAnimatedInstance>();
+            AI.Init(RivalBeastManager.inst.currentBeast);
+            animatedInstance = AI;
+            currentBeast = newBeast;
+
         }
         else
         {
             basicRenderer.enabled = true;
             basicRenderer.sprite = scriptableObject.beastData.mainSprite;
+
+            BeastAnimatedInstance AI =   basicRenderer.gameObject.AddComponent<BeastAnimatedInstance>();
+            AI.Init(RivalBeastManager.inst.currentBeast);
+            animatedInstance = AI;
         }
     }
 }

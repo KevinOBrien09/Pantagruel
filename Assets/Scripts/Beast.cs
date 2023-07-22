@@ -9,6 +9,7 @@ public class Beast : MonoBehaviour
     public Deck deck;
     public int shields;
     public HealthBar currentHealthBar;
+    public BeastAnimatedInstance animatedInstance;
 
     public void Init(BeastSaveData beastSaveData)
     {
@@ -30,6 +31,9 @@ public class Beast : MonoBehaviour
     public void TakeDamage(float amount)
     {
         currentHealth = currentHealth-amount;
+        if(animatedInstance != null){
+            animatedInstance.TakeDamage();
+        }
         currentHealthBar.onHit.Invoke();
     }
 
@@ -39,7 +43,7 @@ public class Beast : MonoBehaviour
         bsd.beastiaryID = bso.beastData.bestiaryID;
         bsd.currentHealth = bso.beastData.stats.maxHealth;
         List<int> cardIDs = new List<int>();
-        foreach (var card in bso.beastData.wildDeck.cards)  //ONLY DOES WILD DECK ATM
+        foreach (var card in bso.beastData.wildDeck.deck.cards)  //ONLY DOES WILD DECK ATM
         { cardIDs.Add(card.cardID); }
         bsd.deckIDs = cardIDs;
         return bsd;

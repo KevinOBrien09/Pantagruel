@@ -25,14 +25,41 @@ public class BattleManager:Singleton<BattleManager>
         BottomLeftPanel.inst.SwapToStack();
         MusicManager.inst.EnterBattle();
         CardManager.inst.EnterBattle(PlayerManager.inst.party.activeBeast);
-        
+
+      
         for (int i = 0; i < startingMana; i++)
-        { ManaManager.inst.IncreaseMaxMana(); }
+        {   
+            ManaManager.inst.IncreaseMaxMana(); 
+            EnemyAI.inst.IncreaseMaxMana();
+        }
         ManaManager.inst.RegenMana();
+        EnemyAI.inst.RegenMana();
+        EnemyAI.inst.DrawCard();
+        EnemyAI.inst.RebuildCardBacks();
+
+        StartCoroutine(q());
+        IEnumerator q()
+        {
+            BattleTicker.inst.Type("Fight or flight");
+            yield return new WaitForSeconds(1);
+            BattleTicker.inst.Type("Turn " + turn.ToString());
+        }
+        
+    }
+    public void CheckIfGameContinues()
+    {
+        if(PlayerManager.inst.party.activeBeast.currentHealth <=0){
+            Debug.Log("Force Player to swap");
+        }
+         
+         if(RivalBeastManager.inst.currentBeast.currentHealth <=0){
+            Debug.Log("win");
+         }
     }
 
     public void EndTurn()
     {
+        CheckIfGameContinues();
         List<CardStackBehaviour> castOrder = new List<CardStackBehaviour>();
         foreach (Transform item in castOrderHolder)
         {
@@ -61,21 +88,27 @@ public class BattleManager:Singleton<BattleManager>
 
     public void SwapToEnemyTurn()
     {
+        BattleTicker.inst.Type("The beast readies itself.");
         CardManager.inst.DeactivateHand();
         EndTurnButton.inst.Deactivate();        
-        EnemyAI.inst.Act();
+        EnemyAI.inst.Act(RivalBeastManager.inst.currentBeast);
     }
 
     public void SwapToPlayerTurn()
     {
+       
         CardManager.inst.ActivateHand();
         StartCoroutine(q());
         
         if(turn % 2 == 0)
-        {ManaManager.inst.IncreaseMaxMana();}
+        {
+            ManaManager.inst.IncreaseMaxMana();
+            EnemyAI.inst.IncreaseMaxMana();
+        }
         ManaManager.inst.RegenMana();
+        EnemyAI.inst.RegenMana();
         turn++;
-
+        BattleTicker.inst.Type("Turn " + turn.ToString());
         IEnumerator q()
         {
             yield return new WaitForSeconds(.25f);
@@ -84,6 +117,8 @@ public class BattleManager:Singleton<BattleManager>
 
             CardManager.inst.MakeHandInteractable();
             EndTurnButton.inst.Reactivate();
+             yield return new WaitForSeconds(.6f);
+            BattleTicker.inst.Type("Make your move.");
         }
     }
 

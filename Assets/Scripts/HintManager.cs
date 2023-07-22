@@ -20,16 +20,20 @@ public class HintManager : Singleton<HintManager>
         text.DOFade(0,0);
     }
 
-    void Update(){
-        if(Input.GetKeyDown(KeyCode.P)){
-            ShowHint("The beast is calm...");
+    void Update()
+    {
+        if(BattleManager.inst.inBattle && BattleManager.inst.turnState == BattleManager.TurnState.Player)
+        {
+            if(Input.GetKeyDown(KeyCode.H))
+            {ShowHint();}
         }
     }
-
-    public void ShowHint(string hint)
+    
+    public void ShowHint()
     {
         if(!typing)
         {
+            string hint = "The beast is calm...";
             text.DOFade(1,.2f);
             CardManager.inst.DeactivateHand();
             typing = true;

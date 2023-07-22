@@ -38,6 +38,7 @@ public class PlayerParty : MonoBehaviour
     //buff depening on what biome tile the battle takes place on
     //start combat with full block
     //repeat card cast
+    //something after playing last card in hand
 
     public void Load(SaveData data)
     {

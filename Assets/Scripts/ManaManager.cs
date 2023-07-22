@@ -35,16 +35,15 @@ public class ManaManager:Singleton<ManaManager>
                     activeGems.Add(gems[i]);
                 }
             }
-            
-         
         }
         else
-        {Debug.Log("Override");}
+        {Debug.Log("Reached max base mana.");}
     }
 
-    public void RegenMana(){
-currentMana = maxMana;
-  UpdateDisplay();
+    public void RegenMana()
+    {
+        currentMana = maxMana;
+        UpdateDisplay();
     }
 
     public void Spend(int manaCost)

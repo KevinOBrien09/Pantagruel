@@ -13,12 +13,15 @@ public class RivalBeastManager:Singleton<RivalBeastManager>
     public void EnterBattle()
     {
         BeastScriptableObject encounteredBeast = LocationManager.inst.GetEncounter(PlayerManager.inst.movement.GetBiome()) ;
-        BattleGraphicManager.inst.Init(encounteredBeast);   
+          
         currentBeast = Instantiate(beastPrefab,transform);
         currentBeast.Init(currentBeast.PsudeoSave(encounteredBeast));
+        BattleGraphicManager.inst.Init(encounteredBeast);
         healthBar.beast = currentBeast;
         currentBeast.currentHealthBar = healthBar;
         healthBar.onInit.Invoke();
+
+        EnemyAI.inst.InitNewBeast(currentBeast);
     }
 
    

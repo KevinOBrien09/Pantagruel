@@ -16,8 +16,14 @@ MonoBehaviour:
   cardName: Cleave
   picture: {fileID: 21300000, guid: 2f4e8fedb2f09b247a7f6ca5234f0a82, type: 3}
   manaCost: 1
+  vfx: Slice1
+  castDelay: 0.06
   effects:
   - {fileID: 11400000, guid: fe6edcc5763623c42bbe9eeb914fd185, type: 2}
   - {fileID: 11400000, guid: 555e23be6d6ab4d46b1ec190b599830f, type: 2}
+  soundEffect:
+    audioClip: {fileID: 8300000, guid: 84f7c61ea17ffa74b86dab40d76c1db0, type: 3}
+    pitchRange: {x: 0.9, y: 1.1}
+    volume: 0.5
   desc: Deal 20 RAW damage.
   deckCost: 5

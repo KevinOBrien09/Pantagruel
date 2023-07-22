@@ -26,14 +26,6 @@ MonoBehaviour:
       type: 3}
     facingRight: 1
     bestiaryID: 113
-    wildDeck:
-      cards:
-      - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
-      - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
-      - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
-      - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
-      - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
-      - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
-      - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+    wildDeck: {fileID: 11400000, guid: 80d5131422f00c4458ffe3c9b0906f53, type: 2}
     stats:
       maxHealth: 90

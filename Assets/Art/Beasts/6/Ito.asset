@@ -25,7 +25,6 @@ MonoBehaviour:
       type: 3}
     facingRight: 0
     bestiaryID: 6
-    wildDeck:
-      cards: []
+    wildDeck: {fileID: 11400000, guid: 80d5131422f00c4458ffe3c9b0906f53, type: 2}
     stats:
       maxHealth: 110

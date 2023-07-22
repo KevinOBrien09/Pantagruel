@@ -10,18 +10,19 @@ public class CardManager:Singleton<CardManager>
     public CardBehaviour prefab;
     public RectTransform holder;
     public List<CardBehaviour> hand = new List<CardBehaviour>();
-    public ParticleSystem useCardEffect;
+   
     public List<int> manaCostsThatCanBeDrawn = new List<int>();
     float holderOgPos;
     public float downHodlerPos;
-
+    public Deck currentDeck;
     public List<Card> discardPile = new List<Card>();
+    public SoundData drawCard;
     public void EnterBattle(Beast beast)
     {
         foreach (var item in hand)
         {Destroy(item.gameObject);}
         manaCostsThatCanBeDrawn.Add(1);
-        
+        currentDeck.cards = new List<Card>(beast.deck.cards);
         DrawCardOfSpecificCost(manaCostsThatCanBeDrawn,beast);
         ActivateHand();
     }
@@ -53,11 +54,20 @@ public class CardManager:Singleton<CardManager>
 
     public void DrawRandomCard(Beast b)
     {
-        if(hand.Count < 7){
-            Card card = b.deck.cards[Random.Range(0,b.deck.cards.Count)];
+        if(currentDeck.cards.Count <= 0){
+          ResetDiscardPile();
+            Debug.Log("Resetting discard pile");
+            return;
+        }
+        
+        if(hand.Count < 7)
+        {
+            Card card = currentDeck.cards[Random.Range(0,currentDeck.cards.Count)];
+            currentDeck.cards.Remove(card);
             CardBehaviour newCard = Instantiate(prefab,holder);
             newCard.Init(card);
             hand.Add(newCard);
+             AudioManager.inst.GetSoundEffect().Play(drawCard);
         }
         else{
             Debug.Log("Hand is full!");
@@ -67,10 +77,16 @@ public class CardManager:Singleton<CardManager>
 
     public void DrawCardOfSpecificCost(List<int> cost,Beast b)
     {
-        if(hand.Count < 7){
+        if(currentDeck.cards.Count <= 0){
+            ResetDiscardPile();
+            Debug.Log("No cards in deck");
+            return;
+        }
+        if(hand.Count < 7)
+        {
 
             List<Card> validCards = new List<Card>();
-            foreach (var card in b.deck.cards)
+            foreach (var card in currentDeck.cards)
             {   
                 if(cost.Contains(card.manaCost))
                 {validCards.Add(card);}
@@ -90,6 +106,8 @@ public class CardManager:Singleton<CardManager>
                 CardBehaviour newCard = Instantiate(prefab,holder);
                 newCard.Init(card1);
                 hand.Add(newCard);
+                AudioManager.inst.GetSoundEffect().Play(drawCard);
+                currentDeck.cards.Remove(card1);
             }
         }
         else{
@@ -108,15 +126,47 @@ public class CardManager:Singleton<CardManager>
 
     public void Use(Card usedCard,CardBehaviour behaviour)
     {
-        
-        discardPile.Add(usedCard);
-        CardStack.inst.CreateActionStack(usedCard,PlayerManager.inst.party.activeBeast);
-        ManaManager.inst.Spend(usedCard.manaCost);
-        foreach (var effect in usedCard.effects)
+        StartCoroutine(q());
+
+       // DeactivateHand();
+        IEnumerator q()
         {
-            effect.Use(PlayerManager.inst.party.activeBeast,RivalBeastManager.inst.currentBeast);
+           
+            BattleEffectManager.inst.Play(usedCard.vfx);
+            if(usedCard.soundEffect.audioClip != null){
+                AudioManager.inst.GetSoundEffect().Play(usedCard.soundEffect);
+            }
+         
+            yield return new WaitForSeconds(usedCard.castDelay);
+            discardPile.Add(usedCard);
+            BattleTicker.inst.Type(usedCard.cardName);
+           // CardStack.inst.CreateActionStack(usedCard,PlayerManager.inst.party.activeBeast);
+            ManaManager.inst.Spend(usedCard.manaCost);
+            foreach (var effect in usedCard.effects)
+            {
+                effect.Use(PlayerManager.inst.party.activeBeast,RivalBeastManager.inst.currentBeast);
+            }
+            hand.Remove(behaviour);
+            Destroy(behaviour.gameObject);
+
+          
+           
+            ResetDiscardPile();
+
+
+            yield return new WaitForSeconds(.5f);
+          //  ActivateHand();
         }
-        hand.Remove(behaviour);
-        Destroy(behaviour.gameObject);
+       
+    }
+
+    public void ResetDiscardPile(){
+
+        if(currentDeck.cards.Count <= 0)
+        {
+            currentDeck.cards = new List<Card>(discardPile);
+            discardPile.Clear();
+            Debug.Log("Resetting discard pile");
+        }
     }
 }

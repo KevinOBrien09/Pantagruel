@@ -36,7 +36,7 @@ public class BeastData
     [Header("Attributes")]
     [Space()]
     public int bestiaryID;
-    public Deck wildDeck;
+    public DeckObject wildDeck;
     public Stats stats;
 }
 
