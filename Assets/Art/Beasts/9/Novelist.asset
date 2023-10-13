@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11aedf986ff0234c99d4109067c43ca, type: 3}
+  m_Name: Novelist
+  m_EditorClassIdentifier: 
+  beastData:
+    ANIMATED_PREFAB_DONE: 0
+    beastName: Novelist
+    flavourText: '"Nonono this is no good, I must do it again! Properly this time!"'
+    bottomCornerPos: {x: 0, y: -1.5}
+    battlePos: {x: 0, y: 0, z: 2}
+    beastGraphicPrefab: {fileID: 0}
+    uiPicture: {fileID: -215640629934891304, guid: db5ceaeb055d84146a75caeab9cf2b79,
+      type: 3}
+    mainSprite: {fileID: 4113829005332862926, guid: db5ceaeb055d84146a75caeab9cf2b79,
+      type: 3}
+    facingRight: 1
+    bestiaryID: 9
+    wildDeck: {fileID: 0}
+    stats:
+      maxHealth: 78
+      def: 5
+      physical: 4
+      magic: 21
+      charisma: 11
+      luck: 20
+    statGrowthPerLevel:
+      maxHealth: 2
+      def: 1
+      physical: 0
+      magic: 3
+      charisma: 0
+      luck: 1
+    element: 1
+    beastClass: 11
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

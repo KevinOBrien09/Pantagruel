@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec03d198f138b2c4099b0c760090b965, type: 3}
+  m_Name: Poke
+  m_EditorClassIdentifier: 
+  Id: 9364c3d9-24e4-4131-bab0-0e8fc01e7839
+  cardName: Poke
+  picture: {fileID: 21300000, guid: 6f00004edfef50246b6cb8e62632961d, type: 3}
+  manaCost: 1
+  vfx: Bash
+  castDelay: 0.05
+  effects:
+  - {fileID: 11400000, guid: 6cf636112f9504844b7b2f6d2427370d, type: 2}
+  soundEffect:
+    audioClip: {fileID: 8300000, guid: 2bfff0e1d27019d4ab96d2f49da9abd7, type: 3}
+    pitchRange: {x: 0.9, y: 1.1}
+    volume: 2
+  restrictions:
+    elementRestriction: 0
+    classRestriction: 2
+  desc: Deals 10 +{5%}  MGK Damage.
+  deckCost: 0

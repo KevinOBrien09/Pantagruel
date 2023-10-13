@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Slug
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Slug
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 2730765880487802524, guid: bed45da411354ad4f89c09a799e1f173,
       type: 3}
     mainSprite: {fileID: -4878262603408969857, guid: bed45da411354ad4f89c09a799e1f173,
       type: 3}
+    facingRight: 0
     bestiaryID: 70
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 1
-    secondaryFamily: 17
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 73
+      def: 22
+      physical: 14
+      magic: 19
+      charisma: 21
+      luck: 1
+    statGrowthPerLevel:
+      maxHealth: 2
+      def: 3
+      physical: 1
+      magic: 2
+      charisma: 1
+      luck: 1
+    element: 2
+    beastClass: 16
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Playwright
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: support?
     beastName: Playwright
     flavourText: "\"Oh simply magnificent\r sire,\nsplendid, just splendid!\""
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -7371509505491802261, guid: 78f6feb637689a945b094ae72edd4b39,
       type: 3}
     mainSprite: {fileID: 7727623748462305008, guid: 78f6feb637689a945b094ae72edd4b39,
       type: 3}
+    facingRight: 0
     bestiaryID: 22
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 7
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 50
+      def: 12
+      physical: 5
+      magic: 21
+      charisma: 20
+      luck: 6
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 1
+      physical: 2
+      magic: 3
+      charisma: 4
+      luck: 1
+    element: 1
+    beastClass: 11
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

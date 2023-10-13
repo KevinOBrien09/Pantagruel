@@ -13,26 +13,38 @@ MonoBehaviour:
   m_Name: Wanderer
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: Refuses to be in the same party as "Hag"
     beastName: Wanderer
     flavourText: '"No no, I''d rather be out here than listen to that woman a second
       longer."'
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -907776890014986012, guid: 374a434ebab4e4349b21c3a0c992b790,
       type: 3}
     mainSprite: {fileID: -4741977889001918989, guid: 374a434ebab4e4349b21c3a0c992b790,
       type: 3}
+    facingRight: 0
     bestiaryID: 69
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 75
+      def: 15
+      physical: 19
+      magic: 15
+      charisma: 12
+      luck: 5
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 4
+      physical: 4
+      magic: 4
       charisma: 0
-      resolve: 0
-    mainFamily: 14
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 1
+    element: 1
+    beastClass: 14
+    secondaryClass: 9
+    passive: {fileID: 0}
+    catchMod: 0

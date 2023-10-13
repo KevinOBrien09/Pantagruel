@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Matryoshka
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Matryoshka
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -8868653072870737037, guid: dc6c78709e591054da7b0b2ae02443c9,
       type: 3}
     mainSprite: {fileID: -4108817609249448013, guid: dc6c78709e591054da7b0b2ae02443c9,
       type: 3}
+    facingRight: 0
     bestiaryID: 66
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 66
+      def: 21
+      physical: 24
+      magic: 30
       charisma: 0
-      resolve: 0
-    mainFamily: 8
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 0
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 1
+      physical: 5
+      magic: 5
+      charisma: 0
+      luck: 0
+    element: 1
+    beastClass: 9
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

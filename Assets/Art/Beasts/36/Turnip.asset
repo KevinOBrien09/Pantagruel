@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Turnip
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Turnip
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 3207579745489812468, guid: 3e5e4f37ea78d564ca5b0afe452e495d,
       type: 3}
     mainSprite: {fileID: -8788506525334125165, guid: 3e5e4f37ea78d564ca5b0afe452e495d,
       type: 3}
+    facingRight: 0
     bestiaryID: 36
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 5
-    secondaryFamily: 20
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 111
+      def: 18
+      physical: 10
+      magic: 21
+      charisma: 22
+      luck: 10
+    statGrowthPerLevel:
+      maxHealth: 2
+      def: 1
+      physical: 1
+      magic: 1
+      charisma: 3
+      luck: 3
+    element: 3
+    beastClass: 7
+    secondaryClass: 13
+    passive: {fileID: 0}
+    catchMod: 0

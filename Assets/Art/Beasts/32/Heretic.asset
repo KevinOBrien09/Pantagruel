@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Heretic
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: dual character?
     beastName: Heretic
     flavourText: '"Money? Women? Power? And that''s all you want in return?"'
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -1132588812051559309, guid: e83b443fa8132e84293773475437dba6,
       type: 3}
     mainSprite: {fileID: 5272401415994956661, guid: e83b443fa8132e84293773475437dba6,
       type: 3}
+    facingRight: 0
     bestiaryID: 32
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
+      maxHealth: 66
+      def: 14
+      physical: 3
+      magic: 28
+      charisma: 29
+      luck: 0
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 1
       physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 2
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      magic: 7
+      charisma: 4
+      luck: 0
+    element: 6
+    beastClass: 9
+    secondaryClass: 16
+    passive: {fileID: 0}
+    catchMod: 0

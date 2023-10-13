@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec03d198f138b2c4099b0c760090b965, type: 3}
+  m_Name: Piercing Squawk
+  m_EditorClassIdentifier: 
+  Id: b34fe38c-0c82-4e9a-8b02-52efc70a177a
+  cardName: Piercing Squawk
+  picture: {fileID: 7666283726484249173, guid: 654424bdd2bdd3d4b86972a016eb64c1, type: 3}
+  manaCost: 0
+  vfx: 
+  castDelay: 0.2
+  effects: []
+  soundEffect:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
+  restrictions:
+    elementRestriction: 0
+    classRestriction: 6
+  desc: 
+  deckCost: 0

@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Hunchback
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Hunchback
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 9125048449310441231, guid: 458bf5ab1739da640a3fd0b22bb69371,
       type: 3}
     mainSprite: {fileID: 7812457613319918240, guid: 458bf5ab1739da640a3fd0b22bb69371,
       type: 3}
+    facingRight: 0
     bestiaryID: 68
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 93
+      def: 22
+      physical: 28
+      magic: 8
       charisma: 0
-      resolve: 0
-    mainFamily: 17
-    secondaryFamily: 16
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 11
+    statGrowthPerLevel:
+      maxHealth: 2
+      def: 3
+      physical: 5
+      magic: 0
+      charisma: 0
+      luck: 1
+    element: 4
+    beastClass: 4
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Centurion
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Centurion
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -4397554144975934770, guid: 728bdf18d969a0844b41f9606b85b252,
       type: 3}
     mainSprite: {fileID: -3180619178420385107, guid: 728bdf18d969a0844b41f9606b85b252,
       type: 3}
+    facingRight: 0
     bestiaryID: 39
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 6
-    secondaryFamily: 8
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 111
+      def: 21
+      physical: 21
+      magic: 11
+      charisma: 12
+      luck: 1
+    statGrowthPerLevel:
+      maxHealth: 5
+      def: 5
+      physical: 4
+      magic: 4
+      charisma: 1
+      luck: 0
+    element: 1
+    beastClass: 5
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

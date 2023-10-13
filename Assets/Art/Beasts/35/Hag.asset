@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Hag
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Hag
     flavourText: '"HUSBAND,HUSBAND? WHERE ARE YOUUUU?"'
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -6749791882742632814, guid: 1e5089a4bdca5b344bc85505b87f237e,
       type: 3}
     mainSprite: {fileID: -164082725380277428, guid: 1e5089a4bdca5b344bc85505b87f237e,
       type: 3}
+    facingRight: 0
     bestiaryID: 35
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 71
+      def: 11
+      physical: 11
+      magic: 19
       charisma: 0
-      resolve: 0
-    mainFamily: 14
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 9
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 1
+      physical: 1
+      magic: 1
+      charisma: 0
+      luck: 2
+    element: 5
+    beastClass: 14
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

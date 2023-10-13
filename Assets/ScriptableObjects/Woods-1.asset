@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 635a20c82770dea428c8eaf094a32c9d, type: 3}
   m_Name: Woods-1
   m_EditorClassIdentifier: 
+  locationName: South Forest
   beastsInLocation:
   - scriptableObject:
     - {fileID: 11400000, guid: 256eb314cd1f9b142bdc8e5f6f4ffb03, type: 2}

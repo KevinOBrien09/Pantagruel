@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Cardinal
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Cardinal
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -4051775243478953174, guid: 26f55181bef751547930d6513ed9eb08,
       type: 3}
     mainSprite: {fileID: -5405954865932928928, guid: 26f55181bef751547930d6513ed9eb08,
       type: 3}
+    facingRight: 0
     bestiaryID: 94
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 1
-    secondaryFamily: 15
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 55
+      def: 24
+      physical: 14
+      magic: 14
+      charisma: 28
+      luck: 14
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 3
+      physical: 2
+      magic: 3
+      charisma: 3
+      luck: 1
+    element: 4
+    beastClass: 3
+    secondaryClass: 6
+    passive: {fileID: 0}
+    catchMod: 0

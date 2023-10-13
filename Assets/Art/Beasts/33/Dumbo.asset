@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Dumbo
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Dumbo
     flavourText: '"AYYY IT''S FUCKIN'' DUMBO IN THE HOUSE!"'
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -4093987921198194536, guid: 7846fdfc20a368b4d8ebafe60aeea9af,
       type: 3}
     mainSprite: {fileID: 8779661393526243363, guid: 7846fdfc20a368b4d8ebafe60aeea9af,
       type: 3}
+    facingRight: 0
     bestiaryID: 33
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 8
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 80
+      def: 15
+      physical: 5
+      magic: 19
+      charisma: 3
+      luck: 5
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 3
+      physical: 2
+      magic: 4
+      charisma: 2
+      luck: 1
+    element: 2
+    beastClass: 7
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

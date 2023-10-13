@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +10,8 @@ public class Beast : MonoBehaviour
     public int shields;
     public HealthBar currentHealthBar;
     public BeastAnimatedInstance animatedInstance;
+    public bool KO;
+
 
     public void Init(BeastSaveData beastSaveData)
     {
@@ -19,22 +21,31 @@ public class Beast : MonoBehaviour
         foreach (var id in beastSaveData.deckIDs)
         {
             if(BeastBank.inst.cardDict.ContainsKey(id))
-            {
-                deck.cards.Add(BeastBank.inst.cardDict[id]);
-            }
-            else{
-                Debug.LogError("Database does not contain card id : " + id);
-            }
+            {deck.cards.Add(BeastBank.inst.cardDict[id]);}
+            else
+            {Debug.LogError("Database does not contain card id : " + id);}
         }
     }
 
     public void TakeDamage(float amount)
     {
         currentHealth = currentHealth-amount;
+        if(currentHealth <0)
+        {
+            currentHealth = 0;
+        }
+        
         if(animatedInstance != null){
             animatedInstance.TakeDamage();
         }
+        
+        if(currentHealth ==0){
+            KO = true;
+            animatedInstance.Dissolve();
+        }
         currentHealthBar.onHit.Invoke();
+        BattleManager.inst.CheckIfGameContinues();
+       
     }
 
     public BeastSaveData PsudeoSave(BeastScriptableObject bso)
@@ -42,9 +53,9 @@ public class Beast : MonoBehaviour
         BeastSaveData bsd = new BeastSaveData();
         bsd.beastiaryID = bso.beastData.bestiaryID;
         bsd.currentHealth = bso.beastData.stats.maxHealth;
-        List<int> cardIDs = new List<int>();
+        List<string> cardIDs = new List<string>();
         foreach (var card in bso.beastData.wildDeck.deck.cards)  //ONLY DOES WILD DECK ATM
-        { cardIDs.Add(card.cardID); }
+        { cardIDs.Add(card.Id); }
         bsd.deckIDs = cardIDs;
         return bsd;
     }

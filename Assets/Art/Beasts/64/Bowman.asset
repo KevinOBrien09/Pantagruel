@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Bowman
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Bowman
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 1679825127283579670, guid: dee1c9ec610328e45a67fa3eebac6e1d,
       type: 3}
     mainSprite: {fileID: 8698684302914591132, guid: dee1c9ec610328e45a67fa3eebac6e1d,
       type: 3}
+    facingRight: 0
     bestiaryID: 64
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
+      maxHealth: 66
+      def: 19
+      physical: 24
+      magic: 8
+      charisma: 14
+      luck: 4
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 2
+      physical: 2
       magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 6
-    secondaryFamily: 14
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      charisma: 2
+      luck: 0
+    element: 3
+    beastClass: 12
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

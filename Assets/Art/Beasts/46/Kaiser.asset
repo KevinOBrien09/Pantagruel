@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Kaiser
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Kaiser
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -963791335356448533, guid: a60d425d5bd7e4a4aa4df9bada3bdd5a,
       type: 3}
     mainSprite: {fileID: 330389837745465514, guid: a60d425d5bd7e4a4aa4df9bada3bdd5a,
       type: 3}
+    facingRight: 0
     bestiaryID: 46
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 8
-    secondaryFamily: 1
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 104
+      def: 21
+      physical: 3
+      magic: 27
+      charisma: 21
+      luck: 21
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 2
+      physical: 1
+      magic: 4
+      charisma: 2
+      luck: 1
+    element: 6
+    beastClass: 3
+    secondaryClass: 14
+    passive: {fileID: 0}
+    catchMod: 0

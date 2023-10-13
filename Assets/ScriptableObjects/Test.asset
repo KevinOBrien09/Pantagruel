@@ -18,8 +18,15 @@ MonoBehaviour:
     - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
     - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
     - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+    - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+    - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+    - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+    - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+    - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+    - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+    discard: []
   combos:
   - hint: The beast is holding an axe!
     requiredCards:
-    - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
     - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+    - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}

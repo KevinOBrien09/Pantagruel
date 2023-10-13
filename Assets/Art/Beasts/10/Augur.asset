@@ -13,26 +13,36 @@ MonoBehaviour:
   m_Name: Augur
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
     beastName: Augur
     flavourText: '"3 bird fly ahead sire... I''m afraid your finances aren''t looking
       too well..."'
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -5099292496197868168, guid: 5092fbe24fdd8b749a25bc8124486123,
       type: 3}
     mainSprite: {fileID: -6666162448854811074, guid: 5092fbe24fdd8b749a25bc8124486123,
       type: 3}
+    facingRight: 0
     bestiaryID: 10
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 1
-    secondaryFamily: 15
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 73
+      def: 11
+      physical: 14
+      magic: 19
+      charisma: 5
+      luck: 3
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 2
+      physical: 1
+      magic: 3
+      charisma: 1
+      luck: 1
+    element: 3
+    beastClass: 6
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

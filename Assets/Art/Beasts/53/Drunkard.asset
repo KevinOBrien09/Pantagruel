@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Drunkard
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: not affected by certain debuffs?
     beastName: Drunkard
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 5379824893481949807, guid: 846b79cce637e8a4fa223f6203af2080,
       type: 3}
     mainSprite: {fileID: 4735424187637698781, guid: 846b79cce637e8a4fa223f6203af2080,
       type: 3}
+    facingRight: 0
     bestiaryID: 53
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
+      maxHealth: 67
+      def: 9
+      physical: 26
       magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 14
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      charisma: 21
+      luck: 14
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 2
+      physical: 3
+      magic: 2
+      charisma: 3
+      luck: 1
+    element: 4
+    beastClass: 8
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

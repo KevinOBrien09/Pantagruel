@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Dragur
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Dragur
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 1339047737661862774, guid: a99dbc25bbae17d4998a499a486f4c60,
       type: 3}
     mainSprite: {fileID: 2713666963566261034, guid: a99dbc25bbae17d4998a499a486f4c60,
       type: 3}
+    facingRight: 0
     bestiaryID: 73
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 100
+      def: 6
+      physical: 21
+      magic: 32
       charisma: 0
-      resolve: 0
-    mainFamily: 8
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 0
+    statGrowthPerLevel:
+      maxHealth: 5
+      def: 3
+      physical: 1
+      magic: 4
+      charisma: 0
+      luck: 0
+    element: 1
+    beastClass: 15
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

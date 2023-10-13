@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Scout
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: chance to see what card is drawn by opponent.
     beastName: Scout
     flavourText: '"The coast is clear... for now"'
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 7965088197702528346, guid: a4cc741db417dba479ee87d45cfc8db8,
       type: 3}
     mainSprite: {fileID: 3727870464966811, guid: a4cc741db417dba479ee87d45cfc8db8,
       type: 3}
+    facingRight: 0
     bestiaryID: 77
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 6
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 59
+      def: 7
+      physical: 21
+      magic: 9
+      charisma: 5
+      luck: 5
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 2
+      physical: 4
+      magic: 1
+      charisma: 1
+      luck: 1
+    element: 5
+    beastClass: 2
+    secondaryClass: 6
+    passive: {fileID: 0}
+    catchMod: 0

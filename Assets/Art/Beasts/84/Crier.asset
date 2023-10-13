@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Crier
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Crier
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 625262457086554381, guid: 488b5efce66076e4bb6b85e41ddf1a1f,
       type: 3}
     mainSprite: {fileID: -7610600777701082769, guid: 488b5efce66076e4bb6b85e41ddf1a1f,
       type: 3}
+    facingRight: 0
     bestiaryID: 84
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 66
+      def: 10
+      physical: 9
+      magic: 9
       charisma: 0
-      resolve: 0
-    mainFamily: 14
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 9
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 1
+      physical: 3
+      magic: 3
+      charisma: 0
+      luck: 2
+    element: 5
+    beastClass: 8
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

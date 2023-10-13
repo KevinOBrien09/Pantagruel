@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beastData:
     ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Bulwark
     flavourText: 
     bottomCornerPos: {x: 0, y: 0}
@@ -23,6 +25,25 @@ MonoBehaviour:
       type: 3}
     mainSprite: {fileID: -5271099278654713531, guid: f5f2e995d23bdc74fa664e3dcf52ee1d,
       type: 3}
+    facingRight: 0
     bestiaryID: 120
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
+      maxHealth: 101
+      def: 27
+      physical: 31
+      magic: 0
+      charisma: 0
+      luck: 1
+    statGrowthPerLevel:
+      maxHealth: 2
+      def: 1
+      physical: 3
+      magic: 0
+      charisma: 0
+      luck: 1
+    element: 4
+    beastClass: 1
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

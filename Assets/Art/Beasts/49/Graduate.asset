@@ -13,26 +13,38 @@ MonoBehaviour:
   m_Name: Graduate
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: every  Aritocrat card played gives temparary stacking bonus
     beastName: Graduate
     flavourText: "\"Do you happen to have a source for that claim? \nBah, what am
       I saying. Of course you don't!\""
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -8586417740124189794, guid: d5dfb3ac45ee99c4ea78f4abb895d288,
       type: 3}
     mainSprite: {fileID: -5675452795955656833, guid: d5dfb3ac45ee99c4ea78f4abb895d288,
       type: 3}
+    facingRight: 0
     bestiaryID: 49
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
+      maxHealth: 62
+      def: 8
+      physical: 8
+      magic: 19
+      charisma: 35
+      luck: 12
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 1
       physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 14
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      magic: 5
+      charisma: 3
+      luck: 4
+    element: 2
+    beastClass: 14
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

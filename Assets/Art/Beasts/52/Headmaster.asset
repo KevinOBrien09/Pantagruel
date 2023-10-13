@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Headmaster
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Headmaster
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -1485282433491618599, guid: 60695cba7215cc246bad98755dd0b5af,
       type: 3}
     mainSprite: {fileID: -2531737724758532215, guid: 60695cba7215cc246bad98755dd0b5af,
       type: 3}
+    facingRight: 0
     bestiaryID: 52
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 111
+      def: 27
+      physical: 14
+      magic: 14
       charisma: 0
-      resolve: 0
-    mainFamily: 1
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 14
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 4
+      physical: 4
+      magic: 4
+      charisma: 4
+      luck: 4
+    element: 3
+    beastClass: 3
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

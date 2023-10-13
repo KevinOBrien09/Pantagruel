@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Pope
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Pope
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 2059781735730985187, guid: dd75cefb33a36a644852226b56744559,
       type: 3}
     mainSprite: {fileID: 1395015028375797303, guid: dd75cefb33a36a644852226b56744559,
       type: 3}
+    facingRight: 0
     bestiaryID: 114
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 1
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 55
+      def: 16
+      physical: 5
+      magic: 21
+      charisma: 21
+      luck: 6
+    statGrowthPerLevel:
+      maxHealth: 2
+      def: 1
+      physical: 2
+      magic: 4
+      charisma: 4
+      luck: 4
+    element: 6
+    beastClass: 3
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

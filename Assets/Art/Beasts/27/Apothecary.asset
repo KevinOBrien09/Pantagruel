@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Apothecary
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: chance to generate potion mid battle?
     beastName: Apothecary
     flavourText: Double, double toil and trouble, Fire burn, and caldron bubble.
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -5622901713081898559, guid: 6a691713a1efb8242bd87a9afea98fba,
       type: 3}
     mainSprite: {fileID: 6393303234226741781, guid: 6a691713a1efb8242bd87a9afea98fba,
       type: 3}
+    facingRight: 0
     bestiaryID: 27
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
+      maxHealth: 73
+      def: 11
+      physical: 11
+      magic: 26
+      charisma: 5
+      luck: 13
+    statGrowthPerLevel:
+      maxHealth: 2
+      def: 2
       physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 22
-    secondaryFamily: 15
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      magic: 4
+      charisma: 4
+      luck: 0
+    element: 2
+    beastClass: 17
+    secondaryClass: 6
+    passive: {fileID: 0}
+    catchMod: 0

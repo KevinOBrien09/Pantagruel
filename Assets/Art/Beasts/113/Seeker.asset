@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beastData:
     ANIMATED_PREFAB_DONE: 1
+    devNote:
+      note: 
     beastName: Seeker
     flavourText: '"I will find the truth, no matter the cost"'
     bottomCornerPos: {x: 0, y: -1.5}
@@ -29,3 +31,20 @@ MonoBehaviour:
     wildDeck: {fileID: 11400000, guid: 80d5131422f00c4458ffe3c9b0906f53, type: 2}
     stats:
       maxHealth: 90
+      def: 17
+      physical: 11
+      magic: 25
+      charisma: 9
+      luck: 3
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 1
+      physical: 0
+      magic: 3
+      charisma: 2
+      luck: 1
+    element: 2
+    beastClass: 17
+    secondaryClass: 0
+    passive: {fileID: 11400000, guid: 4988178576387e14bbf6b59cdc9ce59a, type: 2}
+    catchMod: 0

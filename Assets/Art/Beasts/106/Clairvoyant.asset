@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Clairvoyant
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Clairvoyant
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -2446285194140060024, guid: 650e403d0a914f9489b08aad9befc2ae,
       type: 3}
     mainSprite: {fileID: -3655157163005461027, guid: 650e403d0a914f9489b08aad9befc2ae,
       type: 3}
+    facingRight: 0
     bestiaryID: 106
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
+      maxHealth: 55
+      def: 9
+      physical: 6
+      magic: 39
+      charisma: 4
+      luck: 7
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 2
       physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 22
-    secondaryFamily: 2
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      magic: 4
+      charisma: 1
+      luck: 1
+    element: 6
+    beastClass: 17
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Julius
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Julius
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 281652535026622303, guid: 7617f5a91c8b3684b8012b415979ae79,
       type: 3}
     mainSprite: {fileID: -6277229713235228629, guid: 7617f5a91c8b3684b8012b415979ae79,
       type: 3}
+    facingRight: 0
     bestiaryID: 51
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 1
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 71
+      def: 21
+      physical: 18
+      magic: 11
+      charisma: 21
+      luck: 8
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 2
+      physical: 4
+      magic: 3
+      charisma: 4
+      luck: 0
+    element: 6
+    beastClass: 3
+    secondaryClass: 2
+    passive: {fileID: 0}
+    catchMod: 0

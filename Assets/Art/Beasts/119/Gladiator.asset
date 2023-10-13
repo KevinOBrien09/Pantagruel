@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Gladiator
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Gladiator
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 8581962043109515772, guid: a0735a4d06f7ffd47aec8a721f713749,
       type: 3}
     mainSprite: {fileID: -6715397326306692072, guid: a0735a4d06f7ffd47aec8a721f713749,
       type: 3}
+    facingRight: 0
     bestiaryID: 119
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
+      maxHealth: 112
+      def: 31
+      physical: 24
+      magic: 4
+      charisma: 16
+      luck: 3
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 3
+      physical: 3
       magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 18
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      charisma: 1
+      luck: 2
+    element: 4
+    beastClass: 10
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

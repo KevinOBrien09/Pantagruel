@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Jugman
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 'Instead of a passive, I have greatly increased stats. '
     beastName: Jugman
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 5953923354035733431, guid: 05fd5ed148aa3e046b475f083b1d6366,
       type: 3}
     mainSprite: {fileID: 8667416809245764692, guid: 05fd5ed148aa3e046b475f083b1d6366,
       type: 3}
+    facingRight: 0
     bestiaryID: 104
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 9
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 125
+      def: 35
+      physical: 28
+      magic: 28
+      charisma: 25
+      luck: 31
+    statGrowthPerLevel:
+      maxHealth: 5
+      def: 5
+      physical: 4
+      magic: 4
+      charisma: 3
+      luck: 2
+    element: 6
+    beastClass: 16
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

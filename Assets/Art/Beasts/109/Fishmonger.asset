@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Fishmonger
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Fishmonger
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 4622708640774792406, guid: 3361262c0eb544c4f88a2ec90ee103c1,
       type: 3}
     mainSprite: {fileID: -3095430289427545554, guid: 3361262c0eb544c4f88a2ec90ee103c1,
       type: 3}
+    facingRight: 0
     bestiaryID: 109
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
+      maxHealth: 76
+      def: 23
+      physical: 21
+      magic: 9
+      charisma: 10
+      luck: 12
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 2
+      physical: 3
       magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 10
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      charisma: 2
+      luck: 1
+    element: 2
+    beastClass: 18
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

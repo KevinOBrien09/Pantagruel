@@ -14,43 +14,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beastData:
     ANIMATED_PREFAB_DONE: 1
-    renderCamY: 1.35
+    devNote:
+      note: 
     beastName: Earl
     flavourText: '"Look, just gimme til tommorrow and I''ll have your money."'
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 3564542200555348178, guid: 22f73a346260ecb42948198e4a327e7b,
       type: 3}
     uiPicture: {fileID: 3448682008534971580, guid: 01a55064ac578094a98f7b3900a0dd02,
       type: 3}
     mainSprite: {fileID: -3606383029764839114, guid: 01a55064ac578094a98f7b3900a0dd02,
       type: 3}
+    facingRight: 0
     bestiaryID: 57
+    wildDeck: {fileID: 0}
     stats:
       maxHealth: 55
-      physical: 7
-      magic: 3
-      toughness: 5
-      charisma: 7
-      resolve: 3
-    mainFamily: 13
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 110
-    skills:
-    - {fileID: 11400000, guid: c4327ee7818384d40b36faa6c30b44e2, type: 2}
-    - {fileID: 11400000, guid: 463f580fc3738dd4ab2a00eee174ed46, type: 2}
-    - {fileID: 11400000, guid: 1681ec1717b6fea4c9ea4af5dfc28ad7, type: 2}
-    - {fileID: 11400000, guid: d9ff1b82a09505a448a60f1fc585874a, type: 2}
-    pips:
-    - number: 0
-      result: 0
-    - number: 0
-      result: 0
-    - number: 0
-      result: 0
-    - number: 4
-      result: 0
-    - number: 0
-      result: 0
-    - number: 0
-      result: 0
+      def: 21
+      physical: 5
+      magic: 5
+      charisma: 35
+      luck: 28
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 2
+      physical: 0
+      magic: 0
+      charisma: 3
+      luck: 3
+    element: 5
+    beastClass: 14
+    secondaryClass: 16
+    passive: {fileID: 0}
+    catchMod: 0

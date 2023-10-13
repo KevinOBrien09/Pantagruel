@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 303644028206816382}
   - component: {fileID: 303644028206816383}
   m_Layer: 5
-  m_Name: BG
+  m_Name: ManaGemBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -653,8 +653,24 @@ MonoBehaviour:
   manaGem: {fileID: 303644029379025993}
   canvasGroup: {fileID: 4515540906022272939}
   icon: {fileID: 450354433431180261}
+  BG: {fileID: 450354433569857405}
+  imagesToHaveWobbleShader:
+  - {fileID: 450354433569857405}
+  - {fileID: 450354433431180261}
+  - {fileID: 450354434624183687}
+  imagesToHaveDissolveShader:
+  - {fileID: 450354434624183687}
+  - {fileID: 450354433431180261}
+  - {fileID: 450354433569857405}
+  - {fileID: 450354433036285860}
+  - {fileID: 303644029418160223}
+  - {fileID: 303644029296248159}
+  - {fileID: 303644028206816383}
+  vaporousWobble: {fileID: 2100000, guid: 6163c5514e576c74d85af229f72dda95, type: 2}
+  vaporousDissolve: {fileID: 2100000, guid: a2d9e38443fa0954697dc519b996d95c, type: 2}
   yUp: 40
   interactable: 0
+  isVapour: 0
 --- !u!114 &450354434045804217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1026,7 +1042,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 4, y: 4, z: 4, w: 4}
+  m_margin: {x: 6, y: 4, z: 6, w: 4}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

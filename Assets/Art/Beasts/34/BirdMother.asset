@@ -13,25 +13,38 @@ MonoBehaviour:
   m_Name: BirdMother
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 'after a battle heal all avians in your party for 10+  ( 10%) of your
+        maxhealth. '
     beastName: Bird Mother
     flavourText: '"No biting, now..."'
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 3620510468529025383, guid: 2cb25342daa940d40b2908f456ac7fc5,
       type: 3}
     mainSprite: {fileID: -3273128205040218760, guid: 2cb25342daa940d40b2908f456ac7fc5,
       type: 3}
+    facingRight: 0
     bestiaryID: 34
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 100
+      def: 26
+      physical: 22
+      magic: 6
       charisma: 0
-      resolve: 0
-    mainFamily: 8
-    secondaryFamily: 15
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 5
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 3
+      physical: 2
+      magic: 1
+      charisma: 0
+      luck: 0
+    element: 2
+    beastClass: 6
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Gunner
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Gunner
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -8419024768148562069, guid: 318219e3b2d6c5b468385b5a7c70f5e0,
       type: 3}
     mainSprite: {fileID: 205419648195875589, guid: 318219e3b2d6c5b468385b5a7c70f5e0,
       type: 3}
+    facingRight: 0
     bestiaryID: 41
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 6
-    secondaryFamily: 15
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 82
+      def: 21
+      physical: 15
+      magic: 23
+      charisma: 6
+      luck: 6
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 2
+      physical: 3
+      magic: 1
+      charisma: 1
+      luck: 1
+    element: 1
+    beastClass: 2
+    secondaryClass: 6
+    passive: {fileID: 0}
+    catchMod: 0

@@ -13,25 +13,42 @@ MonoBehaviour:
   m_Name: Luthier
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 'chance to upgrade artisian card when drawn?
+
+        buff to musician
+        types?
+
+        heal musician types?'
     beastName: Luthier
     flavourText: '"What is this-pine? Bahh no good."'
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -3236048163448779655, guid: d13ee3aed4b51eb4c83a05d294452791,
       type: 3}
     mainSprite: {fileID: 8546325572158939167, guid: d13ee3aed4b51eb4c83a05d294452791,
       type: 3}
+    facingRight: 0
     bestiaryID: 72
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
+      maxHealth: 66
+      def: 25
+      physical: 10
+      magic: 4
+      charisma: 31
+      luck: 11
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 3
+      physical: 1
       magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 14
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      charisma: 2
+      luck: 3
+    element: 3
+    beastClass: 11
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Shaman
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Shaman
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 3301111849194120939, guid: a3597f932e2cbde48ae92622cee4c3ad,
       type: 3}
     mainSprite: {fileID: 665959787321145107, guid: a3597f932e2cbde48ae92622cee4c3ad,
       type: 3}
+    facingRight: 0
     bestiaryID: 54
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
+      maxHealth: 66
+      def: 20
+      physical: 3
+      magic: 40
+      charisma: 23
+      luck: 11
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 3
       physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 22
-    secondaryFamily: 10
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      magic: 6
+      charisma: 3
+      luck: 0
+    element: 1
+    beastClass: 17
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

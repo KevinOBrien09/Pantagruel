@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Whore Mother
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Whore Mother
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -7833240276873349136, guid: 7684a5261f656a2488d73bbdc8a90594,
       type: 3}
     mainSprite: {fileID: 1089317026633127547, guid: 7684a5261f656a2488d73bbdc8a90594,
       type: 3}
+    facingRight: 0
     bestiaryID: 91
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 81
+      def: 22
+      physical: 14
+      magic: 14
+      charisma: 8
+      luck: 1
+    statGrowthPerLevel:
+      maxHealth: 1
+      def: 2
+      physical: 2
+      magic: 2
       charisma: 0
-      resolve: 0
-    mainFamily: 2
-    secondaryFamily: 14
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 0
+    element: 5
+    beastClass: 8
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

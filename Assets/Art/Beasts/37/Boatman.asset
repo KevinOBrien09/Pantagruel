@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Boatman
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Boatman
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -8712778243190278716, guid: fb4cfacb2cb77eb49a2f68cf7c91337e,
       type: 3}
     mainSprite: {fileID: 5425329906428779771, guid: fb4cfacb2cb77eb49a2f68cf7c91337e,
       type: 3}
+    facingRight: 0
     bestiaryID: 37
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
+      maxHealth: 76
+      def: 11
+      physical: 5
+      magic: 28
+      charisma: 5
+      luck: 5
+    statGrowthPerLevel:
+      maxHealth: 2
+      def: 1
       physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 8
-    secondaryFamily: 10
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      magic: 5
+      charisma: 2
+      luck: 2
+    element: 2
+    beastClass: 18
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

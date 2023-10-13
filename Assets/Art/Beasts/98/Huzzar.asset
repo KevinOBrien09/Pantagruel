@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Huzzar
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Huzzar
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 3973187760570444981, guid: 1217d67ec8575384da3d9701ac6e2097,
       type: 3}
     mainSprite: {fileID: 7553921534303795901, guid: 1217d67ec8575384da3d9701ac6e2097,
       type: 3}
+    facingRight: 0
     bestiaryID: 98
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
+      maxHealth: 101
+      def: 24
+      physical: 22
+      magic: 1
+      charisma: 5
+      luck: 5
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 2
+      physical: 2
       magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 6
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      charisma: 1
+      luck: 1
+    element: 1
+    beastClass: 2
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

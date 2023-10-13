@@ -13,24 +13,52 @@ public class EnemyAI : Singleton<EnemyAI>
     public Deck currentDeck;
     public List<Card> hand = new List<Card>();
     public List<ManaGem> gems = new List<ManaGem>();
-    public List<ManaGem> activeGems = new List<ManaGem>();
+    public List<ManaGem>  activeGems = new List<ManaGem>();
     public TextMeshProUGUI manaCountText;
     public GameObject cardBack;
     public RectTransform cardBackHolder;
     Dictionary<int,GameObject> backDict = new Dictionary<int, GameObject>();
+    Dictionary<Beast,Deck> deckDict = new Dictionary<Beast, Deck>();
     
-    public List<Card> discardPile = new List<Card>();
+    public void CreateDecks(List<Beast> b)
+    {
+        foreach (var item in b)
+        {
+            deckDict.Add(item,new Deck());
+            deckDict[item].cards = new List<Card>(item.deck.cards);
+        }
+    }
     
-    public void InitNewBeast(Beast b){
-        currentDeck.cards = new List<Card>(b.deck.cards);
+    public void SwapActiveBeast(Beast newActiveBeast)
+    {
+        foreach (var item in backDict)
+        {Destroy(item.Value.gameObject); }
+        foreach (var item in hand)
+        { currentDeck.discard.Add(item); }
+        backDict.Clear();
+        currentDeck = deckDict[newActiveBeast];
+    }
 
+    public void  DrawRandomCard()
+    {
+        if(currentDeck.cards.Count <= 0)
+        {
+            currentDeck.ResetDiscardPile();
+            Debug.Log("Resetting discard pile");
+            return;
+        }
+        
+        if(hand.Count < 7)
+        {
+          
+            Card c = CardFunctions.DrawRandomCard(currentDeck);
+            hand.Add(c);
+        }
     }
 
     public void Act(Beast b)
     {
-      
-        DrawCard();
-
+        DrawRandomCard();
         DeckObject wildDeck = b.scriptableObject.beastData.wildDeck;
         List<CardCombo> validCombos = new List<CardCombo>();
         foreach (var combo in wildDeck.combos)
@@ -44,6 +72,7 @@ public class EnemyAI : Singleton<EnemyAI>
         IEnumerator q()
         { 
             yield return new WaitForSeconds(.33f);
+            EventManager.inst.onEnemyDrawCard.Invoke();
             RebuildCardBacks();
             yield return new WaitForSeconds(.5f);
             if(validCombos.Count == 0)
@@ -83,12 +112,13 @@ public class EnemyAI : Singleton<EnemyAI>
                 foreach (var usedCard in toBeUsed)
                 {
                     hand.Remove(usedCard);
-                    discardPile.Add(usedCard);
+                    currentDeck.discard.Add(usedCard);
                     SpendMana(usedCard.manaCost);
+                    EventManager.inst.onEnemyCastCard.Invoke();
+                    BattleTicker.inst.Type(usedCard.cardName);
                     
                     foreach (var effect in usedCard.effects)
-                    {effect.Use(RivalBeastManager.inst.currentBeast,PlayerManager.inst.party.activeBeast);}
-                    
+                    {effect.Use(RivalBeastManager.inst.activeBeast,PlayerParty.inst.activeBeast);}
                 }
 
                 RebuildCardBacks();
@@ -97,26 +127,9 @@ public class EnemyAI : Singleton<EnemyAI>
             }
         }
     }
-
-    public void DrawCard()
-    {
-        if(currentDeck.cards.Count <= 0)
-        {
-            Debug.Log("No cards in enemy deck");
-            return;
-        }
-
-        if(hand.Count < 7)
-        {
-            Card c = currentDeck.cards[Random.Range(0,currentDeck.cards.Count)];
-            currentDeck.cards.Remove(c);
-            hand.Add(c);
-        }
-    }
-
+    
     public void RebuildCardBacks()
     {
-        
         foreach (var item in backDict)
         {Destroy(item.Value);}
         backDict.Clear();
@@ -127,7 +140,6 @@ public class EnemyAI : Singleton<EnemyAI>
             GameObject g = Instantiate(cardBack,cardBackHolder);
             backDict.Add(i,g);
         }
-
     }
 
     public void IncreaseMaxMana()
@@ -150,14 +162,9 @@ public class EnemyAI : Singleton<EnemyAI>
     public void SpendMana(int manaCost)
     {
         currentMana = currentMana- manaCost;
-     
-       
-   
         UpdateDisplay();
-        
     }
-
-
+    
     public void RegenMana()
     {
         currentMana = maxMana;
@@ -174,5 +181,21 @@ public class EnemyAI : Singleton<EnemyAI>
 
         manaCountText.text = currentMana + "/" + maxMana;
     }
-    
+
+    public void LeaveBattle(){
+        currentDeck = null;
+        maxMana =0;
+        currentMana = 0;
+        foreach (var item in gems)
+        {item.Deactivate();}
+       
+        deckDict.Clear();
+       
+        activeGems.Clear();
+         hand.Clear();
+        RebuildCardBacks();
+        backDict.Clear();
+       
+        UpdateDisplay();
+    }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec03d198f138b2c4099b0c760090b965, type: 3}
   m_Name: Cleave
   m_EditorClassIdentifier: 
-  cardID: 2
+  Id: 8eb40ab2-f7b0-48ff-b103-db0a02057009
   cardName: Cleave
   picture: {fileID: 21300000, guid: 2f4e8fedb2f09b247a7f6ca5234f0a82, type: 3}
   manaCost: 1
@@ -25,5 +25,8 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 84f7c61ea17ffa74b86dab40d76c1db0, type: 3}
     pitchRange: {x: 0.9, y: 1.1}
     volume: 0.5
+  restrictions:
+    elementRestriction: 0
+    classRestriction: 0
   desc: Deal 20 RAW damage.
   deckCost: 5

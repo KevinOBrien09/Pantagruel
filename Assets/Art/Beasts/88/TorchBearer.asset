@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: TorchBearer
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Torchbearer
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -5789677524543127715, guid: 6f7fd9f5a172049408a4087443e4f97e,
       type: 3}
     mainSprite: {fileID: 8093344963384475221, guid: 6f7fd9f5a172049408a4087443e4f97e,
       type: 3}
+    facingRight: 0
     bestiaryID: 88
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 3
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 130
+      def: 26
+      physical: 5
+      magic: 20
+      charisma: 5
+      luck: 5
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 4
+      physical: 1
+      magic: 4
+      charisma: 1
+      luck: 0
+    element: 1
+    beastClass: 1
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

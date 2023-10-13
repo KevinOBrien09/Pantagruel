@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Hero
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Hero
-    flavourText: '"Fear not, commoners i am here!"'
+    flavourText: '"Fear not commoners, for I am here!"'
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -627346825840282070, guid: a1bcec39a39207f49ab5cbc5cffdf3d5,
       type: 3}
     mainSprite: {fileID: -4384874118014692203, guid: a1bcec39a39207f49ab5cbc5cffdf3d5,
       type: 3}
+    facingRight: 0
     bestiaryID: 116
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
+      maxHealth: 91
+      def: 20
+      physical: 23
+      magic: 5
+      charisma: 23
+      luck: 17
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 3
+      physical: 2
       magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 20
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      charisma: 2
+      luck: 0
+    element: 6
+    beastClass: 5
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

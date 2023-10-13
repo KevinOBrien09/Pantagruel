@@ -34,9 +34,9 @@ public class BeastAnimatedInstance : MonoBehaviour
 
         foreach (var item in springBones)
         {item.ignoreSpringBone = true;}
-if(animator != null){
- animator.speed = 0;
-}
+        if(animator != null){
+        animator.speed = 0;
+        }
        
 
         transform.DOShakePosition(.5f,.1f,10,90,false,true).OnComplete(()=>
@@ -56,6 +56,26 @@ if(animator != null){
                 if(animator != null){
                 animator.speed = 1;
                 }
+            }
+        }
+    }
+
+    public void Dissolve()
+    {
+        float dissTime = 1;
+        foreach (var item in renderers)
+        {
+            DOVirtual.Float( item.material.GetFloat("_DissolvePower"),0,dissTime,v  => 
+            { item.material.SetFloat("_DissolvePower",v);});
+        }
+       
+        StartCoroutine(q());
+        IEnumerator q()
+        {
+            yield return new WaitForSeconds(dissTime);
+            foreach (var item in renderers)
+            {
+                item.material.SetFloat("_EmissionThickness",0);
             }
         }
     }

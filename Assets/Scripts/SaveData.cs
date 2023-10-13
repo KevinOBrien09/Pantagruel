@@ -5,7 +5,7 @@ using System.Collections;
 [System.Serializable]
 public class SaveData
 {
-    public BeastSaveData activeBeast;
+   // public BeastSaveData activeBeast;
     public List<BeastSaveData> party = new List<BeastSaveData>();
     public List<BeastSaveData> backBenched = new List<BeastSaveData>();
     public PlayerSaveData playerSaveData;

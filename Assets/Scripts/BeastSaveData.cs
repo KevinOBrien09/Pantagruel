@@ -7,7 +7,7 @@ public class BeastSaveData
 {
     public int beastiaryID;
     public float currentHealth;
-    public List<int> deckIDs = new List<int>(); 
+    public List<string> deckIDs = new List<string>(); 
     //public LocationSer
     
 }

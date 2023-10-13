@@ -13,27 +13,37 @@ MonoBehaviour:
   m_Name: Defecator
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
     beastName: Defecator
     flavourText: 'Endless. Defecation. The stench....
 
 '
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -5344560350128605328, guid: c86094e6c00572d4a832afc8945942ce,
       type: 3}
     mainSprite: {fileID: 7157561037332017152, guid: c86094e6c00572d4a832afc8945942ce,
       type: 3}
+    facingRight: 0
     bestiaryID: 19
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 40
+      def: 20
+      physical: 20
+      magic: 28
       charisma: 0
-      resolve: 0
-    mainFamily: 17
-    secondaryFamily: 8
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 20
+    statGrowthPerLevel:
+      maxHealth: 2
+      def: 2
+      physical: 4
+      magic: 3
+      charisma: 0
+      luck: 1
+    element: 6
+    beastClass: 18
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

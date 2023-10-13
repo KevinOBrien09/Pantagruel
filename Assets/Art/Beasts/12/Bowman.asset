@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11aedf986ff0234c99d4109067c43ca, type: 3}
+  m_Name: Bowman
+  m_EditorClassIdentifier: 
+  beastData:
+    ANIMATED_PREFAB_DONE: 0
+    beastName: Bowman
+    flavourText: '"I never miss."'
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
+    beastGraphicPrefab: {fileID: 0}
+    uiPicture: {fileID: 6771243069604559848, guid: 511d4ddadad1a8d44bfe50ddebb391b8,
+      type: 3}
+    mainSprite: {fileID: -1540426309290004842, guid: 511d4ddadad1a8d44bfe50ddebb391b8,
+      type: 3}
+    facingRight: 0
+    bestiaryID: 12
+    wildDeck: {fileID: 0}
+    stats:
+      maxHealth: 65
+      def: 35
+      physical: 26
+      magic: 8
+      charisma: 0
+      luck: 5
+    statGrowthPerLevel:
+      maxHealth: 5
+      def: 3
+      physical: 5
+      magic: 1
+      charisma: 0
+      luck: 2
+    element: 5
+    beastClass: 12
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

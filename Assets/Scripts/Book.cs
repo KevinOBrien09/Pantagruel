@@ -27,7 +27,7 @@ public class Book : MonoBehaviour
     public int totalPages;
     [SerializeField] List<BestiaryData> knownBeasts = new List<BestiaryData>();
     [SerializeField] AudioSource pageFlick;
-    [SerializeField] List<BeastScriptableObject> beastScriptableObjects = new List<BeastScriptableObject>();
+    public List<BeastScriptableObject> beastScriptableObjects = new List<BeastScriptableObject>();
     [SerializeField] Image picture;
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI idText;
@@ -35,12 +35,42 @@ public class Book : MonoBehaviour
     [SerializeField] TextMeshProUGUI secondaryFamilyText;
     [SerializeField] TextMeshProUGUI flavourText;
     [SerializeField] Color32 hiddenColour;
+    public enum BeastBookInit{KnowAll,KnowNone,KnowRandom}
+   public BeastBookInit startState;
+   public BeastEditor beastEditor;
     Dictionary<int,bool> id = new Dictionary<int, bool>();
     
     void Start()
-    {
-        for (int i = 0; i < beastScriptableObjects.Count+1; i++)
-        {knownBeasts.Add(new BestiaryData(id:i,true));}
+    {   
+        switch(startState)
+        {
+            case BeastBookInit.KnowAll:
+            for (int i = 0; i < beastScriptableObjects.Count+1; i++)
+            {knownBeasts.Add(new BestiaryData(id:i,true));}
+            break;
+            case BeastBookInit.KnowNone:
+             for (int i = 0; i < beastScriptableObjects.Count+1; i++)
+            {knownBeasts.Add(new BestiaryData(id:i,false));}
+            break;
+            case BeastBookInit.KnowRandom:
+
+                for (int i = 0; i < beastScriptableObjects.Count+1; i++)
+                {
+                    int q = Random.Range(0,2);
+                    if(q == 0)
+                    {
+                        knownBeasts.Add(new BestiaryData(id:i,true));
+                    }
+                    else
+                    {
+                        knownBeasts.Add(new BestiaryData(id:i,false));
+                    }
+                  
+                }
+            break;
+        }
+    
+    
        
         for (int i = 0; i < knownBeasts.Count; i++)
         {id.Add(knownBeasts[i].ID,knownBeasts[i].met);}
@@ -50,16 +80,24 @@ public class Book : MonoBehaviour
 
         totalPages = beastScriptableObjects.Count;
         AssignInfo(beastScriptableObjects[0].beastData);
+        StartCoroutine(s());
+        IEnumerator s()
+        {
+            yield return new WaitForEndOfFrame();
+            if(beastEditor!=null){
+            beastEditor.ChangeBeast(beastScriptableObjects[currentPage]);}
+        }
+    
     }
  
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
-        {MovePageLeft();}
+        // if(Input.GetKeyDown(KeyCode.A))
+        // {MovePageLeft();}
 
-        if(Input.GetKeyDown(KeyCode.D))
-        {MovePageRight();}
+        // if(Input.GetKeyDown(KeyCode.D))
+        // {MovePageRight();}
     }
     
     void MovePageRight()
@@ -72,6 +110,10 @@ public class Book : MonoBehaviour
             SFX(); 
         }
         EventSystem.current.SetSelectedGameObject(null);
+
+        if(beastEditor!=null){
+            beastEditor.ChangeBeast(beastScriptableObjects[currentPage]);
+           }
      
     }
 
@@ -85,12 +127,18 @@ public class Book : MonoBehaviour
     {
         currentPage--;
         currentPage = Mathf.Clamp(currentPage,0,totalPages);
+       
         if(beastScriptableObjects.ElementAtOrDefault(currentPage)!= null)
         {
+
             AssignInfo(beastScriptableObjects[currentPage].beastData);
             SFX();
         }
-           EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(null);
+           
+           if(beastEditor!=null){
+            beastEditor.ChangeBeast(beastScriptableObjects[currentPage]);
+           }
      
     }
 

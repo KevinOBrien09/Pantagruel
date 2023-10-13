@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Fisher
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Fisherman
     flavourText: '"Get over here!"'
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -8523647775712765712, guid: f6db69ae831743e4e8bbb853d8af06cd,
       type: 3}
     mainSprite: {fileID: -2014771838305702419, guid: f6db69ae831743e4e8bbb853d8af06cd,
       type: 3}
+    facingRight: 0
     bestiaryID: 38
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 82
+      def: 20
+      physical: 20
+      magic: 9
       charisma: 0
-      resolve: 0
-    mainFamily: 10
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 9
+    statGrowthPerLevel:
+      maxHealth: 5
+      def: 2
+      physical: 2
+      magic: 1
+      charisma: 0
+      luck: 2
+    element: 6
+    beastClass: 18
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

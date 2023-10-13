@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Toot
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Toot
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -7715821584982700507, guid: a8d2f428e8e80e94698d75d52dded2e3,
       type: 3}
     mainSprite: {fileID: -5094347267043195687, guid: a8d2f428e8e80e94698d75d52dded2e3,
       type: 3}
+    facingRight: 0
     bestiaryID: 102
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 5
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 90
+      def: 17
+      physical: 14
+      magic: 22
+      charisma: 21
+      luck: 3
+    statGrowthPerLevel:
+      maxHealth: 2
+      def: 1
+      physical: 1
+      magic: 3
+      charisma: 1
+      luck: 1
+    element: 1
+    beastClass: 13
+    secondaryClass: 6
+    passive: {fileID: 0}
+    catchMod: 0

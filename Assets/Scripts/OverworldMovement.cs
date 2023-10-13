@@ -28,6 +28,7 @@ public class OverworldMovement : MonoBehaviour
     public int encounterTimeOut;
     public int encounterChance = 10;
     public int timeOutMin,timeOutMax;
+    bool lastTorchState;
     void OnEnable()
     {canMove = true;}
     
@@ -70,6 +71,7 @@ public class OverworldMovement : MonoBehaviour
         else
         {
             torch.Bounce();
+            EventManager.inst.onStep.Invoke();
             audioSource.pitch = Random.Range(.9f,1.1f);
             audioSource.PlayOneShot(audioSource.clip);
             Vector3 move = Vector3.zero;
@@ -166,10 +168,18 @@ public class OverworldMovement : MonoBehaviour
                 Debug.Log( n + "Encounter");
                 encounterTimeOut = Random.Range(timeOutMin,timeOutMax);
                 canMove = false;
+                lastTorchState = torch.torchOn;
                 torch.DisableTorch();
-                BattleManager.inst.StartBattle();
+                BattleManager.inst.StartBattle(BattleType.Wild);
             }
         }
+    }
+
+    public void ReactivateMove()
+    {
+        canMove = true;
+        if(lastTorchState)
+        {torch.EnableTorch();}
     }
 
     public void EndStep()

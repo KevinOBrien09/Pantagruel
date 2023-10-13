@@ -13,29 +13,36 @@ public class BattleManager:Singleton<BattleManager>
     public int turn;
     public int startingMana;
     
-    public void StartBattle()
+    public void StartBattle(BattleType battleType)
     {
         inBattle = true;
         turn = 1;
         turnState = TurnState.Player;
 
-        RivalBeastManager.inst.EnterBattle();
+        if(battleType == BattleType.Wild)
+        {
+            RivalBeastManager.inst.CreateEnemyParty(WildEncounterManager.inst.GetEncounter());
+            RivalBeastManager.inst.SwapActiveBeast(RivalBeastManager.inst.currentParty[0]);
+        }
+        Inventory.inst.EnableItemDragOnAll();
         WorldViewManager.inst.EnterBattle();
         BottomPanel.inst.ChangeState(BottomPanel.inst.cards);
         BottomLeftPanel.inst.SwapToStack();
         MusicManager.inst.EnterBattle();
-        CardManager.inst.EnterBattle(PlayerManager.inst.party.activeBeast);
-
-      
+        CardManager.inst.EnterBattle(PlayerParty.inst.activeBeast);
+        RightPanelButtonManager.inst.SwapToBattle();
         for (int i = 0; i < startingMana; i++)
         {   
             ManaManager.inst.IncreaseMaxMana(); 
             EnemyAI.inst.IncreaseMaxMana();
         }
+
         ManaManager.inst.RegenMana();
         EnemyAI.inst.RegenMana();
-        EnemyAI.inst.DrawCard();
+        EnemyAI.inst.DrawRandomCard();
         EnemyAI.inst.RebuildCardBacks();
+  
+        EventManager.inst.onBattleStart.Invoke();
 
         StartCoroutine(q());
         IEnumerator q()
@@ -46,58 +53,119 @@ public class BattleManager:Singleton<BattleManager>
         }
         
     }
-    public void CheckIfGameContinues()
+
+    public bool CheckIfGameContinues()
     {
-        if(PlayerManager.inst.party.activeBeast.currentHealth <=0){
-            Debug.Log("Force Player to swap");
+        if(PlayerParty.inst.activeBeast.currentHealth <= 0)
+        {
+            if(partyHasValidMember(PlayerParty.inst.party))
+            {
+                Debug.Log("ForceSwap");
+                return true;
+            }
+            else
+            {
+                Debug.Log("Lose");
+                return false;;
+            }
         }
          
-         if(RivalBeastManager.inst.currentBeast.currentHealth <=0){
-            Debug.Log("win");
-         }
+        if(RivalBeastManager.inst.activeBeast.currentHealth <= 0)
+        {
+            if(partyHasValidMember(RivalBeastManager.inst.currentParty))
+            {
+                Debug.Log("Force Enemy swap");
+                return true;}
+            else
+            {
+                Win();
+                return false;
+            }
+        }
+
+      //  Debug.LogAssertion("UH OH!");
+        return true;
+
+        
+    }
+
+    public void Win(){
+        Debug.Log("Win");
+        CardManager.inst.DeactivateHand();
+        StartCoroutine(q());
+
+        IEnumerator q()
+        {
+            yield return new WaitForSeconds(1.5f);
+            LeaveBattle();
+        }
+    }
+
+    public bool partyHasValidMember(List<Beast> b)
+    {
+        List<bool> kos = new List<bool>();
+        foreach (var item in b)
+        {kos.Add(item.KO);}
+
+        if(!kos.Contains(false))
+        {return false;}
+        else
+        {return true;}
     }
 
     public void EndTurn()
     {
-        CheckIfGameContinues();
-        List<CardStackBehaviour> castOrder = new List<CardStackBehaviour>();
-        foreach (Transform item in castOrderHolder)
-        {
-            CardStackBehaviour action = item.GetComponent<CardStackBehaviour>();
-            castOrder.Add(action);
-        }
+       if(CheckIfGameContinues()) 
+       {
+            EventManager.inst.onNewTurn.Invoke();
+            Inventory.inst.itemsUsedThisTurn.Clear();
+            List<CardStackBehaviour> castOrder = new List<CardStackBehaviour>();
+            foreach (Transform item in castOrderHolder)
+            {
+                CardStackBehaviour action = item.GetComponent<CardStackBehaviour>();
+                castOrder.Add(action);
+            }
+    
+            //Do Stuff
+            CardManager.inst.CheckForHandFuckery();
+            foreach (var item in castOrder)
+            {
+                Destroy(item.gameObject);
+            }
 
-        //Do Stuff
-       
-        foreach (var item in castOrder)
-        {
-            Destroy(item.gameObject);
-        }
-
-        if(turnState == TurnState.Player)
-        {
-            turnState = TurnState.Enemy;
-            SwapToEnemyTurn();
-        }
-        else if(turnState == TurnState.Enemy)
-        {
-            turnState = TurnState.Player;
-            SwapToPlayerTurn();
-        }
+            if(turnState == TurnState.Player)
+            {
+                turnState = TurnState.Enemy;
+                SwapToEnemyTurn();
+            }
+            else if(turnState == TurnState.Enemy)
+            {
+                turnState = TurnState.Player;
+                SwapToPlayerTurn();
+            }
+       }
+        
     }
 
     public void SwapToEnemyTurn()
-    {
+    {      
+        EventManager.inst.onNewEnemyTurn.Invoke();
+        CardManager.inst.NewTurn();
         BattleTicker.inst.Type("The beast readies itself.");
         CardManager.inst.DeactivateHand();
+        BeastSwapper.inst.DeactivateButton();
         EndTurnButton.inst.Deactivate();        
-        EnemyAI.inst.Act(RivalBeastManager.inst.currentBeast);
+        Inventory.inst.DeactivateDrag();
+        EnemyAI.inst.Act(RivalBeastManager.inst.activeBeast);
     }
 
     public void SwapToPlayerTurn()
     {
-       
+        EventManager.inst.onNewPlayerTurn.Invoke();
+        CardManager.inst.NewTurn();
         CardManager.inst.ActivateHand();
+        Inventory.inst.ActivateDrag();
+        BeastSwapper.inst.ReactivateButton();
         StartCoroutine(q());
         
         if(turn % 2 == 0)
@@ -112,14 +180,34 @@ public class BattleManager:Singleton<BattleManager>
         IEnumerator q()
         {
             yield return new WaitForSeconds(.25f);
-
-            CardManager.inst.DrawRandomCard(PlayerManager.inst.party.activeBeast);
-
+        
+            CardManager.inst.DrawRandomCard(PlayerParty.inst.activeBeast);
+            EventManager.inst.onPlayerDrawingCardFirstTimeInTurn.Invoke();
             CardManager.inst.MakeHandInteractable();
             EndTurnButton.inst.Reactivate();
              yield return new WaitForSeconds(.6f);
             BattleTicker.inst.Type("Make your move.");
         }
+    }
+
+    public void LeaveBattle()
+    {
+        inBattle = false;
+        EventManager.inst.onBattleEnd.Invoke();
+        turn = 0;
+        PlayerManager.inst.movement.ReactivateMove();
+        WorldViewManager.inst.LeaveBattle();
+        BottomPanel.inst.ChangeState(BottomPanel.inst.dialog);
+        BottomLeftPanel.inst.SwapToArrows();
+        MusicManager.inst.ChangeToDungeon();
+        CardManager.inst.LeaveBattle();
+        ManaManager.inst.LeaveBattle();
+        EnemyAI.inst.LeaveBattle();
+        RivalBeastManager.inst.Wipe();
+        BeastSwapper.inst.ReactivateButton();
+        BattleTicker.inst.Type(LocationManager.inst.currentLocation.locationName);
+        Inventory.inst.DisableItemDragOnAll();
+        RightPanelButtonManager.inst.SwapToOverworld();
     }
 
 }

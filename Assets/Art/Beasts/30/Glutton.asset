@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Glutton
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: benefits from healing more?
     beastName: Glutton
     flavourText: '"I LOVE FOOD, GIVE ME FOOD"'
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -5023399773449032848, guid: c59ef772b4c339540a2aa8c12a0a41c3,
       type: 3}
     mainSprite: {fileID: -8038976213705442086, guid: c59ef772b4c339540a2aa8c12a0a41c3,
       type: 3}
+    facingRight: 0
     bestiaryID: 30
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 12
-    secondaryFamily: 13
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 109
+      def: 12
+      physical: 20
+      magic: 4
+      charisma: 3
+      luck: 0
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 2
+      physical: 2
+      magic: 1
+      charisma: 1
+      luck: 0
+    element: 4
+    beastClass: 14
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

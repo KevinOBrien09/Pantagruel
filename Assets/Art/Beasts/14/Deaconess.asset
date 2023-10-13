@@ -13,25 +13,35 @@ MonoBehaviour:
   m_Name: Deaconess
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
     beastName: Deaconess
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -6270953770400647376, guid: e074bb77ac3c53f4f96fd96d43577156,
       type: 3}
     mainSprite: {fileID: 4394673570059883492, guid: e074bb77ac3c53f4f96fd96d43577156,
       type: 3}
+    facingRight: 0
     bestiaryID: 14
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 1
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 72
+      def: 5
+      physical: 4
+      magic: 16
+      charisma: 21
+      luck: 9
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 1
+      physical: 1
+      magic: 4
+      charisma: 1
+      luck: 1
+    element: 2
+    beastClass: 3
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

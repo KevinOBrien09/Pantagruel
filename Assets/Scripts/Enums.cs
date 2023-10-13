@@ -1,25 +1,20 @@
 using System;
 
+public enum BattleType{Wild,Trainer}
 public enum HitResult{Hit,Miss,Crit}
 public enum Target{Opposition,Self}
 public enum ResourceCurrency{SP,HP}
 public enum Alliance{NA,Player,Enemy}
-public enum StatName{Physical,Magic,Toughness,Resolve,Charisma}
+public enum StatName{HEALTH,PHYSICAL,MAGIC,DEFENSE,CHARISMA,LUCK}
 public enum StatusEffectEnum{StatMod,Bleed}
 
+public enum Element{NONE,FIRE,WATER,WIND,STONE,GRASS,LIGHTNING}
 
-public enum Family
+public enum BeastClass
 {
-    NA,Religious,Heretic,Castle,Monkey,Musical,Military,Creative,Demon,
-    Household,Aquatic,Specialist,Food,Royalty,Human,Bird,Cock,Degen,Circus,Bell,Whimsical,
-    Recluse,Arcane
+    COMMON,BASTION,MILTARY,CLERGY,PERVERT,KNIGHT,AVIAN,WHIMSICAL,DESTITUTE,OUTCAST,BARBARIAN,ARTISIAN,ARCHER,MUSICIAN,ARISTOCRAT,
+    UNDEAD,TRICKSTER,ARCANE,MARINE,BELL
 
+    
 }
-
-public enum BeastMoveType{None,Pounce,Bounce,Spin}
-
-public enum EffectGraphic{None,Slice,Bash,Poision}
-
-public enum PlayerCharacter{NA,Priest,Daughter,Prisoner}
-public enum ExplorationResult{NA,GoToRoom}
 

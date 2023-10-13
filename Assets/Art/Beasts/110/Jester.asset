@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beastData:
     ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Jester
     flavourText: 
     bottomCornerPos: {x: 0, y: 0}
@@ -23,6 +25,25 @@ MonoBehaviour:
       type: 3}
     mainSprite: {fileID: -5019347271673613342, guid: 1eaaa9cb54c108547aa4149d2c78e290,
       type: 3}
+    facingRight: 0
     bestiaryID: 110
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
+      maxHealth: 67
+      def: 17
+      physical: 5
+      magic: 27
+      charisma: 12
+      luck: 6
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 1
+      physical: 2
+      magic: 4
+      charisma: 0
+      luck: 1
+    element: 6
+    beastClass: 16
+    secondaryClass: 17
+    passive: {fileID: 0}
+    catchMod: 0

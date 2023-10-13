@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Rooster
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Rooster
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 2476669085301878380, guid: d56fe04f2343ae843bf744ac95a6342f,
       type: 3}
     mainSprite: {fileID: 7022884558154076834, guid: d56fe04f2343ae843bf744ac95a6342f,
       type: 3}
+    facingRight: 0
     bestiaryID: 100
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
+      maxHealth: 75
+      def: 11
+      physical: 4
+      magic: 32
+      charisma: 14
+      luck: 5
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 1
       physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 15
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      magic: 2
+      charisma: 1
+      luck: 0
+    element: 1
+    beastClass: 6
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

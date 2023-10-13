@@ -13,25 +13,38 @@ MonoBehaviour:
   m_Name: Firemaker
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: at the start of battle gain a charge, this charge can be consumed to
+        enchance a fire card.
     beastName: Firemaker
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -2664783550769548753, guid: 21165f9c09157bc4db7a08508b323e69,
       type: 3}
     mainSprite: {fileID: 2789822572703388559, guid: 21165f9c09157bc4db7a08508b323e69,
       type: 3}
+    facingRight: 0
     bestiaryID: 80
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 14
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 77
+      def: 13
+      physical: 19
+      magic: 15
+      charisma: 5
+      luck: 3
+    statGrowthPerLevel:
+      maxHealth: 1
+      def: 3
+      physical: 2
+      magic: 2
+      charisma: 1
+      luck: 1
+    element: 1
+    beastClass: 2
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

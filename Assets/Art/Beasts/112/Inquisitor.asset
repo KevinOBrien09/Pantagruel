@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beastData:
     ANIMATED_PREFAB_DONE: 1
+    devNote:
+      note: For every damaging card you play increase my phsy+mgk by 5 for the rest
+        of the turn.
     beastName: Inquisitor
     flavourText: '"Butcher them all. God will be their judge"'
-    bottomCornerPos: {x: 0, y: -0.5}
+    bottomCornerPos: {x: 0.075, y: -1.5}
     battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 7239769961303039187, guid: c2cabca1198a0074a81184f868a59744,
       type: 3}
@@ -24,8 +27,25 @@ MonoBehaviour:
       type: 3}
     mainSprite: {fileID: 8950671513123133910, guid: 03009ee19b26f6b41916b9a5c042ae5d,
       type: 3}
+    facingRight: 0
     bestiaryID: 112
-    wildDeck:
-      cards: []
+    wildDeck: {fileID: 11400000, guid: 80d5131422f00c4458ffe3c9b0906f53, type: 2}
     stats:
-      maxHealth: 65
+      maxHealth: 75
+      def: 22
+      physical: 25
+      magic: 11
+      charisma: 11
+      luck: 6
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 3
+      physical: 3
+      magic: 0
+      charisma: 1
+      luck: 0
+    element: 1
+    beastClass: 3
+    secondaryClass: 6
+    passive: {fileID: 11400000, guid: 4988178576387e14bbf6b59cdc9ce59a, type: 2}
+    catchMod: 0

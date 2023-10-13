@@ -18,11 +18,17 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
     public GameObject manaGem;
     public CanvasGroup canvasGroup;
     public Image icon;
+    public Image BG;
+    public List<Image> imagesToHaveWobbleShader = new List<Image>();
+    public List<Image> imagesToHaveDissolveShader = new List<Image>();
+    public Material vaporousWobble,vaporousDissolve;
     public float yUp;
     public bool interactable;
+    public bool isVapour;
     Canvas parentCanvas;
     Vector2 ogPos;
     List<Tween> activeTweens = new List<Tween>();
+    string desc;
     float moveSpeed = .2f;
     int OGSorting;
     bool up;
@@ -35,12 +41,65 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
         ogPos = rt.anchoredPosition;
     }
 
-    public void Init(Card newCard)
+    public void Init(Card newCard,bool isVapour_ = false)
     {
         card = newCard;
         icon.sprite = card.picture;
         cardName.text = card.cardName;
-        manaCost.text = RomanNumerals.ToRoman(card.manaCost);
+        desc = newCard.desc;
+        if(card.manaCost == 0){
+            manaCost.text = "O";
+        }
+        else{
+            manaCost.text = RomanNumerals.ToRoman(card.manaCost);
+        }
+
+        if(isVapour_)
+        {
+            isVapour = true;
+            BG.color = Color.white;
+            skillDesc.color = Color.black;
+            cardName.text = "<i>Vaporous </i>" + card.cardName;
+           // desc = "<size=80%><i>RAPID: Will be DESTROYED at the end of this turn.</i> <br></size>" + desc;
+            foreach (var item in imagesToHaveWobbleShader)
+            {
+                item.material = vaporousWobble;
+            }
+          
+        }
+       
+    }
+
+
+    public void VaporousDissolve()
+    {
+        List<Material> m = new List<Material>();
+        foreach (var item in imagesToHaveDissolveShader)
+        {
+            Material mat = Instantiate(vaporousDissolve);
+            item.material = mat;
+            m.Add(mat);
+        } 
+
+        // cardName.transform.SetParent(BG.transform);
+        // manaCost.transform.SetParent(BG.transform);
+      
+        float dissTime = 1.5f;
+        foreach (var item in m)
+        {
+            DOVirtual.Float( item.GetFloat("_DissolvePower"),0,dissTime,v  => 
+            { item.SetFloat("_DissolvePower",v);});
+        }
+       
+        StartCoroutine(q());
+        IEnumerator q()
+        {
+            yield return new WaitForSeconds(dissTime);
+            foreach (var item in m)
+            {
+                item.SetFloat("_EmissionThickness",0);
+            }
+        }
     }
 
     public void EnableInteractable()
@@ -72,7 +131,7 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
         icon.enabled = false;
      //   manaCost.enabled = false;
         skillDesc.enabled = true;
-        skillDesc.text = card.desc;
+        skillDesc.text = desc;
         manaGem.SetActive(false);
     }
     

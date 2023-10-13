@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Paladin
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Paladin
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -2707027179712975927, guid: 57b3aa16df78dcb48961e8730cb376f4,
       type: 3}
     mainSprite: {fileID: 6723115856271202665, guid: 57b3aa16df78dcb48961e8730cb376f4,
       type: 3}
+    facingRight: 0
     bestiaryID: 117
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
+      maxHealth: 78
+      def: 26
+      physical: 26
+      magic: 4
+      charisma: 16
+      luck: 11
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 2
+      physical: 3
       magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 6
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      charisma: 1
+      luck: 2
+    element: 4
+    beastClass: 5
+    secondaryClass: 2
+    passive: {fileID: 0}
+    catchMod: 0

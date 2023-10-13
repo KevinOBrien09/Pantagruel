@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Juryman
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Juryman
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -4111228882293134515, guid: 07ecd879ab08f3b4cbefaa97b161fab5,
       type: 3}
     mainSprite: {fileID: -8970083062094129365, guid: 07ecd879ab08f3b4cbefaa97b161fab5,
       type: 3}
+    facingRight: 0
     bestiaryID: 108
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 14
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 65
+      def: 21
+      physical: 11
+      magic: 15
+      charisma: 12
+      luck: 12
+    statGrowthPerLevel:
+      maxHealth: 2
+      def: 2
+      physical: 1
+      magic: 2
+      charisma: 2
+      luck: 1
+    element: 3
+    beastClass: 14
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

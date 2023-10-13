@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Rook
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Rook
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 8982626413702595610, guid: 7679da43433e0c245a5dc284d636139e,
       type: 3}
     mainSprite: {fileID: -5946562894830461347, guid: 7679da43433e0c245a5dc284d636139e,
       type: 3}
+    facingRight: 0
     bestiaryID: 107
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 90
+      def: 21
+      physical: 19
+      magic: 16
       charisma: 0
-      resolve: 0
-    mainFamily: 3
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 4
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 3
+      physical: 1
+      magic: 2
+      charisma: 0
+      luck: 2
+    element: 4
+    beastClass: 1
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

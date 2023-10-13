@@ -13,26 +13,38 @@ MonoBehaviour:
   m_Name: Madman
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: I execute enemies who would be left under 15 HP.
     beastName: Madman
     flavourText: 'Incomprehensible babble is all that comes from this dispeciable
       creature. '
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 989123813363763071, guid: c8f12c4166da79340b84262fa3b426c9,
       type: 3}
     mainSprite: {fileID: 2604062602662419855, guid: c8f12c4166da79340b84262fa3b426c9,
       type: 3}
+    facingRight: 0
     bestiaryID: 96
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 95
+      def: 19
+      physical: 25
+      magic: 5
       charisma: 0
-      resolve: 0
-    mainFamily: 17
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 10
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 3
+      physical: 2
+      magic: 0
+      charisma: 0
+      luck: 1
+    element: 6
+    beastClass: 10
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

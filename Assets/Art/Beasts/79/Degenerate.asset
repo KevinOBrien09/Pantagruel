@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Degenerate
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Degenerate
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 5223280560187763028, guid: d8e143db878053249bb4b0d8b153a860,
       type: 3}
     mainSprite: {fileID: 6217211017854072781, guid: d8e143db878053249bb4b0d8b153a860,
       type: 3}
+    facingRight: 0
     bestiaryID: 79
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 55
+      def: 32
+      physical: 25
+      magic: 15
       charisma: 0
-      resolve: 0
-    mainFamily: 17
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 14
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 4
+      physical: 4
+      magic: 2
+      charisma: 0
+      luck: 2
+    element: 2
+    beastClass: 8
+    secondaryClass: 16
+    passive: {fileID: 0}
+    catchMod: 0

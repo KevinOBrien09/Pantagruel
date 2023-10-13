@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beastData:
     ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Ape
     flavourText: '"BLEAGHHHHH"'
     bottomCornerPos: {x: 0, y: -1.5}
@@ -25,7 +27,23 @@ MonoBehaviour:
       type: 3}
     facingRight: 1
     bestiaryID: 5
-    wildDeck:
-      cards: []
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
+      maxHealth: 93
+      def: 21
+      physical: 25
+      magic: 0
+      charisma: 0
+      luck: 5
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 2
+      physical: 2
+      magic: 0
+      charisma: 0
+      luck: 0
+    element: 4
+    beastClass: 16
+    secondaryClass: 10
+    passive: {fileID: 0}
+    catchMod: 0

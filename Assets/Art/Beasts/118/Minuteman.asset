@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Minuteman
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: can target enemies asides from the active beast?
     beastName: Minuteman
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 7563334469246092647, guid: 1033b3f3e4a04804d8ceb5a8903390e3,
       type: 3}
     mainSprite: {fileID: 7517945357959218910, guid: 1033b3f3e4a04804d8ceb5a8903390e3,
       type: 3}
+    facingRight: 0
     bestiaryID: 118
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
+      maxHealth: 74
+      def: 13
+      physical: 27
+      magic: 5
+      charisma: 5
+      luck: 13
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 1
+      physical: 2
       magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 6
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      charisma: 1
+      luck: 0
+    element: 1
+    beastClass: 2
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

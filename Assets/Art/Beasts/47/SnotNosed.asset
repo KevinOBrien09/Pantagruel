@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: SnotNosed
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Snot-Nose
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 9108365968018652678, guid: 0ed589ccbb0192f4ba8f4bbc9edcf617,
       type: 3}
     mainSprite: {fileID: -4351034778816698290, guid: 0ed589ccbb0192f4ba8f4bbc9edcf617,
       type: 3}
+    facingRight: 0
     bestiaryID: 47
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 143
+      def: 22
+      physical: 21
+      magic: 11
       charisma: 0
-      resolve: 0
-    mainFamily: 5
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 2
+    statGrowthPerLevel:
+      maxHealth: 5
+      def: 3
+      physical: 3
+      magic: 12
+      charisma: 0
+      luck: 1
+    element: 5
+    beastClass: 13
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

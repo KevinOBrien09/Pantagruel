@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Goblin
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 'when I am in a party with more than 1 goblin increase my stats. '
     beastName: Goblin
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 916090261725292327, guid: cfa6ba53ccbde3d40a9cf228981b04b6,
       type: 3}
     mainSprite: {fileID: 4750536019782389804, guid: cfa6ba53ccbde3d40a9cf228981b04b6,
       type: 3}
+    facingRight: 0
     bestiaryID: 71
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 89
+      def: 4
+      physical: 5
+      magic: 2
       charisma: 0
-      resolve: 0
-    mainFamily: 14
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 0
+    statGrowthPerLevel:
+      maxHealth: 0
+      def: 1
+      physical: 1
+      magic: 0
+      charisma: 0
+      luck: 0
+    element: 5
+    beastClass: 8
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

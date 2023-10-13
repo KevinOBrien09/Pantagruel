@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Baker
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Baker
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 5181654206020448988, guid: 780fdea7a546ed248b0aa3270e242ae9,
       type: 3}
     mainSprite: {fileID: -2129540830080489608, guid: 780fdea7a546ed248b0aa3270e242ae9,
       type: 3}
+    facingRight: 0
     bestiaryID: 29
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 80
+      def: 11
+      physical: 5
+      magic: 23
+      charisma: 1
+      luck: 11
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 3
+      physical: 2
+      magic: 4
       charisma: 0
-      resolve: 0
-    mainFamily: 12
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 4
+    element: 5
+    beastClass: 11
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

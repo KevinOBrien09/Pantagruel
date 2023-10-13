@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Guildmaster
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Guildmaster
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -4014971448327936346, guid: 079e074ff16bc1b47ad106fa15d60d9f,
       type: 3}
     mainSprite: {fileID: 1734083152993632163, guid: 079e074ff16bc1b47ad106fa15d60d9f,
       type: 3}
+    facingRight: 0
     bestiaryID: 65
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 6
-    secondaryFamily: 14
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 99
+      def: 32
+      physical: 14
+      magic: 14
+      charisma: 22
+      luck: 16
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 4
+      physical: 1
+      magic: 1
+      charisma: 1
+      luck: 1
+    element: 6
+    beastClass: 2
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

@@ -3,25 +3,25 @@ using UnityEngine;
 
 public static class MiscFunctions
 {
-    public static string GetAbbStatName(StatName sn)
-    {
-        switch (sn)
-        {
-            case StatName.Physical:
-            return "PHYS";
-            case StatName.Magic:
-            return "MGK";
-            case StatName.Toughness:
-            return "TGH";
-            case StatName.Charisma:
-            return "CHR";
-            case StatName.Resolve:
-            return "RES";
-            default:
-            Debug.LogAssertion("DefaultCase");
-            return "BUG";
-        }
-    }
+    // public static string GetAbbStatName(StatName sn)
+    // {
+    //     switch (sn)
+    //     {
+    //         case StatName.Physical:
+    //         return "PHYS";
+    //         case StatName.Magic:
+    //         return "MGK";
+    //         case StatName.Toughness:
+    //         return "TGH";
+    //         case StatName.Charisma:
+    //         return "CHR";
+    //         case StatName.Resolve:
+    //         return "RES";
+    //         default:
+    //         Debug.LogAssertion("DefaultCase");
+    //         return "BUG";
+    //     }
+    // }
     
     public static (int,string) GetPercentFromString(string s,string tag)
     {

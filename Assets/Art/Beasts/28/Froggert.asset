@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Froggert
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Froggert
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -796155573255488767, guid: 75af220ac51f164409070ae44c6d85a4,
       type: 3}
     mainSprite: {fileID: -8841179508272151079, guid: 75af220ac51f164409070ae44c6d85a4,
       type: 3}
+    facingRight: 0
     bestiaryID: 28
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
+      maxHealth: 120
+      def: 25
+      physical: 25
       magic: 0
-      toughness: 0
       charisma: 0
-      resolve: 0
-    mainFamily: 10
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 12
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 4
+      physical: 3
+      magic: 0
+      charisma: 0
+      luck: 1
+    element: 2
+    beastClass: 10
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

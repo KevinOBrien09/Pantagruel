@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Landsnkect
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Landsnkect
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 8487931408410037748, guid: d56fb17624ee91445918d7bb3925e7a9,
       type: 3}
     mainSprite: {fileID: -2592713909527008716, guid: d56fb17624ee91445918d7bb3925e7a9,
       type: 3}
+    facingRight: 0
     bestiaryID: 62
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 6
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 90
+      def: 23
+      physical: 29
+      magic: 22
+      charisma: 15
+      luck: 0
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 2
+      physical: 3
+      magic: 3
+      charisma: 2
+      luck: 0
+    element: 6
+    beastClass: 2
+    secondaryClass: 7
+    passive: {fileID: 0}
+    catchMod: 0

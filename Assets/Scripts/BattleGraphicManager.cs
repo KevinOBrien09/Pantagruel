@@ -28,7 +28,7 @@ public class BattleGraphicManager : Singleton<BattleGraphicManager>
             }
 
             BeastAnimatedInstance AI =   newBeast.AddComponent<BeastAnimatedInstance>();
-            AI.Init(RivalBeastManager.inst.currentBeast);
+            AI.Init(RivalBeastManager.inst.activeBeast);
             animatedInstance = AI;
             currentBeast = newBeast;
 
@@ -39,8 +39,20 @@ public class BattleGraphicManager : Singleton<BattleGraphicManager>
             basicRenderer.sprite = scriptableObject.beastData.mainSprite;
 
             BeastAnimatedInstance AI =   basicRenderer.gameObject.AddComponent<BeastAnimatedInstance>();
-            AI.Init(RivalBeastManager.inst.currentBeast);
+            AI.Init(RivalBeastManager.inst.activeBeast);
             animatedInstance = AI;
         }
+    }
+
+    public void Wipe()
+    {
+        Destroy(animatedInstance);
+        if(currentBeast != null)
+        {Destroy(currentBeast);}
+        currentBeast = null; 
+        animatedInstance = null;
+    
+        basicRenderer.enabled = false;
+        basicRenderer.material.SetFloat("_DissolvePower",1);
     }
 }

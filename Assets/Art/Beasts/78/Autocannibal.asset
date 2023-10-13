@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Autocannibal
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 'max health is = to current health. '
     beastName: Autocannibal
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -2544530155222353048, guid: cfd20c47a98dfa14cb24aee4fa6f1fb7,
       type: 3}
     mainSprite: {fileID: -3106506509227680175, guid: cfd20c47a98dfa14cb24aee4fa6f1fb7,
       type: 3}
+    facingRight: 0
     bestiaryID: 78
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 100
+      def: 30
+      physical: 23
+      magic: 15
       charisma: 0
-      resolve: 0
-    mainFamily: 17
-    secondaryFamily: 12
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 0
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 2
+      physical: 2
+      magic: 2
+      charisma: 0
+      luck: 0
+    element: 6
+    beastClass: 15
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

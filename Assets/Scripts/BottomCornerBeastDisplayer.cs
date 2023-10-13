@@ -12,12 +12,12 @@ public class BottomCornerBeastDisplayer: Singleton<BottomCornerBeastDisplayer>
     public BeastAnimatedInstance animatedInstance;
     public TextMeshProUGUI beastName;
     public HealthBar healthBar;
-
+    GameObject animatedPrefabInstance;
     public void ChangeActiveBeast(Beast b)
     {
-        if(animatedInstance!= null)
+        if(animatedPrefabInstance!= null) 
         {
-            Destroy(animatedInstance);
+            Destroy(animatedPrefabInstance);
         }
 
         if(b.scriptableObject.beastData.ANIMATED_PREFAB_DONE)
@@ -28,6 +28,7 @@ public class BottomCornerBeastDisplayer: Singleton<BottomCornerBeastDisplayer>
             AI.Init(b);
             animatedInstance = AI;
             basicRenderer.enabled = false;
+            animatedPrefabInstance = AI.gameObject;
             //g.layer = playerBeastLayer;
         } 
         else

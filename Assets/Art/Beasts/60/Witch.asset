@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Witch
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 'buff arcane cards. '
     beastName: Witch
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 6810289884213664739, guid: fc7de14c35936684883533764209cb36,
       type: 3}
     mainSprite: {fileID: 3296138937927664640, guid: fc7de14c35936684883533764209cb36,
       type: 3}
+    facingRight: 0
     bestiaryID: 60
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 66
+      def: 6
+      physical: 12
+      magic: 35
       charisma: 0
-      resolve: 0
-    mainFamily: 14
-    secondaryFamily: 22
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 9
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 2
+      physical: 0
+      magic: 5
+      charisma: 0
+      luck: 1
+    element: 3
+    beastClass: 17
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

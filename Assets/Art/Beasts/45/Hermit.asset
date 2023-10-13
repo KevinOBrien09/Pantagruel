@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Hermit
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Hermit
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -6946007662723423348, guid: 5ed4aeda6bcd6c5428d1b23229ea8574,
       type: 3}
     mainSprite: {fileID: -3167656382772592164, guid: 5ed4aeda6bcd6c5428d1b23229ea8574,
       type: 3}
+    facingRight: 0
     bestiaryID: 45
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 90
+      def: 5
+      physical: 4
+      magic: 28
       charisma: 0
-      resolve: 0
-    mainFamily: 21
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 1
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 3
+      physical: 0
+      magic: 5
+      charisma: 0
+      luck: 0
+    element: 5
+    beastClass: 9
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

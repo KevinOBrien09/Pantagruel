@@ -13,25 +13,46 @@ MonoBehaviour:
   m_Name: Weathervane
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 'When I am active, gain one of the following effects depending on what
+        direction you where facing when combat started.
+
+        >NORTH:
+
+        >EAST:
+
+        >SOUTH:
+
+        >WEST:'
     beastName: Weathervane
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -1635963809266141271, guid: 58584b85d46e9ab4685b121923724e55,
       type: 3}
     mainSprite: {fileID: 8874457585157493471, guid: 58584b85d46e9ab4685b121923724e55,
       type: 3}
+    facingRight: 0
     bestiaryID: 82
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
+      maxHealth: 88
+      def: 11
+      physical: 12
+      magic: 28
+      charisma: 16
+      luck: 5
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 1
       physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 8
-    secondaryFamily: 10
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      magic: 4
+      charisma: 2
+      luck: 3
+    element: 3
+    beastClass: 16
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

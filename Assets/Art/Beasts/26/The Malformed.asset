@@ -13,25 +13,40 @@ MonoBehaviour:
   m_Name: The Malformed
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 'cannot gain charisma
+
+        any charisma gained in converted into
+        physical instead??'
     beastName: The Malformed
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -1045133410153605164, guid: bfa1b9fa8c000ff4baacc4d15996c78d,
       type: 3}
     mainSprite: {fileID: 8432595051499932652, guid: bfa1b9fa8c000ff4baacc4d15996c78d,
       type: 3}
+    facingRight: 0
     bestiaryID: 26
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 99
+      def: 30
+      physical: 25
+      magic: 25
       charisma: 0
-      resolve: 0
-    mainFamily: 8
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 0
+    statGrowthPerLevel:
+      maxHealth: 5
+      def: 3
+      physical: 5
+      magic: 5
+      charisma: 0
+      luck: 0
+    element: 6
+    beastClass: 9
+    secondaryClass: 5
+    passive: {fileID: 0}
+    catchMod: 0

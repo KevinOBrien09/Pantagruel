@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2abb0884a8e0e89409e830d158c69663, type: 3}
+  m_Name: Pikeman-Deck1
+  m_EditorClassIdentifier: 
+  deck:
+    cards:
+    - {fileID: 11400000, guid: b2d044160b58c03448309f7ed751e043, type: 2}
+    - {fileID: 11400000, guid: b2d044160b58c03448309f7ed751e043, type: 2}
+    - {fileID: 11400000, guid: b2d044160b58c03448309f7ed751e043, type: 2}
+    - {fileID: 11400000, guid: ea117adaef8ad4d43a9ff396daf4d0b4, type: 2}
+    - {fileID: 11400000, guid: ea117adaef8ad4d43a9ff396daf4d0b4, type: 2}
+    - {fileID: 11400000, guid: ea117adaef8ad4d43a9ff396daf4d0b4, type: 2}
+    - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+    discard: []
+  combos:
+  - hint: The beast is preparing to trust!
+    requiredCards:
+    - {fileID: 11400000, guid: b2d044160b58c03448309f7ed751e043, type: 2}

@@ -13,25 +13,42 @@ MonoBehaviour:
   m_Name: Goldilocks
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 'Steals gold from trainers?
+
+        bonus goild after battle?
+
+        something
+        with gold. '
     beastName: Goldilocks
     flavourText: '"Don''t mind me, just taking my fair share."'
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 7059393366267629080, guid: 35269af888f421c4f900db37118bc8d8,
       type: 3}
     mainSprite: {fileID: 7071976772054288028, guid: 35269af888f421c4f900db37118bc8d8,
       type: 3}
+    facingRight: 0
     bestiaryID: 42
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 1
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 102
+      def: 8
+      physical: 12
+      magic: 12
+      charisma: 22
+      luck: 15
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 4
+      physical: 1
+      magic: 1
+      charisma: 4
+      luck: 3
+    element: 4
+    beastClass: 14
+    secondaryClass: 7
+    passive: {fileID: 0}
+    catchMod: 0

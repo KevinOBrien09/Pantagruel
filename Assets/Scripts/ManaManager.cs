@@ -17,8 +17,20 @@ public class ManaManager:Singleton<ManaManager>
 
     void Start()
     {
+       LeaveBattle();
+    }
+
+    public void LeaveBattle()
+    {
+         maxMana = 0;
+        currentMana = 0;
+        //UpdateDisplay();
+       
         for (int i = 0; i < gems.Count; i++)
         {gems[i].Deactivate();}
+       
+        activeGems.Clear();
+          manaCountText.text = currentMana + "/" + maxMana;
     }
 
     public void IncreaseMaxMana()
@@ -49,15 +61,8 @@ public class ManaManager:Singleton<ManaManager>
     public void Spend(int manaCost)
     {
         currentMana = currentMana- manaCost;
-     
-       
-   
         UpdateDisplay();
-        
     }
-
- 
-
     public void UpdateDisplay()
     {
         foreach (var item in activeGems)

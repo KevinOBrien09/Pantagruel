@@ -25,7 +25,23 @@ MonoBehaviour:
       type: 3}
     facingRight: 1
     bestiaryID: 11
-    wildDeck:
-      cards: []
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
+      maxHealth: 193
+      def: 39
+      physical: 24
+      magic: 13
+      charisma: 0
+      luck: 0
+    statGrowthPerLevel:
+      maxHealth: 6
+      def: 4
+      physical: 0
+      magic: 2
+      charisma: 0
+      luck: 0
+    element: 3
+    beastClass: 1
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

@@ -13,25 +13,38 @@ MonoBehaviour:
   m_Name: Ogre
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: Orge cannot gain defense. Any defense gained in battle heals him instead.
+        To componstate for this ogre has higher base health.??
     beastName: Ogre
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -5750353039905602045, guid: 667e115544bc58447ba1b4dad62d354b,
       type: 3}
     mainSprite: {fileID: -4687263629476269884, guid: 667e115544bc58447ba1b4dad62d354b,
       type: 3}
+    facingRight: 0
     bestiaryID: 21
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 203
+      def: 0
+      physical: 33
+      magic: 12
       charisma: 0
-      resolve: 0
-    mainFamily: 8
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 0
+    statGrowthPerLevel:
+      maxHealth: 15
+      def: 0
+      physical: 6
+      magic: 4
+      charisma: 0
+      luck: 0
+    element: 1
+    beastClass: 10
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

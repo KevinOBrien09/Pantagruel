@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: CockMonster
   m_EditorClassIdentifier: 
   beastData:
-    beastName: Cock-Monster
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
+    beastName: Cock Monster
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -105497433518616501, guid: 143ef8a2cfe716e4ca783b63988d00e1,
       type: 3}
     mainSprite: {fileID: 7976220435001255072, guid: 143ef8a2cfe716e4ca783b63988d00e1,
       type: 3}
+    facingRight: 0
     bestiaryID: 63
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 124
+      def: 32
+      physical: 34
+      magic: 5
       charisma: 0
-      resolve: 0
-    mainFamily: 16
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 21
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 4
+      physical: 1
+      magic: 0
+      charisma: 0
+      luck: 4
+    element: 1
+    beastClass: 4
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

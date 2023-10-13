@@ -9,29 +9,47 @@ public class WorldViewManager:Singleton<WorldViewManager>
 {
     public CanvasGroup worldView;
     public Image abstractBG;
-    public bool cardHoveringOverViewport;
+    public bool cardHoveringOverViewport,itemHoveringOverViewport;
     public CardBehaviour currentCardOverViewPort;
+    public  ItemStack currentItemStack;
     public void EnterBattle()
     {
         abstractBG.gameObject.SetActive(true);
         worldView.DOFade(0,.7f);
     }
+
+    public void LeaveBattle()
+    {
+       
+        worldView.DOFade(1,.7f).OnComplete(()=>{ abstractBG.gameObject.SetActive(false);});
+    }
+    
     
     public void OnTriggerEnter(Collider other)
     {
         CardBehaviour cb = null;
+        ItemStack id = null;
         if(other.gameObject.transform.parent.parent.TryGetComponent<CardBehaviour>(out cb))
         {
             if(CardBehaviour.dragging){
                 cardHoveringOverViewport=true;
                 currentCardOverViewPort = cb;
             }
-          
+        }
+
+        if(other.gameObject.transform.parent.TryGetComponent<ItemStack>(out id))
+        {
+            if(ItemDragBehaviour.dragging)
+            {
+                itemHoveringOverViewport =true;
+                currentItemStack = id;
+            }
         }
     }
     public void OnTriggerExit(Collider other)
     {
         CardBehaviour cb = null;
+        ItemStack id = null;
         if(other.gameObject.transform.parent.parent.TryGetComponent<CardBehaviour>(out cb))
         {
             if(CardBehaviour.dragging){
@@ -39,6 +57,16 @@ public class WorldViewManager:Singleton<WorldViewManager>
                 currentCardOverViewPort = null;
             }
            
+        }
+
+        if(other.gameObject.transform.parent.TryGetComponent<ItemStack>(out id))
+        {
+            if(ItemDragBehaviour.dragging)
+            {
+                itemHoveringOverViewport =false;
+                currentItemStack = null;
+               
+            }
         }
     }
 
@@ -55,6 +83,19 @@ public class WorldViewManager:Singleton<WorldViewManager>
                 }
                 else
                 {Debug.Log("Not enough Mana");}
+            }
+        }
+
+        if(itemHoveringOverViewport)
+        {
+            if(Input.GetMouseButtonUp(0))
+            {
+                if(currentItemStack.canBeUsed())
+                {
+                    currentItemStack.Use();
+                    itemHoveringOverViewport =false;
+                    currentItemStack = null;
+                }
             }
         }
     }

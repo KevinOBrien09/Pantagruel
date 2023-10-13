@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Soilder
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: I gain 5 extra phys for every military unit in your party.
     beastName: Soilder
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -1667026861839801225, guid: ec7a5216f172d1a44b2d279ae120e6bd,
       type: 3}
     mainSprite: {fileID: -1893470104220437355, guid: ec7a5216f172d1a44b2d279ae120e6bd,
       type: 3}
+    facingRight: 0
     bestiaryID: 95
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 6
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 70
+      def: 20
+      physical: 10
+      magic: 5
+      charisma: 15
+      luck: 2
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 4
+      physical: 2
+      magic: 1
+      charisma: 4
+      luck: 1
+    element: 4
+    beastClass: 2
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Countess
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Countess
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -30749221642623036, guid: bc16d2e1dcb329e458c9bbf3ef042cf8,
       type: 3}
     mainSprite: {fileID: 2838966693941209132, guid: bc16d2e1dcb329e458c9bbf3ef042cf8,
       type: 3}
+    facingRight: 0
     bestiaryID: 31
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 13
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 66
+      def: 5
+      physical: 9
+      magic: 14
+      charisma: 27
+      luck: 6
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 3
+      physical: 2
+      magic: 2
+      charisma: 4
+      luck: 3
+    element: 4
+    beastClass: 14
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-public class PlayerParty : MonoBehaviour
+public class PlayerParty : Singleton<PlayerParty>
 {
     public List<Beast> party = new List<Beast>(); //does not contain activeBeast
     
@@ -13,9 +13,12 @@ public class PlayerParty : MonoBehaviour
     {
         if(!PlayerManager.inst.load)
         { 
-            
-            activeBeast.Init(activeBeast.PsudeoSave(activeBeast.scriptableObject));
-
+            foreach (var item in party)
+            {
+                item.Init(item.PsudeoSave(item.scriptableObject));
+            }
+          
+            activeBeast = party[0];
             ApplyLoadedInfo();
 
         }
@@ -39,7 +42,14 @@ public class PlayerParty : MonoBehaviour
     //start combat with full block
     //repeat card cast
     //something after playing last card in hand
+    //WEATHERVANE:Gains different effect depending what direction you where facing when the battle begins
 
+
+    //arrow chaarcter use arrows in iventory
+
+
+
+        //charcter gains damage mased on how much card currency they are missing
     public void Load(SaveData data)
     {
         party = new List<Beast>();
@@ -47,31 +57,50 @@ public class PlayerParty : MonoBehaviour
         {
             Destroy(item.gameObject);
         }
-        if(data.activeBeast !=null)
-        {
-            activeBeast = Instantiate(beastPrefab,transform);
-            activeBeast.Init(data.activeBeast);
-        }
-        else   
-        {Debug.LogWarning("Active Beast is null.");}
-      
-      
-        foreach (var item in data.party)
+   
+  
+
+        for (int i = 0; i < data.party.Count; i++)  
         {
             Beast b = Instantiate(beastPrefab,transform);
-            b.Init(item);
-            party.Add(b);
-
+            b.Init(data.party[i]);
+            AddNewBeast(b);
         }
+            
+        //Active beast is the 0th entry of the party.
+        activeBeast = party[0];
         ApplyLoadedInfo();
+    }
+
+    public void ChangePartyOrder(Beast newActiveBeast){
+       
+        party.RemoveAt(party.IndexOf(newActiveBeast));
+        party.Insert(0,newActiveBeast);
+        activeBeast = newActiveBeast;
+
     }
     
     void ApplyLoadedInfo()
     {
+          PassiveManager.inst.OrginizePassiveActivity();
         BottomCornerBeastDisplayer.inst.ChangeActiveBeast(activeBeast);
+      
         
-       
-       
+    }
+
+    public void AddNewBeast(Beast b)
+    {
+        if(b.scriptableObject.beastData.passive != null)
+        {
+            PassiveManager.inst.AddNewBeast(b);
+            
+    
+        }
+        else{
+            Debug.Log(b.name + " passive not set up");
+        }
+        
+        party.Add(b);
     }
 
     #if UNITY_EDITOR
@@ -104,9 +133,9 @@ public class PlayerParty : MonoBehaviour
                 BeastSaveData saveData = new BeastSaveData();
                 saveData.beastiaryID = b.scriptableObject.beastData.bestiaryID;
                 saveData.currentHealth = b.currentHealth;
-                List<int> cardIDs = new List<int>();
+                List<string> cardIDs = new List<string>();
                 foreach (var card in b.deck.cards)
-                { cardIDs.Add(card.cardID); }
+                { cardIDs.Add(card.Id); }
                 saveData.deckIDs = cardIDs;
                 return saveData;
             }

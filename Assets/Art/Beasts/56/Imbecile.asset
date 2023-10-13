@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Imbecile
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 'Whereever i am, create a vaporous "war drums" in your hand every turn. '
     beastName: Imbecile
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 7571068671740948714, guid: 17b764dd524787e4d9f3cf51870d5eca,
       type: 3}
     mainSprite: {fileID: 9213418603028083838, guid: 17b764dd524787e4d9f3cf51870d5eca,
       type: 3}
+    facingRight: 0
     bestiaryID: 56
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
+      maxHealth: 100
+      def: 21
+      physical: 34
+      magic: 5
       charisma: 0
-      resolve: 0
-    mainFamily: 17
-    secondaryFamily: 5
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 0
+    statGrowthPerLevel:
+      maxHealth: 5
+      def: 4
+      physical: 2
+      magic: 0
+      charisma: 0
+      luck: 0
+    element: 4
+    beastClass: 13
+    secondaryClass: 6
+    passive: {fileID: 0}
+    catchMod: 0

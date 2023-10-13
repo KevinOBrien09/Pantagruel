@@ -11,5 +11,6 @@ public class Location : ScriptableObject
         public List<BeastScriptableObject> scriptableObject = new List<BeastScriptableObject>();
         public Biome biome;
     }
+    public string locationName;
     public List<BeastSOBiomePair> beastsInLocation = new List<BeastSOBiomePair>();
 }

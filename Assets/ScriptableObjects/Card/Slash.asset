@@ -12,10 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec03d198f138b2c4099b0c760090b965, type: 3}
   m_Name: Slash
   m_EditorClassIdentifier: 
-  cardID: 1
+  Id: cafdbe56-857e-454d-9cf2-a8c07371f4cf
   cardName: Slash
   picture: {fileID: -272967660809606887, guid: 930ae5d37239bb5458482166cdcb9e94, type: 3}
   manaCost: 1
+  vfx: 
+  castDelay: 0.2
   effects: []
+  soundEffect:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
+  restrictions:
+    elementRestriction: 0
+    classRestriction: 0
   desc: 
   deckCost: 99

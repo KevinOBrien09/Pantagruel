@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beastData:
     ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: knapsack grants additional inventory slots?
     beastName: Knapsack
     flavourText: '"What a beautiful day!"'
     bottomCornerPos: {x: 0, y: -1.5}
@@ -25,7 +27,23 @@ MonoBehaviour:
       type: 3}
     facingRight: 1
     bestiaryID: 23
-    wildDeck:
-      cards: []
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
+      maxHealth: 111
+      def: 23
+      physical: 11
+      magic: 22
+      charisma: 31
+      luck: 12
+    statGrowthPerLevel:
+      maxHealth: 2
+      def: 2
+      physical: 0
+      magic: 2
+      charisma: 3
+      luck: 1
+    element: 3
+    beastClass: 7
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

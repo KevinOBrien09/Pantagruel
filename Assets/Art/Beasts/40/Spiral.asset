@@ -13,25 +13,39 @@ MonoBehaviour:
   m_Name: Spiral
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 'Should be grass.
+
+'
     beastName: Spiral
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 1192843865154028290, guid: 2e0ca114799136d42938818e6ba7f6a9,
       type: 3}
     mainSprite: {fileID: -1008717397128904155, guid: 2e0ca114799136d42938818e6ba7f6a9,
       type: 3}
+    facingRight: 0
     bestiaryID: 40
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 8
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 60
+      def: 15
+      physical: 22
+      magic: 8
+      charisma: 2
+      luck: 22
+    statGrowthPerLevel:
+      maxHealth: 2
+      def: 2
+      physical: 3
+      magic: 2
+      charisma: 1
+      luck: 1
+    element: 2
+    beastClass: 15
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

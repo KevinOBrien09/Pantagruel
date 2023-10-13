@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Falconer
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Falconer
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -7675678393957697333, guid: 0ff59b95ed3f80f4f9005b67393858d9,
       type: 3}
     mainSprite: {fileID: 4853295538524650235, guid: 0ff59b95ed3f80f4f9005b67393858d9,
       type: 3}
+    facingRight: 0
     bestiaryID: 61
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 15
-    secondaryFamily: 16
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 81
+      def: 15
+      physical: 17
+      magic: 11
+      charisma: 9
+      luck: 15
+    statGrowthPerLevel:
+      maxHealth: 1
+      def: 2
+      physical: 1
+      magic: 3
+      charisma: 1
+      luck: 4
+    element: 5
+    beastClass: 6
+    secondaryClass: 4
+    passive: {fileID: 0}
+    catchMod: 0

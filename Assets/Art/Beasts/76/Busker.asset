@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Busker
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Busker
     flavourText: 
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 3811139775257118856, guid: 4e29eca8df42fee43907dfe61565784d,
       type: 3}
     mainSprite: {fileID: 4666111496753557950, guid: 4e29eca8df42fee43907dfe61565784d,
       type: 3}
+    facingRight: 0
     bestiaryID: 76
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
-      magic: 0
-      toughness: 0
-      charisma: 0
-      resolve: 0
-    mainFamily: 5
-    secondaryFamily: 18
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      maxHealth: 77
+      def: 19
+      physical: 16
+      magic: 20
+      charisma: 5
+      luck: 5
+    statGrowthPerLevel:
+      maxHealth: 3
+      def: 3
+      physical: 4
+      magic: 5
+      charisma: 2
+      luck: 2
+    element: 3
+    beastClass: 13
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

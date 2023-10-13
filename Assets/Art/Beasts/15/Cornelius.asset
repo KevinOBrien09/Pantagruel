@@ -13,25 +13,37 @@ MonoBehaviour:
   m_Name: Cornelius
   m_EditorClassIdentifier: 
   beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Cornelius
     flavourText: '"I don''t like the look o'' you."'
+    bottomCornerPos: {x: 0, y: -0.25}
+    battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 4349915267927364619, guid: f33bbbb3cc7c51c45b0d4730a5d30b00,
       type: 3}
     mainSprite: {fileID: -8095896006545369725, guid: f33bbbb3cc7c51c45b0d4730a5d30b00,
       type: 3}
+    facingRight: 0
     bestiaryID: 15
+    wildDeck: {fileID: 0}
     stats:
-      maxHealth: 0
-      physical: 0
+      maxHealth: 150
+      def: 31
+      physical: 28
       magic: 0
-      toughness: 0
       charisma: 0
-      resolve: 0
-    mainFamily: 8
-    secondaryFamily: 0
-    resource:
-      resource: 0
-      amount: 0
-    skills: []
-    pips: []
+      luck: 0
+    statGrowthPerLevel:
+      maxHealth: 5
+      def: 5
+      physical: 5
+      magic: 0
+      charisma: 0
+      luck: 1
+    element: 4
+    beastClass: 10
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

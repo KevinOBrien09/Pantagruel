@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beastData:
     ANIMATED_PREFAB_DONE: 1
+    devNote:
+      note: 'heals party members after every battle. '
     beastName: Dame
     flavourText: 
     bottomCornerPos: {x: 0, y: -1.5}
@@ -28,4 +30,21 @@ MonoBehaviour:
     bestiaryID: 50
     wildDeck: {fileID: 11400000, guid: 80d5131422f00c4458ffe3c9b0906f53, type: 2}
     stats:
-      maxHealth: 1
+      maxHealth: 64
+      def: 21
+      physical: 15
+      magic: 21
+      charisma: 32
+      luck: 14
+    statGrowthPerLevel:
+      maxHealth: 4
+      def: 2
+      physical: 0
+      magic: 4
+      charisma: 1
+      luck: 1
+    element: 3
+    beastClass: 5
+    secondaryClass: 6
+    passive: {fileID: 0}
+    catchMod: 0
