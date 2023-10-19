@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: cafdbe56-857e-454d-9cf2-a8c07371f4cf
   cardName: Slash
-  picture: {fileID: -272967660809606887, guid: 930ae5d37239bb5458482166cdcb9e94, type: 3}
+  picture: {fileID: 21300000, guid: c31f6b324bdc6564caad2746db93b86b, type: 3}
   manaCost: 1
   vfx: 
   castDelay: 0.2
@@ -27,4 +27,4 @@ MonoBehaviour:
     elementRestriction: 0
     classRestriction: 0
   desc: 
-  deckCost: 99
+  deckCost: 5

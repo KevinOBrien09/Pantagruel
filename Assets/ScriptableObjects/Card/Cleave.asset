@@ -25,8 +25,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 84f7c61ea17ffa74b86dab40d76c1db0, type: 3}
     pitchRange: {x: 0.9, y: 1.1}
     volume: 0.5
-  restrictions:
-    elementRestriction: 0
-    classRestriction: 0
+  element: 0
+  beastClass: 10
   desc: Deal 20 RAW damage.
   deckCost: 5

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: b34fe38c-0c82-4e9a-8b02-52efc70a177a
   cardName: Piercing Squawk
-  picture: {fileID: 7666283726484249173, guid: 654424bdd2bdd3d4b86972a016eb64c1, type: 3}
-  manaCost: 0
+  picture: {fileID: 21300000, guid: e9edee9b8a84bf54991a40b64430ac51, type: 3}
+  manaCost: 2
   vfx: 
   castDelay: 0.2
   effects: []
@@ -23,8 +23,7 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
-  restrictions:
-    elementRestriction: 0
-    classRestriction: 6
+  element: 0
+  beastClass: 6
   desc: 
-  deckCost: 0
+  deckCost: 25

@@ -24,8 +24,7 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
-  restrictions:
-    elementRestriction: 0
-    classRestriction: 3
+  element: 6
+  beastClass: 3
   desc: Increase MGK by 5
-  deckCost: 0
+  deckCost: 20

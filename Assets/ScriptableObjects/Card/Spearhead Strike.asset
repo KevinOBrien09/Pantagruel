@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec03d198f138b2c4099b0c760090b965, type: 3}
-  m_Name: Poke
+  m_Name: Spearhead Strike
   m_EditorClassIdentifier: 
   Id: 9364c3d9-24e4-4131-bab0-0e8fc01e7839
-  cardName: Poke
-  picture: {fileID: 21300000, guid: 6f00004edfef50246b6cb8e62632961d, type: 3}
+  cardName: Spearhead Strike
+  picture: {fileID: 21300000, guid: ce78633c221c0144c93fbd12dbdcc7c9, type: 3}
   manaCost: 1
   vfx: Bash
   castDelay: 0.05
@@ -24,8 +24,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 2bfff0e1d27019d4ab96d2f49da9abd7, type: 3}
     pitchRange: {x: 0.9, y: 1.1}
     volume: 2
-  restrictions:
-    elementRestriction: 0
-    classRestriction: 2
+  element: 5
+  beastClass: 2
   desc: Deals 10 +{5%}  MGK Damage.
-  deckCost: 0
+  deckCost: 10

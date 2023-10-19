@@ -7,17 +7,20 @@ using UnityEngine.UI;
 public class CardCatagoryTicker : MonoBehaviour
 {
     public TextMeshProUGUI cataName;
-    public Image toggle,bg;
-    public Element element;
+    public Image toggle;
     public BeastClass beastClass;
     public Button button;
     public Color32 grey;
+    public string classString;
+    public bool greyedOut;
 
-    public void Init(BeastClass b,bool clickable)
+    public void Init(BeastClass b)
     {
-        cataName.text = b.ToString();
+        classString = b.ToString();
+        cataName.text = classString;
+        greyedOut = false;
         beastClass = b;
-        button.enabled = clickable;
+       
         toggle.enabled = true;
     }
     
@@ -27,11 +30,21 @@ public class CardCatagoryTicker : MonoBehaviour
         cataName.color = grey;
         button.interactable = false;
         toggle.enabled = false;
+        greyedOut = true;
+    }
+
+    public void UnGreyOut()
+    {
+        cataName.text = beastClass.ToString();
+        cataName.color = Color.white;
+        button.interactable = true;
+        toggle.enabled = true;
+        greyedOut = false;
     }
 
     public void Toggle()
     {
-        toggle.enabled = CardCatalog.inst.EditFilter(element,beastClass);
+   
     }
 
 }

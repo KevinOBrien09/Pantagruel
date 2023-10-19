@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: KevinOB
+  companyName: KOB
   productName: Beasts of Pantagruel
   defaultCursor: {fileID: 2800000, guid: 7932293bd692e2942a52747b733d6da4, type: 3}
   cursorHotspot: {x: 0, y: 0}
@@ -155,7 +155,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.KevinOB.Beasts-of-Pantagruel
+    Standalone: com.KOB.Beasts-of-Pantagruel
   buildNumber:
     Standalone: 0
     iPhone: 0

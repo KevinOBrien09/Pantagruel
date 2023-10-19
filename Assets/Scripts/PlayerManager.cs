@@ -22,6 +22,7 @@ public class PlayerManager : Singleton<PlayerManager>
         (BeastSaveData a,List<BeastSaveData> b)  partySave = PlayerParty.inst.Save();
         mainData.party = partySave.b;
         mainData.playerSaveData = movement.Save();
+        mainData.cardCollection = CardCollection.inst.Save();
         return mainData;
     }
 
@@ -29,6 +30,7 @@ public class PlayerManager : Singleton<PlayerManager>
     {
         SaveData data = SaveLoad.Load(5);
         PlayerParty.inst.Load(data);
+        CardCollection.inst.Load(data.cardCollection);
         movement.Load(data.playerSaveData);
     }
 }

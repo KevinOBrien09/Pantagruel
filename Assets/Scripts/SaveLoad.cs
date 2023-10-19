@@ -21,9 +21,7 @@ public static class SaveLoad
         {
             CreateSaveFile(slot);
         }
-
-
-
+        
         string mainDataPath = savePath + slot + mainSave;
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         SaveData mainData = PlayerManager.inst.Save();

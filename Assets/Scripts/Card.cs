@@ -12,14 +12,9 @@ public class Card :GUIDScriptableObject
     public float castDelay = .2f;
     public List<Effect> effects = new List<Effect>();
     public SoundData soundEffect;
-    public CardRestrictions restrictions;
+    public Element element;
+    public BeastClass beastClass;
     [TextArea] public string desc;
     public int deckCost;
   
-}
-[System.Serializable]
-public class CardRestrictions{
-
-    public Element elementRestriction;
-    public BeastClass classRestriction;
 }

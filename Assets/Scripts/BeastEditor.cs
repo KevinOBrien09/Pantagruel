@@ -9,7 +9,7 @@ using System.Linq;
 
 public class BeastEditor : DragHandler
 {
-    
+ 
    public TMP_Dropdown elementDropdown;
     public TMP_Dropdown classDropdown;
      public TMP_Dropdown secondaryClassDropdown;
@@ -309,7 +309,7 @@ public class BeastEditor : DragHandler
 
 
     }
-
+   #if UNITY_EDITOR
     void OnDestroy(){
         foreach (var item in modfiedObjects)
         {
@@ -320,5 +320,5 @@ public class BeastEditor : DragHandler
 
     }
 
-   
+   #endif
 }
