@@ -44,7 +44,7 @@ public class CardCatagoryTicker : MonoBehaviour
 
     public void Toggle()
     {
-   
+        toggle.enabled = DeckEditor.inst.FilterClass(beastClass);
     }
 
 }

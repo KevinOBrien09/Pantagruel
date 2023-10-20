@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 8eb40ab2-f7b0-48ff-b103-db0a02057009
   cardName: Cleave
-  picture: {fileID: 21300000, guid: 2f4e8fedb2f09b247a7f6ca5234f0a82, type: 3}
-  manaCost: 1
+  picture: {fileID: 21300000, guid: d23158feda39df14e87883c627013aa3, type: 3}
+  manaCost: 2
   vfx: Slice1
   castDelay: 0.06
   effects:
@@ -27,5 +27,6 @@ MonoBehaviour:
     volume: 0.5
   element: 0
   beastClass: 10
-  desc: Deal 20 RAW damage.
-  deckCost: 5
+  desc: Deal 10 RAW damage.
+  flavourText: '"Cain Killing Abel-Albrecht Durer-1511"'
+  deckCost: 7

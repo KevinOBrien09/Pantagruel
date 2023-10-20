@@ -15,6 +15,7 @@ public class Card :GUIDScriptableObject
     public Element element;
     public BeastClass beastClass;
     [TextArea] public string desc;
+     [TextArea] public string flavourText;
     public int deckCost;
   
 }

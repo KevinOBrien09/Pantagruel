@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 using System.Linq;
 using DG.Tweening;
+using TMPro;
 
 public enum DeckEditorState{ALLCARDS,CLOSED,IN_SUB_MENU}
 
@@ -15,32 +16,37 @@ public class DeckEditor : Singleton<DeckEditor>
     {
         public CardCatalogCard catalogCard;
         public bool dontCare;
-        
     }
-
-   
+    
+    public DeckEditorState currentState;
     public ElementTicker unElementalTicker;
     public CardCatagoryTicker commonTicker;
     public Dictionary<Card,CatalogCardState> catalogCardDict = new Dictionary<Card, CatalogCardState>();
+    public Dictionary<Card,DeckEditorCardStack> currentCardStackDict = new Dictionary<Card, DeckEditorCardStack>();
     public List<CardCatalogCard> activeCatalogCards = new List<CardCatalogCard>();
-    public List<Card> validCards = new List<Card>();
+    public string searchString;
     [SerializeField] CardCatalogCard cardCatalogCardPrefab;
     [SerializeField] DeckEditorBeastButton beastButtonPrefab;
     [SerializeField] DeckEditorCardStack cardStackPrefab;
     [SerializeField] CardCatagoryTicker classTickerPrefab;
     [SerializeField] ElementTicker elementTickerPrefab;
     [SerializeField] GameObject inventoryObject,tickerObject;
+    [SerializeField] Image bgBeastImage;
+    [SerializeField] TMP_InputField inputField;
+    [SerializeField] TextMeshProUGUI cardCount;
     [SerializeField] RectTransform beastButtonHolder,cardCatalogHolder,beastSubmenu,
-    subMenuParent,submenuPos1,cardStackHolder,classTickerHolder,elementTickerHolder;
+    subMenuParent,submenuPos1,cardStackHolder,classTickerHolder,elementTickerHolder,subMenuButtonHolder;
     [SerializeField] GameObject overViewButtons,subMenuButtons;
     [HideInInspector] public DeckEditorBeastButton currentButton;
     Dictionary<Beast,DeckEditorBeastButton> beastButtonDict = new Dictionary<Beast, DeckEditorBeastButton>();
-    Dictionary<Card,DeckEditorCardStack> currentCardStackDict = new Dictionary<Card, DeckEditorCardStack>();
     List<GameObject> createdTickers = new List<GameObject>();
-    DeckEditorState currentState;
+    public List<BeastClass> shownClasses = new List<BeastClass>();
+    public List<Element> shownElements = new List<Element>();
     float beastListShown = -35;
     float beastListHidden =-500;
     bool open;
+
+    //new ticker is not created when moving from deck to catalog and a previous one did not exist.
 
     public void Start()
     {
@@ -61,6 +67,8 @@ public class DeckEditor : Singleton<DeckEditor>
 
     void Open()
     {
+        OverworldMovement.canMove = false;
+        bgBeastImage.DOFade(0,0);
         gameObject.SetActive(true);
         inventoryObject.SetActive(false);
         tickerObject.SetActive(true);
@@ -68,16 +76,29 @@ public class DeckEditor : Singleton<DeckEditor>
         currentState = DeckEditorState.ALLCARDS;
         SpawnBeastList();
         SpawnFullCollection();
+        ChangeCountText();
         ManageTickers();
+    }
+
+   public void ChangeCountText(){
+        int i = 0;
+        foreach (var item in catalogCardDict)
+        {
+            if(item.Value.catalogCard.gameObject.activeSelf){
+                i++;
+            }
+            
+        }
+            cardCount.text =  i.ToString() + "/" + catalogCardDict.Count + " cards shown";
     }
 
     void Leave()
     {
+        OverworldMovement.canMove = true;
         gameObject.SetActive(false);
         inventoryObject.SetActive(true);
         tickerObject.SetActive(false);
         open = false;
-       
         foreach (var item in catalogCardDict)
         {Destroy(item.Value.catalogCard.gameObject);}
         foreach (var item in activeCatalogCards)
@@ -87,9 +108,7 @@ public class DeckEditor : Singleton<DeckEditor>
         foreach (var item in beastButtonDict)
         {Destroy(item.Value.gameObject);}
         foreach (var item in currentCardStackDict)
-        {
-           Destroy(item.Value.gameObject) ;
-        }
+        {Destroy(item.Value.gameObject);}
         currentCardStackDict.Clear();
         beastButtonDict.Clear();
         catalogCardDict.Clear();
@@ -98,7 +117,61 @@ public class DeckEditor : Singleton<DeckEditor>
         currentButton = null;
         if(currentState == DeckEditorState.IN_SUB_MENU)
         {beastSubmenu.anchoredPosition = new Vector2(beastListShown,beastSubmenu.anchoredPosition.y);}
-         currentState = DeckEditorState.CLOSED;
+        currentState = DeckEditorState.CLOSED;
+    }
+
+
+    public bool MoveFromCollectionToDeck(Card c)
+    {
+        Deck d = currentButton.beast.deck;
+        if( d.AddCardToDeck(c)){
+            CardCollection.inst.RemoveCard(c);
+        
+            if(currentCardStackDict.ContainsKey(c))
+            {currentCardStackDict[c].Stack();}
+            else
+            {
+                DeckEditorCardStack stack = Instantiate(cardStackPrefab,cardStackHolder);
+                stack.Init(c);
+                currentCardStackDict.Add(c,stack);
+            }
+            currentButton.UpdateDeckCostMeter();
+             
+            return true;
+        }
+        else
+        {
+            Debug.Log("error sound here");
+            return false;
+        }
+       
+    }
+
+    public void Search()
+    {
+        searchString = inputField.text.Replace('_',' ');;
+        inputField.text = inputField.text.Replace(' ','_');
+        ToggleCards();
+    }
+
+    public void MoveFromDeckToCollection(Card c)
+    {
+        Deck d = currentButton.beast.deck;
+        CardCollection.inst.AddCard(c);
+        d.RemoveCardFromDeck(c);
+        if(catalogCardDict.ContainsKey(c))
+        {catalogCardDict[c].catalogCard.Stack();}
+        else
+        {
+            CardCatalogCard ccc = Instantiate(cardCatalogCardPrefab,cardCatalogHolder);
+            ccc.Init(c);
+            CatalogCardState state = new CatalogCardState();
+            state.catalogCard = ccc;
+            catalogCardDict.Add(c,state);
+            AlphabeticallySortCatalog();
+        }
+        currentButton.UpdateDeckCostMeter();
+          ChangeCountText();
     }
     
     void SpawnFullCollection()
@@ -125,68 +198,61 @@ public class DeckEditor : Singleton<DeckEditor>
     {
         currentState = DeckEditorState.IN_SUB_MENU;
         currentButton = beastButtonDict[b];
+        if( b.scriptableObject.beastData.facingRight)
+        {bgBeastImage.transform.rotation = Quaternion.Euler(0,0,0);}
+        else{bgBeastImage.transform.rotation = Quaternion.Euler(0,-180,0);}
+        bgBeastImage.DOFade(.2f,.5f);
+        bgBeastImage.sprite = b.scriptableObject.beastData.mainSprite;
         currentButton.button.interactable = false;
-        currentButton.transform.SetParent(subMenuParent.transform);
+        currentButton.transform.SetParent(subMenuButtonHolder.transform);
         currentButton.rt.DOAnchorPos(submenuPos1.anchoredPosition,.2f);
         beastSubmenu.DOAnchorPosX(beastListHidden,.2f);
         SpawnBeastDeck(b);
         overViewButtons.SetActive(false);
         subMenuButtons.SetActive(true);
-        List<Card> cardsIDontCareFor = new List<Card>();
+    
         foreach (var item in catalogCardDict)
         {
             BeastData bd = b.scriptableObject.beastData;
             Card c = item.Key;
-            bool cardElementIsNone = c. element == Element.NONE;
+            bool cardElementIsNone = c.element == Element.NONE;
             bool cardClassIsNone =c.beastClass == BeastClass.COMMON;
-            if(cardClassIsNone && cardElementIsNone){
-                continue;
-            }
+            if(cardClassIsNone && cardElementIsNone)
+            { continue; }
             
             if(cardElementIsNone)
             {
                 if(c.beastClass != bd.beastClass && c.beastClass != bd.secondaryClass)
-                {
-                    catalogCardDict[c].dontCare = true;
-                    
-                    cardsIDontCareFor.Add(c);
-                }
+                {catalogCardDict[c].dontCare = true;}
             }
 
             if(cardClassIsNone)
             {
-                if(c.element != bd.element || c.element == Element.NONE){
-                    catalogCardDict[c].dontCare = true;
-                  
-                    cardsIDontCareFor.Add(c);
-                }
+                if(c.element != bd.element || c.element == Element.NONE)
+                {catalogCardDict[c].dontCare = true;}
             }
-
-         
+            
             if(c.element != bd.element)
             {
                 if(c.beastClass != bd.beastClass)
                 {
                     if(c.beastClass != bd.secondaryClass)
-                    {
-                        catalogCardDict[c].dontCare = true;
-                        
-                        cardsIDontCareFor.Add(c);
-                    }
+                    {catalogCardDict[c].dontCare = true;}
                 }
             }
-         
         }
-
-        foreach (var item in  catalogCardDict)
-        {
-            if(item.Value.dontCare){
-                item.Value.catalogCard.gameObject.SetActive(false);
-            }
-              
+        if(IsThereStillACardOfThisElementInTheCurrentCollection(Element.NONE)) 
+        {unElementalTicker.UnGreyOut();}
+        else{
+            unElementalTicker.GreyOut();
+        }
+        if(IsThereStillACardOfThisClassInTheCurrentCollection(BeastClass.COMMON)) 
+        {commonTicker.UnGreyOut();}
+        else{
+            commonTicker.GreyOut();
         }
         ManageTickers();
-
+        ToggleCards();
     }
 
     public void ManageTickers()
@@ -194,6 +260,8 @@ public class DeckEditor : Singleton<DeckEditor>
         foreach (var item in createdTickers)
         {Destroy(item);}
         createdTickers.Clear();
+        shownClasses.Clear();
+        shownElements.Clear();
 
         var bc = Enum.GetValues(typeof(BeastClass));
         List<BeastClass> classBin = new List<BeastClass>();
@@ -226,14 +294,18 @@ public class DeckEditor : Singleton<DeckEditor>
                 if(item != BeastClass.COMMON)
                 {
                     CardCatagoryTicker t = Instantiate(classTickerPrefab,classTickerHolder);
+                    shownClasses.Add(item);
                     t.Init(item);
                     createdTickers.Add(t.gameObject);
                 }
-            
+                else
+                {
+                    shownClasses.Add(BeastClass.COMMON);
+                    commonTicker.toggle.enabled = true;
+                }
             }   
         }
-
-
+        
         foreach (Element element in el)
         {
             bool  x = false;
@@ -260,29 +332,152 @@ public class DeckEditor : Singleton<DeckEditor>
                 {
                     ElementTicker t = Instantiate(elementTickerPrefab,elementTickerHolder);
                     t.Init(element);
+                    shownElements.Add(element);
                     createdTickers.Add(t.gameObject);
                 }
-            
+                else
+                {
+                    shownElements.Add(Element.NONE);
+                    unElementalTicker.toggle.enabled = true;
+                }
             }   
         }
+    }
+    
+    public bool FilterClass(BeastClass bc)
+    {
+        if(shownClasses.Contains(bc))
+        {
+            shownClasses.Remove(bc);
+            ToggleCards();
+
+            return false;
+        }
+        else
+        {
+            shownClasses.Add(bc);
+            ToggleCards();
+
+            return true;
+        }
+    }
+
+    public bool FilterElement(Element element)
+    {
+        if(shownElements.Contains(element))
+        {
+            shownElements.Remove(element);
+            ToggleCards();
+            return false;
+        }
+        else
+        {
+            shownElements.Add(element);
+            ToggleCards();
+            return true;
+        }
+    }
+
+    public void CheckIfTickersShouldBeReenabled(Card c)
+    {
+        CardCatagoryTicker t = null;
+        ElementTicker et = null;
+        foreach (var item in createdTickers)
+        {
+            if(item.TryGetComponent<CardCatagoryTicker>(out t)) 
+            {
+                if(c.beastClass == BeastClass.COMMON)
+                {commonTicker.UnGreyOut(); }
+                if(t.beastClass == c.beastClass)
+                {
+                    t.UnGreyOut();
+                   
+                    if(!shownClasses.Contains(c.beastClass))
+                    {shownClasses.Add(c.beastClass);}
+                }
+            }
+
+            if(item.TryGetComponent<ElementTicker>(out et)) 
+            {
+                if(c.element == Element.NONE)
+                { unElementalTicker.UnGreyOut(); }
+
+                if(et.element == c.element)
+                {
+                    et.UnGreyOut();
+                     if(!shownElements.Contains(c.element))
+                    {shownElements.Add(c.element);  }
+                }
+            }
+        }
+    }
+
+    public void ToggleCards()
+    {
+        foreach (var item in catalogCardDict)
+        {
+            
+            if(!item.Value.dontCare)
+            {
+                bool elementIsFiltered = !shownElements.Contains(item.Key.element);
+                bool classIsFiltered = !shownClasses.Contains(item.Key.beastClass);
+                if(elementIsFiltered && classIsFiltered)
+                {item.Value.catalogCard.gameObject.SetActive(false);}
+                else if(elementIsFiltered && !classIsFiltered)
+                {item.Value.catalogCard.gameObject.SetActive(false);}
+                else if(!elementIsFiltered && classIsFiltered)
+                {item.Value.catalogCard.gameObject.SetActive(false);}
+                else
+                {item.Value.catalogCard.gameObject.SetActive(true);}
+
+
+                if(searchString != string.Empty)
+            {
+                if(item.Key.cardName.ToUpper().Contains(searchString.ToUpper()))
+                {
+                    item.Value.catalogCard.gameObject.SetActive(true);
+                }
+                else
+                {
+                    item.Value.catalogCard.gameObject.SetActive(false);
+                }
+            }
+            }
+            else
+            {item.Value.catalogCard.gameObject.SetActive(false);}
+        }
+
+        ChangeCountText();
     }
 
     public void LeaveSubMenu()
     {
+        currentState = DeckEditorState.ALLCARDS;
         currentButton.transform.SetParent(beastButtonHolder);
         beastSubmenu.DOAnchorPosX(beastListShown,.2f);
+        inputField.text = "";
+        searchString = "";
+        
+    
+
+        bgBeastImage.DOFade(0,.2f);
         WipeBeastDeck();
         SortBeastButtonsByPartyOrder();
         overViewButtons.SetActive(true);
         subMenuButtons.SetActive(false);
         currentButton.button.interactable = true;
- currentButton = null;
+        currentButton = null;
         foreach (var item in  catalogCardDict)
         {
             item.Value.catalogCard.gameObject.SetActive(true);
             item.Value.dontCare = false;
         }
         ManageTickers();
+            if(IsThereStillACardOfThisElementInTheCurrentCollection(Element.NONE)) 
+        {unElementalTicker.UnGreyOut();}
+        if(IsThereStillACardOfThisClassInTheCurrentCollection(BeastClass.COMMON)) 
+        {commonTicker.UnGreyOut();}
+        ChangeCountText();
     }
 
    
@@ -295,6 +490,86 @@ public class DeckEditor : Singleton<DeckEditor>
         currentCardStackDict.Clear();
     }
 
+    public void CheckIfFiltersShouldBeDisabled(Card c)
+    {
+        if(!IsThereStillACardOfThisClassInTheCurrentCollection(c.beastClass))  
+        {
+            if(c.beastClass == BeastClass.COMMON)
+            { commonTicker.GreyOut(); }
+            else
+            {
+                CardCatagoryTicker t = null;
+                foreach (var item in createdTickers)
+                {
+                    if(item.TryGetComponent<CardCatagoryTicker>(out t)) 
+                    {
+                        if(t.beastClass == c.beastClass)
+                        {
+                            t.GreyOut();
+                            if(shownClasses.Contains(c.beastClass))
+                            {shownClasses.Remove(c.beastClass);}
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+       
+        if(!IsThereStillACardOfThisElementInTheCurrentCollection(c.element))  
+        {
+            if(c.element == Element.NONE)
+            {unElementalTicker.GreyOut();}
+            else
+            {
+                ElementTicker et = null;
+                foreach (var item in createdTickers)
+                {
+                    if(item.TryGetComponent<ElementTicker>(out et)) 
+                    {
+                        if(et.element == c.element)
+                        {
+                            et.GreyOut();
+                            //gameObject.SetActive(false);
+                            if(shownElements.Contains(c.element))
+                            {shownElements.Remove(c.element);}
+                        
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public bool IsThereStillACardOfThisClassInTheCurrentCollection(BeastClass bc)
+    {
+        foreach (var item in catalogCardDict)
+        {  
+            if(!item.Value.dontCare)
+            {
+                if(item.Key.beastClass == bc)
+                {return true;}
+               
+            }
+        }
+        return false;
+    }
+
+    public bool IsThereStillACardOfThisElementInTheCurrentCollection(Element e)
+    {
+        foreach (var item in catalogCardDict)
+        {  
+            if(!item.Value.dontCare)
+            {
+                if(item.Key.element == e)
+                {return true;}
+               
+            }
+        }
+        return false;
+    }
+
+
     void SpawnBeastDeck(Beast b)
     {
         foreach (var item in b.deck.cards)
@@ -306,9 +581,7 @@ public class DeckEditor : Singleton<DeckEditor>
                 currentCardStackDict.Add(item,stack);
             }
             else
-            {
-                currentCardStackDict[item].Stack();
-            }
+            { currentCardStackDict[item].Stack();  }
         }
     }
 
@@ -319,7 +592,6 @@ public class DeckEditor : Singleton<DeckEditor>
             DeckEditorBeastButton b = Instantiate(beastButtonPrefab,beastButtonHolder);
             beastButtonDict.Add(item,b);
             b.Init(item);
-            
         }
     }
 

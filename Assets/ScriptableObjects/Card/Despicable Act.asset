@@ -15,7 +15,7 @@ MonoBehaviour:
   Id: 5a1ef230-1c44-4b34-88b4-98bbc53e1d17
   cardName: Despicable Act
   picture: {fileID: 21300000, guid: b5c9a23c2b49dfb4e9e526a242457dad, type: 3}
-  manaCost: 0
+  manaCost: 3
   vfx: 
   castDelay: 0.2
   effects: []
@@ -25,5 +25,6 @@ MonoBehaviour:
     volume: 0
   element: 2
   beastClass: 4
-  desc: 
-  deckCost: 0
+  desc: 'Heal for 15, CHARISMA is now 0 for the rest of combat. '
+  flavourText: 
+  deckCost: 5

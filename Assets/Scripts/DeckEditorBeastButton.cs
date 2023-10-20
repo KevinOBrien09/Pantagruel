@@ -12,7 +12,7 @@ public class DeckEditorBeastButton : MonoBehaviour,IPointerClickHandler
     public TextMeshProUGUI beastName,beastAtt,deckCostTxt;
     public Button button;
     public Image deckCostFill;
-    Beast beast;
+    public Beast beast;
     string t = "Tarot: ";
 
     public void Init(Beast  b)
@@ -30,18 +30,18 @@ public class DeckEditorBeastButton : MonoBehaviour,IPointerClickHandler
         deckCostFill.DOFillAmount((float)beast.deck.TotalDeckCost()/100,0 );
     }
 
-    void UpdateDeckCostMeter()
+   public void UpdateDeckCostMeter()
     {
         deckCostTxt.text = t + beast.deck.TotalDeckCost().ToString() + "/" + "100";
         deckCostFill.DOFillAmount((float)beast.deck.TotalDeckCost()/100,.2f );
     }
-    public void Click(){
-    DeckEditor.inst.BeastSubMenu(beast);
-    }
+    public void Click()
+    {DeckEditor.inst.BeastSubMenu(beast);}
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(eventData.button == PointerEventData.InputButton.Right ){
+        if(eventData.button == PointerEventData.InputButton.Right )
+        {
             Debug.Log("right click");
         }
     }

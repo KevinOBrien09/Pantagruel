@@ -15,7 +15,7 @@ MonoBehaviour:
   Id: 9364c3d9-24e4-4131-bab0-0e8fc01e7839
   cardName: Spearhead Strike
   picture: {fileID: 21300000, guid: ce78633c221c0144c93fbd12dbdcc7c9, type: 3}
-  manaCost: 1
+  manaCost: 2
   vfx: Bash
   castDelay: 0.05
   effects:
@@ -26,5 +26,6 @@ MonoBehaviour:
     volume: 2
   element: 5
   beastClass: 2
-  desc: Deals 10 +{5%}  MGK Damage.
-  deckCost: 10
+  desc: Deal 12 damage with a (LUCK 20%) chance to critcally strike.
+  flavourText: 
+  deckCost: 7

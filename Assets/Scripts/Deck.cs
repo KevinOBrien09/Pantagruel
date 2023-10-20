@@ -14,17 +14,13 @@ public class Deck
         {
             cards.Add(card);
             return true;
-
         }
-        else{
-            return false;
-        }
-
+        else
+        {return false;}
     }
 
-    public void RemoveCardFromDeck(Card card){
-        cards.Remove(card);
-    }
+    public void RemoveCardFromDeck(Card card)
+    { cards.Remove(card); }
 
     bool canFitCard(int cardCost)
     {
@@ -34,8 +30,6 @@ public class Deck
         {return false;}
     }
     
-
-
     public void ResetDiscardPile(){
 
         if(cards.Count <= 0)
@@ -50,9 +44,7 @@ public class Deck
     {
         int i = 0;
         foreach (var item in cards)
-        {
-          i+=  item.deckCost;
-        }
+        {i+=  item.deckCost;}
         return i;
     }
 }

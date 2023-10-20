@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec03d198f138b2c4099b0c760090b965, type: 3}
-  m_Name: Fairy Folk from Ferrara
+  m_Name: Flagellate
   m_EditorClassIdentifier: 
-  Id: 1573216b-b225-4bd9-b43e-14faf6df1ebc
-  cardName: Fairy Folk from Ferrara
-  picture: {fileID: 21300000, guid: 4b5d294deb1fd9d47809c5352a1bd1b2, type: 3}
-  manaCost: 0
+  Id: a17357ef-8637-451d-974c-397bfd5ae84a
+  cardName: Flagellate
+  picture: {fileID: 21300000, guid: 92a6e210a52d2034eb598aac5749c836, type: 3}
+  manaCost: 1
   vfx: 
   castDelay: 0.2
   effects: []
@@ -23,7 +23,9 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
-  element: 1
-  beastClass: 7
-  desc: 
-  deckCost: 0
+  element: 3
+  beastClass: 3
+  desc: Deal (10% phys) damage to the caster, the caster gains (25% phys) bonus for
+    2 turns.
+  flavourText: 
+  deckCost: 7

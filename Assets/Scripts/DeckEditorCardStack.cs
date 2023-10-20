@@ -9,10 +9,12 @@ public class DeckEditorCardStack : MonoBehaviour
     public TextMeshProUGUI cardName,cardQuanttxt,deckCost;
     int quantity;
     string smallerX = "<size=60%>x</size>";
+    Card card;
     public void Init(Card c)
     {
         cardName.text = c.cardName;
         deckCost.text = c.deckCost.ToString();
+        card = c;
         Stack();
     }
 
@@ -25,7 +27,20 @@ public class DeckEditorCardStack : MonoBehaviour
     public void Remove()
     {
         quantity--;
+        DeckEditor.inst.CheckIfTickersShouldBeReenabled(card);
+        if(quantity == 0)
+        {
+            DeckEditor.inst.currentCardStackDict.Remove(card);
+      
+            Destroy(gameObject);
+            return;
+        }
         cardQuanttxt.text = smallerX +  quantity.ToString();
+    }
+
+    public void Click(){
+        DeckEditor.inst.MoveFromDeckToCollection(card);
+        Remove();
     }
    
 }

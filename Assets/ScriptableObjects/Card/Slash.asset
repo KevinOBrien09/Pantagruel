@@ -23,8 +23,8 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
-  restrictions:
-    elementRestriction: 0
-    classRestriction: 0
-  desc: 
+  element: 0
+  beastClass: 0
+  desc: Deal 10 PHYS damage to the target.
+  flavourText: '"hurrah!"'
   deckCost: 5

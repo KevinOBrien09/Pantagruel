@@ -15,7 +15,7 @@ MonoBehaviour:
   Id: f6b7c7fc-4c0e-4ea7-ae6b-ebbe0826de2f
   cardName: 'Act of Hope '
   picture: {fileID: 21300000, guid: 038845edbec35ee40878982feb597d67, type: 3}
-  manaCost: 1
+  manaCost: 2
   vfx: 
   castDelay: 0.2
   effects:
@@ -26,5 +26,6 @@ MonoBehaviour:
     volume: 0
   element: 6
   beastClass: 3
-  desc: Increase MGK by 5
+  desc: Draw a random card and heal for 5.
+  flavourText: 
   deckCost: 20

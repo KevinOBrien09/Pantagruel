@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec03d198f138b2c4099b0c760090b965, type: 3}
-  m_Name: Wrath of Magnus
+  m_Name: Fairy Folk
   m_EditorClassIdentifier: 
-  Id: df01aafc-ec42-4696-a432-c496f53066d6
-  cardName: Wrath of Magnus
-  picture: {fileID: 21300000, guid: 89f6ff460d267c64dae3f0081b05ffe5, type: 3}
-  manaCost: 3
+  Id: 1573216b-b225-4bd9-b43e-14faf6df1ebc
+  cardName: Fairy Folk
+  picture: {fileID: 21300000, guid: 0ca4b77f1d47cd84e9c23a5478ce92e1, type: 3}
+  manaCost: 2
   vfx: 
   castDelay: 0.2
   effects: []
@@ -23,8 +23,8 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
-  element: 5
-  beastClass: 15
-  desc: The next attack on the target deals an additional (20%MGK) MGK damage.
-  flavourText: '"HEHEHEHEHEHE"'
+  element: 1
+  beastClass: 0
+  desc: Increase your parties MGK by 10 for  turns.
+  flavourText: 
   deckCost: 15
