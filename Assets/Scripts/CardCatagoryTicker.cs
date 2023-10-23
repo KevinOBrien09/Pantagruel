@@ -11,6 +11,7 @@ public class CardCatagoryTicker : MonoBehaviour
     public BeastClass beastClass;
     public Button button;
     public Color32 grey;
+
     public string classString;
     public bool greyedOut;
 
@@ -40,10 +41,12 @@ public class CardCatagoryTicker : MonoBehaviour
         button.interactable = true;
         toggle.enabled = true;
         greyedOut = false;
+       // DeckEditor.inst.shownClasses.Add(beastClass);
     }
 
     public void Toggle()
     {
+         AudioManager.inst.GetSoundEffect().Play(DeckEditor.inst.tickerToggle);
         toggle.enabled = DeckEditor.inst.FilterClass(beastClass);
     }
 

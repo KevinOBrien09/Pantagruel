@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a977b5c2d28af3d409969a9a4297cfc7, type: 3}
   m_Name: Passive-115
   m_EditorClassIdentifier: 
-  passiveName: Backline Support
+  passiveName: 'Passive: Support from the Backline!'
   passiveDesc: 'Whereever I am, whenever you draw a card create a <i>Vaporous Poke</i>.
 
 '

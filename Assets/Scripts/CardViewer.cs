@@ -23,6 +23,7 @@ public class CardViewer : Singleton<CardViewer>
 
     public void Open(Card card)
     {
+        AudioManager.inst.GetSoundEffect().Play(DeckEditor.inst.openCardViewer);
         gameObject.SetActive(true);
         LoadCard(card);
     }
@@ -66,11 +67,6 @@ public class CardViewer : Singleton<CardViewer>
     {
         
         index--;
-        // Debug.Log("index: " + index + " count: " + cards.Count);
-        // if(index == 0)
-        // {left.gameObject.SetActive(false);}
-        // else
-        // {left.gameObject.SetActive(true);}
         LoadCard(cards[index]);
     }
 
@@ -88,17 +84,6 @@ public class CardViewer : Singleton<CardViewer>
     public void Right()
     {
         index++;
-    
-     
-        // if(index ==cards.Count-1)
-        // {
-        //     right.gameObject.SetActive(false);
-        // }
-        // else
-        // {
-        //     right.gameObject.SetActive(true); 
-                
-        // }
         LoadCard(cards[index]);
     }
 

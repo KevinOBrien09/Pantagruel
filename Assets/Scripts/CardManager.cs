@@ -169,7 +169,7 @@ public class CardManager:Singleton<CardManager>
     {
         StartCoroutine(q());
         cardsUsedThisTurn.Add(usedCard);
-        BeastSwapper.inst.DeactivateButton();
+  
         EventManager.inst.onPlayerCastCard.Invoke();
         IEnumerator q()
         {

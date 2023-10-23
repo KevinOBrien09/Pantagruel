@@ -25,6 +25,6 @@ MonoBehaviour:
     volume: 0
   element: 0
   beastClass: 6
-  desc: Confuse the target for 1 turn also deal 1 RAW damage.
-  flavourText: 
+  desc: Consume 2 of the opponent's mana gems, also deal 1 RAW damage.
+  flavourText: '"EEEEEEEEEEEEEEEEEEEEEEE"'
   deckCost: 10

@@ -16,13 +16,14 @@ MonoBehaviour:
   cardName: Slash
   picture: {fileID: 21300000, guid: c31f6b324bdc6564caad2746db93b86b, type: 3}
   manaCost: 1
-  vfx: 
-  castDelay: 0.2
-  effects: []
+  vfx: Slice1
+  castDelay: 0
+  effects:
+  - {fileID: 11400000, guid: 36593789721779343a5d7b1c6a2e0ded, type: 2}
   soundEffect:
-    audioClip: {fileID: 0}
-    pitchRange: {x: 0, y: 0}
-    volume: 0
+    audioClip: {fileID: 8300000, guid: 84f7c61ea17ffa74b86dab40d76c1db0, type: 3}
+    pitchRange: {x: 0.9, y: 1.1}
+    volume: 0.5
   element: 0
   beastClass: 0
   desc: Deal 10 PHYS damage to the target.

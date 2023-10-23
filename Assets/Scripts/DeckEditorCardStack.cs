@@ -21,17 +21,18 @@ public class DeckEditorCardStack : MonoBehaviour
     public void Stack()
     {
         quantity++;
+         
         cardQuanttxt.text = smallerX +  quantity.ToString();
     }
 
     public void Remove()
     {
         quantity--;
-        DeckEditor.inst.CheckIfTickersShouldBeReenabled(card);
+DeckEditor.inst. RefreshFilters(card);
         if(quantity == 0)
         {
             DeckEditor.inst.currentCardStackDict.Remove(card);
-      
+            DeckEditor.inst. RefreshFilters(card);
             Destroy(gameObject);
             return;
         }

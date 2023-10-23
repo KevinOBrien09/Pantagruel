@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3a73694480f1341b7b893b8ece6e2f, type: 3}
   m_Name: 0_Empty Passive
   m_EditorClassIdentifier: 
-  passiveName: EMPTY
-  passiveDesc: 
+  passiveName: 'Passive: Empty'
+  passiveDesc: Not Implemented
   operativeState: 1

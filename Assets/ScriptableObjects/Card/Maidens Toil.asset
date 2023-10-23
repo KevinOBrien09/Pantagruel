@@ -25,5 +25,7 @@ MonoBehaviour:
     volume: 0
   element: 3
   beastClass: 8
-  desc: 
+  desc: Decrease your max mana by 2 for 2 turns, then <b>manifest</b> a <"maiden">
+    card.
+  flavourText: 
   deckCost: 5

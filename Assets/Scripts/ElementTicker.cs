@@ -19,6 +19,7 @@ public class ElementTicker : MonoBehaviour
     
     public void Click()
     {
+        AudioManager.inst.GetSoundEffect().Play(DeckEditor.inst.tickerToggle);
        toggle.enabled = DeckEditor.inst.FilterElement(element);
     }
     

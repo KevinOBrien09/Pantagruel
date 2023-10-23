@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec03d198f138b2c4099b0c760090b965, type: 3}
+  m_Name: The Howling Hand
+  m_EditorClassIdentifier: 
+  Id: e971d6c5-0911-4c15-85c1-f130acf15ef3
+  cardName: Howling Hand
+  picture: {fileID: 21300000, guid: eba5ce9319bdb474e86548740b2bf1c2, type: 3}
+  manaCost: 0
+  vfx: 
+  castDelay: 0.2
+  effects: []
+  soundEffect:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
+  element: 1
+  beastClass: 15
+  desc: 
+  flavourText: 
+  deckCost: 0

@@ -31,6 +31,7 @@ public class CardCatalogCard : MonoBehaviour
     public void Stack()
     {   
         quantity++;
+          
         quantityText.text = smallerX + quantity.ToString();
     }
 
@@ -41,8 +42,9 @@ public class CardCatalogCard : MonoBehaviour
         {
             DeckEditor.inst.activeCatalogCards.Remove(this);
             DeckEditor.inst.catalogCardDict.Remove(card);
-            DeckEditor.inst.CheckIfFiltersShouldBeDisabled(card);
-               DeckEditor.inst.ChangeCountText();
+          
+            DeckEditor.inst.ChangeCountText();
+            DeckEditor.inst. RefreshFilters(card);
             Destroy(gameObject);
             return;
         }

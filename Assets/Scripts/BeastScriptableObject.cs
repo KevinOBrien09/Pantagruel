@@ -74,6 +74,7 @@ public class BeastData
     public GameObject beastGraphicPrefab;
     public Sprite uiPicture;
     public Sprite mainSprite;
+    public Sprite outLine;
     public bool facingRight;
     [Header("Attributes")]
     [Space()]

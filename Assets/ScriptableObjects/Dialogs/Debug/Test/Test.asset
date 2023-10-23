@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47ea6e94e2a7fe4fa0534161af2c13a, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  blocks:
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: A tree.
+    isThought: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: Woop di doop.
+    isThought: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: XD
+    isThought: 0
+  dialogBlockLanguages: []
+  textAsset: {fileID: 4900000, guid: d592842822643d444a86a07a10399185, type: 3}

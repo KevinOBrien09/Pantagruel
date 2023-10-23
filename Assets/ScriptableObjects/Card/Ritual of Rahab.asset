@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec03d198f138b2c4099b0c760090b965, type: 3}
+  m_Name: Ritual of Rahab
+  m_EditorClassIdentifier: 
+  Id: 6935121c-3b9f-4e6c-9fcc-8c0a1e8e3fb1
+  cardName: Ritual of Rahab
+  picture: {fileID: 21300000, guid: 7e3ce67a8e0b90f40a8851214efc200a, type: 3}
+  manaCost: 0
+  vfx: 
+  castDelay: 0.2
+  effects: []
+  soundEffect:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
+  element: 2
+  beastClass: 17
+  desc: 
+  flavourText: 
+  deckCost: 0

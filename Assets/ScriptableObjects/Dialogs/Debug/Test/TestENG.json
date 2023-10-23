@@ -1,0 +1,16 @@
+{
+    "blocks": [
+        {
+            "speakerName": "Test",
+            "dialog": "qweqwe"
+        },
+        {
+            "speakerName": "Testy",
+            "dialog": "qw"
+        },
+        {
+            "speakerName": "Testy",
+            "dialog": "hgjghjgh"
+        }
+    ]
+}

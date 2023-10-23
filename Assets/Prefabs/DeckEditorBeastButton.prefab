@@ -579,6 +579,7 @@ MonoBehaviour:
   beastName: {fileID: 6682936642274167576}
   beastAtt: {fileID: 6682936642303289724}
   deckCostTxt: {fileID: 8585792740029163259}
+  subMenu: {fileID: 0}
   button: {fileID: 6682936641660017717}
   deckCostFill: {fileID: 6668108180912085492}
   beast: {fileID: 0}

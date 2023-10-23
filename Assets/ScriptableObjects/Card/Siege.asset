@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec03d198f138b2c4099b0c760090b965, type: 3}
+  m_Name: Siege
+  m_EditorClassIdentifier: 
+  Id: 6d6fc552-aed0-4a59-82f2-c7c6981b7e9f
+  cardName: Siege
+  picture: {fileID: 21300000, guid: 3d000753c6192c94790b2fd2159ae827, type: 3}
+  manaCost: 8
+  vfx: 
+  castDelay: 0.2
+  effects: []
+  soundEffect:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
+  element: 4
+  beastClass: 2
+  desc: <b>Blockade</b> the opponents deck for 3 turns.
+  flavourText: 
+  deckCost: 20

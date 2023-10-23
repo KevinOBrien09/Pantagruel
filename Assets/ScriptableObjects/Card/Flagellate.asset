@@ -25,7 +25,7 @@ MonoBehaviour:
     volume: 0
   element: 3
   beastClass: 3
-  desc: Deal (10% phys) damage to the caster, the caster gains (25% phys) bonus for
-    2 turns.
-  flavourText: 
+  desc: Inflicate the caster with <b><color=red>bleed</b></color> for 2 turns, when
+    the bleed ends they gain {PHYS 100%} bonus <b>phys</b> for 1 turn.
+  flavourText: I must suffer.
   deckCost: 7

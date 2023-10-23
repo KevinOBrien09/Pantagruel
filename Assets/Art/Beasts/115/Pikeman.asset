@@ -26,6 +26,7 @@ MonoBehaviour:
       type: 3}
     mainSprite: {fileID: -2642133754919493933, guid: 01ed9e5c00d0487489ff20332c501148,
       type: 3}
+    outLine: {fileID: 0}
     facingRight: 1
     bestiaryID: 115
     wildDeck: {fileID: 11400000, guid: 9cdb4c4e03b279d479964cb5306283ff, type: 2}

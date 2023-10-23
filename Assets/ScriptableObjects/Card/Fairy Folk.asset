@@ -24,7 +24,7 @@ MonoBehaviour:
     pitchRange: {x: 0, y: 0}
     volume: 0
   element: 1
-  beastClass: 0
+  beastClass: 7
   desc: Increase your parties MGK by 10 for  turns.
   flavourText: 
   deckCost: 15

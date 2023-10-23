@@ -654,10 +654,15 @@ MonoBehaviour:
   canvasGroup: {fileID: 4515540906022272939}
   icon: {fileID: 450354433431180261}
   BG: {fileID: 450354433569857405}
+  paper: {fileID: 3886057887189544152}
+  vaporousBlue:
+    serializedVersion: 2
+    rgba: 4294956444
   imagesToHaveWobbleShader:
   - {fileID: 450354433569857405}
   - {fileID: 450354433431180261}
   - {fileID: 450354434624183687}
+  - {fileID: 3886057887189544152}
   imagesToHaveDissolveShader:
   - {fileID: 450354434624183687}
   - {fileID: 450354433431180261}
@@ -666,6 +671,7 @@ MonoBehaviour:
   - {fileID: 303644029418160223}
   - {fileID: 303644029296248159}
   - {fileID: 303644028206816383}
+  - {fileID: 3886057887189544152}
   vaporousWobble: {fileID: 2100000, guid: 6163c5514e576c74d85af229f72dda95, type: 2}
   vaporousDissolve: {fileID: 2100000, guid: a2d9e38443fa0954697dc519b996d95c, type: 2}
   yUp: 40

@@ -18,7 +18,8 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
     public GameObject manaGem;
     public CanvasGroup canvasGroup;
     public Image icon;
-    public Image BG;
+    public Image BG,paper;
+    public Color32 vaporousBlue;
     public List<Image> imagesToHaveWobbleShader = new List<Image>();
     public List<Image> imagesToHaveDissolveShader = new List<Image>();
     public Material vaporousWobble,vaporousDissolve;
@@ -58,6 +59,7 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
         {
             isVapour = true;
             BG.color = Color.white;
+            paper.color = vaporousBlue;
             skillDesc.color = Color.black;
             cardName.text = "<i>Vaporous </i>" + card.cardName;
            // desc = "<size=80%><i>RAPID: Will be DESTROYED at the end of this turn.</i> <br></size>" + desc;

@@ -153,7 +153,7 @@ public class BattleManager:Singleton<BattleManager>
         CardManager.inst.NewTurn();
         BattleTicker.inst.Type("The beast readies itself.");
         CardManager.inst.DeactivateHand();
-        BeastSwapper.inst.DeactivateButton();
+       
         EndTurnButton.inst.Deactivate();        
         Inventory.inst.DeactivateDrag();
         EnemyAI.inst.Act(RivalBeastManager.inst.activeBeast);
@@ -165,7 +165,7 @@ public class BattleManager:Singleton<BattleManager>
         CardManager.inst.NewTurn();
         CardManager.inst.ActivateHand();
         Inventory.inst.ActivateDrag();
-        BeastSwapper.inst.ReactivateButton();
+ 
         StartCoroutine(q());
         
         if(turn % 2 == 0)
@@ -204,7 +204,7 @@ public class BattleManager:Singleton<BattleManager>
         ManaManager.inst.LeaveBattle();
         EnemyAI.inst.LeaveBattle();
         RivalBeastManager.inst.Wipe();
-        BeastSwapper.inst.ReactivateButton();
+      
         BattleTicker.inst.Type(LocationManager.inst.currentLocation.locationName);
         Inventory.inst.DisableItemDragOnAll();
         RightPanelButtonManager.inst.SwapToOverworld();

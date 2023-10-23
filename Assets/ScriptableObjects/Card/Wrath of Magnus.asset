@@ -25,6 +25,6 @@ MonoBehaviour:
     volume: 0
   element: 5
   beastClass: 15
-  desc: The next attack on the target deals an additional (20%MGK) MGK damage.
+  desc: Both players <b><color=black>destroy</b></color> their hand.
   flavourText: '"HEHEHEHEHEHE"'
   deckCost: 15

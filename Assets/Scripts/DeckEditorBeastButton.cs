@@ -14,7 +14,7 @@ public class DeckEditorBeastButton : MonoBehaviour,IPointerClickHandler
     public Image deckCostFill;
     public Beast beast;
     string t = "Tarot: ";
-
+    
     public void Init(Beast  b)
     {
         BeastScriptableObject bso = b.scriptableObject;
@@ -42,7 +42,7 @@ public class DeckEditorBeastButton : MonoBehaviour,IPointerClickHandler
     {
         if(eventData.button == PointerEventData.InputButton.Right )
         {
-            Debug.Log("right click");
+           BeastButtonDropDown.inst.Move(this,eventData.pressPosition);
         }
     }
 }

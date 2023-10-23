@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d11aedf986ff0234c99d4109067c43ca, type: 3}
-  m_Name: Spiral
+  m_Name: Uzu
   m_EditorClassIdentifier: 
   beastData:
     ANIMATED_PREFAB_DONE: 0
@@ -18,7 +18,7 @@ MonoBehaviour:
       note: 'Should be grass.
 
 '
-    beastName: Spiral
+    beastName: Uzu
     flavourText: 
     bottomCornerPos: {x: 0, y: -0.25}
     battlePos: {x: 0, y: 0, z: 2}
@@ -27,6 +27,7 @@ MonoBehaviour:
       type: 3}
     mainSprite: {fileID: -1008717397128904155, guid: 2e0ca114799136d42938818e6ba7f6a9,
       type: 3}
+    outLine: {fileID: 0}
     facingRight: 0
     bestiaryID: 40
     wildDeck: {fileID: 0}
