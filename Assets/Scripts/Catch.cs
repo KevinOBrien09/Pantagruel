@@ -9,14 +9,15 @@ public class Catch :Effect
     public int ballPower;
    
 
-    public override void Use(Beast caster,Beast target, List<Beast> casterTeam = null ,List<Beast> targetTeam = null)
+    public override void Use(Entity caster,Entity target,bool isPlayer, List<Entity> casterTeam = null ,List<Entity> targetTeam = null)
     {
         BattleTicker.inst.Type("The beast....");
 
         CardManager.inst.DeactivateHand();
-        if(CatchManager.IsCaptureSuccessful(ballPower,target))
+   
+        if(CatchManager.IsCaptureSuccessful(ballPower,(Beast)target))
         {
-            PlayerParty.inst.AddNewBeast(target);
+            PlayerParty.inst.AddNewBeast((Beast)target);
             PassiveManager.inst.OrginizePassiveActivity();
             Beast b = RivalBeastManager.inst.activeBeast;
             RivalBeastManager.inst.RemoveActiveBeast();

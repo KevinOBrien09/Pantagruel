@@ -9,6 +9,7 @@ public class WorldViewManager:Singleton<WorldViewManager>
 {
     public CanvasGroup worldView;
     public Image abstractBG;
+    
     public bool cardHoveringOverViewport,itemHoveringOverViewport;
     public CardBehaviour currentCardOverViewPort;
     public  ItemStack currentItemStack;
@@ -82,7 +83,13 @@ public class WorldViewManager:Singleton<WorldViewManager>
                     currentCardOverViewPort = null;
                 }
                 else
-                {Debug.Log("Not enough Mana");}
+                {
+                    AudioManager.inst.GetSoundEffect().Play(SystemSFX.inst.errorSound);
+                     Debug.Log("cannot cast" + currentCardOverViewPort.card.cardName);
+                        cardHoveringOverViewport = false;
+                    currentCardOverViewPort = null;
+                   
+                }
             }
         }
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public class CardCombo
 {
-    public string hint;
+   
     public List<Card> requiredCards;
     public int fullManaCost()
     {

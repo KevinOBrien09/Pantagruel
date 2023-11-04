@@ -9,7 +9,7 @@ public static class CatchManager
     public static bool IsCaptureSuccessful(int ballPower, Beast target)
     {
         BeastData d = target.scriptableObject.beastData;
-        if(target.currentHealth == d.stats.maxHealth)
+        if(target.currentHealth == target.stats().maxHealth)
         {
             Debug.Log("Target is full health, catch not possible.");
             return false;
@@ -17,7 +17,7 @@ public static class CatchManager
         //status effects
         int catchChance = 0;
         int h = 0;
-        float p = target.currentHealth /(float)d.stats.maxHealth;
+        float p = target.currentHealth /(float)target.stats().maxHealth;
         p = p*100;
         p = Mathf.Floor(p);
         h = 100 - (int)p;

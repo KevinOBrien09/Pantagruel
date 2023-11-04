@@ -14,15 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deck:
     cards:
-    - {fileID: 11400000, guid: b2d044160b58c03448309f7ed751e043, type: 2}
-    - {fileID: 11400000, guid: b2d044160b58c03448309f7ed751e043, type: 2}
-    - {fileID: 11400000, guid: b2d044160b58c03448309f7ed751e043, type: 2}
-    - {fileID: 11400000, guid: ea117adaef8ad4d43a9ff396daf4d0b4, type: 2}
-    - {fileID: 11400000, guid: ea117adaef8ad4d43a9ff396daf4d0b4, type: 2}
-    - {fileID: 11400000, guid: ea117adaef8ad4d43a9ff396daf4d0b4, type: 2}
-    - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+    - {fileID: 11400000, guid: 7dfa20122f8d91f4c9ec5e6a14a3a685, type: 2}
+    - {fileID: 11400000, guid: 7dfa20122f8d91f4c9ec5e6a14a3a685, type: 2}
+    - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
+    - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
+    - {fileID: 11400000, guid: 6dc91edc1434a7d419e40d22201288b4, type: 2}
     discard: []
   combos:
-  - hint: The beast is preparing to trust!
-    requiredCards:
-    - {fileID: 11400000, guid: b2d044160b58c03448309f7ed751e043, type: 2}
+  - requiredCards:
+    - {fileID: 11400000, guid: 7dfa20122f8d91f4c9ec5e6a14a3a685, type: 2}
+    - {fileID: 11400000, guid: 6dc91edc1434a7d419e40d22201288b4, type: 2}

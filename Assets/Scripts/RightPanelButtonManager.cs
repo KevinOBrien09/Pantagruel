@@ -6,6 +6,10 @@ public class RightPanelButtonManager : Singleton<RightPanelButtonManager>
 {
    public GameObject overworldButtons,battleButtons;
 
+   void Start(){
+      SwapToOverworld();
+   }
+
 
    public void SwapToBattle(){
     overworldButtons.SetActive(false);

@@ -1,0 +1,20 @@
+//Passive
+//free to swap from/to for the first time in a round (bells?)
+//negative status effect(bleed heal) heals instead of damages. 
+//heal after wild encounter
+//buff with low torch light
+//heal for unspent mana
+//global discard hand
+//buffs ally damage
+//elemental damage buff for party memebr
+//weather buffs
+//rammus
+//heal for every new overworld tile you walk on
+//buff depening on what biome tile the battle takes place on
+//start combat with full block
+//repeat card cast
+//something after playing last card in hand
+//WEATHERVANE:Gains different effect depending what direction you where facing when the battle begins
+//arrow characters, use arrows in iventory
+//character gains damage based on how much tarot they are missing
+//heals when a summon dies

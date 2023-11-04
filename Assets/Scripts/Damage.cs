@@ -8,7 +8,7 @@ public class Damage :Effect
 {
     public float damageValue;
 
-    public override void Use(Beast caster,Beast target, List<Beast> casterTeam = null ,List<Beast> targetTeam = null)
+    public override void Use(Entity caster,Entity target,bool isPlayer, List<Entity> casterTeam = null ,List<Entity> targetTeam = null)
     {
        target.TakeDamage(damageValue);
     }

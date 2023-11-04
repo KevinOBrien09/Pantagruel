@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Beast : MonoBehaviour
+public class Beast : Entity
 {
     public BeastScriptableObject scriptableObject;
-    public float currentHealth;
+  
     public Deck deck;
     public int shields;
-    public HealthBar currentHealthBar;
-    public BeastAnimatedInstance animatedInstance;
-    public bool KO;
+    
+  
+ 
+    public EXP exp = new EXP();
+    public Stats statMods = new Stats();
+  
 
 
     public void Init(BeastSaveData beastSaveData)
@@ -18,6 +21,8 @@ public class Beast : MonoBehaviour
         scriptableObject = BeastBank.inst.beastDict[beastSaveData.beastiaryID];
         gameObject.name = scriptableObject.beastData.beastName;
         currentHealth = beastSaveData.currentHealth;
+        exp = beastSaveData.exp;
+         
         foreach (var id in beastSaveData.deckIDs)
         {
             if(BeastBank.inst.cardDict.ContainsKey(id))
@@ -27,32 +32,34 @@ public class Beast : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float amount)
+    public void FirstHealthInit(EXP e){
+        exp = e;
+        currentHealth = stats().maxHealth;
+
+    }
+    public void LevelUp()
     {
-        currentHealth = currentHealth-amount;
-        if(currentHealth <0)
-        {
-            currentHealth = 0;
+        if(scriptableObject!=null){
+        currentHealth+= scriptableObject.beastData.statGrowthPerLevel.maxHealth;
+        foreach (var item in currentHealthBars)
+        {item.onHit.Invoke(); }
         }
-        
-        if(animatedInstance != null){
-            animatedInstance.TakeDamage();
+
+        if(PlayerParty.inst.activeBeast == this){ 
+            
+            BottomCornerBeastDisplayer.inst.RefreshLevel();
         }
-        
-        if(currentHealth ==0){
-            KO = true;
-            animatedInstance.Dissolve();
-        }
-        currentHealthBar.onHit.Invoke();
-        BattleManager.inst.CheckIfGameContinues();
        
     }
+
+
 
     public BeastSaveData PsudeoSave(BeastScriptableObject bso)
     {
         BeastSaveData bsd = new BeastSaveData();
         bsd.beastiaryID = bso.beastData.bestiaryID;
-        bsd.currentHealth = bso.beastData.stats.maxHealth;
+        scriptableObject = bso;//???
+         
         List<string> cardIDs = new List<string>();
         foreach (var card in bso.beastData.wildDeck.deck.cards)  //ONLY DOES WILD DECK ATM
         { cardIDs.Add(card.Id); }
@@ -60,4 +67,12 @@ public class Beast : MonoBehaviour
         return bsd;
     }
     
+    public override Stats stats()
+    {
+        Stats s = new Stats(scriptableObject.beastData.baseStats);
+        for (int i = 0; i < exp.level; i++)
+        {s.StackStats(scriptableObject.beastData.statGrowthPerLevel);}
+        s.StackStats(statMods);
+        return s;
+    }
 }

@@ -9,13 +9,17 @@ public class BottomLeftPanel:Singleton<BottomLeftPanel>
     public GameObject cardStack;
     public GameObject moveArrows;
 
+    void Start(){
+        SwapToOverworld();
+    }
 
-    public void SwapToArrows(){
+
+    public void SwapToOverworld(){
         moveArrows.SetActive(true);
         cardStack.SetActive(false);
     }
 
-    public void SwapToStack(){
+    public void SwapToBattle(){
         moveArrows.SetActive(false);
         cardStack.SetActive(true);
     }

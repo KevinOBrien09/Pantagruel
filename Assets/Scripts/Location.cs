@@ -13,4 +13,7 @@ public class Location : ScriptableObject
     }
     public string locationName;
     public List<BeastSOBiomePair> beastsInLocation = new List<BeastSOBiomePair>();
+    public List<Card> cardRewards = new List<Card>();
+    public Vector2 goldRewardRange;
+    public Vector2 levelRange; //if mobs scale with player throughout game move this elsewhere.
 }

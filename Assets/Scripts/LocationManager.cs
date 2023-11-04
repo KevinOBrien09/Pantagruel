@@ -8,9 +8,9 @@ public class LocationManager : Singleton<LocationManager>
     public Location currentLocation;
     public Dictionary<Biome,List<BeastScriptableObject>> dict = new Dictionary<Biome, List<BeastScriptableObject>>();
 
-    void Start()
+    protected  override void Awake()
     {
-     
+     base.Awake();
         OrgniseDict(testing);
     }
 

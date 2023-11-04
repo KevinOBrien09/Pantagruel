@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec03d198f138b2c4099b0c760090b965, type: 3}
+  m_Name: Appetite of the Appendage
+  m_EditorClassIdentifier: 
+  Id: e971d6c5-0911-4c15-85c1-f130acf15ef3
+  cardName: Appetite of the Appendage
+  picture: {fileID: 21300000, guid: eba5ce9319bdb474e86548740b2bf1c2, type: 3}
+  manaCost: 2
+  vfx: 
+  castDelay: 0
+  effects:
+  - {fileID: 11400000, guid: 6cf636112f9504844b7b2f6d2427370d, type: 2}
+  - {fileID: 11400000, guid: 79b7ea41d60a51949babcb2047393397, type: 2}
+  soundEffect:
+    audioClip: {fileID: 8300000, guid: aeaf238419057c34db81b0351d426a87, type: 3}
+    pitchRange: {x: 0.9, y: 1.1}
+    volume: 0.7
+  element: 1
+  beastClass: 15
+  desc: Deal 5 damage, heal for 5.
+  flavourText: 
+  deckCost: 6

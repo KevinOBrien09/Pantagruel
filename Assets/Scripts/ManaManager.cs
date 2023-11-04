@@ -15,8 +15,9 @@ public class ManaManager:Singleton<ManaManager>
     public int maxManaBase = 8;
     public TextMeshProUGUI manaCountText;
 
-    void Start()
+   protected override void Awake()
     {
+        base.Awake();
        LeaveBattle();
     }
 

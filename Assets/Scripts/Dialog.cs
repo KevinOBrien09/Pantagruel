@@ -39,7 +39,7 @@ public class Dialog:ScriptableObject
     public List<DialogBlockLanguage> dialogBlockLanguages = new List<DialogBlockLanguage>();
     public TextAsset textAsset;
    
- 
+    #if UNITY_EDITOR
 
     [ContextMenu("GenerateJSON")]
     public void GenerateJSON()
@@ -74,4 +74,5 @@ public class Dialog:ScriptableObject
         { return Directory.Exists(dir); }
     }
 
+    #endif
 }

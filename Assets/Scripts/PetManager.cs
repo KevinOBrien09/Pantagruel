@@ -1,0 +1,105 @@
+
+ using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
+
+public class PetManager:Singleton<PetManager>                   
+{
+    public PetBehaviour enemyPet,playerPet,petPrefab;
+    public Transform enemyPetHolder,playerPetHolder;
+
+  
+    public void SummonPlayerPet(Pet p)
+    {
+       if(playerPet!=null){
+            //kill
+        }
+        AudioManager.inst.GetSoundEffect().Play(p.summoned);
+        playerPet = Instantiate(petPrefab,playerPetHolder);
+        playerPet.gameObject.layer = 8;
+        playerPet.Init(p,EntityOwnership.PLAYER);
+        playerPet.transform.GetChild(0).gameObject.layer = 8;
+      
+        BattleManager.inst.SetPlayerTarget(playerPet);
+        PlayerParty.inst.activeBeast.animatedInstance.MoveBack(EntityOwnership.PLAYER);
+        BattleField.inst.Summon(p,playerPet,EntityOwnership.PLAYER);
+
+    }   
+
+    public void SummonEnemyPet(Pet p)
+    {
+        if(enemyPet!=null){
+            //kill
+        }
+        AudioManager.inst.GetSoundEffect().Play(p.summoned);
+        enemyPet = Instantiate(petPrefab,enemyPetHolder);
+        enemyPet.gameObject.layer = 7;
+ 
+        enemyPet.Init(p,EntityOwnership.ENEMY);
+        enemyPet.transform.GetChild(0).gameObject.layer = 7;
+        RivalBeastManager.inst.healthBar.SummonPetHealthBar(enemyPet);
+        BattleManager.inst.SetEnemyTarget(enemyPet);
+        RivalBeastManager.inst.activeBeast.animatedInstance.MoveBack(EntityOwnership.ENEMY);
+        BattleField.inst.Summon(p,enemyPet,EntityOwnership.ENEMY);
+    }
+
+    public void KillPet(PetBehaviour p)
+    {
+        if(p == enemyPet)
+        {
+            StartCoroutine(q());
+            IEnumerator q()
+            {
+                CardManager.inst.DeactivateHand();
+         
+                yield return new WaitForSeconds(1);
+
+                //RivalBeastManager.inst.healthBar.entity = null;
+                       BattleField.inst.enemyPet.healthBar.entity = null;
+                RivalBeastManager.inst.healthBar.RemovePetHealthBar();
+                 BattleField.inst.enemyPet.gameObject.SetActive(false);
+                Destroy(enemyPet.gameObject);
+               
+                enemyPet = null;
+                BattleManager.inst.SetEnemyTarget(RivalBeastManager.inst.activeBeast);
+                RivalBeastManager.inst.activeBeast.animatedInstance.MoveForward(EntityOwnership.ENEMY);
+                yield return new WaitForSeconds(.5f);
+                CardManager.inst.ActivateHand();
+            }
+        }
+        else if(p == playerPet)
+        {    
+            StartCoroutine(q());
+            IEnumerator q()
+            {
+                BattleManager.inst.SetPlayerTarget(PlayerParty.inst.activeBeast);
+              
+                yield return new WaitForSeconds(1);
+             
+               
+                BattleField.inst.playerPet.gameObject.SetActive(false);
+                BattleField.inst.playerPet.healthBar.entity = null;
+                if(playerPet !=null){
+                    Destroy(playerPet.gameObject);
+                }
+                
+                playerPet = null;
+              
+                PlayerParty.inst.activeBeast.animatedInstance.MoveForward(EntityOwnership.PLAYER);
+            }
+              
+        }
+    }
+
+    public void LeaveBattle()
+    {
+        if(playerPet != null){
+            
+            playerPet.Die();
+        }
+    }
+
+
+}

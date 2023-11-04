@@ -25,9 +25,9 @@ MonoBehaviour:
     volume: 0
   element: 0
   beastClass: 12
-  desc: '<b>Requires 1 BOLT in your inventory<b><br>
+  desc: '<b>Requires 1 BOLT in your inventory<b>
 
-    Deal 10% missing health
-    damage to the target.'
+    Deal 10% missing health damage
+    to the target.'
   flavourText: 
   deckCost: 0

@@ -13,7 +13,7 @@ public class ManaGem : MonoBehaviour
     public void Activate(){
         active = true;
        TurnOnCircle();
-        gameObject.SetActive(true);
+      
     }
 
     public void TurnOffCircle(){
@@ -27,8 +27,7 @@ public class ManaGem : MonoBehaviour
     public void Deactivate()
     {
         active = false;
-       
-        gameObject.SetActive(false);
+        TurnOffCircle();
     }
 
 }

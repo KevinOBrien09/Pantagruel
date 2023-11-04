@@ -59,14 +59,7 @@ public class EnemyAI : Singleton<EnemyAI>
     public void Act(Beast b)
     {
         DrawRandomCard();
-        DeckObject wildDeck = b.scriptableObject.beastData.wildDeck;
-        List<CardCombo> validCombos = new List<CardCombo>();
-        foreach (var combo in wildDeck.combos)
-        {
-            bool hasCardsForCombo = combo.requiredCards.All(comboCard => hand.Any(handCard => handCard == comboCard));
-            if(hasCardsForCombo)
-            { validCombos.Add(combo); }
-        }
+        
 
         StartCoroutine(q());
         IEnumerator q()
@@ -74,8 +67,9 @@ public class EnemyAI : Singleton<EnemyAI>
             yield return new WaitForSeconds(.33f);
             EventManager.inst.onEnemyDrawCard.Invoke();
             RebuildCardBacks();
+            CardCombo chosenCombo = GetCombo(b);
             yield return new WaitForSeconds(.5f);
-            if(validCombos.Count == 0)
+            if(chosenCombo == null)
             {
                 BattleTicker.inst.Type("Turn skip");
                 yield return new WaitForSeconds(1);
@@ -84,7 +78,8 @@ public class EnemyAI : Singleton<EnemyAI>
             else
             {  
                 Debug.Log("Has a combo do turn");
-                CardCombo chosenCombo = validCombos[Random.Range(0,validCombos.Count)];
+                
+               
                 List<Card> toBeUsed = new List<Card>();
                 Dictionary<int,bool> checkList = new Dictionary<int, bool>();
                
@@ -109,23 +104,78 @@ public class EnemyAI : Singleton<EnemyAI>
                     }
                 }
 
+                Queue<Card> c = new Queue<Card>();
                 foreach (var usedCard in toBeUsed)
                 {
+                    c.Enqueue(usedCard);
+                   
+                }
+            
+            peepoo:
+                if(c.Count != 0)
+                {
+                    
+                    Card usedCard = c.Dequeue();
+                    BattleTicker.inst.Type(usedCard.cardName);
+                    yield return new WaitForSeconds(.25f);
+                   
                     hand.Remove(usedCard);
                     currentDeck.discard.Add(usedCard);
                     SpendMana(usedCard.manaCost);
                     EventManager.inst.onEnemyCastCard.Invoke();
-                    BattleTicker.inst.Type(usedCard.cardName);
                     
+                    if(usedCard.soundEffect.audioClip != null)
+                    {AudioManager.inst.GetSoundEffect().Play(usedCard.soundEffect); }
                     foreach (var effect in usedCard.effects)
-                    {effect.Use(RivalBeastManager.inst.activeBeast,PlayerParty.inst.activeBeast);}
+                    {effect.Use(RivalBeastManager.inst.activeBeast,BattleManager.inst.playerTarget,false);}
+                    RebuildCardBacks();
+                    yield return new WaitForSeconds(.5f);
+                    goto peepoo;
                 }
-
-                RebuildCardBacks();
-                yield return new WaitForSeconds(.5f);
-                BattleManager.inst.EndTurn();
+                else
+                {
+                    yield return new WaitForSeconds(.5f);
+                    BattleManager.inst.EndTurn();
+                }
             }
         }
+    }
+
+
+    CardCombo GetCombo(Beast b)
+    {
+        DeckObject wildDeck = b.scriptableObject.beastData.wildDeck;
+        List<CardCombo> validCombos = new List<CardCombo>();
+        foreach (var combo in wildDeck.combos)
+        {
+            bool hasCardsForCombo = combo.requiredCards.All(comboCard => hand.Any(handCard => handCard == comboCard));
+            if(hasCardsForCombo)
+            { 
+                if( currentMana >= combo.fullManaCost())
+                {
+                    bool allCardsAreCastable = true;
+                    foreach (var item in combo.requiredCards)
+                    {
+                        if(!CardManager.inst.canCast(item,false))
+                        {allCardsAreCastable = false;}
+                    }
+
+                    if(allCardsAreCastable)
+                    {validCombos.Add(combo);}
+                }
+            }
+        }
+
+      
+        if(validCombos.Count > 0)
+        {
+        return  validCombos[Random.Range(0,validCombos.Count)];
+        }
+        else
+        {
+            return null;
+        }
+       
     }
     
     public void RebuildCardBacks()

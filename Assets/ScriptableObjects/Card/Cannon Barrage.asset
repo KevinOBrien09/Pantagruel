@@ -15,16 +15,19 @@ MonoBehaviour:
   Id: ad53bb13-6b68-4ce1-94f0-7cb4bbe9f4dc
   cardName: Cannon Barrage
   picture: {fileID: 21300000, guid: fa7edf7b454bd22469e964f9f54a1190, type: 3}
-  manaCost: 0
+  manaCost: 1
+  vfxSetUp: 
   vfx: 
   castDelay: 0.2
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: bf3fcf65fecb5994082de5e05842bedb, type: 2}
+  playVFXAfterDelay: 0
   soundEffect:
-    audioClip: {fileID: 0}
-    pitchRange: {x: 0, y: 0}
-    volume: 0
+    audioClip: {fileID: 8300000, guid: 22773c08c46e07945ba35244fa480e41, type: 3}
+    pitchRange: {x: 0.9, y: 1}
+    volume: 1
   element: 4
   beastClass: 2
-  desc: 
+  desc: Deal 15 damage to <b><i>everyone</b></i>.
   flavourText: 
-  deckCost: 0
+  deckCost: 12

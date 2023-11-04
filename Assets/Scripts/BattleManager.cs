@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-
+public enum EntityOwnership{ERROR,PLAYER,ENEMY}
 public class BattleManager:Singleton<BattleManager>                   
 {
     public enum TurnState{Player,Enemy}
@@ -12,6 +12,9 @@ public class BattleManager:Singleton<BattleManager>
     public RectTransform castOrderHolder;
     public int turn;
     public int startingMana;
+    public Entity enemyTarget;
+    public Entity playerTarget;
+    
     
     public void StartBattle(BattleType battleType)
     {
@@ -24,10 +27,18 @@ public class BattleManager:Singleton<BattleManager>
             RivalBeastManager.inst.CreateEnemyParty(WildEncounterManager.inst.GetEncounter());
             RivalBeastManager.inst.SwapActiveBeast(RivalBeastManager.inst.currentParty[0]);
         }
+        EndTurnButton.inst.Reactivate();
+        BattleField.inst.SetPlayerBeastIcon(PlayerParty.inst.activeBeast);
+        BattleField.inst.Init();
+        UpperLeftPanel.inst.  SwapToBattle();
+        SetEnemyTarget(RivalBeastManager.inst.activeBeast);
+        SetPlayerTarget(PlayerParty.inst.activeBeast);
         Inventory.inst.EnableItemDragOnAll();
         WorldViewManager.inst.EnterBattle();
         BottomPanel.inst.ChangeState(BottomPanel.inst.cards);
-        BottomLeftPanel.inst.SwapToStack();
+        LeftPanel.inst.SwapToBattle();
+        BottomLeftPanel.inst.SwapToBattle();
+        BottomCornerBeastDisplayer.inst.ToggleBattleBGOff();
         MusicManager.inst.EnterBattle();
         CardManager.inst.EnterBattle(PlayerParty.inst.activeBeast);
         RightPanelButtonManager.inst.SwapToBattle();
@@ -41,7 +52,7 @@ public class BattleManager:Singleton<BattleManager>
         EnemyAI.inst.RegenMana();
         EnemyAI.inst.DrawRandomCard();
         EnemyAI.inst.RebuildCardBacks();
-  
+       // BattleField.inst.Init();
         EventManager.inst.onBattleStart.Invoke();
 
         StartCoroutine(q());
@@ -56,30 +67,50 @@ public class BattleManager:Singleton<BattleManager>
 
     public bool CheckIfGameContinues()
     {
-        if(PlayerParty.inst.activeBeast.currentHealth <= 0)
+        if(!inBattle){
+            return false;
+        }
+        bool playerActiveBeastIsDead = PlayerParty.inst.activeBeast.currentHealth <= 0;
+        bool enemyActiveDeastIsDead = RivalBeastManager.inst.activeBeast.currentHealth <= 0;
+        //bool enemySummonIsDead = 
+       
+           
+        
+       
+
+        if(playerActiveBeastIsDead)
         {
             if(partyHasValidMember(PlayerParty.inst.party))
             {
                 Debug.Log("ForceSwap");
+                
                 return true;
             }
             else
             {
                 Debug.Log("Lose");
+                inBattle = false;
                 return false;;
             }
         }
-         
-        if(RivalBeastManager.inst.activeBeast.currentHealth <= 0)
+
+        if(enemyTarget.currentHealth <= 0)
         {
-            if(partyHasValidMember(RivalBeastManager.inst.currentParty))
+            if(enemyActiveDeastIsDead)
             {
-                Debug.Log("Force Enemy swap");
-                return true;}
-            else
-            {
-                Win();
-                return false;
+                if(partyHasValidMember(RivalBeastManager.inst.currentParty))
+                {
+                    Debug.Log("Force Enemy swap");
+                    return true;}
+                else
+                {
+                    Win();
+                    inBattle = false;
+                    return false;
+                }
+            }
+            else{
+                //move forward set enemybeast target
             }
         }
 
@@ -89,13 +120,25 @@ public class BattleManager:Singleton<BattleManager>
         
     }
 
-    public void Win(){
+    public void SetEnemyTarget(Entity e){
+        enemyTarget = e;
+    }
+
+    public void SetPlayerTarget(Entity e){
+        playerTarget = e;
+    }
+
+    public void Win()
+    {
         Debug.Log("Win");
         CardManager.inst.DeactivateHand();
         StartCoroutine(q());
 
         IEnumerator q()
         {
+            Beast b =  PlayerParty.inst.activeBeast;
+            b.exp.AddExp(b.exp.targetExp/10);
+           
             yield return new WaitForSeconds(1.5f);
             LeaveBattle();
         }
@@ -119,19 +162,11 @@ public class BattleManager:Singleton<BattleManager>
        {
             EventManager.inst.onNewTurn.Invoke();
             Inventory.inst.itemsUsedThisTurn.Clear();
-            List<CardStackBehaviour> castOrder = new List<CardStackBehaviour>();
-            foreach (Transform item in castOrderHolder)
-            {
-                CardStackBehaviour action = item.GetComponent<CardStackBehaviour>();
-                castOrder.Add(action);
-            }
+         
     
             //Do Stuff
             CardManager.inst.CheckForHandFuckery();
-            foreach (var item in castOrder)
-            {
-                Destroy(item.gameObject);
-            }
+          
 
             if(turnState == TurnState.Player)
             {
@@ -181,7 +216,7 @@ public class BattleManager:Singleton<BattleManager>
         {
             yield return new WaitForSeconds(.25f);
         
-            CardManager.inst.DrawRandomCard(PlayerParty.inst.activeBeast);
+            CardManager.inst.DrawCard();
             EventManager.inst.onPlayerDrawingCardFirstTimeInTurn.Invoke();
             CardManager.inst.MakeHandInteractable();
             EndTurnButton.inst.Reactivate();
@@ -195,19 +230,38 @@ public class BattleManager:Singleton<BattleManager>
         inBattle = false;
         EventManager.inst.onBattleEnd.Invoke();
         turn = 0;
+        PetManager.inst.LeaveBattle();
         PlayerManager.inst.movement.ReactivateMove();
         WorldViewManager.inst.LeaveBattle();
         BottomPanel.inst.ChangeState(BottomPanel.inst.dialog);
-        BottomLeftPanel.inst.SwapToArrows();
+        BottomLeftPanel.inst.SwapToOverworld();
+        LeftPanel.inst.SwapToOverworld();
         MusicManager.inst.ChangeToDungeon();
         CardManager.inst.LeaveBattle();
         ManaManager.inst.LeaveBattle();
         EnemyAI.inst.LeaveBattle();
         RivalBeastManager.inst.Wipe();
-      
+        UpperLeftPanel.inst.  SwapToOverworld();
+        BottomCornerBeastDisplayer.inst.ToggleBattleBGOn();
+   
         BattleTicker.inst.Type(LocationManager.inst.currentLocation.locationName);
         Inventory.inst.DisableItemDragOnAll();
         RightPanelButtonManager.inst.SwapToOverworld();
+    }
+
+    public EntityOwnership GetBeastOwnership(Beast b)
+    {
+        if(PlayerParty.inst.party.Contains(b)){
+            return EntityOwnership.PLAYER;
+        }
+        else if(RivalBeastManager.inst.currentParty.Contains(b)){
+            return EntityOwnership.ENEMY;
+        }
+        else
+        {
+            Debug.LogAssertion("Could not find ownership of " + b.scriptableObject.beastData.beastName);
+            return EntityOwnership.ERROR;
+        }
     }
 
 }

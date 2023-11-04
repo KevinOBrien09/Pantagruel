@@ -31,13 +31,13 @@ MonoBehaviour:
     facingRight: 0
     bestiaryID: 112
     wildDeck: {fileID: 11400000, guid: 80d5131422f00c4458ffe3c9b0906f53, type: 2}
-    stats:
-      maxHealth: 75
-      def: 22
-      physical: 25
-      magic: 11
-      charisma: 11
-      luck: 6
+    baseStats:
+      maxHealth: 350
+      def: 5
+      physical: 15
+      magic: 5
+      charisma: 1
+      luck: 5
     statGrowthPerLevel:
       maxHealth: 3
       def: 3

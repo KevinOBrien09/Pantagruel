@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f15057bdd57cdf4082478f157556505, type: 3}
+  m_Name: Bou
+  m_EditorClassIdentifier: 
+  animatedInstance: {fileID: 1862753791069072408, guid: 4cd76d35681821f4b9f4299c66065aa6,
+    type: 3}
+  uiPicture: {fileID: -1757901818, guid: 0f43fd9836c91bf41bc77914f5c3857c, type: 3}
+  petName: Bou
+  stats:
+    maxHealth: 1
+    def: 0
+    physical: 0
+    magic: 0
+    charisma: 0
+    luck: 0
+  dying:
+    audioClip: {fileID: 8300000, guid: e210e114ec8d95240b90bd54ad98c199, type: 3}
+    pitchRange: {x: 1.5, y: 2}
+    volume: 0.5
+  summoned:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0

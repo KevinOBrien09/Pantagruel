@@ -125,7 +125,7 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
     }
 
     public bool canCast()
-    {return CardManager.inst.canCast(card);}
+    {return CardManager.inst.canCast(card,true);}
 
     public void ShowDesc()
     {
@@ -133,7 +133,8 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
         icon.enabled = false;
      //   manaCost.enabled = false;
         skillDesc.enabled = true;
-        skillDesc.text = desc;
+        skillDesc.text = CardDescParser.GetBeastValues(card,PlayerParty.inst.activeBeast);
+        //desc;
         manaGem.SetActive(false);
     }
     

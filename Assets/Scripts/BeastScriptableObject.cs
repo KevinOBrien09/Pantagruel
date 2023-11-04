@@ -5,12 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public struct Stats
 {
-    public int maxHealth;
-    public int def;
-    public int physical;
-    public int magic;
-    public int charisma;
-    public int luck;
+    public float maxHealth;
+    public float def;
+    public float physical;
+    public float magic;
+    public float charisma;
+    public float luck;
 
     
     public Stats(Stats s)
@@ -24,11 +24,21 @@ public struct Stats
    
     }
 
-    public int GetStatTotal(){
+    public void StackStats(Stats s)
+    {
+        maxHealth += s.maxHealth;
+        def += s.def;
+        physical += s.physical;
+        magic += s.magic;
+        charisma +=s.charisma;
+        luck +=s.luck;
+    }
+
+    public float GetStatTotal(){
         return maxHealth + def + physical + magic + charisma + luck;
     }
 
-    public int GetStat(StatName stat)
+    public float GetStat(StatName stat)
     {
         switch(stat)
         {
@@ -80,8 +90,8 @@ public class BeastData
     [Space()]
     public int bestiaryID;
     public DeckObject wildDeck;
-    public Stats stats;
-    public Stats statGrowthPerLevel;
+    public Stats baseStats;
+    public Stats  statGrowthPerLevel;
     public Element element;
     public BeastClass beastClass;
     public BeastClass secondaryClass;

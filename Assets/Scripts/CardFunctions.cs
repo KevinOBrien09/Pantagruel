@@ -10,7 +10,7 @@ public static class CardFunctions
         if(deck.cards.Count > 0)
         {
            
-            Card card = deck.cards[Random.Range(0,deck.cards.Count)];
+            Card card = deck.cards[0];
             deck.cards.Remove(card);
             return card;
         }

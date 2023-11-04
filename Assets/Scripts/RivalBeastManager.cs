@@ -6,34 +6,39 @@ using DG.Tweening;
 
 public class RivalBeastManager:Singleton<RivalBeastManager>                   
 {
-    public HealthBar healthBar;
+    public EnemyBeastHealthbar healthBar;
     public Beast activeBeast;
     public Beast beastPrefab;
     public List<Beast> currentParty = new List<Beast>();
 
-    public void TrainerInit(){
-
-    }
+    
 
     public void CreateEnemyParty(List<BeastScriptableObject> beasts)
     {
         foreach (var item in beasts)
         {
             Beast b = Instantiate(beastPrefab,transform);
+            EXP e = new EXP(); 
+            e.PsudeoLevel((int)Random.Range(LocationManager.inst.currentLocation.levelRange.x,LocationManager.inst.currentLocation.levelRange.y),b);
             b.Init(b.PsudeoSave(item));
+            b.FirstHealthInit(e);
             currentParty.Add(b);
         }
         EnemyAI.inst.CreateDecks(currentParty);
     }
+
 
     public void SwapActiveBeast(Beast newActiveBeast)
     {
         activeBeast = newActiveBeast;
         EnemyAI.inst.SwapActiveBeast(newActiveBeast);
         CreateActiveBeastGraphic(newActiveBeast);
-        healthBar.beast = activeBeast;
-        activeBeast.currentHealthBar = healthBar;
+        healthBar.entity = activeBeast;
+        BattleField.inst.enemyBeast.InitBeast(newActiveBeast);
+
+        activeBeast.currentHealthBars.Add(healthBar);
         healthBar.onInit.Invoke();
+      
     }
 
     public void RemoveActiveBeast(){
@@ -51,7 +56,7 @@ public class RivalBeastManager:Singleton<RivalBeastManager>
         BattleGraphicManager.inst.Wipe();
         activeBeast = null;
         currentParty.Clear();
-        healthBar.beast = null;
+        healthBar.entity = null;
     }
 
    

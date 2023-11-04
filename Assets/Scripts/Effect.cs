@@ -6,9 +6,13 @@ using UnityEngine;
 
 public class Effect :ScriptableObject
 {
-    public virtual void  Use(Beast caster,Beast target, List<Beast> casterTeam = null ,List<Beast> targetTeam = null)
+    public virtual void  Use(Entity caster,Entity target,bool isPlayer, List<Entity> casterTeam = null ,List<Entity> targetTeam = null)
     {
         Debug.Log(name);
+    }
+
+    public virtual bool canUse(bool isPlayer){
+        return true;
     }
 
 }

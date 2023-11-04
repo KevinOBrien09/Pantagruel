@@ -16,7 +16,7 @@ MonoBehaviour:
     ANIMATED_PREFAB_DONE: 0
     devNote:
       note: Whereever I am, increase the duration of your burn effects by 1 turn.
-    beastName: Ablaz
+    beastName: Ablazish
     flavourText: '"I''m all fired up!"'
     bottomCornerPos: {x: 0, y: -1.5}
     battlePos: {x: 0, y: 0, z: 2}
@@ -25,16 +25,17 @@ MonoBehaviour:
       type: 3}
     mainSprite: {fileID: 6653994858678897968, guid: 76cf50e4a037e7f489c5d05ca4ec2164,
       type: 3}
+    outLine: {fileID: 0}
     facingRight: 0
     bestiaryID: 6
     wildDeck: {fileID: 11400000, guid: 80d5131422f00c4458ffe3c9b0906f53, type: 2}
-    stats:
-      maxHealth: 64
-      def: 12
-      physical: 12
-      magic: 33
-      charisma: 10
-      luck: 10
+    baseStats:
+      maxHealth: 30
+      def: 3
+      physical: 5
+      magic: 25
+      charisma: 3
+      luck: 5
     statGrowthPerLevel:
       maxHealth: 4
       def: 1

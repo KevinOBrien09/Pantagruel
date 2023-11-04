@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEditor;
 public class PlayerParty : Singleton<PlayerParty>
 {
-    public List<Beast> party = new List<Beast>(); //does not contain activeBeast
-    
+    public List<Beast> party = new List<Beast>(); 
     public Beast activeBeast;
     public Beast beastPrefab;
     
@@ -15,7 +14,14 @@ public class PlayerParty : Singleton<PlayerParty>
         { 
             foreach (var item in party)
             {
-                item.Init(item.PsudeoSave(item.scriptableObject));
+                EXP e = new EXP();
+                e.PsudeoLevel((int)Random.Range(LocationManager.inst.currentLocation.levelRange.x,LocationManager.inst.currentLocation.levelRange.y),item);
+                BeastSaveData bsd = item.PsudeoSave(item.scriptableObject);
+                bsd.exp = e;
+                item.Init(bsd);
+                item.FirstHealthInit(e);
+                
+             
             }
           
             activeBeast = party[0];
@@ -24,42 +30,14 @@ public class PlayerParty : Singleton<PlayerParty>
         }
         
     }
-    //Passive
-    //free to swap from/to for the first time in a round
-    //negative status effect(bleed heal) heals instead of damages. 
-
-    //heal after wild encounter
-    //buff with low torch light
-    //heal for unspent mana
-    //global discard hand
-    //buffs ally damage
-    //elemental damage buff for party memebr
-    //weather buffs
-    //rammus
-    //heal for every new 
-    //overworld tile you walk on
-    //buff depening on what biome tile the battle takes place on
-    //start combat with full block
-    //repeat card cast
-    //something after playing last card in hand
-    //WEATHERVANE:Gains different effect depending what direction you where facing when the battle begins
 
 
-    //arrow chaarcter use arrows in iventory
-
-
-
-        //charcter gains damage mased on how much card currency they are missing
     public void Load(SaveData data)
     {
         party = new List<Beast>();
         foreach (Transform item in transform)
-        {
-            Destroy(item.gameObject);
-        }
-   
-  
-
+        { Destroy(item.gameObject); }
+        
         for (int i = 0; i < data.party.Count; i++)  
         {
             Beast b = Instantiate(beastPrefab,transform);

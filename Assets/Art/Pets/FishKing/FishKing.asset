@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f15057bdd57cdf4082478f157556505, type: 3}
+  m_Name: FishKing
+  m_EditorClassIdentifier: 
+  animatedInstance: {fileID: 1213311838463890689, guid: 3151f3b0d537c234ba21b00d5d75755d,
+    type: 3}
+  uiPicture: {fileID: 507910716, guid: e48be9312070bb447969bf6b1eb89d85, type: 3}
+  petName: Fish King
+  stats:
+    maxHealth: 35
+    def: 0
+    physical: 0
+    magic: 0
+    charisma: 0
+    luck: 0
+  dying:
+    audioClip: {fileID: 8300000, guid: bc811125a6cac4546a31bb54c2095081, type: 3}
+    pitchRange: {x: 0.9, y: 1}
+    volume: 1
+  summoned:
+    audioClip: {fileID: 8300000, guid: 651653df8dd6dd745bf57edaaaab80be, type: 3}
+    pitchRange: {x: 0.9, y: 1.1}
+    volume: 1

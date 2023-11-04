@@ -10,7 +10,7 @@ using DG.Tweening;
 public class BeastProfileViewer : Singleton<BeastProfileViewer>
 { 
     public Image beastPicture,beastShadow,hpFill,expFill,elementBG,mainClassIcon,seconaryClassIcon;
-    public TextMeshProUGUI beastName,beastPassiveName,beastPassiveDesc,hpTxt,classification;
+    public TextMeshProUGUI beastName,beastPassiveName,beastPassiveDesc,hpTxt,classification,nextLevelEXP,lvlText;
     public Transform beastImageHolder;
 
     void Start(){
@@ -27,6 +27,8 @@ public class BeastProfileViewer : Singleton<BeastProfileViewer>
     }
 
     public void Apply(Beast b){
+          hpFill.DOFillAmount(0,0);
+        expFill.DOFillAmount(0,0);
         BeastData bd = b.scriptableObject.beastData;
         beastName.text = bd.beastName;
         beastPicture.sprite = bd.mainSprite;
@@ -38,8 +40,12 @@ public class BeastProfileViewer : Singleton<BeastProfileViewer>
         else{
             beastImageHolder.rotation = Quaternion.Euler(0,180,0);
         }
-        hpFill.DOFillAmount((float)b.currentHealth/(float)bd.stats.maxHealth,.5f);
-        hpTxt.text = "HP:" + b.currentHealth.ToString() + "/" + bd.stats.maxHealth;
+        hpFill.DOFillAmount((float)b.currentHealth/(float)b.stats().maxHealth,.5f);
+        expFill.DOFillAmount((float)b.exp.currentExp/(float)b.exp.targetExp,.5f);
+        float w = (float)b.exp.targetExp - (float)b.exp.currentExp;
+        nextLevelEXP.text = "NEXT:" + w.ToString();
+        lvlText.text = "LVL:" + b.exp.level.ToString();
+        hpTxt.text = "HP:" + b.currentHealth.ToString() + "/" + b.stats().maxHealth;
         string s = bd.element.ToString()+"/"+bd.beastClass.ToString();
         elementBG.color = BeastBank.inst.GetElementColour(bd.element);
         mainClassIcon.sprite = BeastBank.inst.GetBeastClassSprite(bd.beastClass);

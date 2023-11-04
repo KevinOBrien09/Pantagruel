@@ -1,0 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+
+[CreateAssetMenu(fileName = "New Pet")]
+public class Pet : ScriptableObject
+{
+    public BeastAnimatedInstance animatedInstance;
+    public Sprite uiPicture;
+    public string petName;
+    public Stats stats;
+    public SoundData dying,summoned;
+
+}

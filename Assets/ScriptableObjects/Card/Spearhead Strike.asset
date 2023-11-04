@@ -19,13 +19,13 @@ MonoBehaviour:
   vfx: Bash
   castDelay: 0.05
   effects:
-  - {fileID: 11400000, guid: 6cf636112f9504844b7b2f6d2427370d, type: 2}
+  - {fileID: 11400000, guid: 5ce694dcc3c92c14a87b6c51f5484dd3, type: 2}
   soundEffect:
     audioClip: {fileID: 8300000, guid: 2bfff0e1d27019d4ab96d2f49da9abd7, type: 3}
     pitchRange: {x: 0.9, y: 1.1}
     volume: 2
   element: 5
   beastClass: 2
-  desc: Deal 12 damage with a (LUCK 20%) chance to critcally strike.
+  desc: Deal 12 damage with a 20+({LUCK 100%}) chance to critcally strike.
   flavourText: 
   deckCost: 7

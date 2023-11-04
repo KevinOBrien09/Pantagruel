@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using DG.Tweening;
+using System;
 
 public class CardManager:Singleton<CardManager>                   
 {
@@ -11,14 +12,14 @@ public class CardManager:Singleton<CardManager>
     public RectTransform holder;
     public List<CardBehaviour> hand = new List<CardBehaviour>();
     public List<Card> cardsUsedThisTurn = new List<Card>();
-    public List<int> manaCostsThatCanBeDrawn = new List<int>();
+    
     float holderOgPos;
     public float downHodlerPos;
     public Deck currentDeck;
     public Beast currentBeast;
     public SoundData drawCard;
     Dictionary<Beast,Deck> deckDict = new Dictionary<Beast, Deck>();
-
+    public bool handDown;
     public void EnterBattle(Beast beast)
     {
         foreach (var item in PlayerParty.inst.party)
@@ -29,9 +30,12 @@ public class CardManager:Singleton<CardManager>
         
         foreach (var item in hand)
         {Destroy(item.gameObject);}
-        manaCostsThatCanBeDrawn.Add(1);
+     
         SwitchBeast(beast);
-        DrawCardOfSpecificCost(manaCostsThatCanBeDrawn);
+        ShuffleDeck();
+        DrawCard();
+        DrawCard();
+        DrawCard();
         ActivateHand();
     }
 
@@ -58,7 +62,7 @@ public class CardManager:Singleton<CardManager>
 
     public void ActivateHand()
     {
-        
+        handDown = false;
         holder.DOAnchorPosY(0,.2f).OnComplete(()=>
         {
             MakeHandInteractable();
@@ -73,34 +77,32 @@ public class CardManager:Singleton<CardManager>
     
     public void DeactivateHand()
     {
+        handDown = true;
         holder.DOAnchorPosY(downHodlerPos,.2f);
         foreach(CardBehaviour card in hand)
         {card.DisableInteractable();}
     }
 
-    public void DrawRandomCard(Beast b)
+    void ShuffleDeck(){
+        System.Random rng = new  System.Random();
+        
+        var shuffledcards = currentDeck.cards.OrderBy(a => rng.Next()).ToList();
+        currentDeck.cards = shuffledcards;
+    }
+
+    public void DrawCard()
     {
         if(currentDeck.cards.Count <= 0)
         { currentDeck.ResetDiscardPile(); }
         
         if(hand.Count < 7)
-        { CreateCardBehaviour(CardFunctions.DrawRandomCard(currentDeck)); }
+        { CreateCardBehaviour(CardFunctions.DrawRandomCard(currentDeck)); 
+        MakeHandInteractable();}
         else
         { Debug.Log("Hand is full!"); }
     }
 
-    public void DrawCardOfSpecificCost(List<int> cost)
-    {
-        if(currentDeck.cards.Count <= 0)
-        {currentDeck. ResetDiscardPile();}
-
-        if(hand.Count < 7)
-        {CreateCardBehaviour(CardFunctions.DrawCardOfSpecificCost(cost,currentDeck));}
-        else
-        {Debug.Log("Hand is full!");}
-       
-    }
-
+   
     public void CheckForHandFuckery()
     {
         List<CardBehaviour> fuckery = new List<CardBehaviour>();
@@ -152,12 +154,31 @@ public class CardManager:Singleton<CardManager>
         { Debug.Log("card is null"); }
     }
 
-    public bool canCast(Card card)
+    public bool canCast(Card card,bool isPlayer)
     {
-        if(ManaManager.inst.currentMana >= card.manaCost)
+        bool hasMana = ManaManager.inst.currentMana >= card.manaCost;
+      
+        if(hasMana && oneEffectIsViable())
         {return true;}
         else
         {return false;}
+
+        bool oneEffectIsViable(){
+
+            bool b = false;
+            foreach (var item in card.effects)
+            {
+                if(item.canUse(isPlayer))
+                { b = true;}
+                else{
+                    Debug.Log(item.name +" is not viable");
+              
+                }
+            }
+
+            return b;
+
+        }
     }
 
     public void NewTurn()
@@ -173,21 +194,51 @@ public class CardManager:Singleton<CardManager>
         EventManager.inst.onPlayerCastCard.Invoke();
         IEnumerator q()
         {
+            if(usedCard.castDelay != 0){
+  CardManager.inst.DeactivateHand();
+            }
+          
+            if(!usedCard.playVFXAfterDelay){
             BattleEffectManager.inst.Play(usedCard.vfx);
+            }
+
+            if(usedCard.playVFXAfterDelay){
+                if(usedCard.vfxSetUp!=string.Empty){
+                BattleEffectManager.inst.Play(usedCard.vfxSetUp);    
+
+                }
+            }
+            
             
             if(usedCard.soundEffect.audioClip != null)
             {AudioManager.inst.GetSoundEffect().Play(usedCard.soundEffect); }
-         
+            behaviour.gameObject.SetActive(false);
             yield return new WaitForSeconds(usedCard.castDelay);
             if(!behaviour.isVapour){
                 currentDeck.discard.Add(usedCard);
             }
-          
+            if(usedCard.playVFXAfterDelay){
+            BattleEffectManager.inst.Play(usedCard.vfx);
+            }
             BattleTicker.inst.Type(usedCard.cardName);
+             StartCoroutine(piss());
             ManaManager.inst.Spend(usedCard.manaCost);
+            bool cardContainsDrawEffect = usedCard.effects.OfType<DrawCardEffect>().Any();
+            if(cardContainsDrawEffect)
+            {RemoveFromHand(behaviour);}
+            else
+            {RemoveFromHand(behaviour);}
             foreach (var effect in usedCard.effects)
-            { effect.Use(PlayerParty.inst.activeBeast,RivalBeastManager.inst.activeBeast); }
-            RemoveFromHand(behaviour);
+            { effect.Use(PlayerParty.inst.activeBeast,BattleManager.inst.enemyTarget,true); }
+            if(usedCard.castDelay != 0){
+                CardManager.inst.ActivateHand();
+            }
+            IEnumerator piss(){
+                yield return new WaitForSeconds(1f);
+                
+                BattleTicker.inst.Type("Make your move");
+            }
+          
         }
     }
 

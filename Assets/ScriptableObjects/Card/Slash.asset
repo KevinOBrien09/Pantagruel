@@ -26,6 +26,6 @@ MonoBehaviour:
     volume: 0.5
   element: 0
   beastClass: 0
-  desc: Deal 10 PHYS damage to the target.
+  desc: Deal 10+({PHYS10%}) damage to the target.
   flavourText: '"hurrah!"'
   deckCost: 5

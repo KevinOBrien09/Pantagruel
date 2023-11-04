@@ -44,4 +44,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ea31a1c5093ce4eaa9c8b6fde2eecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scriptableObject: {fileID: 11400000, guid: 256eb314cd1f9b142bdc8e5f6f4ffb03, type: 2}
+  currentHealthBars: []
+  animatedInstance: {fileID: 0}
+  healSFX:
+    audioClip: {fileID: 8300000, guid: 63115a50a9d20fc40b4091821a372bd5, type: 3}
+    pitchRange: {x: 0.9, y: 1.1}
+    volume: 0.5
+  currentHealth: 0
+  KO: 0
+  scriptableObject: {fileID: 0}
+  deck:
+    cards: []
+    discard: []
+  shields: 0
+  exp:
+    level: 0
+    currentExp: 0
+    targetExp: 0
+    beast: {fileID: 0}
+    a: 100
+    b: 1.5
+    c: 7
+  statMods:
+    maxHealth: 0
+    def: 0
+    physical: 0
+    magic: 0
+    charisma: 0
+    luck: 0

@@ -28,4 +28,4 @@ MonoBehaviour:
   desc: Deal 12 damage to a target, this is increased to 25 RAW damage if the target
     is UNDEAD or SODOMITE
   flavourText: 
-  deckCost: 0
+  deckCost: 10

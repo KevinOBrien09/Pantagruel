@@ -64,7 +64,7 @@ public class BeastEditor : DragHandler
      
         foreach (var item in baseStats)
         {
-            Stats s =  beastScriptableObject.beastData.stats;
+            Stats s =  beastScriptableObject.beastData.baseStats;
             switch (item.statName)
             {
                 case StatName.HEALTH:
@@ -146,22 +146,22 @@ public class BeastEditor : DragHandler
             switch (item.statName)
             {
                 case StatName.HEALTH:
-                beastScriptableObject.beastData.stats.maxHealth = int.Parse(item.inputField.text.ToString());
+                beastScriptableObject.beastData.baseStats.maxHealth = int.Parse(item.inputField.text.ToString());
                 break;
                 case StatName.DEFENSE:
-                beastScriptableObject.beastData.stats.def = int.Parse(item.inputField.text.ToString());
+                beastScriptableObject.beastData.baseStats.def = int.Parse(item.inputField.text.ToString());
                 break;
                 case StatName.PHYSICAL:
-                beastScriptableObject.beastData.stats.physical = int.Parse(item.inputField.text.ToString());
+                beastScriptableObject.beastData.baseStats.physical = int.Parse(item.inputField.text.ToString());
                 break;
                 case StatName.MAGIC:
-                beastScriptableObject.beastData.stats.magic = int.Parse(item.inputField.text.ToString());
+                beastScriptableObject.beastData.baseStats.magic = int.Parse(item.inputField.text.ToString());
                 break;
                 case StatName.CHARISMA:
-                beastScriptableObject.beastData.stats.charisma = int.Parse(item.inputField.text.ToString());
+                beastScriptableObject.beastData.baseStats.charisma = int.Parse(item.inputField.text.ToString());
                 break;
                 case StatName.LUCK:
-                beastScriptableObject.beastData.stats.luck = int.Parse(item.inputField.text.ToString());
+                beastScriptableObject.beastData.baseStats.luck = int.Parse(item.inputField.text.ToString());
                 break;
             }
         }
@@ -273,15 +273,15 @@ public class BeastEditor : DragHandler
     }
 
 
-    public (Dictionary<BeastScriptableObject,int> baseStats,Dictionary<BeastScriptableObject,int> growth) Rankings()
+    public (Dictionary<BeastScriptableObject,float> baseStats,Dictionary<BeastScriptableObject,float> growth) Rankings()
     {
 
-        Dictionary<BeastScriptableObject,int> statTotal = new Dictionary<BeastScriptableObject, int>();
-        Dictionary<BeastScriptableObject,int> statGrowthTotal = new Dictionary<BeastScriptableObject, int>();
+        Dictionary<BeastScriptableObject,float> statTotal = new Dictionary<BeastScriptableObject, float>();
+        Dictionary<BeastScriptableObject,float> statGrowthTotal = new Dictionary<BeastScriptableObject, float>();
         foreach (var item in book.beastScriptableObjects)
         {
           
-            statTotal.Add(item,item.beastData.stats.GetStatTotal());
+            statTotal.Add(item,item.beastData.baseStats.GetStatTotal());
             statGrowthTotal.Add(item,item.beastData.statGrowthPerLevel.GetStatTotal());
         }
 

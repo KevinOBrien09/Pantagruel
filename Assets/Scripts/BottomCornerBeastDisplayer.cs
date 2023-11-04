@@ -10,9 +10,18 @@ public class BottomCornerBeastDisplayer: Singleton<BottomCornerBeastDisplayer>
     public Transform animatedPrefabHolder;
     public SpriteRenderer basicRenderer;    
     public BeastAnimatedInstance animatedInstance;
-    public TextMeshProUGUI beastName;
+    public TextMeshProUGUI beastName,beastLevel;
     public HealthBar healthBar;
+    public Image bg;
     GameObject animatedPrefabInstance;
+    Beast beast;
+
+    public void ToggleBattleBGOn(){
+        bg.enabled = true;
+    }
+     public void ToggleBattleBGOff(){
+        bg.enabled = false;
+    }
     public void ChangeActiveBeast(Beast b)
     {
         if(animatedPrefabInstance!= null) 
@@ -43,9 +52,16 @@ public class BottomCornerBeastDisplayer: Singleton<BottomCornerBeastDisplayer>
         }
 
         beastName.text = b.scriptableObject.beastData.beastName;
-        healthBar.beast = b;
-        b.currentHealthBar = healthBar;
+        healthBar.entity = b;
+        beastLevel.text = b.exp.level.ToString();
+        b.currentHealthBars.Add(healthBar);
         healthBar.onInit.Invoke();
+        beast = b;
+    }
+
+    public void RefreshLevel(){
+ beastLevel.text = beast.exp.level.ToString();
+     healthBar.onInit.Invoke();
     }
 
 }

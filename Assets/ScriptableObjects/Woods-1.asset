@@ -15,7 +15,6 @@ MonoBehaviour:
   locationName: South Forest
   beastsInLocation:
   - scriptableObject:
-    - {fileID: 11400000, guid: 256eb314cd1f9b142bdc8e5f6f4ffb03, type: 2}
-    - {fileID: 11400000, guid: a958369a932061042940eebaffe08b0d, type: 2}
     - {fileID: 11400000, guid: f36e883aaf6bcef429f26de5cf428749, type: 2}
     biome: 0
+  levelRange: {x: 1, y: 10}
