@@ -24,7 +24,7 @@ public class CardCatalogCard : MonoBehaviour
         cardName.text = card.cardName;
         manaCost.text = RomanNumerals.ToRoman(card.manaCost);
         deckCost.text = card.deckCost.ToString();
-        rightClick.catalogCard = this;
+        rightClick.card = c;
         Stack();
     }
 

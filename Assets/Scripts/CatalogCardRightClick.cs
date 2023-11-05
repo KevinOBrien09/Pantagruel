@@ -6,11 +6,11 @@ using UnityEngine.EventSystems;
 
 public class CatalogCardRightClick : MonoBehaviour, IPointerClickHandler
 {
-    public CardCatalogCard catalogCard;
+    public Card card;
     public void OnPointerClick(PointerEventData eventData)
     {
         if(eventData.button == PointerEventData.InputButton.Right){
-CardViewer.inst.Open(catalogCard.card);
+CardViewer.inst.Open(card);
         }
        
     }

@@ -16,15 +16,17 @@ MonoBehaviour:
   cardName: Lesser Nymph Neia
   picture: {fileID: 21300000, guid: 0234df8019bf75b499411f6e454069bb, type: 3}
   manaCost: 3
+  vfxSetUp: 
   vfx: 
   castDelay: 0.2
   effects: []
+  playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
   element: 5
   beastClass: 7
-  desc: 
+  desc: <b>Summon:</b> Lesser Nymph Neia
   flavourText: 
   deckCost: 12

@@ -16,9 +16,11 @@ public class CardViewer : Singleton<CardViewer>
     public Transform catalogHolder;
     public Button right,left,changeDescStateBut;
     public CardDescState descState;
+    public bool manuallyLoadCards;
     Card currentCard;
     int index;
     List<Card> cards = new List<Card>();
+
     void Start(){
         gameObject.SetActive(false);
     }
@@ -54,8 +56,10 @@ public class CardViewer : Singleton<CardViewer>
    
         toolTips[1].Init( e+ "/" + bc);
         toolTips[2].Init(toolTipText[2] + card.deckCost.ToString() );
-
-        RefreshCardList();
+        if(!manuallyLoadCards){
+       RefreshCardList();
+        }
+ 
         index = cards.IndexOf(card);
    
         if(index == 0)
@@ -105,6 +109,11 @@ public class CardViewer : Singleton<CardViewer>
         }
     }
 
+    public void ManuallyLoadCards(List<Card> newCards){
+        cards.Clear();
+        cards = new List<Card>(newCards);
+    }
+
     
     public void Right()
     {
@@ -113,6 +122,7 @@ public class CardViewer : Singleton<CardViewer>
     }
 
     public void Close(){
+        AudioManager.inst.GetSoundEffect().Play(SystemSFX.inst.closeWindow);
         gameObject.SetActive(false);
     }
 

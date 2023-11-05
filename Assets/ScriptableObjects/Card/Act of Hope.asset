@@ -16,11 +16,13 @@ MonoBehaviour:
   cardName: 'Act of Hope '
   picture: {fileID: 21300000, guid: 038845edbec35ee40878982feb597d67, type: 3}
   manaCost: 2
+  vfxSetUp: 
   vfx: 
   castDelay: 0
   effects:
   - {fileID: 11400000, guid: 9797cc5bb1379794a841ab4642a85ef0, type: 2}
   - {fileID: 11400000, guid: 8c5a08a34b4591d4189638d15678611c, type: 2}
+  playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
@@ -29,4 +31,4 @@ MonoBehaviour:
   beastClass: 3
   desc: Draw a card and heal for 15.
   flavourText: 
-  deckCost: 20
+  deckCost: 7

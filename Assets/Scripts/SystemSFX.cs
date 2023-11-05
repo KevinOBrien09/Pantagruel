@@ -6,6 +6,6 @@ using DG.Tweening;
 
 public class SystemSFX : Singleton<SystemSFX>
 {
-    public SoundData errorSound;
+    public SoundData errorSound,closeWindow;
 
 }

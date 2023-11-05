@@ -15,10 +15,12 @@ MonoBehaviour:
   Id: 2ddf42d5-b131-498b-8a6c-84ca70f51e15
   cardName: Bash
   picture: {fileID: 21300000, guid: 672fd8922bcd66249a5ef3a31b988ca8, type: 3}
-  manaCost: 0
+  manaCost: 2
+  vfxSetUp: 
   vfx: 
   castDelay: 0.2
   effects: []
+  playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
@@ -26,5 +28,5 @@ MonoBehaviour:
   element: 4
   beastClass: 10
   desc: <b>Stun</b> the target.
-  flavourText: 
-  deckCost: 0
+  flavourText: <i>"AND STAY DOWN!"</i>
+  deckCost: 9

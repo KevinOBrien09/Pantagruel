@@ -23,6 +23,7 @@ public class BeastProfileViewer : Singleton<BeastProfileViewer>
     }
 
     public void Leave(){
+          AudioManager.inst.GetSoundEffect().Play(SystemSFX.inst.closeWindow);
         gameObject.SetActive(false);
     }
 

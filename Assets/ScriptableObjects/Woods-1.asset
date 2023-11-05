@@ -17,4 +17,14 @@ MonoBehaviour:
   - scriptableObject:
     - {fileID: 11400000, guid: f36e883aaf6bcef429f26de5cf428749, type: 2}
     biome: 0
+  cardRewards:
+  - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
+  - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
+  - {fileID: 11400000, guid: f06a97886dcb3704d8f19ff0a6b971a3, type: 2}
+  - {fileID: 11400000, guid: ae7a2449b03c05b428c0931f6ca7a2a3, type: 2}
+  - {fileID: 11400000, guid: 9dfddc80dba5f1a4a99549c0717a62aa, type: 2}
+  - {fileID: 11400000, guid: ea117adaef8ad4d43a9ff396daf4d0b4, type: 2}
+  - {fileID: 11400000, guid: b2d044160b58c03448309f7ed751e043, type: 2}
+  - {fileID: 11400000, guid: d94bb195f0af4bc4bac2943e94ff4b0b, type: 2}
+  goldRewardRange: {x: 10, y: 50}
   levelRange: {x: 1, y: 10}

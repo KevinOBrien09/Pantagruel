@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
 using DG.Tweening;
 
 public class Inventory:Singleton<Inventory>                   
 {
     public Dictionary<Item,ItemStack> dict = new Dictionary<Item, ItemStack>();
     public List<Item> startingItems = new List<Item>();
+    public TextMeshProUGUI goldText;
     public ItemStack prefab;
     public RectTransform holder;
-
     public List<ItemStack> itemsUsedThisTurn = new List<ItemStack>();
+    public int gold;
+
+    public void AddGold(int newGold){
+        gold += newGold;
+        goldText.text = "coin:" + gold;
+    }
 
     void Start()
     {
@@ -20,7 +27,7 @@ public class Inventory:Singleton<Inventory>
         {
             AddItem(item);
         }
-
+AddGold(50);
         DisableItemDragOnAll();
         
     }

@@ -136,11 +136,15 @@ public class BattleManager:Singleton<BattleManager>
 
         IEnumerator q()
         {
-            Beast b =  PlayerParty.inst.activeBeast;
-            b.exp.AddExp(b.exp.targetExp/10);
+            CardManager.inst.DeactivateHand();
+            foreach (var item in CardManager.inst.hand)
+            {item.VaporousDissolve();}
+            
+          
            
             yield return new WaitForSeconds(1.5f);
-            LeaveBattle();
+            RewardManager.inst.Open();
+           // LeaveBattle();
         }
     }
 
