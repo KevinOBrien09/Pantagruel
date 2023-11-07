@@ -127,7 +127,11 @@ public class EnemyAI : Singleton<EnemyAI>
                     if(usedCard.soundEffect.audioClip != null)
                     {AudioManager.inst.GetSoundEffect().Play(usedCard.soundEffect); }
                     foreach (var effect in usedCard.effects)
-                    {effect.Use(RivalBeastManager.inst.activeBeast,BattleManager.inst.playerTarget,false);}
+                    {
+                        EffectArgs args = new EffectArgs(RivalBeastManager.inst.activeBeast,BattleManager.inst.playerTarget,
+                        false,usedCard);
+                        effect.Use(args);
+                    }
                     RebuildCardBacks();
                     yield return new WaitForSeconds(.5f);
                     goto peepoo;

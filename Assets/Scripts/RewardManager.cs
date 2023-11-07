@@ -19,6 +19,8 @@ public class RewardManager : Singleton<RewardManager>
     List<Card> openCards = new List<Card>();
     List<PartyEXPRewardDisplay> partyEXPs = new List<PartyEXPRewardDisplay>();
     List<ShopCard> shopCards = new List<ShopCard>();
+    public SoundData addGold;
+    public int additionalGold;
     void Start()
     {
         gameObject.SetActive(false);
@@ -94,10 +96,12 @@ public class RewardManager : Singleton<RewardManager>
         
         int howMuchGold = (int) Random.Range
         (LocationManager.inst.currentLocation.goldRewardRange.x,LocationManager.inst.currentLocation.goldRewardRange.y); 
-       
+      
         int o = Inventory.inst.gold;
         int n = howMuchGold;
-       StartCoroutine(addGold());
+              bool a = false;
+        StartCoroutine(addGold());
+        AudioManager.inst.GetSoundEffect().Play(this.addGold);
         IEnumerator addGold()
         {
             newGold.text = "+"+n;
@@ -105,27 +109,43 @@ public class RewardManager : Singleton<RewardManager>
             yield return null;
             o++;
             n--;
-            if(n >= 0){
-                 StartCoroutine(addGold());
+            if(n >= 0)
+            {
+                StartCoroutine(addGold());
+               
+            }
+            else
+            {
+                if(!a){
+                    if(additionalGold != 0)
+                    {
+                        n = additionalGold;
+                        newGold.color = Color.red;
+                        a = true;
+                        StartCoroutine(addGold());
+                    }
+                }
+                else{
+                    newGold.color = Color.white;
+                }
+               
             }
         }
-
-        Inventory.inst.AddGold(howMuchGold);
+  int t = howMuchGold += additionalGold;
+        Inventory.inst.AddGold(t);
 
     }
 
-    public void Proceed(){
-        if(cardsToAddToCollection.Count ==0){
-            noCardPopUp.SetActive(true);
-        }else{
-            Leave();
-        }
-        
+    public void Proceed()
+    {
+        if(cardsToAddToCollection.Count ==0)
+        {noCardPopUp.SetActive(true);}
+        else{Leave();}
     }
 
-     public void ClosePopUp(){
+    public void ClosePopUp(){
         
-            noCardPopUp.SetActive(false);
+        noCardPopUp.SetActive(false);
      
         
     }
@@ -151,6 +171,7 @@ public class RewardManager : Singleton<RewardManager>
         gameObject.SetActive(false);
         CardViewer.inst.manuallyLoadCards = false;
         BattleManager.inst.LeaveBattle();
+        ClosePopUp();
     }
 
     public void RefreshCardList(Card c){

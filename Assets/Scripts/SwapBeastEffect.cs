@@ -6,13 +6,20 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Effects/SwapBeast", fileName = "Swap")]
 public class SwapBeastEffect :Effect
 {
-    public override void Use(Entity caster,Entity target,bool isPlayer, List<Entity> casterTeam = null ,List<Entity> targetTeam = null)
+    public override void Use(EffectArgs args)
     {
-        List<Beast> b = new List<Beast>(PlayerParty.inst.party);
-        b.Remove(PlayerParty.inst.activeBeast);
-       
-        BeastTargeter.inst.Open(b);
-       //target.TakeDamage(damageValue);
+        if(args.isPlayer){
+            List<Beast> b = new List<Beast>(PlayerParty.inst.party);
+            b.Remove(PlayerParty.inst.activeBeast);
+        
+            BeastTargeter.inst.Open(b);
+        }  
+        else{
+            Debug.LogAssertion("make enemy swap");
+        }
+        
+      
+   
     }
 
     public override bool canUse(bool isPlayer)

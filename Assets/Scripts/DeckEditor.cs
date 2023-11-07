@@ -37,7 +37,7 @@ public class DeckEditor : Singleton<DeckEditor>
     [SerializeField] TextMeshProUGUI cardCount;
     [SerializeField] RectTransform beastButtonHolder,cardCatalogHolder,beastSubmenu,
     subMenuParent,submenuPos1,cardStackHolder,classTickerHolder,elementTickerHolder,subMenuButtonHolder;
-    [SerializeField] GameObject overViewButtons,subMenuButtons;
+   // [SerializeField] GameObject overViewButtons,subMenuButtons;//
     [HideInInspector] public DeckEditorBeastButton currentButton;
     Dictionary<Beast,DeckEditorBeastButton> beastButtonDict = new Dictionary<Beast, DeckEditorBeastButton>();
     List<GameObject> createdTickers = new List<GameObject>();
@@ -52,8 +52,8 @@ public class DeckEditor : Singleton<DeckEditor>
     public void Start()
     {
         gameObject.SetActive(false);
-        overViewButtons.SetActive(false);
-        subMenuButtons.SetActive(false);
+        // overViewButtons.SetActive(false);
+        // subMenuButtons.SetActive(false);
         tickerObject.SetActive(false);
         open = false;
     }
@@ -75,6 +75,7 @@ public class DeckEditor : Singleton<DeckEditor>
         tickerObject.SetActive(true);
         open = true;
         currentState = DeckEditorState.ALLCARDS;
+        BattleTicker.inst.Type("Card Collection");
         SpawnBeastList();
         SpawnFullCollection();
         ChangeCountText();
@@ -115,6 +116,9 @@ public class DeckEditor : Singleton<DeckEditor>
         catalogCardDict.Clear();
         activeCatalogCards.Clear();
         createdTickers.Clear();
+        CardViewer.inst.Close();
+        BeastProfileViewer.inst.Leave();
+        BattleTicker.inst.Type(LocationManager.inst.currentLocation.locationName);
         currentButton = null;
         if(currentState == DeckEditorState.IN_SUB_MENU)
         {beastSubmenu.anchoredPosition = new Vector2(beastListShown,beastSubmenu.anchoredPosition.y);}
@@ -201,14 +205,15 @@ public class DeckEditor : Singleton<DeckEditor>
             else
             {catalogCardDict[card].catalogCard.Stack();}
         }
-        overViewButtons.SetActive(true);
-        subMenuButtons.SetActive(false);
+        // overViewButtons.SetActive(true);
+        // subMenuButtons.SetActive(false);
         AlphabeticallySortCatalog();
     }
 
     public void BeastSubMenu(Beast b)
     {
         currentState = DeckEditorState.IN_SUB_MENU;
+        BattleTicker.inst.Type("Editing " + b.scriptableObject.beastData.beastName+"'s Deck");
         currentButton = beastButtonDict[b];
         if( b.scriptableObject.beastData.facingRight)
         {bgBeastImage.transform.rotation = Quaternion.Euler(0,0,0);}
@@ -221,8 +226,8 @@ public class DeckEditor : Singleton<DeckEditor>
         currentButton.rt.DOAnchorPos(submenuPos1.anchoredPosition,.2f);
         beastSubmenu.DOAnchorPosX(beastListHidden,.2f);
         SpawnBeastDeck(b);
-        overViewButtons.SetActive(false);
-        subMenuButtons.SetActive(true);
+        // overViewButtons.SetActive(false);
+        // subMenuButtons.SetActive(true);
     
         foreach (var item in catalogCardDict)
         {
@@ -534,19 +539,24 @@ public class DeckEditor : Singleton<DeckEditor>
 
     public void LeaveSubMenu()
     {
+        if(currentState == DeckEditorState.ALLCARDS){
+            Toggle();
+            return;
+        }
+        BattleTicker.inst.Type("Card Collection");
         currentState = DeckEditorState.ALLCARDS;
         currentButton.transform.SetParent(beastButtonHolder);
         beastSubmenu.DOAnchorPosX(beastListShown,.2f);
         inputField.text = "";
         searchString = "";
         AudioManager.inst.GetSoundEffect().Play(leaveBeastMenu);
-    
+        CardViewer.inst.Close();
 
         bgBeastImage.DOFade(0,.2f);
         WipeBeastDeck();
         SortBeastButtonsByPartyOrder();
-        overViewButtons.SetActive(true);
-        subMenuButtons.SetActive(false);
+        // overViewButtons.SetActive(true);
+        // subMenuButtons.SetActive(false);
         currentButton.button.interactable = true;
         currentButton = null;
         foreach (var item in  catalogCardDict)

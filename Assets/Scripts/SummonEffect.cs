@@ -8,13 +8,13 @@ public class SummonEffect :Effect
 {
     public Pet pet;
 
-    public override void Use(Entity caster,Entity target,bool isPlayer, List<Entity> casterTeam = null ,List<Entity> targetTeam = null)
+    public override void Use(EffectArgs args)
     {
-        if(BattleManager.inst.GetBeastOwnership((Beast) caster) == EntityOwnership.ENEMY)
+        if(BattleManager.inst.GetBeastOwnership((Beast) args.caster) == EntityOwnership.ENEMY)
         {
             PetManager.inst.SummonEnemyPet(pet);
         }
-        else if(BattleManager.inst.GetBeastOwnership((Beast) caster) ==EntityOwnership.PLAYER)
+        else if(BattleManager.inst.GetBeastOwnership((Beast) args.caster) ==EntityOwnership.PLAYER)
         {
             PetManager.inst.SummonPlayerPet(pet);
        

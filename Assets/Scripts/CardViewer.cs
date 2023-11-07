@@ -122,7 +122,15 @@ public class CardViewer : Singleton<CardViewer>
     }
 
     public void Close(){
-        AudioManager.inst.GetSoundEffect().Play(SystemSFX.inst.closeWindow);
+        if(gameObject.activeSelf){
+            AudioManager.inst.GetSoundEffect().Play(SystemSFX.inst.closeWindow);
+        }
+        if(BattleManager.inst.inBattle){
+            CardManager.inst.ActivateHand();
+              cards.Clear();
+              manuallyLoadCards = false;
+        }
+        
         gameObject.SetActive(false);
     }
 

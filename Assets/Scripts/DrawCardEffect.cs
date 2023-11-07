@@ -8,12 +8,18 @@ public class DrawCardEffect :Effect
 {
     public int numberOfCardsToBeDrawn = 1;
 
-    public override void Use(Entity caster,Entity target,bool isPlayer, List<Entity> casterTeam = null ,List<Entity> targetTeam = null)
+    public override void Use(EffectArgs args)
     {
-        for (int i = 0; i < numberOfCardsToBeDrawn; i++)
-        {
-            CardManager.inst.DrawCard();
+        if(args.isPlayer){
+            for (int i = 0; i < numberOfCardsToBeDrawn; i++)
+            {
+                CardManager.inst.DrawCard();
+            }
         }
+        else{
+            Debug.LogAssertion("make enemy draw card");
+        }
+        
       
     }
 

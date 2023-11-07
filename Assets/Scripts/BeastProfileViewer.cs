@@ -24,6 +24,9 @@ public class BeastProfileViewer : Singleton<BeastProfileViewer>
 
     public void Leave(){
           AudioManager.inst.GetSoundEffect().Play(SystemSFX.inst.closeWindow);
+          if(BattleManager.inst.inBattle){
+            CardManager.inst.ActivateHand();
+          }
         gameObject.SetActive(false);
     }
 

@@ -228,10 +228,22 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
 
         if(eventData.button == PointerEventData.InputButton.Right)
         {
-            if(descShown)
-            {HideDesc();}
-            else
-            {ShowDesc();}
+            List<Card> cards = new List<Card>();
+            // foreach (var item in CardManager.inst.hand)
+            // {
+            //     if(!cards.Contains(item.card)) 
+            //     {cards.Add(item.card);}
+            // }
+            cards.Add(card);
+             CardViewer.inst.manuallyLoadCards = true;
+            CardManager.inst.DeactivateHand();
+            CardViewer.inst.ManuallyLoadCards(cards);
+            CardViewer.inst.Open(card);
+            GoDown();
+            // if(descShown)
+            // {HideDesc();}
+            // else
+            // {ShowDesc();}
         }
     }
 

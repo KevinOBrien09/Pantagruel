@@ -13,7 +13,9 @@ public class BattleManager:Singleton<BattleManager>
     public int turn;
     public int startingMana;
     public Entity enemyTarget;
+    public SoundData leave;
     public Entity playerTarget;
+    public StatusEffectManager playerStatusEffects;
     
     
     public void StartBattle(BattleType battleType)
@@ -141,7 +143,7 @@ public class BattleManager:Singleton<BattleManager>
             {item.VaporousDissolve();}
             
           
-           
+            inBattle = false;
             yield return new WaitForSeconds(1.5f);
             RewardManager.inst.Open();
            // LeaveBattle();
@@ -247,7 +249,7 @@ public class BattleManager:Singleton<BattleManager>
         RivalBeastManager.inst.Wipe();
         UpperLeftPanel.inst.  SwapToOverworld();
         BottomCornerBeastDisplayer.inst.ToggleBattleBGOn();
-   
+        AudioManager.inst.GetSoundEffect().Play(leave);
         BattleTicker.inst.Type(LocationManager.inst.currentLocation.locationName);
         Inventory.inst.DisableItemDragOnAll();
         RightPanelButtonManager.inst.SwapToOverworld();

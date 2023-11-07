@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
  
-public class FindWhatUIElementMouseIsOver : MonoBehaviour
+public class FindWhatUIElementMouseIsOver : Singleton<FindWhatUIElementMouseIsOver>
 {
     public bool run;
     int UILayer;
  
     private void Start()
     {
+        Debug.Log(gameObject.name);
         UILayer = LayerMask.NameToLayer("UI");
     }
  

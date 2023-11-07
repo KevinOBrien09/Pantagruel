@@ -9,9 +9,9 @@ public class StatPercentDamage:StatPercentEffect
     [Range(0,100)] public int percentage;
     public StatName stat;
 
-    public override void Use(Entity caster,Entity target,bool isPlayer, List<Entity> casterTeam = null ,List<Entity> targetTeam = null)
+    public override void Use(EffectArgs args)
     {
-        target.TakeDamage(Percentage(caster,stat,percentage));
+       args. target.TakeDamage(Percentage(args.caster,stat,percentage));
     }
 
 }

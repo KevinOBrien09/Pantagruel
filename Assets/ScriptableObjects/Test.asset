@@ -17,6 +17,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 57098e6f7db4d4f46b6f523aa28fc65c, type: 2}
     - {fileID: 11400000, guid: 57098e6f7db4d4f46b6f523aa28fc65c, type: 2}
     - {fileID: 11400000, guid: 6dc91edc1434a7d419e40d22201288b4, type: 2}
+    - {fileID: 11400000, guid: 1b66478c61ef7834c9b0328172d7c204, type: 2}
+    - {fileID: 11400000, guid: 1b66478c61ef7834c9b0328172d7c204, type: 2}
+    - {fileID: 11400000, guid: ea117adaef8ad4d43a9ff396daf4d0b4, type: 2}
+    - {fileID: 11400000, guid: ea117adaef8ad4d43a9ff396daf4d0b4, type: 2}
     discard: []
   combos:
   - requiredCards:

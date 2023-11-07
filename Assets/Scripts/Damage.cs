@@ -8,9 +8,10 @@ public class Damage :Effect
 {
     public float damageValue;
 
-    public override void Use(Entity caster,Entity target,bool isPlayer, List<Entity> casterTeam = null ,List<Entity> targetTeam = null)
+    public override void Use(EffectArgs args)
     {
-       target.TakeDamage(damageValue);
+      
+        args.target.TakeDamage(damageValue);
     }
 
 }

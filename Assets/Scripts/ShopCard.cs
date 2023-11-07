@@ -11,6 +11,7 @@ public class ShopCard : MonoBehaviour
     public Card card;
     public CatalogCardRightClick rightClick;
     public ColorBlock selected,normal;
+    public SoundData select,unselect;
     public bool isReward;
     public bool isSelected;
     
@@ -45,11 +46,13 @@ public class ShopCard : MonoBehaviour
             if(isSelected){
                 frame.colors = normal;;
                 isSelected = false;
+                AudioManager.inst.GetSoundEffect().Play(unselect);
 
             }
             else{
                 frame.colors = selected;
                 isSelected = true;
+                           AudioManager.inst.GetSoundEffect().Play(select);
             }
             RewardManager.inst.RefreshCardList(card);
             

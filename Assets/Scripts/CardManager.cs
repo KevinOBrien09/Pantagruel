@@ -229,7 +229,12 @@ public class CardManager:Singleton<CardManager>
             else
             {RemoveFromHand(behaviour);}
             foreach (var effect in usedCard.effects)
-            { effect.Use(PlayerParty.inst.activeBeast,BattleManager.inst.enemyTarget,true); }
+            { 
+                EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,BattleManager.inst.enemyTarget,true,usedCard);
+                effect.Use(args); 
+            }
+
+
             if(usedCard.castDelay != 0){
                 CardManager.inst.ActivateHand();
             }

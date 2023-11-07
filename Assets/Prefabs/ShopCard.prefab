@@ -1270,6 +1270,14 @@ MonoBehaviour:
     m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
+  select:
+    audioClip: {fileID: 8300000, guid: e1b131c4194b0164daee3d2fe4d51874, type: 3}
+    pitchRange: {x: 0.9, y: 1.1}
+    volume: 1
+  unselect:
+    audioClip: {fileID: 8300000, guid: 326941374cb0b704da86422baad6c83b, type: 3}
+    pitchRange: {x: 0.9, y: 1.1}
+    volume: 1
   isReward: 0
   isSelected: 0
 --- !u!1 &7893893842460680091

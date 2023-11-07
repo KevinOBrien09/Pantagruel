@@ -7,14 +7,14 @@ using UnityEngine;
 public class MultiTargetDamage :Effect
 {
     public List<TargetDamage> targetDamages = new List<TargetDamage>();
-    public override void Use(Entity caster,Entity target,bool isPlayer, List<Entity> casterTeam = null ,List<Entity> targetTeam = null)
+    public override void Use(EffectArgs args)
     {
         foreach (var item in targetDamages)
         {
             switch (item.target)
             {
                 case WhatTarget.ENEMYBEAST:
-                if(!isPlayer)
+                if(!args.isPlayer)
                 {
                     PlayerParty.inst.activeBeast.TakeDamage(item.damageValue);
                 }
@@ -25,7 +25,7 @@ public class MultiTargetDamage :Effect
                 break;
                 case WhatTarget.ENEMYPET:
 
-                if(!isPlayer)
+                if(!args.isPlayer)
                 {
                    if(PetManager.inst.playerPet != null)
                     {
@@ -42,7 +42,7 @@ public class MultiTargetDamage :Effect
                
                 break;
                 case WhatTarget.PLAYERBEAST:
-                  if(!isPlayer)
+                  if(!args.isPlayer)
                     {
                            RivalBeastManager.inst.activeBeast.TakeDamage(item.damageValue);
                       
@@ -53,7 +53,7 @@ public class MultiTargetDamage :Effect
 
                 break;
                 case WhatTarget.PLAYERPET:
-                     if(isPlayer)
+                     if(args.isPlayer)
                 {
                    if(PetManager.inst.playerPet != null)
                     {

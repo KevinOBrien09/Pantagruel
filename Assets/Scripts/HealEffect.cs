@@ -8,9 +8,9 @@ public class HealEffect :Effect
 {
     public int healAmount;
 
-    public override void Use(Entity caster,Entity target,bool isPlayer, List<Entity> casterTeam = null ,List<Entity> targetTeam = null)
+    public override void Use(EffectArgs args)
     {
-        caster.Heal(healAmount);
+        args.caster.Heal(healAmount);
       
     }
 

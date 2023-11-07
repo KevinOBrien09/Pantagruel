@@ -16,13 +16,16 @@ MonoBehaviour:
   cardName: Triumph
   picture: {fileID: 21300000, guid: b381c62804a126c438b0dd106463b549, type: 3}
   manaCost: 1
+  vfxSetUp: 
   vfx: 
-  castDelay: 0.2
-  effects: []
+  castDelay: 0
+  effects:
+  - {fileID: 11400000, guid: 9c3e9ad20295d3d44a6c4843c2575462, type: 2}
+  playVFXAfterDelay: 0
   soundEffect:
-    audioClip: {fileID: 0}
-    pitchRange: {x: 0, y: 0}
-    volume: 0
+    audioClip: {fileID: 8300000, guid: b3e797035ff82864296899b8238b8369, type: 3}
+    pitchRange: {x: 0.9, y: 1.1}
+    volume: 1
   element: 3
   beastClass: 13
   desc: If you KO a unit in the next 2 turns gain an additional 20 gold.

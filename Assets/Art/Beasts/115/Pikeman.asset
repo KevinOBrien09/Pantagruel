@@ -29,7 +29,7 @@ MonoBehaviour:
     outLine: {fileID: 0}
     facingRight: 1
     bestiaryID: 115
-    wildDeck: {fileID: 11400000, guid: 80d5131422f00c4458ffe3c9b0906f53, type: 2}
+    wildDeck: {fileID: 11400000, guid: 9cdb4c4e03b279d479964cb5306283ff, type: 2}
     baseStats:
       maxHealth: 1
       def: 6
