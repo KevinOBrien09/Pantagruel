@@ -15,7 +15,7 @@ MonoBehaviour:
   beastData:
     ANIMATED_PREFAB_DONE: 0
     devNote:
-      note: 
+      note: When I exit <b>guard</b> attack for {PHYS25%}.
     beastName: Paladin
     flavourText: 
     bottomCornerPos: {x: 0, y: -0.25}
@@ -25,16 +25,17 @@ MonoBehaviour:
       type: 3}
     mainSprite: {fileID: 6723115856271202665, guid: 57b3aa16df78dcb48961e8730cb376f4,
       type: 3}
+    outLine: {fileID: 0}
     facingRight: 0
     bestiaryID: 117
     wildDeck: {fileID: 0}
-    stats:
-      maxHealth: 78
-      def: 26
-      physical: 26
-      magic: 4
-      charisma: 16
-      luck: 11
+    baseStats:
+      maxHealth: 0
+      def: 0
+      physical: 0
+      magic: 0
+      charisma: 0
+      luck: 0
     statGrowthPerLevel:
       maxHealth: 3
       def: 2
