@@ -1,49 +1,81 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using KoganeUnityLib;
+using DG.Tweening;
 public class CardStack : Singleton<CardStack>
 {
-    public GameObject history,stack;
-    public Transform historyStack,stackStack;
-    public List<GameObject> currentTurn = new List<GameObject>();
+
+    public Transform holder;
+    public TMP_Typewriter turnCounter;
+    public List<CardStackBehaviour> behaviours = new List<CardStackBehaviour>();
+    public List<TMP_Typewriter> turns = new List<TMP_Typewriter>();
+    Dictionary<int,List<Card>> turnActionDict = new Dictionary<int, List<Card>>();
     public CardStackBehaviour cardStackBehaviour;
-    public CardStackBehaviour levelStack;
+    public Scrollbar scrollbar;
     bool stackState;
     //Quest IDEA bandit betrayal. 
 
-    public void Swap()
-    {
-        stackState = !stackState;
-        if(stackState)
-        {
-            stack.SetActive(true);
-            history.SetActive(false);
+    public void NewTurn()
+    {  int lastTurn = BattleManager.inst.turn-1;
+          if(turnActionDict[lastTurn].Count == 0){
+           TMP_Typewriter q =  Instantiate(turnCounter,holder);
+           
+           turns.Add(q);
         }
-        else{
-            stack.SetActive(false);
-            history.SetActive(true);
-        }
-
+        TMP_Typewriter typewriter =  Instantiate(turnCounter,holder);
+      
+        typewriter.Play("Turn " + lastTurn.ToString(),50,(()=>{}));
+        DOVirtual.Float( scrollbar.value,1,.2f,v  => 
+        {  scrollbar.value = v;});
+        turnActionDict.Add(BattleManager.inst.turn,new List<Card>());
+        turns.Add(typewriter);
+      
     }
-
-    public void CreateActionStack(Card c,Beast b)
+    public void EnterBattle()
     {
-        CardStackBehaviour action = Instantiate(cardStackBehaviour,stackStack);
-        action.Init(c,b);
-        currentTurn.Add(action.gameObject);
-
+      TMP_Typewriter typewriter =  Instantiate(turnCounter,holder);
+          turns.Add(typewriter);
+      typewriter.Play("Battle Start",50,(()=>{}));
+        DOVirtual.Float( scrollbar.value,1,.2f,v  => 
+        {  scrollbar.value = v;});
+        turnActionDict.Add(1,new List<Card>());
     }
 
-    public void CreateHistoryStack(Card c,Beast b)
-    { 
-        CardStackBehaviour histAction = Instantiate(cardStackBehaviour,historyStack);
-        histAction.Init(c,b);
-    }
-
-    public void CreateTurnCounter()
+    public void ExitBattle()
     {
-        CardStackBehaviour action = Instantiate(levelStack,historyStack); 
-        action.actionName.text = action.actionName.text + "0";
+        TMP_Typewriter typewriter =  Instantiate(turnCounter,holder);
+        turns.Add(typewriter);
+        typewriter.Play("Battle End",50,(()=>{}));
+        DOVirtual.Float( scrollbar.value,1,.2f,v  => 
+        {  scrollbar.value = v;});
+        turnActionDict.Clear();
+     
     }
+
+
+    public void CreateActionStack(Card c,Beast b,bool isPlayer)
+    {
+        CardStackBehaviour action = Instantiate(cardStackBehaviour,holder);
+        action.Init(c,b,isPlayer);
+        behaviours.Add(action);
+        turnActionDict[BattleManager.inst.turn].Add(c);
+        DOVirtual.Float( scrollbar.value,1,.2f,v  => 
+        {  scrollbar.value = v;});
+    }
+
+    public void Wipe()
+    {
+        foreach (var item in behaviours)
+        { Destroy(item.gameObject); }
+
+        foreach (var item in turns)
+        { Destroy(item.gameObject); }
+
+        behaviours.Clear();
+        turns.Clear();
+    }    
+
+   
 }

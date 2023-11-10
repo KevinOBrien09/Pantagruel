@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722da891be6a48a45b633c7a3eb9a96f, type: 3}
+  m_Name: Promise
+  m_EditorClassIdentifier: 
+  desiredEffects:
+  - {fileID: 11400000, guid: 472649e11b4f6f6459dc675d1726c605, type: 2}
+  badEffects: []
+  parentCard: {fileID: 0}
+  vfx: 
+  soundData:
+    audioClip: {fileID: 8300000, guid: b3e797035ff82864296899b8238b8369, type: 3}
+    pitchRange: {x: 0.9, y: 1.1}
+    volume: 0.5
+  eventEnums: 0f0000000e00000013000000
+  turnDuration: 0

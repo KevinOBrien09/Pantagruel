@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec03d198f138b2c4099b0c760090b965, type: 3}
+  m_Name: Hex
+  m_EditorClassIdentifier: 
+  Id: da43ed2c-7ff8-49f2-bb6b-c90ec96cb2c4
+  cardName: Hex
+  picture: {fileID: 21300000, guid: 7225f58894df8b44a8f1505736845463, type: 3}
+  manaCost: 0
+  vfxSetUp: 
+  vfx: 
+  castDelay: 0.2
+  effects: []
+  playVFXAfterDelay: 0
+  soundEffect:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
+  element: 5
+  beastClass: 17
+  desc: When you deal {30%MAXEHP} in MGK damage, activate this card and deal 10+
+    {15%MISSEHP} damage. This card is banished on cast.
+  flavourText: 
+  deckCost: 0

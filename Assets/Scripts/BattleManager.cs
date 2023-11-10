@@ -49,12 +49,14 @@ public class BattleManager:Singleton<BattleManager>
             ManaManager.inst.IncreaseMaxMana(); 
             EnemyAI.inst.IncreaseMaxMana();
         }
-
+ CardStack.inst.EnterBattle();
         ManaManager.inst.RegenMana();
         EnemyAI.inst.RegenMana();
         EnemyAI.inst.DrawRandomCard();
-        EnemyAI.inst.RebuildCardBacks();
-       // BattleField.inst.Init();
+        EnemyAI.inst.DrawRandomCard();
+        EnemyAI.inst.DrawRandomCard();
+       // EnemyAI.inst.RebuildCardBacks();
+  
         EventManager.inst.onBattleStart.Invoke();
 
         StartCoroutine(q());
@@ -82,6 +84,7 @@ public class BattleManager:Singleton<BattleManager>
 
         if(playerActiveBeastIsDead)
         {
+          
             if(partyHasValidMember(PlayerParty.inst.party))
             {
                 Debug.Log("ForceSwap");
@@ -96,10 +99,10 @@ public class BattleManager:Singleton<BattleManager>
             }
         }
 
-        if(enemyTarget.currentHealth <= 0)
-        {
+        // if(enemyTarget.currentHealth <= 0)
+        // {
             if(enemyActiveDeastIsDead)
-            {
+            {  EventManager.inst.onEnemyBeastDeath.Invoke();
                 if(partyHasValidMember(RivalBeastManager.inst.currentParty))
                 {
                     Debug.Log("Force Enemy swap");
@@ -114,7 +117,7 @@ public class BattleManager:Singleton<BattleManager>
             else{
                 //move forward set enemybeast target
             }
-        }
+       // }
 
       //  Debug.LogAssertion("UH OH!");
         return true;
@@ -138,7 +141,14 @@ public class BattleManager:Singleton<BattleManager>
 
         IEnumerator q()
         {
+            EndTurnButton.inst.Deactivate();
             CardManager.inst.DeactivateHand();
+           
+            if(PetManager.inst.enemyPet!= null){
+               
+                PetManager.inst.enemyPet.Die();
+            }
+           
             foreach (var item in CardManager.inst.hand)
             {item.VaporousDissolve();}
             
@@ -217,6 +227,7 @@ public class BattleManager:Singleton<BattleManager>
         ManaManager.inst.RegenMana();
         EnemyAI.inst.RegenMana();
         turn++;
+        CardStack.inst.NewTurn();
         BattleTicker.inst.Type("Turn " + turn.ToString());
         IEnumerator q()
         {
@@ -236,6 +247,7 @@ public class BattleManager:Singleton<BattleManager>
         inBattle = false;
         EventManager.inst.onBattleEnd.Invoke();
         turn = 0;
+        CardStack.inst.Wipe();
         PetManager.inst.LeaveBattle();
         PlayerManager.inst.movement.ReactivateMove();
         WorldViewManager.inst.LeaveBattle();

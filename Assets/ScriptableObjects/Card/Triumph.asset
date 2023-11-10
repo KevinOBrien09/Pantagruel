@@ -20,12 +20,12 @@ MonoBehaviour:
   vfx: 
   castDelay: 0
   effects:
-  - {fileID: 11400000, guid: 9c3e9ad20295d3d44a6c4843c2575462, type: 2}
+  - {fileID: 11400000, guid: 8b4becb65d9ddf64bac0d47d4b3c9751, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 8300000, guid: b3e797035ff82864296899b8238b8369, type: 3}
     pitchRange: {x: 0.9, y: 1.1}
-    volume: 1
+    volume: 0
   element: 3
   beastClass: 13
   desc: If you KO a unit in the next 2 turns gain an additional 20 gold.

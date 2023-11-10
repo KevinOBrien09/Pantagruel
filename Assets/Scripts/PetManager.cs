@@ -16,6 +16,8 @@ public class PetManager:Singleton<PetManager>
        if(playerPet!=null){
             //kill
         }
+        EventManager.inst.onPetSummon.Invoke();
+        EventManager.inst.onPlayerPetSummon.Invoke();
         AudioManager.inst.GetSoundEffect().Play(p.summoned);
         playerPet = Instantiate(petPrefab,playerPetHolder);
         playerPet.gameObject.layer = 8;
@@ -33,6 +35,8 @@ public class PetManager:Singleton<PetManager>
         if(enemyPet!=null){
             //kill
         }
+        EventManager.inst.onPetSummon.Invoke();
+        EventManager.inst.onEnemyPetSummon.Invoke();
         AudioManager.inst.GetSoundEffect().Play(p.summoned);
         enemyPet = Instantiate(petPrefab,enemyPetHolder);
         enemyPet.gameObject.layer = 7;
@@ -47,6 +51,7 @@ public class PetManager:Singleton<PetManager>
 
     public void KillPet(PetBehaviour p)
     {
+        EventManager.inst.onPetDeath.Invoke();
         if(p == enemyPet)
         {
             StartCoroutine(q());
@@ -55,12 +60,15 @@ public class PetManager:Singleton<PetManager>
                 CardManager.inst.DeactivateHand();
          
                 yield return new WaitForSeconds(1);
-
+                EventManager.inst.onEnemyPetDeath.Invoke();
                 //RivalBeastManager.inst.healthBar.entity = null;
                        BattleField.inst.enemyPet.healthBar.entity = null;
                 RivalBeastManager.inst.healthBar.RemovePetHealthBar();
                  BattleField.inst.enemyPet.gameObject.SetActive(false);
-                Destroy(enemyPet.gameObject);
+                 if(enemyPet!=null){
+ Destroy(enemyPet.gameObject);
+                 }
+                //bug
                
                 enemyPet = null;
                 BattleManager.inst.SetEnemyTarget(RivalBeastManager.inst.activeBeast);
@@ -77,7 +85,7 @@ public class PetManager:Singleton<PetManager>
                 BattleManager.inst.SetPlayerTarget(PlayerParty.inst.activeBeast);
               
                 yield return new WaitForSeconds(1);
-             
+                EventManager.inst.onPlayerPetDeath.Invoke();
                
                 BattleField.inst.playerPet.gameObject.SetActive(false);
                 BattleField.inst.playerPet.healthBar.entity = null;

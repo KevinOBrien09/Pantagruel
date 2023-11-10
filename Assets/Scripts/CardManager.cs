@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using System.Linq;
 using DG.Tweening;
 using System;
@@ -20,6 +21,7 @@ public class CardManager:Singleton<CardManager>
     public SoundData drawCard;
     Dictionary<Beast,Deck> deckDict = new Dictionary<Beast, Deck>();
     public bool handDown;
+    public Dictionary<Promise,UnityAction> promiseDict = new Dictionary<Promise, UnityAction>();
     public void EnterBattle(Beast beast)
     {
         foreach (var item in PlayerParty.inst.party)
@@ -181,6 +183,9 @@ public class CardManager:Singleton<CardManager>
         }
     }
 
+   
+   
+
     public void NewTurn()
     {
         cardsUsedThisTurn.Clear();
@@ -190,60 +195,56 @@ public class CardManager:Singleton<CardManager>
     {
         StartCoroutine(q());
         cardsUsedThisTurn.Add(usedCard);
-  
         EventManager.inst.onPlayerCastCard.Invoke();
+
         IEnumerator q()
         {
-            if(usedCard.castDelay != 0){
-  CardManager.inst.DeactivateHand();
-            }
+            if(usedCard.castDelay != 0)
+            {CardManager.inst.DeactivateHand();}
           
-            if(!usedCard.playVFXAfterDelay){
-            BattleEffectManager.inst.Play(usedCard.vfx);
-            }
+            if(!usedCard.playVFXAfterDelay)
+            {BattleEffectManager.inst.Play(usedCard.vfx);}
 
-            if(usedCard.playVFXAfterDelay){
-                if(usedCard.vfxSetUp!=string.Empty){
-                BattleEffectManager.inst.Play(usedCard.vfxSetUp);    
-
-                }
+            if(usedCard.playVFXAfterDelay)
+            {
+                if(usedCard.vfxSetUp!=string.Empty)
+                {BattleEffectManager.inst.Play(usedCard.vfxSetUp);}
             }
-            
             
             if(usedCard.soundEffect.audioClip != null)
             {AudioManager.inst.GetSoundEffect().Play(usedCard.soundEffect); }
             behaviour.gameObject.SetActive(false);
+
             yield return new WaitForSeconds(usedCard.castDelay);
-            if(!behaviour.isVapour){
-                currentDeck.discard.Add(usedCard);
-            }
-            if(usedCard.playVFXAfterDelay){
-            BattleEffectManager.inst.Play(usedCard.vfx);
-            }
+
+            if(!behaviour.isVapour)
+            {currentDeck.discard.Add(usedCard);}
+
+            if(usedCard.playVFXAfterDelay)
+            {BattleEffectManager.inst.Play(usedCard.vfx);}
             BattleTicker.inst.Type(usedCard.cardName);
-             StartCoroutine(piss());
             ManaManager.inst.Spend(usedCard.manaCost);
-            bool cardContainsDrawEffect = usedCard.effects.OfType<DrawCardEffect>().Any();
-            if(cardContainsDrawEffect)
-            {RemoveFromHand(behaviour);}
-            else
-            {RemoveFromHand(behaviour);}
+            
+            RemoveFromHand(behaviour);
+            
             foreach (var effect in usedCard.effects)
             { 
                 EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,BattleManager.inst.enemyTarget,true,usedCard);
                 effect.Use(args); 
             }
+            CardStack.inst.CreateActionStack(usedCard,PlayerParty.inst.activeBeast,true);
 
+            if(usedCard.castDelay != 0)
+            {CardManager.inst.ActivateHand();}
 
-            if(usedCard.castDelay != 0){
-                CardManager.inst.ActivateHand();
-            }
-            IEnumerator piss(){
+            StartCoroutine(piss());
+            
+            IEnumerator piss()
+            {
                 yield return new WaitForSeconds(1f);
-                
+      
                 BattleTicker.inst.Type("Make your move");
             }
-          
         }
     }
 
@@ -254,6 +255,11 @@ public class CardManager:Singleton<CardManager>
 
     public void LeaveBattle()
     {
+        foreach (var item in promiseDict)
+        {
+            item.Key.RemoveEvent();
+        }
+        promiseDict.Clear();
         DestroyHand();
         deckDict.Clear();
         cardsUsedThisTurn.Clear();

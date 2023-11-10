@@ -17,7 +17,7 @@ MonoBehaviour:
   uiPicture: {fileID: 507910716, guid: e48be9312070bb447969bf6b1eb89d85, type: 3}
   petName: Fish King
   stats:
-    maxHealth: 35
+    maxHealth: 1
     def: 0
     physical: 0
     magic: 0

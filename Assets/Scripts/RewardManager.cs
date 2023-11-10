@@ -36,9 +36,9 @@ public class RewardManager : Singleton<RewardManager>
         }
 
         gameObject.SetActive(true);
-        BattleTicker.inst.Type("Win.");
+        BattleTicker.inst.Type("");
         CardManager.inst.LeaveBattle();
-        EndTurnButton.inst.Deactivate();
+      CardStack.inst.ExitBattle();
         Inventory.inst.DisableItemDragOnAll();
         MusicManager.inst.Reward();
         partyHolderParent.DOAnchorPosX(-170,0);

@@ -26,16 +26,17 @@ MonoBehaviour:
       type: 3}
     mainSprite: {fileID: 699588328120191376, guid: 2a8f660a812a42c4a9eebc8986a24584,
       type: 3}
+    outLine: {fileID: 0}
     facingRight: 1
     bestiaryID: 113
-    wildDeck: {fileID: 11400000, guid: 80d5131422f00c4458ffe3c9b0906f53, type: 2}
-    stats:
-      maxHealth: 90
-      def: 17
-      physical: 11
-      magic: 25
-      charisma: 9
-      luck: 3
+    wildDeck: {fileID: 11400000, guid: 9cdb4c4e03b279d479964cb5306283ff, type: 2}
+    baseStats:
+      maxHealth: 1000
+      def: 0
+      physical: 0
+      magic: 0
+      charisma: 0
+      luck: 0
     statGrowthPerLevel:
       maxHealth: 4
       def: 1

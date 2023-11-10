@@ -15,7 +15,7 @@ MonoBehaviour:
   Id: fbd58fea-a142-4d4a-9373-8a0a398240ab
   cardName: Jousting
   picture: {fileID: 21300000, guid: db0b6a1eb0e7c8d4183f13225e8a685f, type: 3}
-  manaCost: 3
+  manaCost: 1
   vfxSetUp: 
   vfx: Lance
   castDelay: 0.2

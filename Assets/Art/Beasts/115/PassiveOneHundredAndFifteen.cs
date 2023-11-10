@@ -13,15 +13,17 @@ public class PassiveOneHundredAndFifteen : Passive
         UnityAction u = () =>CardManager.inst.CreateVapourCard(card);
         PassiveManager.inst.actions.Add(b,new List<UnityAction>());
         PassiveManager.inst.actions[b].Add(u);
-        EventManager.inst.onPlayerDrawingCardFirstTimeInTurn.AddListener(u);
+        EventManager.inst.AssignEvent(EventEnum.onPlayerDrawingCardFirstTimeInTurn,u);
+        //onPlayerDrawingCardFirstTimeInTurn.AddListener(u);
 
     }
 
     public override void Wipe(Beast b)
     {
-     foreach (var item in PassiveManager.inst.actions[b])
+        foreach (var item in PassiveManager.inst.actions[b])
         {
-            EventManager.inst.onPlayerDrawingCardFirstTimeInTurn.RemoveListener(item);
+            EventManager.inst.RemoveEvent(EventEnum.onPlayerDrawingCardFirstTimeInTurn,item);
+            //onPlayerDrawingCardFirstTimeInTurn.RemoveListener(item);
         }
         PassiveManager.inst.actions.Remove(b);
            

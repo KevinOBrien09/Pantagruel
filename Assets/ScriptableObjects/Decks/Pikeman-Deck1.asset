@@ -15,10 +15,12 @@ MonoBehaviour:
   deck:
     cards:
     - {fileID: 11400000, guid: 7dfa20122f8d91f4c9ec5e6a14a3a685, type: 2}
-    - {fileID: 11400000, guid: 7dfa20122f8d91f4c9ec5e6a14a3a685, type: 2}
-    - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
-    - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
     - {fileID: 11400000, guid: 6dc91edc1434a7d419e40d22201288b4, type: 2}
+    - {fileID: 11400000, guid: 6dc91edc1434a7d419e40d22201288b4, type: 2}
+    - {fileID: 11400000, guid: 7dfa20122f8d91f4c9ec5e6a14a3a685, type: 2}
+    - {fileID: 11400000, guid: 1b66478c61ef7834c9b0328172d7c204, type: 2}
+    - {fileID: 11400000, guid: 1b66478c61ef7834c9b0328172d7c204, type: 2}
+    - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
     discard: []
   combos:
   - requiredCards:

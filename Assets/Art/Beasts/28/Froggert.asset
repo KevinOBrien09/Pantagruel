@@ -15,7 +15,8 @@ MonoBehaviour:
   beastData:
     ANIMATED_PREFAB_DONE: 0
     devNote:
-      note: 
+      note: Upon reaching 5 bleed stacks on the enemy beast I bite it dealing 25+({25%MISSTHP})
+        and heal for {25%CURRHP}. //Allogate this to a pet instead?
     beastName: Froggert
     flavourText: 
     bottomCornerPos: {x: 0, y: -0.25}
@@ -25,16 +26,17 @@ MonoBehaviour:
       type: 3}
     mainSprite: {fileID: -8841179508272151079, guid: 75af220ac51f164409070ae44c6d85a4,
       type: 3}
+    outLine: {fileID: 0}
     facingRight: 0
     bestiaryID: 28
     wildDeck: {fileID: 0}
-    stats:
-      maxHealth: 120
-      def: 25
-      physical: 25
+    baseStats:
+      maxHealth: 0
+      def: 0
+      physical: 0
       magic: 0
       charisma: 0
-      luck: 12
+      luck: 0
     statGrowthPerLevel:
       maxHealth: 4
       def: 4

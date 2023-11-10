@@ -53,6 +53,7 @@ public class EnemyAI : Singleton<EnemyAI>
           
             Card c = CardFunctions.DrawRandomCard(currentDeck);
             hand.Add(c);
+              RebuildCardBacks();
         }
     }
 
@@ -132,6 +133,8 @@ public class EnemyAI : Singleton<EnemyAI>
                         false,usedCard);
                         effect.Use(args);
                     }
+                    CardStack.inst.CreateActionStack(usedCard,RivalBeastManager.inst.activeBeast,false);
+
                     RebuildCardBacks();
                     yield return new WaitForSeconds(.5f);
                     goto peepoo;

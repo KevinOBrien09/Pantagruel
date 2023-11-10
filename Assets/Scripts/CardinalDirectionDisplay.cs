@@ -17,8 +17,9 @@ public class CardinalDirectionDisplay : Singleton<CardinalDirectionDisplay>
     public List<CardDirX> xValues = new List<CardDirX>();
     public Dictionary<CardinalDirection,float> dict = new Dictionary<CardinalDirection, float>();
 
-    public void Start()
+    protected override void Awake()
     {
+        base.Awake();
         foreach (var item in xValues)
         {dict.Add(item.cardinalDirection,item.x);}
     }
