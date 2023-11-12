@@ -111,7 +111,7 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
     }
 
     public void DisableInteractable()
-    {
+    {   canvas.sortingOrder = OGSorting;
         interactable = false;
         canvas.overrideSorting = false;
     }
@@ -125,7 +125,7 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
     }
 
     public bool canCast()
-    {return CardManager.inst.canCast(card,true);}
+    {return CardFunctions.canCast(card,true);}
 
     public void ShowDesc()
     {
@@ -223,7 +223,7 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
     
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(!interactable)
+        if(!interactable || dragging)
         { return;}
 
         if(eventData.button == PointerEventData.InputButton.Right)
@@ -235,7 +235,7 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
             //     {cards.Add(item.card);}
             // }
             cards.Add(card);
-             CardViewer.inst.manuallyLoadCards = true;
+            CardViewer.inst.manuallyLoadCards = true;
             CardManager.inst.DeactivateHand();
             CardViewer.inst.ManuallyLoadCards(cards);
             CardViewer.inst.Open(card);

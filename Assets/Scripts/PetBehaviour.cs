@@ -8,7 +8,7 @@ using DG.Tweening;
 public class PetBehaviour:Entity               
 {
     public Pet pet;
-    EntityOwnership ownership;
+    public EntityOwnership ownership;
 
     public void Init(Pet p,EntityOwnership o)
     {
@@ -18,17 +18,28 @@ public class PetBehaviour:Entity
         i.Init(this);
         currentHealth = pet.stats.maxHealth;
         animatedInstance = i;
-        if(ownership == EntityOwnership.PLAYER){
+        
+        if(ownership == EntityOwnership.PLAYER)
+        {
             gameObject.layer = 8;
+            foreach(Transform child in i.transform)
+            {child.gameObject.layer = 8;}
+            i.transform.localPosition = p.playerPos;
+            i.transform.localScale = p.playerScale;
         }
-        else{
+        else
+        {
             gameObject.layer = 7;
+            foreach(Transform child in i.transform )
+            {child.gameObject.layer = 7;}
+            i.transform.localPosition = p.enemyPos;
+            i.transform.localScale = p.enemyScale;
         }
     }
 
-    public override void Die()
+    public override void Die(EntityOwnership damageSource)
     {
-        base.Die();
+        base.Die(damageSource);
 
         AudioManager.inst.GetSoundEffect().Play(pet.dying);
         PetManager.inst.KillPet(this);

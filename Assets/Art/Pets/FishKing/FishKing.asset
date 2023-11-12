@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f15057bdd57cdf4082478f157556505, type: 3}
   m_Name: FishKing
   m_EditorClassIdentifier: 
-  animatedInstance: {fileID: 1213311838463890689, guid: 3151f3b0d537c234ba21b00d5d75755d,
+  animatedInstance: {fileID: 8106113633887863098, guid: 3151f3b0d537c234ba21b00d5d75755d,
     type: 3}
   uiPicture: {fileID: 507910716, guid: e48be9312070bb447969bf6b1eb89d85, type: 3}
   petName: Fish King
   stats:
-    maxHealth: 1
+    maxHealth: 10
     def: 0
     physical: 0
     magic: 0
@@ -29,5 +29,9 @@ MonoBehaviour:
     volume: 1
   summoned:
     audioClip: {fileID: 8300000, guid: 651653df8dd6dd745bf57edaaaab80be, type: 3}
-    pitchRange: {x: 0.9, y: 1.1}
-    volume: 1
+    pitchRange: {x: 1.1, y: 1.2}
+    volume: 0.8
+  playerPos: {x: 0, y: -0.5, z: 0.2}
+  playerScale: {x: 0.1, y: 0.1, z: 0}
+  enemyPos: {x: 0, y: -0.72, z: 0.2}
+  enemyScale: {x: 0.1, y: 0.1, z: 0}

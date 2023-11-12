@@ -6,7 +6,7 @@ using EasySpringBone;
 public class Wind : MonoBehaviour
 {
     public SpringBoneManager[] springBoneManagers;
-    public GameObject[] winds;
+  
 
     public enum WIND { LEFT, RIGHT, OFF };
     public WIND currentWind;

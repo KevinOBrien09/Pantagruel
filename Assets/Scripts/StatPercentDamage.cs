@@ -11,7 +11,7 @@ public class StatPercentDamage:StatPercentEffect
 
     public override void Use(EffectArgs args)
     {
-       args. target.TakeDamage(Percentage(args.caster,stat,percentage));
+       args. target.TakeDamage(Percentage(args.caster,stat,percentage),GetEntityOwnership(args.isPlayer));
     }
 
 }

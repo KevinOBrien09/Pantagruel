@@ -82,7 +82,7 @@ public class ItemStack:MonoBehaviour
 
         foreach (var item in item.effects)
         {
-            EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,RivalBeastManager.inst.activeBeast,true,null);
+            EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,RivalBeastManager.inst.activeBeast,true,null,null);
             item.Use(args);
         }
         

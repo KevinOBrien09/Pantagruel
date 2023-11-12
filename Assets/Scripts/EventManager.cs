@@ -30,6 +30,18 @@ public class EventManager:Singleton<EventManager>
     public UnityEvent onPlayerPetSummon;
     public UnityEvent onEnemyPetSummon;
     public UnityEvent onEnemyBeastDeath;
+    public UnityEvent onEnemyPetKilledByPlayer;
+    public UnityEvent onPlayerPetKilledByPlayer;
+    public UnityEvent onEnemyPetKilledByEnemy;
+    public UnityEvent onPlayerPetKilledByEnemy;
+   
+    public UnityEvent onPlayerDealDamage;
+    public UnityEvent onEnemyDealDamage;
+
+    public UnityEvent onEnemyBeastKilledByPlayer;
+    public UnityEvent onEnemyBeastKilledByEnemy;
+    public UnityEvent onPlayerBeastKilledByEnemy;
+    public UnityEvent onPlayerBeastKilledByPlayer;
 
     public void AssignEvent(EventEnum eventEnum,UnityAction action)
     {
@@ -91,6 +103,36 @@ public class EventManager:Singleton<EventManager>
             break;
             case EventEnum.onEnemyBeastDeath:
             onEnemyBeastDeath.AddListener(action);
+            break;
+            case EventEnum.onEnemyPetKilledByPlayer:
+            onEnemyPetKilledByPlayer.AddListener(action);
+            break;
+            case EventEnum.onPlayerPetKilledByPlayer:
+            onPlayerPetKilledByPlayer.AddListener(action);
+            break;
+            case EventEnum.onPlayerPetKilledByEnemy:
+            onPlayerPetKilledByEnemy.AddListener(action);
+            break;
+            case EventEnum.onEnemyPetKilledByEnemy:
+            onEnemyPetKilledByEnemy.AddListener(action);
+            break;
+            case EventEnum.onPlayerDealDamage:
+            onPlayerDealDamage.AddListener(action);
+            break;
+            case EventEnum.onEnemyDealDamage:
+            onEnemyDealDamage.AddListener(action);
+            break;
+            case EventEnum.onEnemyBeastKilledByPlayer:
+            onEnemyBeastKilledByPlayer.AddListener(action);
+            break;
+            case EventEnum.onEnemyBeastKilledByEnemy:
+            onEnemyBeastKilledByEnemy.AddListener(action);
+            break;
+            case EventEnum.onPlayerBeastKilledByEnemy:
+            onPlayerBeastKilledByEnemy.AddListener(action);
+            break;
+            case EventEnum.onPlayerBeastKilledByPlayer:
+            onPlayerBeastKilledByPlayer.AddListener(action);
             break;
         
         }
@@ -158,6 +200,37 @@ public class EventManager:Singleton<EventManager>
             case EventEnum.onEnemyBeastDeath:
             onEnemyBeastDeath.RemoveListener(action);
             break;
+            case EventEnum.onEnemyPetKilledByPlayer:
+            onEnemyPetKilledByPlayer.RemoveListener(action);
+            break;
+               case EventEnum.onPlayerPetKilledByPlayer:
+            onPlayerPetKilledByPlayer.RemoveListener(action);
+            break;
+               case EventEnum.onPlayerPetKilledByEnemy:
+           onPlayerPetKilledByEnemy.RemoveListener(action);
+            break;
+               case EventEnum.onEnemyPetKilledByEnemy:
+          onEnemyPetKilledByEnemy.RemoveListener(action);
+            break;
+               case EventEnum.onPlayerDealDamage:
+            onPlayerDealDamage.RemoveListener(action);
+            break;
+               case EventEnum.onEnemyDealDamage:
+            onEnemyDealDamage.RemoveListener(action);
+            break;
+            case EventEnum.onEnemyBeastKilledByPlayer:
+            onEnemyBeastKilledByPlayer.RemoveListener(action);
+            break;
+            case EventEnum.onEnemyBeastKilledByEnemy:
+            onEnemyBeastKilledByEnemy.RemoveListener(action);
+            break;
+            case EventEnum.onPlayerBeastKilledByEnemy:
+            onPlayerBeastKilledByEnemy.RemoveListener(action);
+            break;
+            case EventEnum.onPlayerBeastKilledByPlayer:
+            onPlayerBeastKilledByPlayer.RemoveListener(action);
+            break;
+           
         
         }
     }
@@ -184,5 +257,16 @@ public enum EventEnum
         onPetSummon,
         onPlayerPetSummon,
         onEnemyPetSummon,
-        onEnemyBeastDeath
+        onEnemyBeastDeath,
+        onEnemyPetKilledByPlayer,
+        onPlayerPetKilledByPlayer,
+        onEnemyPetKilledByEnemy,
+        onPlayerPetKilledByEnemy,
+      
+        onPlayerDealDamage,
+        onEnemyDealDamage,
+        onEnemyBeastKilledByPlayer,
+        onEnemyBeastKilledByEnemy,
+        onPlayerBeastKilledByEnemy,
+        onPlayerBeastKilledByPlayer
     }

@@ -12,5 +12,6 @@ public class Pet : ScriptableObject
     public string petName;
     public Stats stats;
     public SoundData dying,summoned;
+    public Vector3 playerPos,playerScale,enemyPos,enemyScale;
 
 }

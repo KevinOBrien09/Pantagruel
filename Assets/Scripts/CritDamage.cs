@@ -18,10 +18,10 @@ public class CritDamage :Effect
         int c = (int) Random.Range(0,100);
         int q = critChance + (int) Maths.Percent( args.caster.stats().luck , luckPercentage);  
         if(c <= q)
-        {args.target.TakeDamage(damageValue * 2f);
+        {args.target.TakeDamage(damageValue * 2f,GetEntityOwnership(args.isPlayer));
         Debug.Log("Critical");}
         else
-        {args.target.TakeDamage(damageValue);}
+        {args.target.TakeDamage(damageValue,GetEntityOwnership(args.isPlayer));}
 
        
     }

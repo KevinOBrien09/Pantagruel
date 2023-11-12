@@ -127,13 +127,14 @@ public class EnemyAI : Singleton<EnemyAI>
                     
                     if(usedCard.soundEffect.audioClip != null)
                     {AudioManager.inst.GetSoundEffect().Play(usedCard.soundEffect); }
+                   CardStackBehaviour cardStackBehaviour =   CardStack.inst.CreateActionStack(usedCard,RivalBeastManager.inst.activeBeast,false);
                     foreach (var effect in usedCard.effects)
                     {
                         EffectArgs args = new EffectArgs(RivalBeastManager.inst.activeBeast,BattleManager.inst.playerTarget,
-                        false,usedCard);
+                        false,usedCard,cardStackBehaviour);
                         effect.Use(args);
                     }
-                    CardStack.inst.CreateActionStack(usedCard,RivalBeastManager.inst.activeBeast,false);
+                  
 
                     RebuildCardBacks();
                     yield return new WaitForSeconds(.5f);
@@ -163,7 +164,7 @@ public class EnemyAI : Singleton<EnemyAI>
                     bool allCardsAreCastable = true;
                     foreach (var item in combo.requiredCards)
                     {
-                        if(!CardManager.inst.canCast(item,false))
+                        if(!CardFunctions.canCast(item,false))
                         {allCardsAreCastable = false;}
                     }
 

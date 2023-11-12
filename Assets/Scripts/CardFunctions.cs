@@ -46,4 +46,31 @@ public static class CardFunctions
             return card1;
         }
     }
+
+    public static bool canCast(Card c, bool isPlayer)
+    {
+        bool hasMana = ManaManager.inst.currentMana >= c.manaCost;
+      
+        if(hasMana && oneEffectIsViable(c.effects,isPlayer))
+        {return true;}
+        else
+        {return false;}
+
+       
+    }
+
+    public static bool oneEffectIsViable(List<Effect> effects,bool isPlayer)
+    {
+        bool b = false;
+        foreach (var item in effects)
+        {
+            if(item.canUse(isPlayer))
+            { b = true;}
+            else
+            {Debug.Log(item.name +" is not viable");}
+        }
+        return b;
+
+        }
+
 }

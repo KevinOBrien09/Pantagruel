@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using KoganeUnityLib;
 using DG.Tweening;
-public class CardStack : Singleton<CardStack>
+public class CardStack : Singleton<CardStack> //holder for card history 
 {
 
     public Transform holder;
@@ -55,7 +55,7 @@ public class CardStack : Singleton<CardStack>
     }
 
 
-    public void CreateActionStack(Card c,Beast b,bool isPlayer)
+    public CardStackBehaviour CreateActionStack(Card c,Beast b,bool isPlayer)
     {
         CardStackBehaviour action = Instantiate(cardStackBehaviour,holder);
         action.Init(c,b,isPlayer);
@@ -63,6 +63,8 @@ public class CardStack : Singleton<CardStack>
         turnActionDict[BattleManager.inst.turn].Add(c);
         DOVirtual.Float( scrollbar.value,1,.2f,v  => 
         {  scrollbar.value = v;});
+
+        return action;
     }
 
     public void Wipe()

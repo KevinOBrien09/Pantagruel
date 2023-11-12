@@ -10,8 +10,9 @@ public class Damage :Effect
 
     public override void Use(EffectArgs args)
     {
+        
       
-        args.target.TakeDamage(damageValue);
+        args.target.TakeDamage(damageValue,GetEntityOwnership(args.isPlayer));
     }
 
 }

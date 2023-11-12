@@ -5,17 +5,11 @@ using UnityEngine;
 public class Beast : Entity
 {
     public BeastScriptableObject scriptableObject;
-  
     public Deck deck;
     public int shields;
-    
-  
- 
     public EXP exp = new EXP();
     public Stats statMods = new Stats();
-  
-
-
+    
     public void Init(BeastSaveData beastSaveData)
     {
         scriptableObject = BeastBank.inst.beastDict[beastSaveData.beastiaryID];
@@ -51,6 +45,7 @@ public class Beast : Entity
         }
        
     }
+
 
 
 

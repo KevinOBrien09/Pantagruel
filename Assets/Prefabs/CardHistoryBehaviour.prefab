@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.10657179, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.4867382, g: 0, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -284,7 +284,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -473,8 +473,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -44.777, y: 14.42}
-  m_SizeDelta: {x: 170.55, y: 18.12}
+  m_AnchoredPosition: {x: 119.1, y: 2.4}
+  m_SizeDelta: {x: 54.3218, y: 18.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2227991309694204686
 CanvasRenderer:
@@ -504,7 +504,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Bleed '
+  m_text: 90/90
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 476190c30ad1fe141bea663c5587dba6, type: 2}
   m_sharedMaterial: {fileID: 2924580912013308650, guid: 476190c30ad1fe141bea663c5587dba6,
@@ -815,7 +815,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 26.8, y: -33.7}
+  m_AnchoredPosition: {x: 13.2, y: 2.4}
   m_SizeDelta: {x: 260.11, y: 16.169998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2227991310006685942
@@ -986,9 +986,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardName: {fileID: 2227991308932687383}
-  actionResult: {fileID: 0}
+  actionResult: {fileID: 2227991309660653061}
+  meterValues: {fileID: 2227991309694204687}
   cardPic: {fileID: 2227991309195937136}
   bg: {fileID: 2227991310999349828}
+  meterFill: {fileID: 2227991309536887778}
   blue:
     serializedVersion: 2
     rgba: 4281675025
@@ -998,6 +1000,8 @@ MonoBehaviour:
   savedCard: {fileID: 0}
   caster: {fileID: 0}
   promiseParent: {fileID: 2227991309958684611}
+  turnPlayed: 0
+  meterGO: {fileID: 2227991310004370730}
 --- !u!1 &2227991310173917577
 GameObject:
   m_ObjectHideFlags: 0

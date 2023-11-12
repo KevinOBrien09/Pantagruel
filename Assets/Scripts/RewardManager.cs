@@ -164,6 +164,7 @@ public class RewardManager : Singleton<RewardManager>
         {
             Destroy(item.gameObject);
         }
+        additionalGold = 0;
         shopCards.Clear();
         partyEXPs.Clear();
         cardsToAddToCollection.Clear();

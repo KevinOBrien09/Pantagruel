@@ -15,16 +15,19 @@ MonoBehaviour:
   Id: 19c63de2-6e08-4b7b-8a00-540706f2dfda
   cardName: 'The Cadaver '
   picture: {fileID: 21300000, guid: 858a74b2ca3aa0940bd9c43aa7e7703f, type: 3}
-  manaCost: 0
+  manaCost: 1
+  vfxSetUp: 
   vfx: 
   castDelay: 0.2
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: 80ac7ee074e5f9043b2204e82b295856, type: 2}
+  playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
   element: 3
   beastClass: 10
-  desc: 
+  desc: <b>Summon</b> a Corpse.
   flavourText: '"The wise will take the warning"'
   deckCost: 0

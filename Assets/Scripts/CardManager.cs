@@ -6,6 +6,14 @@ using UnityEngine.Events;
 using System.Linq;
 using DG.Tweening;
 using System;
+public class ActionEventPair{
+    public string ID;
+    public UnityAction action;
+    public List<EventEnum> subbedEvents = new List<EventEnum>();
+    public EffectArgs args;
+    public int turnCastOn;
+    public int turnToDieOn;
+}
 
 public class CardManager:Singleton<CardManager>                   
 {
@@ -21,7 +29,9 @@ public class CardManager:Singleton<CardManager>
     public SoundData drawCard;
     Dictionary<Beast,Deck> deckDict = new Dictionary<Beast, Deck>();
     public bool handDown;
-    public Dictionary<Promise,UnityAction> promiseDict = new Dictionary<Promise, UnityAction>();
+    public Dictionary<string,ActionEventPair> promiseDict = new Dictionary<string,ActionEventPair>();
+    public List<Promise> promiseList = new List<Promise>();
+    
     public void EnterBattle(Beast beast)
     {
         foreach (var item in PlayerParty.inst.party)
@@ -156,33 +166,7 @@ public class CardManager:Singleton<CardManager>
         { Debug.Log("card is null"); }
     }
 
-    public bool canCast(Card card,bool isPlayer)
-    {
-        bool hasMana = ManaManager.inst.currentMana >= card.manaCost;
-      
-        if(hasMana && oneEffectIsViable())
-        {return true;}
-        else
-        {return false;}
-
-        bool oneEffectIsViable(){
-
-            bool b = false;
-            foreach (var item in card.effects)
-            {
-                if(item.canUse(isPlayer))
-                { b = true;}
-                else{
-                    Debug.Log(item.name +" is not viable");
-              
-                }
-            }
-
-            return b;
-
-        }
-    }
-
+  
    
    
 
@@ -226,13 +210,13 @@ public class CardManager:Singleton<CardManager>
             ManaManager.inst.Spend(usedCard.manaCost);
             
             RemoveFromHand(behaviour);
-            
+            CardStackBehaviour stackBehaviour =  CardStack.inst.CreateActionStack(usedCard,PlayerParty.inst.activeBeast,true);
             foreach (var effect in usedCard.effects)
             { 
-                EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,BattleManager.inst.enemyTarget,true,usedCard);
+                EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,BattleManager.inst.enemyTarget,true,usedCard,stackBehaviour);
                 effect.Use(args); 
             }
-            CardStack.inst.CreateActionStack(usedCard,PlayerParty.inst.activeBeast,true);
+            
 
             if(usedCard.castDelay != 0)
             {CardManager.inst.ActivateHand();}
@@ -257,12 +241,17 @@ public class CardManager:Singleton<CardManager>
     {
         foreach (var item in promiseDict)
         {
-            item.Key.RemoveEvent();
+            foreach (var eventEnum in item.Value.subbedEvents)
+            {
+               EventManager.inst.RemoveEvent(eventEnum,item.Value.action);
+            }
+            
         }
+        promiseList.Clear();
         promiseDict.Clear();
         DestroyHand();
         deckDict.Clear();
-        cardsUsedThisTurn.Clear();
+        
         hand.Clear();
         currentBeast = null;
         currentDeck = null;

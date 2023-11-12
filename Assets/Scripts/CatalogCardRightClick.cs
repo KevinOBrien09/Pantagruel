@@ -10,7 +10,7 @@ public class CatalogCardRightClick : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         if(eventData.button == PointerEventData.InputButton.Right){
-CardViewer.inst.Open(card);
+            CardViewer.inst.Open(card);
         }
        
     }

@@ -31,7 +31,7 @@ MonoBehaviour:
     bestiaryID: 115
     wildDeck: {fileID: 11400000, guid: 9cdb4c4e03b279d479964cb5306283ff, type: 2}
     baseStats:
-      maxHealth: 1
+      maxHealth: 999
       def: 6
       physical: 5
       magic: 7

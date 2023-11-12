@@ -15,7 +15,10 @@ MonoBehaviour:
   beastData:
     ANIMATED_PREFAB_DONE: 0
     devNote:
-      note: benefits from healing more?
+      note: 'Impatient Hunger
+
+        When I am active, when an ally summon has
+        been alive for 3 turns I eat them, healing for 25% of their current health. '
     beastName: Glutton
     flavourText: '"I LOVE FOOD, GIVE ME FOOD"'
     bottomCornerPos: {x: 0, y: -0.25}
@@ -25,15 +28,16 @@ MonoBehaviour:
       type: 3}
     mainSprite: {fileID: -8038976213705442086, guid: c59ef772b4c339540a2aa8c12a0a41c3,
       type: 3}
+    outLine: {fileID: 0}
     facingRight: 0
     bestiaryID: 30
     wildDeck: {fileID: 0}
-    stats:
-      maxHealth: 109
-      def: 12
-      physical: 20
-      magic: 4
-      charisma: 3
+    baseStats:
+      maxHealth: 0
+      def: 0
+      physical: 0
+      magic: 0
+      charisma: 0
       luck: 0
     statGrowthPerLevel:
       maxHealth: 3

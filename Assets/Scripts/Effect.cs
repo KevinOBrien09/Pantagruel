@@ -11,6 +11,13 @@ public class Effect :ScriptableObject
         Debug.Log(name);
     }
 
+    public EntityOwnership GetEntityOwnership(bool isPlayer){
+       
+        if(isPlayer)
+        {return EntityOwnership.PLAYER;}
+        else
+        {return EntityOwnership.ENEMY;}
+    }
    
 
     public virtual bool canUse(bool isPlayer){
@@ -24,14 +31,16 @@ public class EffectArgs
     public Entity target;
     public  bool isPlayer;
     public Card card; 
+    public CardStackBehaviour stackBehaviour;
     
 
-    public EffectArgs(Entity CASTER,Entity TARGET,bool ISPLAYER, Card CARD)
+    public EffectArgs(Entity CASTER,Entity TARGET,bool ISPLAYER, Card CARD,CardStackBehaviour STACK)
     {
         caster = CASTER;
         target =TARGET;
         isPlayer = ISPLAYER;
         card = CARD;
+        stackBehaviour = STACK;
     
         
     }

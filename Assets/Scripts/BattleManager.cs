@@ -16,12 +16,15 @@ public class BattleManager:Singleton<BattleManager>
     public SoundData leave;
     public Entity playerTarget;
     public StatusEffectManager playerStatusEffects;
-    
+    public Dictionary<int,int> howMuchDamagePlayerDidPerTurn = new Dictionary<int, int>();
+    public Dictionary<int,int> howMuchDamageEnemyDidPerTurn = new Dictionary<int, int>();
     
     public void StartBattle(BattleType battleType)
     {
         inBattle = true;
         turn = 1;
+           howMuchDamageEnemyDidPerTurn.Add(turn,0);
+        howMuchDamagePlayerDidPerTurn.Add(turn,0);
         turnState = TurnState.Player;
 
         if(battleType == BattleType.Wild)
@@ -49,7 +52,7 @@ public class BattleManager:Singleton<BattleManager>
             ManaManager.inst.IncreaseMaxMana(); 
             EnemyAI.inst.IncreaseMaxMana();
         }
- CardStack.inst.EnterBattle();
+        CardStack.inst.EnterBattle();
         ManaManager.inst.RegenMana();
         EnemyAI.inst.RegenMana();
         EnemyAI.inst.DrawRandomCard();
@@ -102,7 +105,7 @@ public class BattleManager:Singleton<BattleManager>
         // if(enemyTarget.currentHealth <= 0)
         // {
             if(enemyActiveDeastIsDead)
-            {  EventManager.inst.onEnemyBeastDeath.Invoke();
+            {  
                 if(partyHasValidMember(RivalBeastManager.inst.currentParty))
                 {
                     Debug.Log("Force Enemy swap");
@@ -144,16 +147,19 @@ public class BattleManager:Singleton<BattleManager>
             EndTurnButton.inst.Deactivate();
             CardManager.inst.DeactivateHand();
            
-            if(PetManager.inst.enemyPet!= null){
-               
-                PetManager.inst.enemyPet.Die();
-            }
+          
            
             foreach (var item in CardManager.inst.hand)
             {item.VaporousDissolve();}
             
           
             inBattle = false;
+
+            yield return new WaitForEndOfFrame();
+              if(PetManager.inst.enemyPet!= null && !PetManager.inst.enemyPet.KO){
+               
+                PetManager.inst.enemyPet.Die(EntityOwnership.ERROR);
+            }
             yield return new WaitForSeconds(1.5f);
             RewardManager.inst.Open();
            // LeaveBattle();
@@ -200,6 +206,7 @@ public class BattleManager:Singleton<BattleManager>
 
     public void SwapToEnemyTurn()
     {      
+        
         EventManager.inst.onNewEnemyTurn.Invoke();
         CardManager.inst.NewTurn();
         BattleTicker.inst.Type("The beast readies itself.");
@@ -226,9 +233,7 @@ public class BattleManager:Singleton<BattleManager>
         }
         ManaManager.inst.RegenMana();
         EnemyAI.inst.RegenMana();
-        turn++;
-        CardStack.inst.NewTurn();
-        BattleTicker.inst.Type("Turn " + turn.ToString());
+        IncrementTurn();
         IEnumerator q()
         {
             yield return new WaitForSeconds(.25f);
@@ -242,11 +247,46 @@ public class BattleManager:Singleton<BattleManager>
         }
     }
 
+    void IncrementTurn(){
+        turn++;
+        howMuchDamageEnemyDidPerTurn.Add(turn,0);
+        howMuchDamagePlayerDidPerTurn.Add(turn,0);
+          CardStack.inst.NewTurn();
+        CheckBullshit();
+      
+        BattleTicker.inst.Type("Turn " + turn.ToString());
+    }
+
+    void CheckBullshit()
+    {
+
+        foreach (var item in CardManager.inst.promiseDict)
+        {
+            if(item.Value.turnToDieOn == turn)
+            {
+                Debug.Log("Remove " + item.Value);
+                foreach (var e in item.Value.subbedEvents)
+                {EventManager.inst.RemoveEvent(e,item.Value.action);}
+                CardStackBehaviour b =  CardStack.inst.CreateActionStack(item.Value.args.card,(Beast) item.Value.args.caster,item.Value.args.isPlayer);
+                b.ConditionFailed();
+                //activate bad thing here.
+            }
+            
+        }
+    }
+
     public void LeaveBattle()
     {
         inBattle = false;
+        foreach (var item in howMuchDamagePlayerDidPerTurn)
+        {
+            Debug.Log("Player did " +item.Value + "Damage on turn " + item.Key);
+        }
+        howMuchDamageEnemyDidPerTurn.Clear();
+        howMuchDamagePlayerDidPerTurn.Clear();
         EventManager.inst.onBattleEnd.Invoke();
         turn = 0;
+      CardManager.inst.  cardsUsedThisTurn.Clear();
         CardStack.inst.Wipe();
         PetManager.inst.LeaveBattle();
         PlayerManager.inst.movement.ReactivateMove();

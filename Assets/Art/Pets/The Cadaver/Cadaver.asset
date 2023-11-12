@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f15057bdd57cdf4082478f157556505, type: 3}
+  m_Name: Cadaver
+  m_EditorClassIdentifier: 
+  animatedInstance: {fileID: 2268372406204202056, guid: 4ce25008816617d4fb52684cd28fac42,
+    type: 3}
+  uiPicture: {fileID: -1227480640, guid: e6d4782822ecb6849943e0415e667e90, type: 3}
+  petName: Corpse
+  stats:
+    maxHealth: 1
+    def: 0
+    physical: 0
+    magic: 0
+    charisma: 0
+    luck: 0
+  dying:
+    audioClip: {fileID: 8300000, guid: 92c006188b694d442a4e1d4d2188c0fc, type: 3}
+    pitchRange: {x: 0.9, y: 1.1}
+    volume: 0
+  summoned:
+    audioClip: {fileID: 8300000, guid: de5e1f1fc2a493447a3c53ab1392640c, type: 3}
+    pitchRange: {x: 0.9, y: 1.1}
+    volume: 1
+  playerPos: {x: 0, y: -0.7, z: 0}
+  playerScale: {x: 0.1, y: 0.1, z: 1}
+  enemyPos: {x: 0, y: -0.7, z: 0.19}
+  enemyScale: {x: 0.15, y: 0.15, z: 1}

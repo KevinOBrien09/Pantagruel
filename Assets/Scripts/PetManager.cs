@@ -51,7 +51,7 @@ public class PetManager:Singleton<PetManager>
 
     public void KillPet(PetBehaviour p)
     {
-        EventManager.inst.onPetDeath.Invoke();
+        //EventManager.inst.onPetDeath.Invoke();
         if(p == enemyPet)
         {
             StartCoroutine(q());
@@ -60,7 +60,7 @@ public class PetManager:Singleton<PetManager>
                 CardManager.inst.DeactivateHand();
          
                 yield return new WaitForSeconds(1);
-                EventManager.inst.onEnemyPetDeath.Invoke();
+       
                 //RivalBeastManager.inst.healthBar.entity = null;
                        BattleField.inst.enemyPet.healthBar.entity = null;
                 RivalBeastManager.inst.healthBar.RemovePetHealthBar();
@@ -85,7 +85,7 @@ public class PetManager:Singleton<PetManager>
                 BattleManager.inst.SetPlayerTarget(PlayerParty.inst.activeBeast);
               
                 yield return new WaitForSeconds(1);
-                EventManager.inst.onPlayerPetDeath.Invoke();
+           
                
                 BattleField.inst.playerPet.gameObject.SetActive(false);
                 BattleField.inst.playerPet.healthBar.entity = null;
@@ -105,7 +105,7 @@ public class PetManager:Singleton<PetManager>
     {
         if(playerPet != null){
             
-            playerPet.Die();
+            playerPet.Die(EntityOwnership.ERROR);
         }
     }
 
