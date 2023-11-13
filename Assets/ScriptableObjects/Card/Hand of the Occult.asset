@@ -16,15 +16,17 @@ MonoBehaviour:
   cardName: Hand of the Occult
   picture: {fileID: 21300000, guid: dc5e77c407a811f4687c5ec522ae569e, type: 3}
   manaCost: 0
+  vfxSetUp: 
   vfx: 
-  castDelay: 0.2
+  castDelay: 0
   effects: []
+  playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
   element: 0
   beastClass: 17
-  desc: 
+  desc: Draw an OCCULT card from your deck.
   flavourText: 
   deckCost: 0

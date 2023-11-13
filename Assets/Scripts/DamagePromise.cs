@@ -16,25 +16,60 @@ public class DamagePromise :Promise
             int totalDamage = 0;
             for (int i = CardManager.inst.promiseDict[id].turnCastOn; i < CardManager.inst.promiseDict[id].turnToDieOn; i++)
             {
-                if(BattleManager.inst.howMuchDamagePlayerDidPerTurn.ContainsKey(i))
-                { totalDamage+=BattleManager.inst.howMuchDamagePlayerDidPerTurn[i]; }
-                else{ Debug.Log("Turn " + i + " did not yet occur"); }
+                
+                if(BattleManager.inst.playerRecord.ContainsKey(i))
+                { 
+                    if(CardManager.inst.promiseDict[id].turnCastOn == BattleManager.inst.turn)
+                    {totalDamage+=BattleManager.inst.playerRecord[BattleManager.inst.turn].GetDamageAfterSpecificPoint(OGargs.castOrder);}
+                    else
+                    {totalDamage+=BattleManager.inst.playerRecord[i].GetAllDamageDealtThisTurn();}
+
+
+                }
+            //     else{ Debug.Log("Turn " + i + " did not yet occur");
+            //    continue; }
               
             }
+          
             OGargs.stackBehaviour.UpdateBar((float) totalDamage,(float)meterMax);
-            Debug.Log(totalDamage + " Dealt by player");
+         
             if(totalDamage >= meterMax)
-            {
-                CreateSuccessfullActionStack(OGargs);
-                ExecuteEffects(OGargs);
-                ExecuteFluff();
-                RemoveEvent(id);
-                if(unStackable)
+            {       
+                if(CardManager.inst.handDown)
                 {
-                    if(CardManager.inst.promiseList.Contains(this))
-                    {CardManager.inst.promiseList.Remove(this);}
+                   BattleManager.inst.StartCoroutine(Penis());
+                   
+                    IEnumerator Penis()
+                    {
+                           RemoveEvent(id);
+                        while(CardManager.inst.handDown)
+                        {yield return null;}
+                     
+                        CreateSuccessfullActionStack(OGargs);
+                        ExecuteEffects(OGargs);
+                        ExecuteFluff();
+                
+                        if(unStackable)
+                        {
+                            if(CardManager.inst.promiseList.Contains(this))
+                            {CardManager.inst.promiseList.Remove(this);}
+                        }
+                    }
+                   return;
                 }
+                else
+                {
+                    RemoveEvent(id);
+                    CreateSuccessfullActionStack(OGargs);
+                    ExecuteEffects(OGargs);
+                    ExecuteFluff();
             
+                    if(unStackable)
+                    {
+                        if(CardManager.inst.promiseList.Contains(this))
+                        {CardManager.inst.promiseList.Remove(this);}
+                    }
+                }
             }
         }
         else{
@@ -42,5 +77,20 @@ public class DamagePromise :Promise
         }
       
 
+    }
+
+    public override void ExecuteEffects(EffectArgs OGargs)
+    {   
+        if(OGargs.isPlayer)
+        {
+            if(CardFunctions.oneEffectIsViable(desiredEffects,OGargs.isPlayer)){
+                foreach (var effect in desiredEffects)
+                { 
+                    EffectArgs arg = new EffectArgs(OGargs.caster,BattleManager.inst.enemyTarget,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder);
+                    effect.Use(arg); 
+                }
+            }
+        }
+       
     }
 }

@@ -16,13 +16,15 @@ MonoBehaviour:
   cardName: Appetite of the Appendage
   picture: {fileID: 21300000, guid: eba5ce9319bdb474e86548740b2bf1c2, type: 3}
   manaCost: 2
+  vfxSetUp: 
   vfx: 
   castDelay: 0
   effects:
   - {fileID: 11400000, guid: 6cf636112f9504844b7b2f6d2427370d, type: 2}
   - {fileID: 11400000, guid: 79b7ea41d60a51949babcb2047393397, type: 2}
+  playVFXAfterDelay: 0
   soundEffect:
-    audioClip: {fileID: 8300000, guid: aeaf238419057c34db81b0351d426a87, type: 3}
+    audioClip: {fileID: 8300000, guid: 00adb275d4187d94081de8bfdd267130, type: 3}
     pitchRange: {x: 0.9, y: 1.1}
     volume: 0.7
   element: 1

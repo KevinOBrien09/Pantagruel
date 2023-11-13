@@ -1,11 +1,42 @@
  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using UnityEngine.UI;
 using DG.Tweening;
 public enum EntityOwnership{ERROR,PLAYER,ENEMY}
 public class BattleManager:Singleton<BattleManager>                   
 {
+    public class TurnRecord
+    {
+        public List<Card> cardsPlayedThisTurn = new List<Card>();
+        public List<CardIntPair> damageDealtByEachCard = new List<CardIntPair>();
+        public class CardIntPair{
+            public Card card;
+            public int v;
+        }
+        
+
+        public int GetAllDamageDealtThisTurn()
+        {
+            int i = 0;
+            foreach (var item in damageDealtByEachCard)
+            {i+=item.v;}
+            return i;
+        }
+
+        public int GetDamageAfterSpecificPoint(int index)
+        {
+            int q = 0;
+            for (int i =index; i <damageDealtByEachCard.Count; i++)
+            {q+= damageDealtByEachCard[i].v;}
+            return q;
+        }
+
+    }
+
+
+
     public enum TurnState{Player,Enemy}
     public TurnState turnState;
     public bool inBattle;
@@ -16,15 +47,16 @@ public class BattleManager:Singleton<BattleManager>
     public SoundData leave;
     public Entity playerTarget;
     public StatusEffectManager playerStatusEffects;
-    public Dictionary<int,int> howMuchDamagePlayerDidPerTurn = new Dictionary<int, int>();
-    public Dictionary<int,int> howMuchDamageEnemyDidPerTurn = new Dictionary<int, int>();
+    public Dictionary<int,TurnRecord> playerRecord = new Dictionary<int,TurnRecord>();
+    
+    public Dictionary<int,TurnRecord> enemyRecord = new Dictionary<int,TurnRecord>();
     
     public void StartBattle(BattleType battleType)
     {
         inBattle = true;
         turn = 1;
-           howMuchDamageEnemyDidPerTurn.Add(turn,0);
-        howMuchDamagePlayerDidPerTurn.Add(turn,0);
+        enemyRecord.Add(turn,new TurnRecord());
+        playerRecord.Add(turn,new TurnRecord());
         turnState = TurnState.Player;
 
         if(battleType == BattleType.Wild)
@@ -35,7 +67,7 @@ public class BattleManager:Singleton<BattleManager>
         EndTurnButton.inst.Reactivate();
         BattleField.inst.SetPlayerBeastIcon(PlayerParty.inst.activeBeast);
         BattleField.inst.Init();
-        UpperLeftPanel.inst.  SwapToBattle();
+        UpperLeftPanel.inst.SwapToBattle();
         SetEnemyTarget(RivalBeastManager.inst.activeBeast);
         SetPlayerTarget(PlayerParty.inst.activeBeast);
         Inventory.inst.EnableItemDragOnAll();
@@ -208,7 +240,7 @@ public class BattleManager:Singleton<BattleManager>
     {      
         
         EventManager.inst.onNewEnemyTurn.Invoke();
-        CardManager.inst.NewTurn();
+     
         BattleTicker.inst.Type("The beast readies itself.");
         CardManager.inst.DeactivateHand();
        
@@ -220,7 +252,7 @@ public class BattleManager:Singleton<BattleManager>
     public void SwapToPlayerTurn()
     {
         EventManager.inst.onNewPlayerTurn.Invoke();
-        CardManager.inst.NewTurn();
+   
         CardManager.inst.ActivateHand();
         Inventory.inst.ActivateDrag();
  
@@ -249,9 +281,9 @@ public class BattleManager:Singleton<BattleManager>
 
     void IncrementTurn(){
         turn++;
-        howMuchDamageEnemyDidPerTurn.Add(turn,0);
-        howMuchDamagePlayerDidPerTurn.Add(turn,0);
-          CardStack.inst.NewTurn();
+        playerRecord .Add(turn,new TurnRecord());
+        enemyRecord .Add(turn,new TurnRecord());
+        CardStack.inst.NewTurn();
         CheckBullshit();
       
         BattleTicker.inst.Type("Turn " + turn.ToString());
@@ -264,6 +296,9 @@ public class BattleManager:Singleton<BattleManager>
         {
             if(item.Value.turnToDieOn == turn)
             {
+                if(item.Value.promise.badEffects.Count != 0){
+                    item.Value.promise.ExecuteBadEffects(item.Value.args);
+                }
                 Debug.Log("Remove " + item.Value);
                 foreach (var e in item.Value.subbedEvents)
                 {EventManager.inst.RemoveEvent(e,item.Value.action);}
@@ -278,15 +313,15 @@ public class BattleManager:Singleton<BattleManager>
     public void LeaveBattle()
     {
         inBattle = false;
-        foreach (var item in howMuchDamagePlayerDidPerTurn)
-        {
-            Debug.Log("Player did " +item.Value + "Damage on turn " + item.Key);
-        }
-        howMuchDamageEnemyDidPerTurn.Clear();
-        howMuchDamagePlayerDidPerTurn.Clear();
+        // foreach (var item in howMuchDamagePlayerDidPerTurn)
+        // {
+        //     Debug.Log("Player did " +item.Value + "Damage on turn " + item.Key);
+        // }
+        playerRecord.Clear();
+        enemyRecord.Clear();
         EventManager.inst.onBattleEnd.Invoke();
         turn = 0;
-      CardManager.inst.  cardsUsedThisTurn.Clear();
+      
         CardStack.inst.Wipe();
         PetManager.inst.LeaveBattle();
         PlayerManager.inst.movement.ReactivateMove();

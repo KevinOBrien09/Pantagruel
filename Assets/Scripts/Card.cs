@@ -15,7 +15,7 @@ public class Card :GUIDScriptableObject
     public SoundData soundEffect;
     public Element element;
     public BeastClass beastClass;
-    [TextArea] public string desc;
+    [TextArea(5,5)] public string desc;
      [TextArea] public string flavourText;
     public int deckCost;
   

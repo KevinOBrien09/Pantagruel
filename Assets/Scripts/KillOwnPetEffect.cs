@@ -10,12 +10,20 @@ public class KillOwnPetEffect :Effect
     {
         if(args.isPlayer)
         {
-            BattleManager.inst.howMuchDamagePlayerDidPerTurn[BattleManager.inst.turn] += (int) PetManager.inst.playerPet.currentHealth;
+            BattleManager.TurnRecord.CardIntPair p = new BattleManager.TurnRecord.CardIntPair();
+            p.card = args.card;
+            p.v = (int) PetManager.inst.playerPet.currentHealth;
+            BattleManager.inst.playerRecord[BattleManager.inst.turn].damageDealtByEachCard.Add(p);
+          
             PetManager.inst.playerPet.Die(EntityOwnership.PLAYER);
         }
         else
         {
-            BattleManager.inst.howMuchDamageEnemyDidPerTurn[BattleManager.inst.turn] += (int) PetManager.inst.enemyPet.currentHealth;
+            BattleManager.TurnRecord.CardIntPair p = new BattleManager.TurnRecord.CardIntPair();
+            p.card = args.card;
+            p.v = (int) PetManager.inst.playerPet.currentHealth;
+            BattleManager.inst.enemyRecord[BattleManager.inst.turn].damageDealtByEachCard.Add(p);
+            
             PetManager.inst.enemyPet.Die(EntityOwnership.ENEMY);
         }
       

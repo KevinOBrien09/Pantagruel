@@ -32,15 +32,17 @@ public class EffectArgs
     public  bool isPlayer;
     public Card card; 
     public CardStackBehaviour stackBehaviour;
+    public int castOrder;
     
 
-    public EffectArgs(Entity CASTER,Entity TARGET,bool ISPLAYER, Card CARD,CardStackBehaviour STACK)
+    public EffectArgs(Entity CASTER,Entity TARGET,bool ISPLAYER, Card CARD,CardStackBehaviour STACK,int CASTORDER)
     {
         caster = CASTER;
         target =TARGET;
         isPlayer = ISPLAYER;
         card = CARD;
         stackBehaviour = STACK;
+        castOrder = CASTORDER;
     
         
     }

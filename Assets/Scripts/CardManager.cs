@@ -10,6 +10,7 @@ public class ActionEventPair{
     public string ID;
     public UnityAction action;
     public List<EventEnum> subbedEvents = new List<EventEnum>();
+    public Promise promise;
     public EffectArgs args;
     public int turnCastOn;
     public int turnToDieOn;
@@ -20,8 +21,7 @@ public class CardManager:Singleton<CardManager>
     public CardBehaviour prefab;
     public RectTransform holder;
     public List<CardBehaviour> hand = new List<CardBehaviour>();
-    public List<Card> cardsUsedThisTurn = new List<Card>();
-    
+   
     float holderOgPos;
     public float downHodlerPos;
     public Deck currentDeck;
@@ -170,15 +170,11 @@ public class CardManager:Singleton<CardManager>
    
    
 
-    public void NewTurn()
-    {
-        cardsUsedThisTurn.Clear();
-    }
-
+  
     public void Use(Card usedCard,CardBehaviour behaviour)
     {
         StartCoroutine(q());
-        cardsUsedThisTurn.Add(usedCard);
+        BattleManager.inst.playerRecord[BattleManager.inst.turn].cardsPlayedThisTurn.Add(usedCard);
         EventManager.inst.onPlayerCastCard.Invoke();
 
         IEnumerator q()
@@ -213,7 +209,7 @@ public class CardManager:Singleton<CardManager>
             CardStackBehaviour stackBehaviour =  CardStack.inst.CreateActionStack(usedCard,PlayerParty.inst.activeBeast,true);
             foreach (var effect in usedCard.effects)
             { 
-                EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,BattleManager.inst.enemyTarget,true,usedCard,stackBehaviour);
+                EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,BattleManager.inst.enemyTarget,true,usedCard,stackBehaviour,BattleManager.inst.playerRecord[BattleManager.inst.turn].cardsPlayedThisTurn.IndexOf(usedCard));
                 effect.Use(args); 
             }
             

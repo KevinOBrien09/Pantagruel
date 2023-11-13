@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec03d198f138b2c4099b0c760090b965, type: 3}
+  m_Name: Leaves of Life
+  m_EditorClassIdentifier: 
+  Id: 0ecf9d6e-08f3-4bdb-bd90-860b80a9e7a4
+  cardName: 
+  picture: {fileID: 0}
+  manaCost: 0
+  vfxSetUp: 
+  vfx: 
+  castDelay: 0.2
+  effects: []
+  playVFXAfterDelay: 0
+  soundEffect:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
+  element: 0
+  beastClass: 0
+  desc: 
+  flavourText: 
+  deckCost: 0

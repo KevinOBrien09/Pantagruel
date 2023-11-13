@@ -8,6 +8,7 @@ using System;
 public class Promise :Effect
 {
     public List<Effect> desiredEffects,badEffects;
+    public bool castBadEffectsOnEnemy;
     public Card parentCard;
     public string vfx;
     public SoundData soundData;
@@ -29,6 +30,7 @@ public class Promise :Effect
                 UnityAction u = ()=> PromiseFufilled(args,id);
                 ActionEventPair pair = new ActionEventPair();
                 pair.ID = id;
+                pair.promise = this;
                 pair.action = u;
                 pair.args = args;
                 pair.turnCastOn = BattleManager.inst.turn;
@@ -43,6 +45,7 @@ public class Promise :Effect
                     pair.subbedEvents.Add(item);
                 }
                 CardManager.inst.promiseDict.Add(id,pair);
+             
 
                 if(unStackable){
                 CardManager.inst.promiseList.Add(this);
@@ -93,13 +96,32 @@ public class Promise :Effect
         BattleEffectManager.inst.Play(vfx);
     }
 
-    public void ExecuteEffects(EffectArgs OGargs)
+    public virtual void ExecuteEffects(EffectArgs OGargs)
     {
         if(CardFunctions.oneEffectIsViable(desiredEffects,OGargs.isPlayer)){
             foreach (var effect in desiredEffects)
             { 
-                EffectArgs arg = new EffectArgs(OGargs.caster,OGargs.target,OGargs.isPlayer,parentCard,null);
+                EffectArgs arg = new EffectArgs(OGargs.caster,OGargs.target,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder);
                 effect.Use(arg); 
+            }
+        }
+       
+    }
+
+    public virtual void ExecuteBadEffects(EffectArgs OGargs)
+    {
+        if(CardFunctions.oneEffectIsViable(badEffects,OGargs.isPlayer)){
+            foreach (var effect in badEffects)
+            { 
+                if(castBadEffectsOnEnemy){
+                EffectArgs arg = new EffectArgs(OGargs.caster,RivalBeastManager.inst.activeBeast,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder);
+                effect.Use(arg); 
+                }
+                else{
+                EffectArgs arg = new EffectArgs(OGargs.caster,PlayerParty.inst.activeBeast,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder);
+                effect.Use(arg); 
+                }
+                
             }
         }
        
@@ -112,9 +134,10 @@ public class Promise :Effect
 
     public void RemoveEvent(string id)
     {
+      
         foreach (var item in eventEnums)
         {EventManager.inst.RemoveEvent(item,CardManager.inst.promiseDict[id].action);}
-         CardManager.inst.promiseDict.Remove(id);
+        CardManager.inst.promiseDict.Remove(id);
     }
 
     public virtual bool CheckPromise()

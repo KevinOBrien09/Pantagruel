@@ -17,6 +17,7 @@ public class EnemyAI : Singleton<EnemyAI>
     public TextMeshProUGUI manaCountText;
     public GameObject cardBack;
     public RectTransform cardBackHolder;
+
     Dictionary<int,GameObject> backDict = new Dictionary<int, GameObject>();
     Dictionary<Beast,Deck> deckDict = new Dictionary<Beast, Deck>();
     
@@ -117,6 +118,8 @@ public class EnemyAI : Singleton<EnemyAI>
                 {
                     
                     Card usedCard = c.Dequeue();
+                    BattleManager.inst.enemyRecord[BattleManager.inst.turn].cardsPlayedThisTurn.Add(usedCard);
+                   
                     BattleTicker.inst.Type(usedCard.cardName);
                     yield return new WaitForSeconds(.25f);
                    
@@ -131,7 +134,7 @@ public class EnemyAI : Singleton<EnemyAI>
                     foreach (var effect in usedCard.effects)
                     {
                         EffectArgs args = new EffectArgs(RivalBeastManager.inst.activeBeast,BattleManager.inst.playerTarget,
-                        false,usedCard,cardStackBehaviour);
+                        false,usedCard,cardStackBehaviour,BattleManager.inst.enemyRecord[BattleManager.inst.turn].cardsPlayedThisTurn.IndexOf(usedCard));
                         effect.Use(args);
                     }
                   
@@ -143,6 +146,7 @@ public class EnemyAI : Singleton<EnemyAI>
                 else
                 {
                     yield return new WaitForSeconds(.5f);
+               
                     BattleManager.inst.EndTurn();
                 }
             }

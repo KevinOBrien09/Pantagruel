@@ -7,8 +7,12 @@ using UnityEngine.UI;
 public class EndTurnButton : Singleton<EndTurnButton>
 {
     public Button button;
+    public SoundData click;
     public void Deselect(){
         EventSystem.current.SetSelectedGameObject(null);
+    }
+    public void PlaySFX(){
+        AudioManager.inst.GetSoundEffect().Play(click);
     }
 
     public void Deactivate()

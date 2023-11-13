@@ -9,10 +9,17 @@ public class Entity : MonoBehaviour
     public SoundData healSFX;
     public float currentHealth;
     public bool KO;
-    public void TakeDamage(float amount,EntityOwnership damageSource)
+    public void TakeDamage(float amount,EffectArgs args)
     {
         float oldCurrentHealth = currentHealth;
         currentHealth = currentHealth-amount;
+        EntityOwnership damageSource = EntityOwnership.ERROR;
+        if(args.isPlayer){
+            damageSource = EntityOwnership.PLAYER;
+        }
+        else{
+            damageSource = EntityOwnership.ENEMY;
+        }
         
         if(currentHealth <0)
         {
@@ -24,24 +31,31 @@ public class Entity : MonoBehaviour
         if(animatedInstance != null){
             animatedInstance.TakeDamage();
         }
-
-        if(damageSource == EntityOwnership.ENEMY)
-        {
-            BattleManager.inst.howMuchDamageEnemyDidPerTurn[BattleManager.inst.turn] += howMuchDamage;
-            EventManager.inst.onEnemyDealDamage.Invoke();
-        }
-        else
-        { 
-            BattleManager.inst.howMuchDamagePlayerDidPerTurn[BattleManager.inst.turn] += howMuchDamage;
-            EventManager.inst.onPlayerDealDamage.Invoke(); 
-        }
-
-        if(currentHealth ==0)
+            if(currentHealth ==0)
         {
            // EventManager.inst.onEnemyBeastDeath.Invoke();
 
             Die(damageSource);
         }
+
+        if(damageSource == EntityOwnership.ENEMY)
+        {
+            BattleManager.TurnRecord.CardIntPair p = new BattleManager.TurnRecord.CardIntPair();
+            p.card = args.card;
+            p.v = howMuchDamage;
+            BattleManager.inst.enemyRecord[BattleManager.inst.turn].damageDealtByEachCard.Add(p);
+            EventManager.inst.onEnemyDealDamage.Invoke();
+        }
+        else
+        { 
+            BattleManager.TurnRecord.CardIntPair p = new BattleManager.TurnRecord.CardIntPair();
+            p.card = args.card;
+            p.v = howMuchDamage;
+            BattleManager.inst.playerRecord[BattleManager.inst.turn].damageDealtByEachCard.Add(p);
+            EventManager.inst.onPlayerDealDamage.Invoke(); 
+        }
+
+    
         foreach (var item in currentHealthBars)
         {item.onHit.Invoke(); }
         

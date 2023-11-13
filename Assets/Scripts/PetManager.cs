@@ -66,9 +66,9 @@ public class PetManager:Singleton<PetManager>
                 RivalBeastManager.inst.healthBar.RemovePetHealthBar();
                  BattleField.inst.enemyPet.gameObject.SetActive(false);
                  if(enemyPet!=null){
- Destroy(enemyPet.gameObject);
+                    Destroy(enemyPet.gameObject);
                  }
-                //bug
+            
                
                 enemyPet = null;
                 BattleManager.inst.SetEnemyTarget(RivalBeastManager.inst.activeBeast);

@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: DamagePromise - 20
   m_EditorClassIdentifier: 
   desiredEffects:
-  - {fileID: 11400000, guid: 0e9532906878b9c4da8015f2f57ed2d9, type: 2}
-  badEffects: []
+  - {fileID: 11400000, guid: 6c4f0dec416b47f4a8b2602b42414523, type: 2}
+  badEffects:
+  - {fileID: 11400000, guid: 6c4f0dec416b47f4a8b2602b42414523, type: 2}
+  castBadEffectsOnEnemy: 0
   parentCard: {fileID: 11400000, guid: cbdf3044615ac644d9b41da01389d1c8, type: 2}
-  vfx: 
+  vfx: BloodSpike
   soundData:
-    audioClip: {fileID: 0}
-    pitchRange: {x: 0, y: 0}
-    volume: 0
+    audioClip: {fileID: 8300000, guid: 378b42191fc1ef445a694bb11ea5d96a, type: 3}
+    pitchRange: {x: 0.9, y: 1}
+    volume: 1
   eventEnums: 1800000019000000
   unStackable: 1
   turnDuration: 3

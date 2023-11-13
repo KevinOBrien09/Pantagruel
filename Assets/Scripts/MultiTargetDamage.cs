@@ -18,10 +18,10 @@ public class MultiTargetDamage :Effect
                 case WhatTarget.ENEMYBEAST:
                 if(!args.isPlayer)
                 {
-                    PlayerParty.inst.activeBeast.TakeDamage(item.damageValue,GetEntityOwnership(args.isPlayer));
+                    PlayerParty.inst.activeBeast.TakeDamage(item.damageValue,args);
                 }
                 else{
-                       RivalBeastManager.inst.activeBeast.TakeDamage(item.damageValue,GetEntityOwnership(args.isPlayer));
+                       RivalBeastManager.inst.activeBeast.TakeDamage(item.damageValue,args);
                 }
              
                 break;
@@ -31,13 +31,13 @@ public class MultiTargetDamage :Effect
                 {
                    if(PetManager.inst.playerPet != null)
                     {
-                        PetManager.inst.playerPet.TakeDamage(item.damageValue,GetEntityOwnership(args.isPlayer));
+                        PetManager.inst.playerPet.TakeDamage(item.damageValue,args);
                     }   
                 }
                 else{
                     if(PetManager.inst.enemyPet != null)
                     {
-                        PetManager.inst.enemyPet.TakeDamage(item.damageValue,GetEntityOwnership(args.isPlayer));
+                        PetManager.inst.enemyPet.TakeDamage(item.damageValue,args);
                     } 
                 }
                 
@@ -46,11 +46,11 @@ public class MultiTargetDamage :Effect
                 case WhatTarget.PLAYERBEAST:
                   if(!args.isPlayer)
                     {
-                           RivalBeastManager.inst.activeBeast.TakeDamage(item.damageValue,GetEntityOwnership(args.isPlayer));
+                           RivalBeastManager.inst.activeBeast.TakeDamage(item.damageValue,args);
                       
                     }
                     else{
-                       PlayerParty.inst.activeBeast.TakeDamage(item.damageValue,GetEntityOwnership(args.isPlayer));
+                       PlayerParty.inst.activeBeast.TakeDamage(item.damageValue,args);
                     }
 
                 break;
@@ -59,17 +59,24 @@ public class MultiTargetDamage :Effect
                 {
                    if(PetManager.inst.playerPet != null)
                     {
-                        PetManager.inst.playerPet.TakeDamage(item.damageValue,GetEntityOwnership(args.isPlayer));
+                        PetManager.inst.playerPet.TakeDamage(item.damageValue,args);
                     }   
                 }
                 else{
                     if(PetManager.inst.enemyPet != null)
                     {
-                        PetManager.inst.enemyPet.TakeDamage(item.damageValue,GetEntityOwnership(args.isPlayer));
+                        PetManager.inst.enemyPet.TakeDamage(item.damageValue,args);
                     } 
                 }
                 
                 break;
+                case WhatTarget.PLAYERTARGET:
+                BattleManager.inst.playerTarget.TakeDamage(item.damageValue,args);
+                break;
+                case WhatTarget.ENEMYTARGET:
+                BattleManager.inst.enemyTarget.TakeDamage(item.damageValue,args);
+                break;
+                
                 
                 
             }
@@ -80,7 +87,7 @@ public class MultiTargetDamage :Effect
     }
 
 }
-public enum WhatTarget{ENEMYBEAST,ENEMYPET,PLAYERPET,PLAYERBEAST}
+public enum WhatTarget{ENEMYBEAST,ENEMYPET,PLAYERPET,PLAYERBEAST,ENEMYTARGET,PLAYERTARGET}
 [System.Serializable]
 public class TargetDamage{
     public WhatTarget target;

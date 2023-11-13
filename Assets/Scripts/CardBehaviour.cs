@@ -121,7 +121,7 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
         foreach (var item in activeTweens)
         {item.Kill();}
         CardManager.inst.Use(card,this);
-        Debug.Log(card.cardName + " was Cast");
+      //  Debug.Log(card.cardName + " was Cast");
     }
 
     public bool canCast()

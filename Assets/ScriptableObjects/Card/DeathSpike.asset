@@ -17,21 +17,21 @@ MonoBehaviour:
   picture: {fileID: 21300000, guid: 534f8248482a7684ab206f63db0a1409, type: 3}
   manaCost: 1
   vfxSetUp: 
-  vfx: 
+  vfx: BloodCurse
   castDelay: 0
   effects:
   - {fileID: 11400000, guid: 3effefece8f975a4bb79e31c787ae023, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
-    audioClip: {fileID: 0}
-    pitchRange: {x: 0, y: 0}
-    volume: 0
+    audioClip: {fileID: 8300000, guid: 040f29e538da04e489b725c9544d9383, type: 3}
+    pitchRange: {x: 0.9, y: 1.1}
+    volume: 1
   element: 5
   beastClass: 17
-  desc: 'If you deal 40 damage within the next 3 turns trigger <i><b>Spike</i></b>
-    on the enemy beast, otherwise deal it to your active beast. <br> <u><i><b>Spike</i></b></u>
+  desc: 'If you deal 40 damage within the next 3 turns trigger <i><b>Blood Spike</i></b>
+    on the enemy beast, otherwise deal it to your active beast. <br> <u><i><b>Blood
+    Spike</i></b></u>
 
-    Deal
-    20% missing health damage to the rival beast.'
-  flavourText: 
+    Deal 20% max health damage to the target.'
+  flavourText: '"The Knight, from The Dance of Death - Hans Holbein the Younger"'
   deckCost: 0

@@ -28,6 +28,6 @@ MonoBehaviour:
     volume: 0
   element: 3
   beastClass: 10
-  desc: <b>Summon</b> a Corpse.
+  desc: <b>Summon:</b> a Corpse.
   flavourText: '"The wise will take the warning"'
   deckCost: 0

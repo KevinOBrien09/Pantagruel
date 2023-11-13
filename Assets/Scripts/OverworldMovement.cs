@@ -165,7 +165,7 @@ public class OverworldMovement : MonoBehaviour
             int n = Random.Range(-1,100);
             if(n <= encounterChance)
             {
-                Debug.Log( n + "Encounter");
+              //  Debug.Log( n + "Encounter");
                 encounterTimeOut = Random.Range(timeOutMin,timeOutMax);
                 canMove = false;
                 lastTorchState = torch.torchOn;

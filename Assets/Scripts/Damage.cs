@@ -12,7 +12,7 @@ public class Damage :Effect
     {
         
       
-        args.target.TakeDamage(damageValue,GetEntityOwnership(args.isPlayer));
+        args.target.TakeDamage(damageValue,args);
     }
 
 }

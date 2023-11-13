@@ -10,7 +10,7 @@ public class FindWhatUIElementMouseIsOver : Singleton<FindWhatUIElementMouseIsOv
  
     private void Start()
     {
-        Debug.Log(gameObject.name);
+     
         UILayer = LayerMask.NameToLayer("UI");
     }
  
