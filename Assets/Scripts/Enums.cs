@@ -6,7 +6,7 @@ public enum Target{Opposition,Self}
 public enum ResourceCurrency{SP,HP}
 public enum Alliance{NA,Player,Enemy}
 public enum StatName{HEALTH,PHYSICAL,MAGIC,DEFENSE,CHARISMA,LUCK}
-public enum StatusEffectEnum{StatMod,Bleed}
+public enum StatusEffects{BLEED,PARASITE,HOLYWATER}
 
 public enum Element{NONE,FIRE,WATER,WIND,STONE,GRASS,LIGHTNING}
 

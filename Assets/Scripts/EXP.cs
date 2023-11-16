@@ -3,6 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+
+[System.Serializable]
+public class EXPSave
+{
+    public int level = 0;
+    public int currentEXP = 0;
+    public int targetEXP = 0;
+
+
+}
+
 [System.Serializable]
 public class EXP 
 {
@@ -22,6 +33,7 @@ public class EXP
         EXPSave save = new EXPSave();
         save.level = level;
         save.currentEXP = currentExp;
+        save.targetEXP = targetExp;
         return save;
     }
 
@@ -31,6 +43,7 @@ public class EXP
         {
             level = save.level;
             currentExp = save.currentEXP;
+            targetExp = save.targetEXP;
         }
         else
         {
@@ -108,12 +121,5 @@ public class EXP
 
 }
 
-[System.Serializable]
-public class EXPSave{
-    public int level = 0;
-    public int currentEXP = 0;
 
-
-
-}
 

@@ -134,7 +134,7 @@ public class EnemyAI : Singleton<EnemyAI>
                     foreach (var effect in usedCard.effects)
                     {
                         EffectArgs args = new EffectArgs(RivalBeastManager.inst.activeBeast,BattleManager.inst.playerTarget,
-                        false,usedCard,cardStackBehaviour,BattleManager.inst.enemyRecord[BattleManager.inst.turn].cardsPlayedThisTurn.IndexOf(usedCard));
+                        false,usedCard,cardStackBehaviour,BattleManager.inst.enemyRecord[BattleManager.inst.turn].cardsPlayedThisTurn.IndexOf(usedCard),usedCard.cardName);
                         effect.Use(args);
                     }
                   

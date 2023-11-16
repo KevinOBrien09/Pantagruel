@@ -15,11 +15,12 @@ MonoBehaviour:
   beastData:
     ANIMATED_PREFAB_DONE: 0
     devNote:
-      note: Deals bonus damage to avains. Dealing damage to avians permentally increases
-        this bonus. Oneshots avian pets.
+      note: Deals bonus damage to avains. Oneshots avian pets.
     beastName: Raven Reaper
     flavourText: 
-    bottomCornerPos: {x: 0, y: -0.25}
+    playerStatusEffectPos: {x: 0, y: -4.5, z: 2, w: 1.5}
+    enemyStatusEffectPos: {x: 0, y: 9, z: 2, w: 1.5}
+    bottomCornerPos: {x: 0, y: -0.25, z: 0}
     battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 297204263445885254, guid: e459fb7b51ff1ac4d9bc727ed85018e6,

@@ -1,28 +1,8 @@
 using System;
 using UnityEngine;
-
+using System.Linq;
 public static class MiscFunctions
 {
-    // public static string GetAbbStatName(StatName sn)
-    // {
-    //     switch (sn)
-    //     {
-    //         case StatName.Physical:
-    //         return "PHYS";
-    //         case StatName.Magic:
-    //         return "MGK";
-    //         case StatName.Toughness:
-    //         return "TGH";
-    //         case StatName.Charisma:
-    //         return "CHR";
-    //         case StatName.Resolve:
-    //         return "RES";
-    //         default:
-    //         Debug.LogAssertion("DefaultCase");
-    //         return "BUG";
-    //     }
-    // }
-    
     public static (int,string) GetPercentFromString(string s,string tag)
     {
        
@@ -52,5 +32,8 @@ public static class MiscFunctions
         }
         return number;
     }
+
+    public static string FirstLetterToUpperCaseOrConvertNullToEmptyString(string str)
+    {return str?.First().ToString().ToUpper() + str?.Substring(1).ToLower();}
 
 }

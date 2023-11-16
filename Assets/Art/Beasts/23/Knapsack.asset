@@ -18,23 +18,26 @@ MonoBehaviour:
       note: knapsack grants additional inventory slots?
     beastName: Knapsack
     flavourText: '"What a beautiful day!"'
-    bottomCornerPos: {x: 0, y: -1.5}
+    playerStatusEffectPos: {x: 0, y: 0.35, z: 2, w: 1.5}
+    enemyStatusEffectPos: {x: 0, y: 9, z: 2, w: 1.5}
+    bottomCornerPos: {x: 0, y: -0.1, z: 1.1}
     battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -7542644075435838252, guid: 500e87f5ec1d2d54fac5bf788ffa9cb7,
       type: 3}
     mainSprite: {fileID: 2720535173406242035, guid: 500e87f5ec1d2d54fac5bf788ffa9cb7,
       type: 3}
+    outLine: {fileID: 0}
     facingRight: 1
     bestiaryID: 23
-    wildDeck: {fileID: 0}
-    stats:
-      maxHealth: 111
-      def: 23
-      physical: 11
-      magic: 22
-      charisma: 31
-      luck: 12
+    wildDeck: {fileID: 11400000, guid: 5cd1c28a6f153a04aac37ad7b269cdcb, type: 2}
+    baseStats:
+      maxHealth: 0
+      def: 0
+      physical: 0
+      magic: 0
+      charisma: 0
+      luck: 0
     statGrowthPerLevel:
       maxHealth: 2
       def: 2

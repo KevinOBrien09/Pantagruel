@@ -9,6 +9,8 @@ public class Entity : MonoBehaviour
     public SoundData healSFX;
     public float currentHealth;
     public bool KO;
+    public StatusEffectHandler statusEffectHandler;
+    
     public void TakeDamage(float amount,EffectArgs args)
     {
         float oldCurrentHealth = currentHealth;
@@ -31,7 +33,9 @@ public class Entity : MonoBehaviour
         if(animatedInstance != null){
             animatedInstance.TakeDamage();
         }
-            if(currentHealth ==0)
+
+        
+        if(currentHealth ==0)
         {
            // EventManager.inst.onEnemyBeastDeath.Invoke();
 
@@ -43,6 +47,7 @@ public class Entity : MonoBehaviour
             BattleManager.TurnRecord.CardIntPair p = new BattleManager.TurnRecord.CardIntPair();
             p.card = args.card;
             p.v = howMuchDamage;
+            p.castOrder = args.castOrder;
             BattleManager.inst.enemyRecord[BattleManager.inst.turn].damageDealtByEachCard.Add(p);
             EventManager.inst.onEnemyDealDamage.Invoke();
         }
@@ -51,6 +56,7 @@ public class Entity : MonoBehaviour
             BattleManager.TurnRecord.CardIntPair p = new BattleManager.TurnRecord.CardIntPair();
             p.card = args.card;
             p.v = howMuchDamage;
+            p.castOrder = args.castOrder;
             BattleManager.inst.playerRecord[BattleManager.inst.turn].damageDealtByEachCard.Add(p);
             EventManager.inst.onPlayerDealDamage.Invoke(); 
         }
@@ -63,12 +69,49 @@ public class Entity : MonoBehaviour
        
     }
 
+    public void Bleed(EffectArgs args)
+    {
+        float oldCurrentHealth = currentHealth;
+        currentHealth = currentHealth - Mathf.RoundToInt( (float) Maths.Percent(stats().maxHealth,2)) ;
+        int howMuchDamage= (int) oldCurrentHealth - (int) currentHealth;
+        Debug.Log("BLEED " + howMuchDamage);
+        EntityOwnership damageSource = EntityOwnership.ERROR;
+        if(args.isPlayer)
+        {damageSource = EntityOwnership.PLAYER;} 
+        else{damageSource = EntityOwnership.ENEMY;}
+
+        if(animatedInstance != null){
+            animatedInstance.TakeDamage();
+        }
+        if(currentHealth ==0)
+        {
+           
+
+            Die(damageSource);
+        }
+
+        if(damageSource == EntityOwnership.ENEMY)
+        {
+            BattleManager.inst.enemyRecord[BattleManager.inst.turn].bleedDamage += howMuchDamage;
+            EventManager.inst.onEnemyDealDamage.Invoke();
+        }
+        else
+        { 
+            BattleManager.inst.playerRecord[BattleManager.inst.turn].bleedDamage += howMuchDamage;
+            EventManager.inst.onPlayerDealDamage.Invoke(); 
+        }
+        foreach (var item in currentHealthBars)
+        {item.onHit.Invoke(); }
+        
+        BattleManager.inst.CheckIfGameContinues();
+
+    }
+
     public virtual void Die(EntityOwnership damageSource)
     {
         
-        if(damageSource != EntityOwnership.ERROR){
-            CallDeathEvents(damageSource);
-        }
+        if(damageSource != EntityOwnership.ERROR)
+        {CallDeathEvents(damageSource);}
         KO = true;
         animatedInstance.Dissolve();
     }

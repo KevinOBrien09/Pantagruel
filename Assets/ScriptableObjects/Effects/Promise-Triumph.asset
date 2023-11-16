@@ -15,12 +15,13 @@ MonoBehaviour:
   desiredEffects:
   - {fileID: 11400000, guid: 472649e11b4f6f6459dc675d1726c605, type: 2}
   badEffects: []
+  castBadEffectsOnEnemy: 0
   parentCard: {fileID: 11400000, guid: 1b66478c61ef7834c9b0328172d7c204, type: 2}
   vfx: 
   soundData:
-    audioClip: {fileID: 8300000, guid: bb4ad47bde9a01a439469058332b6b40, type: 3}
+    audioClip: {fileID: 8300000, guid: 30685bb33cd90694cb1e6027bd59302f, type: 3}
     pitchRange: {x: 1, y: 1.1}
-    volume: 0.5
+    volume: 1
   eventEnums: 140000001a00000015000000
   unStackable: 1
   turnDuration: 2

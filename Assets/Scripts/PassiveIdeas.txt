@@ -18,3 +18,12 @@
 //arrow characters, use arrows in iventory
 //character gains damage based on how much tarot they are missing
 //heals when a summon dies
+
+
+//plot
+//player is told about mcguffin in the catacombs of the monastary  
+//monastary is destrytoed blabla
+//player needs to get a key to open a door at the bottom of the monastary off some hermit guy
+//player fights guy boss fight
+//player goes back to monasatry and opens door
+//demo ends title card.

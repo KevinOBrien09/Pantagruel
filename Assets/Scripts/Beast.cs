@@ -10,12 +10,16 @@ public class Beast : Entity
     public EXP exp = new EXP();
     public Stats statMods = new Stats();
     
+    
+    
     public void Init(BeastSaveData beastSaveData)
     {
         scriptableObject = BeastBank.inst.beastDict[beastSaveData.beastiaryID];
         gameObject.name = scriptableObject.beastData.beastName;
         currentHealth = beastSaveData.currentHealth;
-        exp = beastSaveData.exp;
+        exp = new EXP();
+        exp.Load( beastSaveData.exp);
+       
          
         foreach (var id in beastSaveData.deckIDs)
         {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DeathSpike
   m_EditorClassIdentifier: 
   Id: da43ed2c-7ff8-49f2-bb6b-c90ec96cb2c4
-  cardName: Death Spike
+  cardName: Blood Spike
   picture: {fileID: 21300000, guid: 534f8248482a7684ab206f63db0a1409, type: 3}
   manaCost: 1
   vfxSetUp: 

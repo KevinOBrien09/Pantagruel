@@ -35,6 +35,7 @@ public class PetManager:Singleton<PetManager>
         if(enemyPet!=null){
             //kill
         }
+        BattleManager.inst.FUCKOFF = true;
         EventManager.inst.onPetSummon.Invoke();
         EventManager.inst.onEnemyPetSummon.Invoke();
         AudioManager.inst.GetSoundEffect().Play(p.summoned);
@@ -47,6 +48,11 @@ public class PetManager:Singleton<PetManager>
         BattleManager.inst.SetEnemyTarget(enemyPet);
         RivalBeastManager.inst.activeBeast.animatedInstance.MoveBack(EntityOwnership.ENEMY);
         BattleField.inst.Summon(p,enemyPet,EntityOwnership.ENEMY);
+        StartCoroutine(q());
+        IEnumerator q(){
+            yield return new WaitForSeconds(.7f);
+            BattleManager.inst.FUCKOFF = false;
+        }
     }
 
     public void KillPet(PetBehaviour p)
@@ -54,13 +60,14 @@ public class PetManager:Singleton<PetManager>
         //EventManager.inst.onPetDeath.Invoke();
         if(p == enemyPet)
         {
+           
             StartCoroutine(q());
             IEnumerator q()
             {
                 CardManager.inst.DeactivateHand();
-         
+           BattleManager.inst.FUCKOFF = true;
                 yield return new WaitForSeconds(1);
-       
+      
                 //RivalBeastManager.inst.healthBar.entity = null;
                        BattleField.inst.enemyPet.healthBar.entity = null;
                 RivalBeastManager.inst.healthBar.RemovePetHealthBar();
@@ -73,8 +80,9 @@ public class PetManager:Singleton<PetManager>
                 enemyPet = null;
                 BattleManager.inst.SetEnemyTarget(RivalBeastManager.inst.activeBeast);
                 RivalBeastManager.inst.activeBeast.animatedInstance.MoveForward(EntityOwnership.ENEMY);
-                yield return new WaitForSeconds(.5f);
-                CardManager.inst.ActivateHand();
+                yield return new WaitForSeconds(.7f);
+             //   CardManager.inst.ActivateHand();
+                BattleManager.inst.FUCKOFF = false;
             }
         }
         else if(p == playerPet)

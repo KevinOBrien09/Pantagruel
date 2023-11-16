@@ -64,6 +64,8 @@ public class CardStackBehaviour : MonoBehaviour, IPointerClickHandler
 
     public void UpdateBar(float current,float max){
         meterFill.DOFillAmount(current/max,.2f);
+        if(current > max)
+        {current = max;}
         meterValues.text = current.ToString() + "/" + max.ToString();
     }
 

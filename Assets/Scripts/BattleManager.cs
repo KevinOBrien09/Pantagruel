@@ -1,6 +1,7 @@
  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System.Linq;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -9,11 +10,14 @@ public class BattleManager:Singleton<BattleManager>
 {
     public class TurnRecord
     {
+        public int turn;
         public List<Card> cardsPlayedThisTurn = new List<Card>();
         public List<CardIntPair> damageDealtByEachCard = new List<CardIntPair>();
+        public int bleedDamage;
         public class CardIntPair{
             public Card card;
             public int v;
+            public int castOrder;
         }
         
 
@@ -22,21 +26,36 @@ public class BattleManager:Singleton<BattleManager>
             int i = 0;
             foreach (var item in damageDealtByEachCard)
             {i+=item.v;}
+            i+= bleedDamage;
             return i;
         }
 
-        public int GetDamageAfterSpecificPoint(int index)
+        public int GetDamageAfterSpecificPoint(int indexPromiseCardWasCastOn)
         {
             int q = 0;
-            for (int i =index; i <damageDealtByEachCard.Count; i++)
-            {q+= damageDealtByEachCard[i].v;}
+            
+            for (int i = indexPromiseCardWasCastOn; i <cardsPlayedThisTurn.Count; i++)
+            {
+                foreach (var item in damageDealtByEachCard)
+                {
+                    if(item.castOrder == i){
+                        q+= item.v;
+                    }
+                }
+            }
+            q+=bleedDamage;
             return q;
         }
 
     }
 
+    public class QueuedAction{
+        public UnityAction action;
+        public EffectArgs args;
+    }
 
 
+    public bool FUCKOFF;
     public enum TurnState{Player,Enemy}
     public TurnState turnState;
     public bool inBattle;
@@ -46,17 +65,23 @@ public class BattleManager:Singleton<BattleManager>
     public Entity enemyTarget;
     public SoundData leave;
     public Entity playerTarget;
-    public StatusEffectManager playerStatusEffects;
+    public StatusEffectHandler statusEffectHandlerPrefab;
     public Dictionary<int,TurnRecord> playerRecord = new Dictionary<int,TurnRecord>();
     
     public Dictionary<int,TurnRecord> enemyRecord = new Dictionary<int,TurnRecord>();
+    public Queue<QueuedAction> effectsToUse = new Queue<QueuedAction>();
+    bool statusEffectShit;
     
     public void StartBattle(BattleType battleType)
     {
         inBattle = true;
         turn = 1;
-        enemyRecord.Add(turn,new TurnRecord());
-        playerRecord.Add(turn,new TurnRecord());
+        TurnRecord e = new TurnRecord();
+         TurnRecord p = new TurnRecord();
+         e.turn = turn;
+         p.turn = turn;
+        enemyRecord.Add(turn,e);
+        playerRecord.Add(turn,p);
         turnState = TurnState.Player;
 
         if(battleType == BattleType.Wild)
@@ -160,6 +185,12 @@ public class BattleManager:Singleton<BattleManager>
         
     }
 
+    public bool queuedEffect(){
+        return effectsToUse.Count > 0;
+    }
+
+   
+
     public void SetEnemyTarget(Entity e){
         enemyTarget = e;
     }
@@ -178,17 +209,13 @@ public class BattleManager:Singleton<BattleManager>
         {
             EndTurnButton.inst.Deactivate();
             CardManager.inst.DeactivateHand();
-           
-          
-           
             foreach (var item in CardManager.inst.hand)
             {item.VaporousDissolve();}
-            
-          
             inBattle = false;
-
+            
             yield return new WaitForEndOfFrame();
-              if(PetManager.inst.enemyPet!= null && !PetManager.inst.enemyPet.KO){
+            if(PetManager.inst.enemyPet!= null && !PetManager.inst.enemyPet.KO)
+            {
                
                 PetManager.inst.enemyPet.Die(EntityOwnership.ERROR);
             }
@@ -252,12 +279,8 @@ public class BattleManager:Singleton<BattleManager>
     public void SwapToPlayerTurn()
     {
         EventManager.inst.onNewPlayerTurn.Invoke();
-   
-        CardManager.inst.ActivateHand();
+        CardManager.inst.DeactivateHand();
         Inventory.inst.ActivateDrag();
- 
-        StartCoroutine(q());
-        
         if(turn % 2 == 0)
         {
             ManaManager.inst.IncreaseMaxMana();
@@ -265,45 +288,123 @@ public class BattleManager:Singleton<BattleManager>
         }
         ManaManager.inst.RegenMana();
         EnemyAI.inst.RegenMana();
-        IncrementTurn();
+       IncrementTurn();
+      
+
+        StartCoroutine(q());
         IEnumerator q()
         {
-            yield return new WaitForSeconds(.25f);
-        
+            while(statusEffectShit)
+            {yield return null;}
             CardManager.inst.DrawCard();
-            EventManager.inst.onPlayerDrawingCardFirstTimeInTurn.Invoke();
-            CardManager.inst.MakeHandInteractable();
+        }
+    }
+    
+    void IncrementTurn()
+    {
+        turn++;
+        TurnRecord e = new TurnRecord();
+         TurnRecord p = new TurnRecord();
+         e.turn = turn;
+         p.turn = turn;
+        enemyRecord.Add(turn,e);
+        playerRecord.Add(turn,p);
+        CardStack.inst.NewTurn();
+        CheckForBadEffects();
+        LoadStatusEffects();
+       CheckForStatusEffectBeforeAllowingCards();
+    }
+
+    public void CheckForStatusEffectBeforeAllowingCards()
+    {
+        statusEffectShit = true;
+        TriggerQueuedEffects();
+        StartCoroutine(w());
+        IEnumerator w()
+        {
+            while(BattleManager.inst.queuedEffect())
+            {yield return null;}
+            yield return new WaitForSeconds(.5f);
+            statusEffectShit = false;
             EndTurnButton.inst.Reactivate();
-             yield return new WaitForSeconds(.6f);
-            BattleTicker.inst.Type("Make your move.");
+            CardManager.inst.MakeHandInteractable();
+            CardManager.inst.ActivateHand();
+            BattleTicker.inst.Type("Make your move");
         }
     }
 
-    void IncrementTurn(){
-        turn++;
-        playerRecord .Add(turn,new TurnRecord());
-        enemyRecord .Add(turn,new TurnRecord());
-        CardStack.inst.NewTurn();
-        CheckBullshit();
-      
-        BattleTicker.inst.Type("Turn " + turn.ToString());
+
+    public void TriggerQueuedEffects()
+    {
+        if(queuedEffect())
+        {
+            StartCoroutine(w());
+            IEnumerator w()
+            { 
+                yield return new WaitForSeconds(.5f);
+                QueuedAction qa = effectsToUse.Dequeue();
+                qa.action.Invoke();
+                BattleTicker.inst.Type(qa.args.tickerTitle);
+                TriggerQueuedEffects();
+            }
+        }
     }
 
-    void CheckBullshit()
+    float LoadStatusEffects()
+    {
+        p(PlayerParty.inst.party);
+        p(RivalBeastManager.inst.currentParty);
+        void p(List<Beast> b)
+        {
+            foreach (var item in b)
+            {
+                if(item.statusEffectHandler != null){
+                    foreach (var d in item.statusEffectHandler.displays)
+                    {
+                        if(d.scriptableObject.triggerOncePerTurn)
+                        {
+                           // Debug.Log("og + " + d.scriptableObject.statusEffect.ToString());
+                            
+                            QueuedAction qa = new QueuedAction();
+                            UnityAction ua =()=>    d.Trigger();
+                            qa.action = ua;
+                            string m =d.scriptableObject.statusEffect.ToString();
+                            qa.args =  new EffectArgs(null,null,false,null,null,-55, MiscFunctions.FirstLetterToUpperCaseOrConvertNullToEmptyString(m));
+                            effectsToUse.Enqueue(qa);
+                        }
+                    }
+                }
+            }
+        }
+       
+        return .25f;
+    }
+
+    void CheckForBadEffects()
     {
 
         foreach (var item in CardManager.inst.promiseDict)
         {
             if(item.Value.turnToDieOn == turn)
             {
-                if(item.Value.promise.badEffects.Count != 0){
-                    item.Value.promise.ExecuteBadEffects(item.Value.args);
+                if(item.Value.promise.badEffects.Count != 0)
+                {
+                  UnityAction a = ()=>  item.Value.promise.ExecuteBadEffects(item.Value.args);
+                  QueuedAction qa = new QueuedAction();
+                  qa.action = a;
+                  qa.args = item.Value.args;
+                  effectsToUse.Enqueue(qa);
                 }
                 Debug.Log("Remove " + item.Value);
                 foreach (var e in item.Value.subbedEvents)
                 {EventManager.inst.RemoveEvent(e,item.Value.action);}
                 CardStackBehaviour b =  CardStack.inst.CreateActionStack(item.Value.args.card,(Beast) item.Value.args.caster,item.Value.args.isPlayer);
                 b.ConditionFailed();
+                
+                if( item.Value.promise. unStackable){
+                CardManager.inst.promiseList.Remove(item.Value.promise);
+                }
+               
                 //activate bad thing here.
             }
             

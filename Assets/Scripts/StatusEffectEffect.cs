@@ -6,15 +6,23 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Effects/StatusEffect", fileName = "SE")]
 public class StatusEffectEffect :Effect
 {
-    public bool conditional;
+    public StatusEffects statusEffect;
     public int howManyTurns;
-    public bool stackable;
+    public bool triggerOnceOnCast,triggerOncePerTurn;
 
     public override void Use(EffectArgs args)
     {
-        if(args.isPlayer){
-            BattleManager.inst.playerStatusEffects.CreateStatusEffect(args.card,this);
+        CreateStatusEffectStack(args);
+    }
+
+    public void CreateStatusEffectStack(EffectArgs args){
+        if(args.target.statusEffectHandler != null){
+            args.target.statusEffectHandler.CreateStack(this,args);
         }
+    }
+
+    public virtual void Trigger(Beast infected,EffectArgs args){
+Debug.Log(statusEffect.ToString());
     }
 
 }

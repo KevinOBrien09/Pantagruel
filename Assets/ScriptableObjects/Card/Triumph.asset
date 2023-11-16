@@ -24,8 +24,8 @@ MonoBehaviour:
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 8300000, guid: b3e797035ff82864296899b8238b8369, type: 3}
-    pitchRange: {x: 0.8, y: 0.9}
-    volume: 0
+    pitchRange: {x: 0.9, y: 1}
+    volume: 0.5
   element: 3
   beastClass: 13
   desc: 'If you KO a unit in the next 2 turns gain 20 additional coins.

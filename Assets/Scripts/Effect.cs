@@ -31,11 +31,12 @@ public class EffectArgs
     public Entity target;
     public  bool isPlayer;
     public Card card; 
+    public string tickerTitle;
     public CardStackBehaviour stackBehaviour;
     public int castOrder;
     
 
-    public EffectArgs(Entity CASTER,Entity TARGET,bool ISPLAYER, Card CARD,CardStackBehaviour STACK,int CASTORDER)
+    public EffectArgs(Entity CASTER,Entity TARGET,bool ISPLAYER, Card CARD,CardStackBehaviour STACK,int CASTORDER,string TICKERTITLE)
     {
         caster = CASTER;
         target =TARGET;
@@ -43,7 +44,7 @@ public class EffectArgs
         card = CARD;
         stackBehaviour = STACK;
         castOrder = CASTORDER;
-    
+        tickerTitle = TICKERTITLE;
         
     }
 }

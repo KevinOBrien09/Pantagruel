@@ -179,11 +179,10 @@ public class CardManager:Singleton<CardManager>
 
         IEnumerator q()
         {
-            if(usedCard.castDelay != 0)
-            {CardManager.inst.DeactivateHand();}
+            CardManager.inst.DeactivateHand();
           
             if(!usedCard.playVFXAfterDelay)
-            {BattleEffectManager.inst.Play(usedCard.vfx);}
+            {}
 
             if(usedCard.playVFXAfterDelay)
             {
@@ -196,7 +195,7 @@ public class CardManager:Singleton<CardManager>
             behaviour.gameObject.SetActive(false);
 
             yield return new WaitForSeconds(usedCard.castDelay);
-
+BattleEffectManager.inst.Play(usedCard.vfx);
             if(!behaviour.isVapour)
             {currentDeck.discard.Add(usedCard);}
 
@@ -209,22 +208,26 @@ public class CardManager:Singleton<CardManager>
             CardStackBehaviour stackBehaviour =  CardStack.inst.CreateActionStack(usedCard,PlayerParty.inst.activeBeast,true);
             foreach (var effect in usedCard.effects)
             { 
-                EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,BattleManager.inst.enemyTarget,true,usedCard,stackBehaviour,BattleManager.inst.playerRecord[BattleManager.inst.turn].cardsPlayedThisTurn.IndexOf(usedCard));
+                EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,BattleManager.inst.enemyTarget,true,usedCard,stackBehaviour,
+                BattleManager.inst.playerRecord[BattleManager.inst.turn].cardsPlayedThisTurn.Count-1,usedCard.cardName);
                 effect.Use(args); 
             }
             
-
-            if(usedCard.castDelay != 0)
-            {CardManager.inst.ActivateHand();}
-
+            
             StartCoroutine(piss());
             
             IEnumerator piss()
             {
-                yield return new WaitForSeconds(1f);
-      
-                BattleTicker.inst.Type("Make your move");
+              
+                while(BattleManager.inst.FUCKOFF)
+                {yield return null;}
+               BattleManager.inst.CheckForStatusEffectBeforeAllowingCards();
+                
+                
+               
+             
             }
+            
         }
     }
 

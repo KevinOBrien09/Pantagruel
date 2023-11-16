@@ -27,7 +27,7 @@ MonoBehaviour:
     volume: 0
   element: 3
   beastClass: 20
-  desc: Gain 100% dodge chance for 1 turn.<b>Permanently</b> deduct 1 DEX from the
-    caster.
-  flavourText: '"It seems my speed is superior." '
+  desc: Dodge the next attack.
+  flavourText: '"A Thorough Description of the Free Knightly and Noble Art of Fencing-Tobias
+    Stimmer"'
   deckCost: 8

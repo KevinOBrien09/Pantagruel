@@ -7,8 +7,6 @@ using System;
 [CreateAssetMenu(menuName = "Effects/DamagePromise", fileName = "DamagePromise")]
 public class DamagePromise :Promise
 {
-   
-    
     public override void PromiseFufilled(EffectArgs OGargs,   string id)
     {
         if(OGargs.isPlayer)
@@ -16,52 +14,32 @@ public class DamagePromise :Promise
             int totalDamage = 0;
             for (int i = CardManager.inst.promiseDict[id].turnCastOn; i < CardManager.inst.promiseDict[id].turnToDieOn; i++)
             {
-                
-                if(BattleManager.inst.playerRecord.ContainsKey(i))
+                int forLoopTurn = i;
+                if(BattleManager.inst.playerRecord.ContainsKey(forLoopTurn))
                 { 
                     if(CardManager.inst.promiseDict[id].turnCastOn == BattleManager.inst.turn)
                     {totalDamage+=BattleManager.inst.playerRecord[BattleManager.inst.turn].GetDamageAfterSpecificPoint(OGargs.castOrder);}
-                    else
-                    {totalDamage+=BattleManager.inst.playerRecord[i].GetAllDamageDealtThisTurn();}
-
-
+                    else if(forLoopTurn != CardManager.inst.promiseDict[id].turnCastOn)
+                    {totalDamage+=BattleManager.inst.playerRecord[forLoopTurn].GetAllDamageDealtThisTurn();}
                 }
-            //     else{ Debug.Log("Turn " + i + " did not yet occur");
-            //    continue; }
-              
             }
-          
+            
             OGargs.stackBehaviour.UpdateBar((float) totalDamage,(float)meterMax);
          
             if(totalDamage >= meterMax)
             {       
-                if(CardManager.inst.handDown)
+                BattleManager.QueuedAction qa = new BattleManager.QueuedAction();
+              
+                UnityAction a = ()=> poopoo();
+                qa.action = a;
+                qa.args = OGargs;
+                BattleManager.inst.effectsToUse.Enqueue(qa);
+                RemoveEvent(id);
+                void poopoo()
                 {
-                   BattleManager.inst.StartCoroutine(Penis());
-                   
-                    IEnumerator Penis()
-                    {
-                           RemoveEvent(id);
-                        while(CardManager.inst.handDown)
-                        {yield return null;}
-                     
-                        CreateSuccessfullActionStack(OGargs);
-                        ExecuteEffects(OGargs);
-                        ExecuteFluff();
-                
-                        if(unStackable)
-                        {
-                            if(CardManager.inst.promiseList.Contains(this))
-                            {CardManager.inst.promiseList.Remove(this);}
-                        }
-                    }
-                   return;
-                }
-                else
-                {
-                    RemoveEvent(id);
-                    CreateSuccessfullActionStack(OGargs);
                     ExecuteEffects(OGargs);
+                    CreateSuccessfullActionStack(OGargs);
+                    
                     ExecuteFluff();
             
                     if(unStackable)
@@ -72,11 +50,6 @@ public class DamagePromise :Promise
                 }
             }
         }
-        else{
-            Debug.Log("lkdsjfslkdfjlksdf");
-        }
-      
-
     }
 
     public override void ExecuteEffects(EffectArgs OGargs)
@@ -86,7 +59,7 @@ public class DamagePromise :Promise
             if(CardFunctions.oneEffectIsViable(desiredEffects,OGargs.isPlayer)){
                 foreach (var effect in desiredEffects)
                 { 
-                    EffectArgs arg = new EffectArgs(OGargs.caster,BattleManager.inst.enemyTarget,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder);
+                    EffectArgs arg = new EffectArgs(OGargs.caster,BattleManager.inst.enemyTarget,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
                     effect.Use(arg); 
                 }
             }

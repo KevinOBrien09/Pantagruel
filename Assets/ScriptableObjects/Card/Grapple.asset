@@ -28,5 +28,6 @@ MonoBehaviour:
   element: 0
   beastClass: 0
   desc: <color=#286326><b><i>Guard break</i></color></b> both the target and caster.
-  flavourText: 
+  flavourText: '"A Thorough Description of the Free Knightly and Noble Art of Fencing-Tobias
+    Stimmer"'
   deckCost: 10

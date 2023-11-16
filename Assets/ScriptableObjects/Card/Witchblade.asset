@@ -14,13 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 8ffbb451-f050-456b-a621-1cc280882569
   cardName: Witchblade
-  picture: {fileID: 21300000, guid: c0e47a98f3b178b45bfa0774885dcd0e, type: 3}
+  picture: {fileID: 21300000, guid: 5aecd41a42a077244b8bc0d77dac685d, type: 3}
   manaCost: 2
+  vfxSetUp: 
   vfx: 
   castDelay: 0
   effects:
   - {fileID: 11400000, guid: afa872d5f2afad6409a402ff0f512a99, type: 2}
   - {fileID: 11400000, guid: aa23596bcbea5314dace88dd01012054, type: 2}
+  playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}

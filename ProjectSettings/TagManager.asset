@@ -45,3 +45,6 @@ TagManager:
   - name: Pet
     uniqueID: 167932075
     locked: 0
+  - name: Effect
+    uniqueID: 2096611613
+    locked: 0

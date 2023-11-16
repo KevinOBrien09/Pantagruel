@@ -8,7 +8,7 @@ public class BeastSaveData
     public int beastiaryID;
     public float currentHealth;
     public List<string> deckIDs = new List<string>(); 
-    public EXP exp;
+    public EXPSave exp;
     //public LocationSer
     
 }

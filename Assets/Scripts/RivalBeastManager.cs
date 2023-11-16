@@ -53,6 +53,10 @@ public class RivalBeastManager:Singleton<RivalBeastManager>
 
     public void Wipe()
     {
+        foreach (var item in currentParty)
+        {
+            Destroy(item.gameObject);
+        }
         BattleGraphicManager.inst.Wipe();
         activeBeast = null;
         currentParty.Clear();

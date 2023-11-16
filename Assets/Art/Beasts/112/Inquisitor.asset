@@ -19,7 +19,9 @@ MonoBehaviour:
         of the turn.
     beastName: Inquisitor
     flavourText: '"Butcher them all. God will be their judge"'
-    bottomCornerPos: {x: 0.075, y: -1.5}
+    playerStatusEffectPos: {x: 0, y: 14, z: 2, w: 1}
+    enemyStatusEffectPos: {x: 0, y: 9, z: 2, w: 1.5}
+    bottomCornerPos: {x: 0.075, y: -1.5, z: 0}
     battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 7239769961303039187, guid: c2cabca1198a0074a81184f868a59744,
       type: 3}

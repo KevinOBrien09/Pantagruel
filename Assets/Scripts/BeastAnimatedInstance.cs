@@ -14,6 +14,7 @@ public class BeastAnimatedInstance : MonoBehaviour
 
     Animator animator;
     Entity beast;
+    StatusEffectHandler effectHandler;
 
     public void Init(Entity b)
     {
@@ -28,7 +29,14 @@ public class BeastAnimatedInstance : MonoBehaviour
         Animator an;
         if(TryGetComponent<Animator>(out an))
         {animator = an;}
-
+        if(b.GetType() == typeof(Beast)){
+            effectHandler = Instantiate(BattleManager.inst.statusEffectHandlerPrefab,transform);
+            effectHandler.Init((Beast) b,this.gameObject.layer);
+        }
+        else{
+            Debug.Log("NoPetStatusEffects");
+        }
+      
         b.animatedInstance = this;
         beast = b;
     }
@@ -45,7 +53,7 @@ public class BeastAnimatedInstance : MonoBehaviour
       
         transform.DOShakePosition(.5f,new Vector3(.1f,.1f,0) ,10,90,false,true).OnComplete(()=>
         {
-            transform.DOMove(p,0);
+            transform.DOMove(p,.1f);
             ToggleSpringBones(true);
         });
     

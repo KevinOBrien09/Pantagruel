@@ -21,7 +21,7 @@ public class BeastBank : Singleton<BeastBank>
         public Sprite sprite;
     }
 
-     [System.Serializable]
+    [System.Serializable]
     public class ElementColours
     {
         public Element element;

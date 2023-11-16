@@ -16,9 +16,11 @@ MonoBehaviour:
   cardName: Epiphany
   picture: {fileID: 21300000, guid: d333d43c8926cc147842e1131150d24e, type: 3}
   manaCost: 0
+  vfxSetUp: 
   vfx: 
   castDelay: 0.2
   effects: []
+  playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
@@ -26,5 +28,5 @@ MonoBehaviour:
   element: 6
   beastClass: 17
   desc: 
-  flavourText: 
+  flavourText: '"Justice-Albrecht Durer"'
   deckCost: 0

@@ -28,5 +28,6 @@ MonoBehaviour:
   element: 0
   beastClass: 20
   desc: If an attack is dodged next turn, counterattack for 15+({PHYS20%})
-  flavourText: 
+  flavourText: '"A Thorough Description of the Free Knightly and Noble Art of Fencing-Tobias
+    Stimmer"'
   deckCost: 10

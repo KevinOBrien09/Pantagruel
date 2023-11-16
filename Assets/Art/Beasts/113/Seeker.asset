@@ -18,7 +18,9 @@ MonoBehaviour:
       note: 
     beastName: Seeker
     flavourText: '"I will find the truth, no matter the cost"'
-    bottomCornerPos: {x: 0, y: -1.5}
+    playerStatusEffectPos: {x: 0, y: 14, z: 2, w: 1.5}
+    enemyStatusEffectPos: {x: 0, y: 9, z: 2, w: 1.5}
+    bottomCornerPos: {x: 0, y: -1.5, z: 0}
     battlePos: {x: 0, y: -0.2, z: 2}
     beastGraphicPrefab: {fileID: 4826513455982107778, guid: 86c9e707c7dd64845960b12dc5c23090,
       type: 3}

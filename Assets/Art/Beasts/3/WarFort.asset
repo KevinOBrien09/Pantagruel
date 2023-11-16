@@ -14,24 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beastData:
     ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: War Fort
     flavourText: Villages, armies and livestock are left but smoldering ash in its
       path.
-    bottomCornerPos: {x: 0, y: -1.5}
+    bottomCornerPos: {x: 0, y: -0.4, z: 1}
     battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
+    statusEffectDistance: 0
+    statusEffectHeightAlly: 6
+    statusEffectHeightEnemy: 5
     uiPicture: {fileID: -6470460504253458178, guid: 960c49d6b8e23a1479eabf2c634e0a80,
       type: 3}
     mainSprite: {fileID: 6623151957235123224, guid: 960c49d6b8e23a1479eabf2c634e0a80,
       type: 3}
+    outLine: {fileID: 0}
     facingRight: 1
     bestiaryID: 3
-    wildDeck: {fileID: 0}
-    stats:
-      maxHealth: 204
-      def: 64
+    wildDeck: {fileID: 11400000, guid: 80d5131422f00c4458ffe3c9b0906f53, type: 2}
+    baseStats:
+      maxHealth: 0
+      def: 0
       physical: 0
-      magic: 21
+      magic: 0
       charisma: 0
       luck: 0
     statGrowthPerLevel:

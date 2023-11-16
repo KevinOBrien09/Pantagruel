@@ -17,7 +17,11 @@ public class PlayerParty : Singleton<PlayerParty>
                 EXP e = new EXP();
                 e.PsudeoLevel((int)Random.Range(LocationManager.inst.currentLocation.levelRange.x,LocationManager.inst.currentLocation.levelRange.y),item);
                 BeastSaveData bsd = item.PsudeoSave(item.scriptableObject);
-                bsd.exp = e;
+                EXPSave save = new EXPSave();
+                save.currentEXP = e.currentExp;
+                save.level = e.level;
+                save.targetEXP = e.targetExp;
+                bsd.exp = save;
                 item.Init(bsd);
                 item.FirstHealthInit(e);
                 
@@ -43,6 +47,9 @@ public class PlayerParty : Singleton<PlayerParty>
             Beast b = Instantiate(beastPrefab,transform);
             b.Init(data.party[i]);
             AddNewBeast(b);
+            b.exp = new EXP();
+            b.exp.Load(data.party[i].exp);
+            b.exp.beast = b;
         }
             
         //Active beast is the 0th entry of the party.
@@ -115,6 +122,7 @@ public class PlayerParty : Singleton<PlayerParty>
                 foreach (var card in b.deck.cards)
                 { cardIDs.Add(card.Id); }
                 saveData.deckIDs = cardIDs;
+                saveData.exp = b.exp.Save();
                 return saveData;
             }
             else   

@@ -16,6 +16,7 @@ MonoBehaviour:
   beastsInLocation:
   - scriptableObject:
     - {fileID: 11400000, guid: f36e883aaf6bcef429f26de5cf428749, type: 2}
+    - {fileID: 11400000, guid: aa34243842a3a8b4fa0882f1b73b980b, type: 2}
     biome: 0
   cardRewards:
   - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}

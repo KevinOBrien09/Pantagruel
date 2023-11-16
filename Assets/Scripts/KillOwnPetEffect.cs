@@ -13,6 +13,7 @@ public class KillOwnPetEffect :Effect
             BattleManager.TurnRecord.CardIntPair p = new BattleManager.TurnRecord.CardIntPair();
             p.card = args.card;
             p.v = (int) PetManager.inst.playerPet.currentHealth;
+             p.castOrder = args.castOrder;
             BattleManager.inst.playerRecord[BattleManager.inst.turn].damageDealtByEachCard.Add(p);
           
             PetManager.inst.playerPet.Die(EntityOwnership.PLAYER);
@@ -22,6 +23,7 @@ public class KillOwnPetEffect :Effect
             BattleManager.TurnRecord.CardIntPair p = new BattleManager.TurnRecord.CardIntPair();
             p.card = args.card;
             p.v = (int) PetManager.inst.playerPet.currentHealth;
+            p.castOrder = args.castOrder;
             BattleManager.inst.enemyRecord[BattleManager.inst.turn].damageDealtByEachCard.Add(p);
             
             PetManager.inst.enemyPet.Die(EntityOwnership.ENEMY);

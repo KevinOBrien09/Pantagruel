@@ -75,19 +75,25 @@ public class Promise :Effect
         }
         
     }
-
-
+    
     public virtual void PromiseFufilled(EffectArgs OGargs,   string id)
     {
-        
-        ExecuteEffects(OGargs);
-        CreateSuccessfullActionStack(OGargs);
-        ExecuteFluff();
+        BattleManager.QueuedAction qa = new BattleManager.QueuedAction();
+        qa.action = ()=> q();
+        qa.args = OGargs;
+        BattleManager.inst.effectsToUse.Enqueue(qa);
         RemoveEvent(id);
-        if(unStackable)
+        void q()
         {
-            if(CardManager.inst.promiseList.Contains(this))
-            {CardManager.inst.promiseList.Remove(this);}
+            ExecuteEffects(OGargs);
+            CreateSuccessfullActionStack(OGargs);
+            ExecuteFluff();
+            
+            if(unStackable)
+            {
+                if(CardManager.inst.promiseList.Contains(this))
+                {CardManager.inst.promiseList.Remove(this);}
+            }
         }
     }
 
@@ -101,7 +107,7 @@ public class Promise :Effect
         if(CardFunctions.oneEffectIsViable(desiredEffects,OGargs.isPlayer)){
             foreach (var effect in desiredEffects)
             { 
-                EffectArgs arg = new EffectArgs(OGargs.caster,OGargs.target,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder);
+                EffectArgs arg = new EffectArgs(OGargs.caster,OGargs.target,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
                 effect.Use(arg); 
             }
         }
@@ -110,15 +116,16 @@ public class Promise :Effect
 
     public virtual void ExecuteBadEffects(EffectArgs OGargs)
     {
+        ExecuteFluff();
         if(CardFunctions.oneEffectIsViable(badEffects,OGargs.isPlayer)){
             foreach (var effect in badEffects)
             { 
                 if(castBadEffectsOnEnemy){
-                EffectArgs arg = new EffectArgs(OGargs.caster,RivalBeastManager.inst.activeBeast,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder);
+                EffectArgs arg = new EffectArgs(OGargs.caster,RivalBeastManager.inst.activeBeast,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
                 effect.Use(arg); 
                 }
                 else{
-                EffectArgs arg = new EffectArgs(OGargs.caster,PlayerParty.inst.activeBeast,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder);
+                EffectArgs arg = new EffectArgs(OGargs.caster,PlayerParty.inst.activeBeast,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
                 effect.Use(arg); 
                 }
                 
@@ -135,8 +142,12 @@ public class Promise :Effect
     public void RemoveEvent(string id)
     {
       
+      
         foreach (var item in eventEnums)
-        {EventManager.inst.RemoveEvent(item,CardManager.inst.promiseDict[id].action);}
+        {  
+            if(CardManager.inst.promiseDict.ContainsKey(id)){EventManager.inst.RemoveEvent(item,CardManager.inst.promiseDict[id].action);}
+            else{Debug.Log("No Key found.");}
+        }
         CardManager.inst.promiseDict.Remove(id);
     }
 

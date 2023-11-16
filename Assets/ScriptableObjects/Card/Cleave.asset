@@ -16,17 +16,21 @@ MonoBehaviour:
   cardName: Cleave
   picture: {fileID: 21300000, guid: d23158feda39df14e87883c627013aa3, type: 3}
   manaCost: 2
-  vfx: Slice1
-  castDelay: 0.06
+  vfxSetUp: 
+  vfx: Slice
+  castDelay: 0
   effects:
-  - {fileID: 11400000, guid: fe6edcc5763623c42bbe9eeb914fd185, type: 2}
-  - {fileID: 11400000, guid: 555e23be6d6ab4d46b1ec190b599830f, type: 2}
+  - {fileID: 11400000, guid: 36593789721779343a5d7b1c6a2e0ded, type: 2}
+  - {fileID: 11400000, guid: c229a2e90db171f46aa0bc7cbfc0c06f, type: 2}
+  - {fileID: 11400000, guid: 4d787eef2c34aa343a35c1e38211fc1f, type: 2}
+  playVFXAfterDelay: 0
   soundEffect:
-    audioClip: {fileID: 8300000, guid: 84f7c61ea17ffa74b86dab40d76c1db0, type: 3}
-    pitchRange: {x: 0.9, y: 1.1}
+    audioClip: {fileID: 8300000, guid: af6322b35587ded418a6810c69d10243, type: 3}
+    pitchRange: {x: 0.8, y: 0.9}
     volume: 0.5
   element: 0
   beastClass: 10
-  desc: Deal 10 RAW damage.
-  flavourText: '"Cain Killing Abel-Albrecht Durer-1511"'
+  desc: Deal 20 damage to the target and apply a <b><color=red>bleed</b></color>
+    stack.
+  flavourText: '"Cain Killing Abel-Albrecht Durer"'
   deckCost: 7

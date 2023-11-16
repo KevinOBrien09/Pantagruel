@@ -21,7 +21,7 @@ MonoBehaviour:
   castDelay: 0
   effects:
   - {fileID: 11400000, guid: 9797cc5bb1379794a841ab4642a85ef0, type: 2}
-  - {fileID: 11400000, guid: 8c5a08a34b4591d4189638d15678611c, type: 2}
+  - {fileID: 11400000, guid: 3a466c0eb7979eb4885523aa5a85dd81, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 0}
@@ -29,6 +29,6 @@ MonoBehaviour:
     volume: 0
   element: 0
   beastClass: 3
-  desc: Draw a card and heal for 15.
+  desc: Draw a card and heal for 10.
   flavourText: 
   deckCost: 7

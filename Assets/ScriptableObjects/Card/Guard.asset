@@ -28,5 +28,6 @@ MonoBehaviour:
   element: 0
   beastClass: 0
   desc: Enter <b><i>guard</b></i>.
-  flavourText: 
+  flavourText: '"A Thorough Description of the Free Knightly and Noble Art of Fencing-Tobias
+    Stimmer"'
   deckCost: 0
