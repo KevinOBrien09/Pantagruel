@@ -341,11 +341,14 @@ public class BattleManager:Singleton<BattleManager>
             StartCoroutine(w());
             IEnumerator w()
             { 
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.8f);
                 QueuedAction qa = effectsToUse.Dequeue();
                 qa.action.Invoke();
                 BattleTicker.inst.Type(qa.args.tickerTitle);
-                TriggerQueuedEffects();
+                if(CheckIfGameContinues()){
+TriggerQueuedEffects();
+                }
+                
             }
         }
     }

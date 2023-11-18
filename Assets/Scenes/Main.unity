@@ -9270,7 +9270,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1296186369}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -19608,6 +19608,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 602bed6557f0a4f4b975008073968f11, type: 2}
   - {fileID: 11400000, guid: b48755858f8891741ae69a7ef0507ff9, type: 2}
   - {fileID: 11400000, guid: 905474b2024771147aa8b5162da286c7, type: 2}
+  - {fileID: 11400000, guid: 8e0588f7fcf37ae48b7385e8390cf3fb, type: 2}
   beastClassPics:
   - beastClass: 0
     sprite: {fileID: 21300000, guid: c3878df31a3419f4db5919c856ffdd9f, type: 3}
@@ -37223,6 +37224,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 602bed6557f0a4f4b975008073968f11, type: 2}
   - {fileID: 11400000, guid: b48755858f8891741ae69a7ef0507ff9, type: 2}
   - {fileID: 11400000, guid: 905474b2024771147aa8b5162da286c7, type: 2}
+  - {fileID: 11400000, guid: 8e0588f7fcf37ae48b7385e8390cf3fb, type: 2}
   knownCards: []
 --- !u!1 &792618179
 GameObject:

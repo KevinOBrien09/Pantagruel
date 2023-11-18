@@ -14,4 +14,20 @@ public class HealEffect :Effect
       
     }
 
+    public override bool canUse(bool isPlayer)
+    {
+        if(isPlayer)
+        {
+            if(PlayerParty.inst.activeBeast.currentHealth != PlayerParty.inst.activeBeast.stats().maxHealth)
+            {return true;}
+        }
+        else
+        {
+            if((RivalBeastManager .inst.activeBeast.currentHealth != RivalBeastManager .inst.activeBeast.stats().maxHealth))
+            {return true;}
+        }
+
+        return false;
+    }
+
 }

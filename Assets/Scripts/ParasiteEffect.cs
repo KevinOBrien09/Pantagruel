@@ -6,7 +6,19 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Effects/Parasite", fileName = "Parasite")]
 public class ParasiteEffect : StatusEffectEffect
 {
-    public override void Trigger(Beast infected,EffectArgs args){
+    public Card card;
+    
+    public override void Trigger(Beast infected,EffectArgs args)
+    {
+        if(BattleManager.inst.GetBeastOwnership( infected ) == EntityOwnership.PLAYER){
+            CardManager.inst.currentDeck.AddCardToDeck(card);
+        }
+        else
+        {
+            EnemyAI.inst.currentDeck.AddCardToDeck(card);
+        }
+
+      
         
     }
     

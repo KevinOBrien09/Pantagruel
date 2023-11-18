@@ -677,6 +677,7 @@ MonoBehaviour:
   yUp: 40
   interactable: 0
   isVapour: 0
+  manaIconGO: {fileID: 303644029379025993}
 --- !u!114 &450354434045804217
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -84,8 +84,12 @@ public class WorldViewManager:Singleton<WorldViewManager>
                 }
                 else
                 {
+
                     AudioManager.inst.GetSoundEffect().Play(SystemSFX.inst.errorSound);
-                     Debug.Log("cannot cast" + currentCardOverViewPort.card.cardName);
+                    Debug.Log("cannot cast" + currentCardOverViewPort.card.cardName);
+                    if(ManaManager.inst.currentMana < currentCardOverViewPort.card.manaCost){
+ManaManager.inst.FlashMana();
+                    }
                         cardHoveringOverViewport = false;
                     currentCardOverViewPort = null;
                    

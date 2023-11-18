@@ -15,9 +15,7 @@ MonoBehaviour:
   beastData:
     ANIMATED_PREFAB_DONE: 0
     devNote:
-      note: 'Should be grass.
-
-'
+      note: Keratin Carapace-I cannot bleed.
     beastName: Uzu
     flavourText: 
     playerStatusEffectPos: {x: 0, y: -4.5, z: 2, w: 1.5}

@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a2b751962c706e4895d252882f503be, type: 3}
-  m_Name: Parasite
+  m_Script: {fileID: 11500000, guid: f92160dd241d3bf4984aa8da1fad3ca5, type: 3}
+  m_Name: RemoveBleed
   m_EditorClassIdentifier: 
-  statusEffect: 1
+  statusEffect: 0
   howManyTurns: 0
-  triggerOnceOnCast: 1
+  triggerOnceOnCast: 0
   triggerOncePerTurn: 0
-  card: {fileID: 11400000, guid: 905474b2024771147aa8b5162da286c7, type: 2}

@@ -21,7 +21,6 @@ MonoBehaviour:
   castDelay: 0
   effects:
   - {fileID: 11400000, guid: 36593789721779343a5d7b1c6a2e0ded, type: 2}
-  - {fileID: 11400000, guid: c229a2e90db171f46aa0bc7cbfc0c06f, type: 2}
   - {fileID: 11400000, guid: 4d787eef2c34aa343a35c1e38211fc1f, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
@@ -30,7 +29,9 @@ MonoBehaviour:
     volume: 0.5
   element: 0
   beastClass: 10
-  desc: Deal 20 damage to the target and apply a <b><color=red>bleed</b></color>
+  desc: Deal 10 damage to the target and apply a <b><color=red>bleed</b></color>
     stack.
   flavourText: '"Cain Killing Abel-Albrecht Durer"'
   deckCost: 7
+  unplayable: 0
+  cannotBeDiscard: 0

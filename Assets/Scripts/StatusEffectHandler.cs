@@ -40,10 +40,34 @@ public class StatusEffectHandler : MonoBehaviour
     public void CreateStack(StatusEffectEffect so,EffectArgs args)
     {
         StatusEffectDisplay d=   CreateNewStack();
-        d.Init(so);
         d.args = args;
-        d.statusEffectHandler = this;
+          d.statusEffectHandler = this;
+        d.Init(so);
+        
+      
         currentEffects.Add(so.statusEffect);
+    }
+
+    public void ClearAllBleeds()
+    {
+        List<StatusEffectDisplay> d = new List<StatusEffectDisplay>(displays);
+        foreach (var item in d)
+        {
+            if(item.statusEffect == StatusEffects.BLEED){
+                item.Kill();
+            }
+            
+        }
+    }
+
+    public bool ContainsABleed()
+    {
+        foreach (var item in displays)
+        {
+            if(item.statusEffect == StatusEffects.BLEED)
+            {return true;}
+        }
+        return false;
     }
     
     public void MakeCircular(float radius)

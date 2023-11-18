@@ -195,7 +195,7 @@ public class CardManager:Singleton<CardManager>
             behaviour.gameObject.SetActive(false);
 
             yield return new WaitForSeconds(usedCard.castDelay);
-BattleEffectManager.inst.Play(usedCard.vfx);
+            BattleEffectManager.inst.Play(usedCard.vfx);
             if(!behaviour.isVapour)
             {currentDeck.discard.Add(usedCard);}
 

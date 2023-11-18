@@ -14,6 +14,7 @@ public class ManaManager:Singleton<ManaManager>
     public int currentMana;
     public int maxManaBase = 8;
     public TextMeshProUGUI manaCountText;
+    bool inCoro;
 
    protected override void Awake()
     {
@@ -51,6 +52,26 @@ public class ManaManager:Singleton<ManaManager>
         }
         else
         {Debug.Log("Reached max base mana.");}
+    }
+
+    public void FlashMana()
+    {
+        if(inCoro)
+        {return;}
+        Vector2 ogPos = manaCountText.rectTransform.anchoredPosition;
+        manaCountText.rectTransform.DOShakeAnchorPos(.5f,20);
+        manaCountText.color = Color.red;
+        StartCoroutine(p());
+        IEnumerator p()
+        {
+            inCoro = true;
+            yield return new WaitForSeconds(.5f);
+            manaCountText.DOColor(Color.white,1).OnComplete(()=>
+            {
+                inCoro = false;
+                manaCountText.rectTransform.anchoredPosition = ogPos;
+            });
+        }
     }
 
     public void RegenMana()

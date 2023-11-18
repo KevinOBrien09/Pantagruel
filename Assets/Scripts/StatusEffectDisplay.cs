@@ -10,7 +10,7 @@ public class StatusEffectDisplay : MonoBehaviour
     public int turnCastOn;
     public StatusEffects statusEffect;
 
-public EffectArgs args;
+    public EffectArgs args;
    public StatusEffectEffect scriptableObject;
 
     public void Init(StatusEffectEffect so)
@@ -37,13 +37,17 @@ public EffectArgs args;
         turnToDie = turnCastOn + so.howManyTurns;
         statusEffect = effects;
         scriptableObject = so;
-        if(so.triggerOnceOnCast)
+        if( scriptableObject .triggerOnceOnCast)
         {Trigger();}
     }
 
     public void Trigger(){
+        // if(statusEffect == StatusEffects.BLEED){
+        //     Debug.Log("Bleed");
+        //     return;
+        // }
         scriptableObject.Trigger(statusEffectHandler.owner,args);
-        Debug.Log("sssssss");
+      
     }
 
     public void Kill(){

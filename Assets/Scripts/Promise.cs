@@ -87,7 +87,7 @@ public class Promise :Effect
         {
             ExecuteEffects(OGargs);
             CreateSuccessfullActionStack(OGargs);
-            ExecuteFluff();
+            ExecuteFluff(OGargs);
             
             if(unStackable)
             {
@@ -97,9 +97,12 @@ public class Promise :Effect
         }
     }
 
-    public void ExecuteFluff(){
+    public void ExecuteFluff(EffectArgs args){
         AudioManager.inst.GetSoundEffect().Play(soundData);
-        BattleEffectManager.inst.Play(vfx);
+        if(args.target == RivalBeastManager.inst.activeBeast){
+  BattleEffectManager.inst.Play(vfx);
+        }
+      
     }
 
     public virtual void ExecuteEffects(EffectArgs OGargs)
@@ -116,7 +119,7 @@ public class Promise :Effect
 
     public virtual void ExecuteBadEffects(EffectArgs OGargs)
     {
-        ExecuteFluff();
+        ExecuteFluff(OGargs);
         if(CardFunctions.oneEffectIsViable(badEffects,OGargs.isPlayer)){
             foreach (var effect in badEffects)
             { 

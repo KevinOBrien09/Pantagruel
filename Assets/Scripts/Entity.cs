@@ -72,7 +72,7 @@ public class Entity : MonoBehaviour
     public void Bleed(EffectArgs args)
     {
         float oldCurrentHealth = currentHealth;
-        currentHealth = currentHealth - Mathf.RoundToInt( (float) Maths.Percent(stats().maxHealth,2)) ;
+        currentHealth = currentHealth - Mathf.RoundToInt( (float) Maths.Percent(stats().maxHealth,6)) ;
         int howMuchDamage= (int) oldCurrentHealth - (int) currentHealth;
         Debug.Log("BLEED " + howMuchDamage);
         EntityOwnership damageSource = EntityOwnership.ERROR;
@@ -83,6 +83,11 @@ public class Entity : MonoBehaviour
         if(animatedInstance != null){
             animatedInstance.TakeDamage();
         }
+        if(currentHealth <0)
+        {
+            currentHealth = 0;
+        }
+
         if(currentHealth ==0)
         {
            

@@ -26,6 +26,7 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
     public float yUp;
     public bool interactable;
     public bool isVapour;
+    public GameObject manaIconGO;
     Canvas parentCanvas;
     Vector2 ogPos;
     List<Tween> activeTweens = new List<Tween>();
@@ -69,6 +70,9 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
             }
           
         }
+
+        if(newCard.unplayable)
+        { manaIconGO.SetActive(false); }
        
     }
 

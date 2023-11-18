@@ -15,12 +15,15 @@ public class DamagePromise :Promise
             for (int i = CardManager.inst.promiseDict[id].turnCastOn; i < CardManager.inst.promiseDict[id].turnToDieOn; i++)
             {
                 int forLoopTurn = i;
-                if(BattleManager.inst.playerRecord.ContainsKey(forLoopTurn))
+                if(BattleManager.inst.playerRecord.ContainsKey(forLoopTurn))//bug prone
                 { 
                     if(CardManager.inst.promiseDict[id].turnCastOn == BattleManager.inst.turn)
                     {totalDamage+=BattleManager.inst.playerRecord[BattleManager.inst.turn].GetDamageAfterSpecificPoint(OGargs.castOrder);}
                     else if(forLoopTurn != CardManager.inst.promiseDict[id].turnCastOn)
-                    {totalDamage+=BattleManager.inst.playerRecord[forLoopTurn].GetAllDamageDealtThisTurn();}
+                    {totalDamage+=BattleManager.inst.playerRecord[forLoopTurn].GetAllDamageDealtThisTurn();} 
+//                     else if(forLoopTurn == CardManager.inst.promiseDict[id].turnCastOn){
+// totalDamage+=BattleManager.inst.playerRecord[BattleManager.inst.turn].GetDamageAfterSpecificPoint(OGargs.castOrder);
+//                     }
                 }
             }
             
@@ -40,7 +43,7 @@ public class DamagePromise :Promise
                     ExecuteEffects(OGargs);
                     CreateSuccessfullActionStack(OGargs);
                     
-                    ExecuteFluff();
+                    ExecuteFluff(OGargs);
             
                     if(unStackable)
                     {
