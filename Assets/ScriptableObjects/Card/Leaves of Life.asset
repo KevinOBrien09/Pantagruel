@@ -26,8 +26,10 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
-  element: 0
+  element: 5
   beastClass: 0
   desc: Heal for 20.
   flavourText: '"The Expulsion from Paradise-Albrecht Durer"'
   deckCost: 0
+  unplayable: 0
+  cannotBeDiscard: 0

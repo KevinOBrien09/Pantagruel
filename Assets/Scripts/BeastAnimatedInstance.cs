@@ -15,6 +15,7 @@ public class BeastAnimatedInstance : MonoBehaviour
     Animator animator;
     Entity beast;
     StatusEffectHandler effectHandler;
+    public ParticleSystem blood;
 
     public void Init(Entity b)
     {
@@ -26,6 +27,11 @@ public class BeastAnimatedInstance : MonoBehaviour
         springBones = gameObject.GetComponentsInChildren<SpringBone>().ToList();
         renderers = gameObject.GetComponentsInChildren<SpriteRenderer>().ToList();
         defaultColour = Color.white;
+        if(gameObject.transform.Find("Blood") != null){
+        blood = gameObject.transform.Find("Blood").GetComponent<ParticleSystem>();
+        blood.gameObject.layer = this.gameObject.layer;
+        }
+        
         Animator an;
         if(TryGetComponent<Animator>(out an))
         {animator = an;}
@@ -39,6 +45,14 @@ public class BeastAnimatedInstance : MonoBehaviour
       
         b.animatedInstance = this;
         beast = b;
+    }
+
+    public void Bleed(){
+        if(blood!= null){
+            blood.Play();
+           
+        }
+         AudioManager.inst.GetSoundEffect().Play(SystemSFX.inst.bleed);
     }
 
     public void TakeDamage()

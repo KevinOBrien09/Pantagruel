@@ -16,31 +16,21 @@ public class Entity : MonoBehaviour
         float oldCurrentHealth = currentHealth;
         currentHealth = currentHealth-amount;
         EntityOwnership damageSource = EntityOwnership.ERROR;
-        if(args.isPlayer){
-            damageSource = EntityOwnership.PLAYER;
-        }
-        else{
-            damageSource = EntityOwnership.ENEMY;
-        }
+        if(args.isPlayer)
+        {damageSource = EntityOwnership.PLAYER;}
+        else
+        {damageSource = EntityOwnership.ENEMY;}
         
         if(currentHealth <0)
-        {
-            currentHealth = 0;
-        }
+        {currentHealth = 0;}
 
         int howMuchDamage= (int) oldCurrentHealth - (int) currentHealth;
 
-        if(animatedInstance != null){
-            animatedInstance.TakeDamage();
-        }
-
+        if(animatedInstance != null)
+        {animatedInstance.TakeDamage();}
         
         if(currentHealth ==0)
-        {
-           // EventManager.inst.onEnemyBeastDeath.Invoke();
-
-            Die(damageSource);
-        }
+        {Die(damageSource);}
 
         if(damageSource == EntityOwnership.ENEMY)
         {
@@ -79,21 +69,13 @@ public class Entity : MonoBehaviour
         if(args.isPlayer)
         {damageSource = EntityOwnership.PLAYER;} 
         else{damageSource = EntityOwnership.ENEMY;}
-
-        if(animatedInstance != null){
-            animatedInstance.TakeDamage();
-        }
+        animatedInstance.Bleed();
+        if(animatedInstance != null)
+        {animatedInstance.TakeDamage();}
         if(currentHealth <0)
-        {
-            currentHealth = 0;
-        }
-
+        {currentHealth = 0;}
         if(currentHealth ==0)
-        {
-           
-
-            Die(damageSource);
-        }
+        {Die(damageSource); }
 
         if(damageSource == EntityOwnership.ENEMY)
         {

@@ -25,8 +25,10 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
-  element: 0
-  beastClass: 0
+  element: 3
+  beastClass: 7
   desc: 
   flavourText: '"Droom van Farao - Hans Holbein"'
   deckCost: 0
+  unplayable: 0
+  cannotBeDiscard: 0

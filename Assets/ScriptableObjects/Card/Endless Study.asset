@@ -25,9 +25,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
-  element: 0
-  beastClass: 0
+  element: 2
+  beastClass: 17
   desc: 
   flavourText: '"Saint Matthew seated and reading from a book held by a putto-Anthony
     van Leest"'
   deckCost: 0
+  unplayable: 0
+  cannotBeDiscard: 0
