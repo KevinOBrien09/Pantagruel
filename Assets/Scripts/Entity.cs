@@ -7,27 +7,29 @@ public class Entity : MonoBehaviour
     public enum GuardState{Open,Guard,GuardBroke}
     public List< HealthBar> currentHealthBars = new List<HealthBar>();
     public BeastAnimatedInstance animatedInstance;
-    public SoundData healSFX;
+    public SoundData healSFX,shieldSFX;
     public float currentHealth;
+    public float currentShield;
     public bool KO;
     public StatusEffectHandler statusEffectHandler;
     public bool goLeft =true;
-    public GuardState guard;
+    //public GuardState guard;
     public EntityOwnership ownership;
+    public List<Shield> shields = new List<Shield>();
+
+    void Update(){
+        currentShield = totalShield();
+    }
+   
     
     public void TakeDamage(float amount,EffectArgs args)
     {
         float oldCurrentHealth = currentHealth;
         float paradmg = ParasiteDamage();
         float damage = amount; 
-        if(guard == GuardState.Guard){
-            damage = damage/2;
-        }
-        else if(guard == GuardState.GuardBroke){
-            damage = damage + damage/2;
-        }
         damage += paradmg;
-        currentHealth = currentHealth-damage;
+        float postMitigationDamage =   ShieldHandler(damage);  //may be buggy idk
+        currentHealth = currentHealth-postMitigationDamage;
         EntityOwnership damageSource = EntityOwnership.ERROR;
         if(args.isPlayer)
         {damageSource = EntityOwnership.PLAYER;}
@@ -66,13 +68,111 @@ public class Entity : MonoBehaviour
             EventManager.inst.onPlayerDealDamage.Invoke(); 
         }
 
-    
+ 
+        
+        ClearShields();
         foreach (var item in currentHealthBars)
         {item.onHit.Invoke(); }
         
         BattleManager.inst.CheckIfGameContinues();
        
     }
+
+    public float ShieldHandler(float damage)
+    {
+        if(totalShield() > 0)
+        {
+            float oldShield = totalShield();
+            float leftOverDamage = DeductShield(damage);
+            float shieldDamage =  oldShield - totalShield();
+      
+            return leftOverDamage;
+        }
+       
+
+        return damage;
+    }
+
+    float DeductShield(float dmg)
+    {
+        if(shields.Count > 0) 
+        { 
+            Shield currentShield = null;
+            foreach (var item in shields)
+            {
+                if(item.value > 0){
+                    currentShield = item;
+                    break;
+                }
+            }
+
+            if(currentShield == null){
+                Debug.Log(Mathf.Abs(dmg) + " excess");
+                return Mathf.Abs(dmg);
+            }
+           
+            float  p = 0;
+            currentShield.value -= dmg;
+            if(currentShield.value <0)
+            {
+             //   ClearShields();
+                return  DeductShield( Mathf.Abs(currentShield.value));
+            }
+            else{
+            Debug.Log(p + " excess");
+            return p;
+            }
+
+       
+            
+        }
+        return 0;
+    }
+
+    public void AddShield(StatusEffectDisplay display)
+    {
+        Shield s = new Shield();
+        s.display = display;
+        s.value = Mathf.RoundToInt( (float) Maths.Percent(stats().maxHealth,10));
+        shields.Add(s);
+       //currentShield+= 
+       
+        foreach (var item in     currentHealthBars)
+        {
+            item.UpdateFill();
+            item.UpdateText();
+        }
+        AudioManager.inst.GetSoundEffect().Play(shieldSFX);
+    
+    }
+
+  
+
+    void ClearShields(){
+        List<Shield> bin = new List<Shield>();
+        foreach (var item in shields)
+        {
+            if(item.value <= 0){
+         bin.Add(item);
+        }
+        }
+
+        foreach (var item in bin)
+        {
+            shields.Remove(item);
+        }
+    }
+
+   public float totalShield(){
+        float q = 0;
+        foreach (var item in shields)
+        {
+            q+=item.value;
+        }
+
+        return q;
+    }
+
 
     public void Bleed(bool isPlayer)
     {
@@ -139,43 +239,7 @@ public class Entity : MonoBehaviour
       return q;
     }
 
-    public void ChangeGuardState(GuardState newState)
-    {
-        if(guard != newState){
-           GuardState oldState = guard;
-            guard = newState;
 
-            if(newState == GuardState.Guard)
-            {
-                if(OwnedByPlayer()){
-                 EventManager.inst.onPlayerEnterGuardState.Invoke();
-                }
-                else{
-                EventManager.inst.onEnemyEnterGuardState.Invoke();
-                }
-             
-            }
-            else  if(newState == GuardState.GuardBroke)
-            {
-                if(OwnedByPlayer()){
-                EventManager.inst.onPlayerGuardBreak.Invoke();
-                }
-                else{
-                EventManager.inst.onEnemyGuardBreak.Invoke();
-                }
-             
-            }
-
-            if(oldState == GuardState.Guard && newState != GuardState.Guard){
-                if(OwnedByPlayer()){
-                 EventManager.inst.onPlayerExitGuardState.Invoke();
-                }
-                else{
-                EventManager.inst.onEnemyExitGuardState.Invoke();
-                }   
-            }
-        }
-    }
     
 
     public void SpawnVisualDamage(float q, Color c)

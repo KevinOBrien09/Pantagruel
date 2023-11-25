@@ -8,7 +8,7 @@ public class Beast : Entity
 {
     public BeastScriptableObject scriptableObject;
     public Deck deck;
-    public int shields;
+    
     public EXP exp = new EXP();
     public Stats statMods = new Stats();
     public Sin sin;

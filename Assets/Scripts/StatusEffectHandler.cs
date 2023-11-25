@@ -31,7 +31,7 @@ public class StatusEffectHandler : MonoBehaviour
        
         StatusEffectDisplay d = Instantiate(displayPrefab,transform);
         d.gameObject.layer = this.gameObject.layer;
-        foreach (Transform item in d.transform)
+        foreach (Transform item in MiscFunctions.GatherAllTransforms(d.transform,new List<Transform>()))
         { item.gameObject.layer = this.gameObject.layer; }
         
         displays.Add(d);

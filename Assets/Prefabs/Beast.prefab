@@ -50,8 +50,16 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 63115a50a9d20fc40b4091821a372bd5, type: 3}
     pitchRange: {x: 0.9, y: 1.1}
     volume: 0.5
+  shieldSFX:
+    audioClip: {fileID: 8300000, guid: 642eddf938bba7548900655faf29d980, type: 3}
+    pitchRange: {x: 0.9, y: 1.1}
+    volume: 0.7
   currentHealth: 0
+  currentShield: 0
   KO: 0
+  statusEffectHandler: {fileID: 0}
+  goLeft: 1
+  ownership: 0
   scriptableObject: {fileID: 0}
   deck:
     cards: []
@@ -72,3 +80,4 @@ MonoBehaviour:
     magic: 0
     charisma: 0
     luck: 0
+  sin: 0

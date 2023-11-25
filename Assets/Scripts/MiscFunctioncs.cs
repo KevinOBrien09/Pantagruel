@@ -1,8 +1,23 @@
 using System;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 public static class MiscFunctions
 {
+
+    public static List<Transform> GatherAllTransforms(Transform parent, List<Transform> transforms)
+    {
+        transforms.Add(parent);
+
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            GatherAllTransforms(parent.GetChild(i), transforms);
+        }
+
+        return transforms;
+    }
+
     public static (int,string) GetPercentFromString(string s,string tag)
     {
        

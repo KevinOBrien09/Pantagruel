@@ -8,7 +8,7 @@ using TMPro;
 public class HealthBar : MonoBehaviour
 {
     public Entity entity;
-    public Image fill;
+    public Image fill,shieldFill;
     public bool healthTxtOneString,onlyShowCurrent;
     public TextMeshProUGUI current,max;
     public UnityEvent onHit;
@@ -18,22 +18,47 @@ public class HealthBar : MonoBehaviour
     public void UpdateFill()
     {
         fill.DOFillAmount(entity.currentHealth/entity.stats().maxHealth,.2f);
+        shieldFill.DOFillAmount(entity.totalShield()/entity.stats().maxHealth,.2f);
+
+        if( entity.currentHealth < entity.totalShield()  ){
+            shieldFill.DOFade(.5f,.2f);
+        }
+        else{
+               shieldFill.DOFade(1,.2f);
+        }
     }
 
     public void UpdateText()
     {
+        
+        float totalValue = entity.currentHealth + entity.totalShield();
+        bool bold = entity.totalShield() == 0;  
+       
         if(healthTxtOneString)
         {
-            current.text = "HP:" + entity.currentHealth.ToString()+"/"+entity.stats().maxHealth.ToString();
-        //    max.text = "";
+            if(!bold)
+            {current.text = "HP:" +  totalValue.ToString()+"/"+entity.stats().maxHealth.ToString();}
+            else
+            {current.text = "HP:" + "<b>" + totalValue.ToString() + "</b>" +"/"+entity.stats().maxHealth.ToString();}
         }
-        else if(onlyShowCurrent){
-             current.text = entity.currentHealth.ToString();
+        else if(onlyShowCurrent)
+        {  
+            if(!bold)
+            {current.text =  totalValue.ToString();}
+            else
+            {current.text = "<b>"  + totalValue.ToString();}
         }
         else
         {
-            current.text = entity.currentHealth.ToString();
+              if(!bold)
+            {
+            current.text =  "<b>"  + totalValue.ToString();
             max.text = entity.stats().maxHealth.ToString();
+            }
+            else{
+                   current.text =  totalValue.ToString();
+            max.text = entity.stats().maxHealth.ToString();
+            }
        
         }
       

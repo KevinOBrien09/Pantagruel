@@ -24,6 +24,11 @@ public class StatusEffectDisplay : MonoBehaviour
             graphics[0].SetActive(true);
             scriptableObject = statusEffectHandler. allEffects[0];
             break;
+            case StatusEffects.SHIELD:
+            graphics[1].SetActive(true);
+          
+            scriptableObject = statusEffectHandler. allEffects[3];
+            break;
             case StatusEffects.PARASITE:
             graphics[2].SetActive(true);
             scriptableObject =  statusEffectHandler.allEffects[1];
@@ -32,6 +37,7 @@ public class StatusEffectDisplay : MonoBehaviour
             graphics[3].SetActive(true);
             scriptableObject = statusEffectHandler. allEffects[2];
             break;
+            
             default:
             Debug.LogAssertion("Default Case");
             break;

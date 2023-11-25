@@ -19,7 +19,8 @@ MonoBehaviour:
   vfxSetUp: 
   vfx: 
   castDelay: 0
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: 5607f5a0ba170c7449fce8ebadb24b54, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 0}
@@ -27,7 +28,7 @@ MonoBehaviour:
     volume: 0
   element: 0
   beastClass: 0
-  desc: Enter guard.
+  desc: Gain a shield.
   flavourText: '"A Thorough Description of the Free Knightly and Noble Art of Fencing-Tobias
     Stimmer"'
   deckCost: 0
