@@ -15,11 +15,13 @@ MonoBehaviour:
   beastData:
     ANIMATED_PREFAB_DONE: 0
     devNote:
-      note: Upon reaching 5 bleed stacks on the enemy beast I bite it dealing 25+({25%MISSTHP})
-        and heal for {25%CURRHP}. //Allogate this to a pet instead?
+      note: 'I can play parasite cards. I eat the parasite removing the card and
+        it''s stack whilst also healing for 25% missing health. '
     beastName: Froggert
     flavourText: 
-    bottomCornerPos: {x: 0, y: -0.25}
+    playerStatusEffectPos: {x: 0, y: -4.5, z: 2, w: 1.5}
+    enemyStatusEffectPos: {x: 0, y: 9, z: 2, w: 1.5}
+    bottomCornerPos: {x: 0, y: -0.25, z: 0}
     battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: -796155573255488767, guid: 75af220ac51f164409070ae44c6d85a4,

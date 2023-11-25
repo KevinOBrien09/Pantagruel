@@ -38,7 +38,7 @@ if(str.Contains("%")){
             foo = foo.Replace("%",string.Empty);
             int percent = int.Parse(foo);
             int amount = (int)Maths.Percent(b.stats().magic,percent);
-            s = s.Replace(poo,"<color=#8C2096>" + amount.ToString() + "</color>");
+            s = s.Replace(poo,"<color=#0060FF>" + amount.ToString() + "</color>");
         }
 
        return FirstLetterToUpper(ColourParse(s));
@@ -83,23 +83,36 @@ if(str.Contains("%")){
 
     static string ColourParse(string s)
     {
-        if(s.Contains("<b>bleed</b>"))
-        {s = s.Replace("<b>bleed</b>","<color=red><b>bleed</b></color>");}
+        if(s.Contains("bleed"))
+        {s = s.Replace("bleed","<color=red><b>bleed</b></color>");}
 
-        if(s.Contains("<b>stun</b>"))
-        {s = s.Replace("<b>stun</b>","<color=yellow><b>stun</b></color>");}
+        if(s.Contains("stun"))
+        {s = s.Replace("stun","<color=yellow><b>stun</b></color>");}
 
-         if(s.Contains("<b>Stun</b>"))
-        {s = s.Replace("<b>Stun</b>","<color=yellow><b>Stun</b></color>");}
+        if(s.Contains("Stun"))
+        {s = s.Replace("Stun","<color=yellow><b>Stun</b></color>");}
 
-        if(s.Contains("<b>phys</b>"))
-        {s = s.Replace("<b>phys</b>","<color=orange><b>phys</b></color>");}
+        if(s.Contains("phys"))
+        {s = s.Replace("phys","<color=orange><b>phys</b></color>");}
+        
+        if(s.Contains("mgk"))
+        {s = s.Replace("mgk","<color=#0060FF><b>mgk</b></color>");}
 
-       
+        if(s.Contains("parasite"))
+        {s = s.Replace("parasite","<color=#FF00BD><b>parasite</b></color>");}
+        
+        if(s.Contains("guard break"))
+        {s = s.Replace("guard break","<color=#286326><b>Guard Break</b></color>");}
+        else if (s.Contains("guard"))  {s = s.Replace("guard","<color=#286326><b>Guard</b></color>");}
 
+        if(s.Contains("blockade"))
+        {s = s.Replace("blockade","<color=#143267><b>Blockade</b></color>");}
 
-        if(s.Contains("<b>mgk</b>"))
-        {s = s.Replace("<b>mgk</b>","<color=#8C2096><b>mgk</b></color>");}
+        if(s.Contains("heal"))
+        {s = s.Replace("heal","<color=#048263><b>Heal</b></color>");}
+
+         if(s.Contains("destroy"))
+        {s = s.Replace("destroy","<color=black><b>Destroy</b></color>");}
 
         return s;
     }

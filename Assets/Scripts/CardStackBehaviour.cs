@@ -17,6 +17,7 @@ public class CardStackBehaviour : MonoBehaviour, IPointerClickHandler
     public GameObject promiseParent;
     public int turnPlayed;
     public GameObject meterGO;
+   
     
     public void Init(Card card,Beast b,bool isPlayer)
     {

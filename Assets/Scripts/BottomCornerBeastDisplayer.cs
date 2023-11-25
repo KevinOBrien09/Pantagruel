@@ -15,6 +15,7 @@ public class BottomCornerBeastDisplayer: Singleton<BottomCornerBeastDisplayer>
     public Image bg;
     GameObject animatedPrefabInstance;
     Beast beast;
+    Dictionary<Beast,BeastAnimatedInstance> instances = new Dictionary<Beast, BeastAnimatedInstance>();
 
     public void ToggleBattleBGOn(){
         bg.enabled = true;
@@ -22,46 +23,71 @@ public class BottomCornerBeastDisplayer: Singleton<BottomCornerBeastDisplayer>
      public void ToggleBattleBGOff(){
         bg.enabled = false;
     }
-    public void ChangeActiveBeast(Beast b)
+
+    public void CreateAnimatedInstances(List<Beast> beasts)
     {
-        if(animatedPrefabInstance!= null) 
+        foreach (var b in beasts)
         {
-            Destroy(animatedPrefabInstance);
+            if(b.scriptableObject.beastData.ANIMATED_PREFAB_DONE)
+            {
+                GameObject g =  Instantiate(b.scriptableObject.beastData.beastGraphicPrefab,animatedPrefabHolder);
+                g.transform.localPosition = b.scriptableObject.beastData.bottomCornerPos;
+                BeastAnimatedInstance AI =   g.AddComponent<BeastAnimatedInstance>();
+                AI.Init(b);
+                animatedInstance = AI;
+                g.SetActive(false);
+                instances.Add(b,AI);
+            } 
+            else
+            {
+                SpriteRenderer g =  Instantiate(basicRenderer,animatedPrefabHolder);
+                g.sprite = b.scriptableObject.beastData.mainSprite;
+                g.transform.localPosition = b.scriptableObject.beastData.bottomCornerPos;
+                BeastAnimatedInstance AI =   g.gameObject. AddComponent<BeastAnimatedInstance>();
+                AI.Init(b);
+                animatedInstance = AI;
+                g.gameObject.SetActive(false);
+                instances.Add(b,AI);
+            }
+
         }
+    }
 
-        if(b.scriptableObject.beastData.ANIMATED_PREFAB_DONE)
-        {
-            GameObject g =  Instantiate(b.scriptableObject.beastData.beastGraphicPrefab,animatedPrefabHolder);
-            g.transform.localPosition = b.scriptableObject.beastData.bottomCornerPos;
-            BeastAnimatedInstance AI =   g.AddComponent<BeastAnimatedInstance>();
-            AI.Init(b);
-            animatedInstance = AI;
-            basicRenderer.enabled = false;
-            animatedPrefabInstance = AI.gameObject;
-            //g.layer = playerBeastLayer;
-        } 
-        else
-        {
-            basicRenderer.enabled = true;
-            basicRenderer.sprite = b.scriptableObject.beastData.mainSprite;
-            basicRenderer.transform.localPosition = b.scriptableObject.beastData.bottomCornerPos;
-
-            BeastAnimatedInstance AI =   basicRenderer.gameObject.AddComponent<BeastAnimatedInstance>();
-            AI.Init(b);
-            animatedInstance = AI;
-        }
-
+    public void ChangeActiveBeast(Beast b,bool playAnim)
+    {
         beastName.text = b.scriptableObject.beastData.beastName;
         healthBar.entity = b;
         beastLevel.text = b.exp.level.ToString();
         b.currentHealthBars.Add(healthBar);
         healthBar.onInit.Invoke();
         beast = b;
+       
+        if(playAnim)
+        {
+            instances[b].ToggleSpringBones(false);
+            animatedPrefabHolder.DOMoveX(5,.2f).OnComplete(()=>
+            {
+                toggle();
+                animatedPrefabHolder.DOMoveX(0,.33f);
+            });
+        }
+        else
+        {toggle();}
+      
+        void toggle()
+        {
+            foreach (var item in instances)
+            {item.Value.gameObject.SetActive(false);}
+            instances[b].gameObject.SetActive(true);
+            instances[b].ToggleSpringBones(true);
+            animatedPrefabHolder.DOMoveX(0,.33f);
+        }
+      
     }
 
     public void RefreshLevel(){
- beastLevel.text = beast.exp.level.ToString();
-     healthBar.onInit.Invoke();
+        beastLevel.text = beast.exp.level.ToString();
+        healthBar.onInit.Invoke();
     }
 
 }

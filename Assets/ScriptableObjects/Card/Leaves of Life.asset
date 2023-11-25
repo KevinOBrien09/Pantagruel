@@ -28,8 +28,9 @@ MonoBehaviour:
     volume: 0
   element: 5
   beastClass: 0
-  desc: Heal for 20.
+  desc: heal for 20.
   flavourText: '"The Expulsion from Paradise-Albrecht Durer"'
   deckCost: 0
   unplayable: 0
   cannotBeDiscard: 0
+  destroyOnCast: 0

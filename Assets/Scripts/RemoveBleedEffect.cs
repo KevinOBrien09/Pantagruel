@@ -15,12 +15,12 @@ public class RemoveBleedEffect : Effect
     {
         if(isPlayer)
         {
-            if(PlayerParty.inst.activeBeast.statusEffectHandler.ContainsABleed())
+            if(PlayerParty.inst.activeBeast.statusEffectHandler.ContainsThisEffect(StatusEffects.POISON))
             {return true;}
         }
         else
         {
-            if(RivalBeastManager.inst.activeBeast.statusEffectHandler.ContainsABleed())
+            if(RivalBeastManager.inst.activeBeast.statusEffectHandler.ContainsThisEffect(StatusEffects.POISON))
             {return true;}
         }
         

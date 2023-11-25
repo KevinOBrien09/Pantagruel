@@ -27,7 +27,10 @@ MonoBehaviour:
     volume: 0
   element: 3
   beastClass: 3
-  desc: Inflicate the caster with 2 <b><color=red>bleed</b></color> stacks, when
-    they expire gain {PHYS 100%} bonus <b>phys</b> for 1 turn.
+  desc: Inflicate the caster with 2 bleed stacks, when they expire gain {PHYS 100%}
+    bonus phys for 1 turn.
   flavourText: '"The Penitent-Albrecht Durer"'
   deckCost: 7
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0

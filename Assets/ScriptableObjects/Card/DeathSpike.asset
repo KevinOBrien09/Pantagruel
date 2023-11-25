@@ -32,6 +32,12 @@ MonoBehaviour:
     on the enemy beast, otherwise deal it to your active beast. <br> <u><i><b>Blood
     Spike</i></b></u>
 
-    Deal 20% max health damage to the target.'
+    Deal 20% max health damage to the target.
+
+    <br><i><color=grey>This
+    card does not stack.'
   flavourText: '"The Knight, from The Dance of Death - Hans Holbein the Younger"'
   deckCost: 0
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0

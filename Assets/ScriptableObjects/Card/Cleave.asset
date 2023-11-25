@@ -35,3 +35,4 @@ MonoBehaviour:
   deckCost: 7
   unplayable: 0
   cannotBeDiscard: 0
+  destroyOnCast: 0

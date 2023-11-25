@@ -36,8 +36,8 @@ public class CardManager:Singleton<CardManager>
     {
         foreach (var item in PlayerParty.inst.party)
         {
-            deckDict.Add(item,new Deck());
-            deckDict[item].cards = new List<Card>(item.deck.cards);
+            deckDict.Add(item,item.deck);
+           // deckDict[item].cards = new List<Card>(item.deck.cards);
         }
         
         foreach (var item in hand)
@@ -108,11 +108,89 @@ public class CardManager:Singleton<CardManager>
         { currentDeck.ResetDiscardPile(); }
         
         if(hand.Count < 7)
-        { CreateCardBehaviour(CardFunctions.DrawRandomCard(currentDeck)); 
-        MakeHandInteractable();}
+        { 
+            if(hand.Count == 6)
+            {
+                if(!playableCardInHand())
+                {
+                    if(playableCardInDeck()){
+                           Debug.Log("Playable card found in main deck");
+                        Card ca = CardFunctions.DrawPlayableCard(currentDeck);
+                        CreateCardBehaviour(ca); 
+                        MakeHandInteractable();
+                    }
+                    else if(playableCardInDiscard())
+                    {
+                        Debug.Log("Playable card found in discard");
+                        currentDeck.ResetDiscardPile();
+                        StartCoroutine(Q());
+                        IEnumerator Q(){
+                            yield return new WaitForEndOfFrame();
+                            Card ca = CardFunctions.DrawPlayableCard(currentDeck);
+                        CreateCardBehaviour(ca); 
+                        MakeHandInteractable();
+                        }
+                        
+                    }
+                    else
+                    {
+                        Debug.Log("No playable cards anywhere XD");
+                    }
+                  
+                    return;
+                }
+            }
+           
+           
+            Card c = CardFunctions.DrawRandomCard(currentDeck);
+            CreateCardBehaviour(c); 
+            MakeHandInteractable();
+            
+            
+        }
         else
         { Debug.Log("Hand is full!"); }
     }
+
+    public bool playableCardInHand(){
+        bool b = false;
+        foreach (var card in hand)
+        {
+            if(!card.card.unplayable)
+            {
+                b = true;
+            }
+        }
+        return b;
+    }
+
+    public bool playableCardInDeck()
+    {
+        bool b = false;
+        foreach (var card in currentDeck.cards)
+        {
+            if(!card.unplayable)
+            {
+                b = true;
+            }
+        }
+        return b;
+    }
+
+    public bool playableCardInDiscard()
+    {
+        bool b = false;
+        foreach (var card in currentDeck.discard)
+        {
+            if(!card.unplayable)
+            {
+                b = true;
+            }
+        }
+        return b;
+    }
+
+
 
    
     public void CheckForHandFuckery()
@@ -165,12 +243,7 @@ public class CardManager:Singleton<CardManager>
         else
         { Debug.Log("card is null"); }
     }
-
-  
-   
-   
-
-  
+    
     public void Use(Card usedCard,CardBehaviour behaviour)
     {
         StartCoroutine(q());
@@ -197,7 +270,12 @@ public class CardManager:Singleton<CardManager>
             yield return new WaitForSeconds(usedCard.castDelay);
             BattleEffectManager.inst.Play(usedCard.vfx);
             if(!behaviour.isVapour)
-            {currentDeck.discard.Add(usedCard);}
+            {
+                if(!usedCard.destroyOnCast){
+ currentDeck.discard.Add(usedCard);
+                }
+               
+            }
 
             if(usedCard.playVFXAfterDelay)
             {BattleEffectManager.inst.Play(usedCard.vfx);}
@@ -218,16 +296,10 @@ public class CardManager:Singleton<CardManager>
             
             IEnumerator piss()
             {
-              
                 while(BattleManager.inst.FUCKOFF)
                 {yield return null;}
-               BattleManager.inst.CheckForStatusEffectBeforeAllowingCards();
-                
-                
-               
-             
+                BattleManager.inst.CheckForStatusEffectBeforeAllowingCards();
             }
-            
         }
     }
 
@@ -249,6 +321,14 @@ public class CardManager:Singleton<CardManager>
         promiseList.Clear();
         promiseDict.Clear();
         DestroyHand();
+        foreach (var item in deckDict)
+        {
+           foreach (var card in item.Value.discard)
+           {
+                item.Value.cards.Add(card);
+           } 
+           item.Value.discard.Clear();
+        }
         deckDict.Clear();
         
         hand.Clear();

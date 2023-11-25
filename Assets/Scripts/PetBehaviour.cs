@@ -8,8 +8,7 @@ using DG.Tweening;
 public class PetBehaviour:Entity               
 {
     public Pet pet;
-    public EntityOwnership ownership;
-
+   
     public void Init(Pet p,EntityOwnership o)
     {
         pet = p;

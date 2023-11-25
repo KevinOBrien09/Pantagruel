@@ -18,18 +18,27 @@ MonoBehaviour:
   manaCost: 0
   vfxSetUp: 
   vfx: 
-  castDelay: 0.2
-  effects: []
+  castDelay: 0.6
+  effects:
+  - {fileID: 11400000, guid: 6771b18f018db7840bb1b58e9f8c9e12, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
-    audioClip: {fileID: 0}
-    pitchRange: {x: 0, y: 0}
-    volume: 0
+    audioClip: {fileID: 8300000, guid: d4b04cfea46d9f04792aceb1249f2738, type: 3}
+    pitchRange: {x: 0.9, y: 1}
+    volume: 1
   element: 0
   beastClass: 15
-  desc: This card cannot be played or discarded. It is removed with its corrosponding
-    <b><color=#FF00BD><i>parasite</i></color></b> stack.
-  flavourText: '" Woman attending a sick man-David Bles"'
+  desc: 'Trigger <i>extract</i>.<br>
+
+    <u><i><b>Extract</i></b></u>
+
+    Deal
+    5% max health damage to the afflicted beast. destroy this card and its corrosponding
+    parasite stack.
+
+'
+  flavourText: <color=grey><i>This card may not be discarded.
   deckCost: 0
-  unplayable: 1
-  cannotBeDiscard: 1
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 1

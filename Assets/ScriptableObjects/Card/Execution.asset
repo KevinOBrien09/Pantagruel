@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec03d198f138b2c4099b0c760090b965, type: 3}
+  m_Name: Execution
+  m_EditorClassIdentifier: 
+  Id: 3ae94967-6225-4e63-bf59-92c33a53925f
+  cardName: Execution
+  picture: {fileID: 21300000, guid: d8bcfc4878c20c444831e7fd180b91eb, type: 3}
+  manaCost: 2
+  vfxSetUp: 
+  vfx: 
+  castDelay: 0
+  effects:
+  - {fileID: 11400000, guid: e2f0be5de8695ae43bfdefc69ef734f3, type: 2}
+  playVFXAfterDelay: 0
+  soundEffect:
+    audioClip: {fileID: 8300000, guid: 84f7c61ea17ffa74b86dab40d76c1db0, type: 3}
+    pitchRange: {x: 0.9, y: 1.1}
+    volume: 1
+  element: 0
+  beastClass: 0
+  desc: Kill your own summon.
+  flavourText: 
+  deckCost: 8
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0

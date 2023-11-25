@@ -7,7 +7,7 @@ using UnityEngine;
 public class HolyWaterEffect : StatusEffectEffect
 {
 
-    public override void Trigger(Beast infected,EffectArgs args){
+    // public override void Trigger(Beast infected,EffectArgs args){
         
-    }
+    // }
 }

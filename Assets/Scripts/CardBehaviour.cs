@@ -50,7 +50,7 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
         cardName.text = card.cardName;
         desc = newCard.desc;
         if(card.manaCost == 0){
-            manaCost.text = "O";
+           manaIconGO.SetActive(false);
         }
         else{
             manaCost.text = RomanNumerals.ToRoman(card.manaCost);
@@ -71,9 +71,7 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
           
         }
 
-        if(newCard.unplayable)
-        { manaIconGO.SetActive(false); }
-       
+      
     }
 
 

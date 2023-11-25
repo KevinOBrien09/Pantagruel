@@ -55,7 +55,7 @@ public class BeastAnimatedInstance : MonoBehaviour
          AudioManager.inst.GetSoundEffect().Play(SystemSFX.inst.bleed);
     }
 
-    public void TakeDamage()
+    public void TakeDamage(Color color)
     {
         Vector3 p = transform.position;
 
@@ -77,7 +77,7 @@ public class BeastAnimatedInstance : MonoBehaviour
         {
             StartCoroutine(q());
             IEnumerator q(){
-                item.DOColor(Color.red,0);
+                item.DOColor(color,0);
                 yield return new WaitForSeconds(.5f);
                 item.DOColor(defaultColour,.2f);
                 if(animator != null){
@@ -87,7 +87,7 @@ public class BeastAnimatedInstance : MonoBehaviour
         }
     }
 
-    void ToggleSpringBones(bool state){
+   public void ToggleSpringBones(bool state){
   foreach (var item in springBones)
             {item.ignoreSpringBone = true;}
     }

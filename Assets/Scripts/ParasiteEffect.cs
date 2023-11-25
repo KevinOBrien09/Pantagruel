@@ -6,20 +6,13 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Effects/Parasite", fileName = "Parasite")]
 public class ParasiteEffect : StatusEffectEffect
 {
-    public Card card;
-    
-    public override void Trigger(Beast infected,EffectArgs args)
-    {
-        if(BattleManager.inst.GetBeastOwnership( infected ) == EntityOwnership.PLAYER){
-            CardManager.inst.currentDeck.AddCardToDeck(card);
-        }
-        else
-        {
-            EnemyAI.inst.currentDeck.AddCardToDeck(card);
-        }
+    public const    string parasiteCard = "58bb91a1-3cf8-4ade-b3b4-5dff8aa4a16d";
 
-      
-        
+    public override void Use(EffectArgs args)
+    {
+       CreateStatusEffectStack(args).AddStatusEffectCardToDeck(cards);
     }
+     
+    
     
 }

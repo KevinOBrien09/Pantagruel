@@ -10,17 +10,10 @@ public class SummonEffect :Effect
 
     public override void Use(EffectArgs args)
     {
-        if(BattleManager.inst.GetBeastOwnership((Beast) args.caster) == EntityOwnership.ENEMY)
-        {
-            PetManager.inst.SummonEnemyPet(pet);
-        }
-        else if(BattleManager.inst.GetBeastOwnership((Beast) args.caster) ==EntityOwnership.PLAYER)
-        {
-            PetManager.inst.SummonPlayerPet(pet);
-       
-        
-        }
-        else{Debug.LogAssertion("Uh Oh....");}
+        if(args.caster.OwnedByPlayer())
+        { PetManager.inst.SummonPlayerPet(pet);}
+        else
+        {PetManager.inst.SummonEnemyPet(pet);}
     }
 
     public override bool canUse(bool isPlayer)

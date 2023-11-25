@@ -19,6 +19,14 @@
 //character gains damage based on how much tarot they are missing
 //heals when a summon dies
 
+//Pride: Gain 1% of your target exp per exp gain.
+//Wrath: Gain .5 extra phys per level.
+//Greed: Gain an additional 5 gold at the end of combat.
+//Envy: Bonus when enemy draws card? +.5 combat damage? max stacks
+//Lust:
+//Gluttony: Heal an 1% max health whenever you heal. 
+//Sloth: Bonus if you play no card?
+
 
 //plot
 //player is told about mcguffin in the catacombs of the monastary  

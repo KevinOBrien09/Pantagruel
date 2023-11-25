@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 348388762232940740}
   - component: {fileID: 348388762232940747}
   m_Layer: 8
-  m_Name: BloodDrop
+  m_Name: Poison
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,11 +132,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e473e4404a8cd4aa4e2147f07f1e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statusEffectHandler: {fileID: 0}
   graphics:
   - {fileID: 348388762232940751}
   - {fileID: 2445728321555953401}
   - {fileID: 3228732201476845226}
   - {fileID: 7289734318965063737}
+  turnToDie: 0
+  turnCastOn: 0
+  statusEffect: 0
+  scriptableObject: {fileID: 0}
+  correspondingCards: []
+  lookAt: {fileID: 7056429972051231834}
 --- !u!114 &7056429972051231834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
-  cameraName: BatttleCamera
+  cameraName: BattleCamera
 --- !u!1001 &4220655498627452924
 PrefabInstance:
   m_ObjectHideFlags: 0

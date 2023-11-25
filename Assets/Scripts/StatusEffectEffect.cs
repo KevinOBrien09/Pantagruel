@@ -7,22 +7,20 @@ using UnityEngine;
 public class StatusEffectEffect :Effect
 {
     public StatusEffects statusEffect;
-    public int howManyTurns;
-    public bool triggerOnceOnCast,triggerOncePerTurn;
-
+	
+    public List<Card> cards = new List<Card>();
     public override void Use(EffectArgs args)
-    {
-        CreateStatusEffectStack(args);
+    {StatusEffectDisplay d =  CreateStatusEffectStack(args);}
+
+    public StatusEffectDisplay CreateStatusEffectStack(EffectArgs args)
+	{
+        if(args.target.statusEffectHandler != null)
+		{return  args.target.statusEffectHandler.CreateStack(statusEffect); }
+        return null;
     }
 
-    public void CreateStatusEffectStack(EffectArgs args){
-        if(args.target.statusEffectHandler != null){
-            args.target.statusEffectHandler.CreateStack(this,args);
-        }
-    }
-
-    public virtual void Trigger(Beast infected,EffectArgs args){
-Debug.Log(statusEffect.ToString());
+    public virtual void Trigger(Beast infected,bool isPlayer){
+		Debug.Log(statusEffect.ToString());
     }
 
 }

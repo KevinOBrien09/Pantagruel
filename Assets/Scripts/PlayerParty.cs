@@ -24,11 +24,13 @@ public class PlayerParty : Singleton<PlayerParty>
                 bsd.exp = save;
                 item.Init(bsd);
                 item.FirstHealthInit(e);
+                item.ownership = EntityOwnership.PLAYER;
                 
              
             }
           
             activeBeast = party[0];
+            BottomCornerBeastDisplayer.inst.CreateAnimatedInstances(party);
             ApplyLoadedInfo();
 
         }
@@ -50,11 +52,27 @@ public class PlayerParty : Singleton<PlayerParty>
             b.exp = new EXP();
             b.exp.Load(data.party[i].exp);
             b.exp.beast = b;
+            b.sin = data.party[i].sin;
+            b.ownership = EntityOwnership.PLAYER;
+           
         }
             
         //Active beast is the 0th entry of the party.
         activeBeast = party[0];
-        ApplyLoadedInfo();
+        BottomCornerBeastDisplayer.inst.CreateAnimatedInstances(party);
+ 
+         ApplyLoadedInfo();
+        StartCoroutine(q());
+        IEnumerator q(){
+            yield return new WaitForEndOfFrame();
+                
+            for (int i = 0; i < data.party.Count; i++)  
+            {
+            
+                party[i].statusEffectHandler.Load(data.party[i].statusEffects);
+            }
+        }
+       
     }
 
     public void ChangePartyOrder(Beast newActiveBeast){
@@ -67,14 +85,16 @@ public class PlayerParty : Singleton<PlayerParty>
     
     void ApplyLoadedInfo()
     {
+        
           PassiveManager.inst.OrginizePassiveActivity();
-        BottomCornerBeastDisplayer.inst.ChangeActiveBeast(activeBeast);
+        BottomCornerBeastDisplayer.inst.ChangeActiveBeast(activeBeast,false);
       
         
     }
 
     public void AddNewBeast(Beast b)
     {
+        b.ownership = EntityOwnership.PLAYER;
         if(b.scriptableObject.beastData.passive != null)
         {
             PassiveManager.inst.AddNewBeast(b);
@@ -120,9 +140,16 @@ public class PlayerParty : Singleton<PlayerParty>
                 saveData.currentHealth = b.currentHealth;
                 List<string> cardIDs = new List<string>();
                 foreach (var card in b.deck.cards)
-                { cardIDs.Add(card.Id); }
+                {
+                    if(card.Id != ParasiteEffect.parasiteCard){
+         cardIDs.Add(card.Id); 
+                    }
+            
+                }
                 saveData.deckIDs = cardIDs;
                 saveData.exp = b.exp.Save();
+                saveData.statusEffects = b.statusEffectHandler.Save();
+                saveData.sin = b.sin;
                 return saveData;
             }
             else   

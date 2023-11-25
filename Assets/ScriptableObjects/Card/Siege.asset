@@ -16,15 +16,20 @@ MonoBehaviour:
   cardName: Siege
   picture: {fileID: 21300000, guid: 3d000753c6192c94790b2fd2159ae827, type: 3}
   manaCost: 8
+  vfxSetUp: 
   vfx: 
   castDelay: 0.2
   effects: []
+  playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
   element: 4
   beastClass: 2
-  desc: <b>Blockade</b> the opponents deck for 3 turns.
+  desc: blockade the opponents deck for 3 turns.
   flavourText: 
   deckCost: 20
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0

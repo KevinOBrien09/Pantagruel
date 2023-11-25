@@ -21,6 +21,36 @@ public static class CardFunctions
         }
     }
 
+    public static Card DrawPlayableCard(Deck deck)
+    {
+        if(deck.cards.Count > 0)
+        {
+            Card c = null;
+            foreach (var item in deck.cards)
+            {
+                Debug.Log(item.cardName);
+                if(!item.unplayable){
+                    c = item; 
+              //      break;
+                }
+            }
+            if(c != null){
+                deck.cards.Remove(c);
+            }
+            else{
+                Debug.Log("QWERTYASDF");
+            }
+           
+      
+            return c;
+        }
+        else
+        {
+            Debug.Log("Deck is empty");
+            return null;
+        }
+    }
+
     public static Card DrawCardOfSpecificCost(List<int> cost,Deck deck)
     {
         List<Card> validCards = new List<Card>();

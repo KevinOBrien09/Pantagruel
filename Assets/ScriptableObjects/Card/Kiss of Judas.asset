@@ -19,8 +19,7 @@ MonoBehaviour:
   vfxSetUp: 
   vfx: 
   castDelay: 0
-  effects:
-  - {fileID: 11400000, guid: e2f0be5de8695ae43bfdefc69ef734f3, type: 2}
+  effects: []
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 8300000, guid: 891a3e9febb90ab40a4b72ec4cc35281, type: 3}
@@ -28,6 +27,9 @@ MonoBehaviour:
     volume: 0.5
   element: 6
   beastClass: 16
-  desc: 'Kill your own summon. '
+  desc: If you kill your own summon earn 30 bonus gold.
   flavourText: ' "Friend, do what you are here to do."'
   deckCost: 1
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0

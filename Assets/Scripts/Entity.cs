@@ -4,17 +4,30 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {    
+    public enum GuardState{Open,Guard,GuardBroke}
     public List< HealthBar> currentHealthBars = new List<HealthBar>();
     public BeastAnimatedInstance animatedInstance;
     public SoundData healSFX;
     public float currentHealth;
     public bool KO;
     public StatusEffectHandler statusEffectHandler;
+    public bool goLeft =true;
+    public GuardState guard;
+    public EntityOwnership ownership;
     
     public void TakeDamage(float amount,EffectArgs args)
     {
         float oldCurrentHealth = currentHealth;
-        currentHealth = currentHealth-amount;
+        float paradmg = ParasiteDamage();
+        float damage = amount; 
+        if(guard == GuardState.Guard){
+            damage = damage/2;
+        }
+        else if(guard == GuardState.GuardBroke){
+            damage = damage + damage/2;
+        }
+        damage += paradmg;
+        currentHealth = currentHealth-damage;
         EntityOwnership damageSource = EntityOwnership.ERROR;
         if(args.isPlayer)
         {damageSource = EntityOwnership.PLAYER;}
@@ -23,11 +36,13 @@ public class Entity : MonoBehaviour
         
         if(currentHealth <0)
         {currentHealth = 0;}
-
+        
+ 
         int howMuchDamage= (int) oldCurrentHealth - (int) currentHealth;
+        SpawnVisualDamage(howMuchDamage -paradmg,Color.white);
 
         if(animatedInstance != null)
-        {animatedInstance.TakeDamage();}
+        {animatedInstance.TakeDamage(Color.red);}
         
         if(currentHealth ==0)
         {Die(damageSource);}
@@ -59,19 +74,28 @@ public class Entity : MonoBehaviour
        
     }
 
-    public void Bleed(EffectArgs args)
+    public void Bleed(bool isPlayer)
     {
         float oldCurrentHealth = currentHealth;
-        currentHealth = currentHealth - Mathf.RoundToInt( (float) Maths.Percent(stats().maxHealth,6)) ;
+        int damage = Mathf.RoundToInt( (float) Maths.Percent(stats().maxHealth,5)) ;
+        damage += ParasiteDamage();
+        currentHealth = currentHealth - damage;
         int howMuchDamage= (int) oldCurrentHealth - (int) currentHealth;
+         Color c = new Color();
+            ColorUtility.TryParseHtmlString("#7100FF",out c);
+        SpawnVisualDamage(damage,c);
         Debug.Log("BLEED " + howMuchDamage);
         EntityOwnership damageSource = EntityOwnership.ERROR;
-        if(args.isPlayer)
+        if(isPlayer)
         {damageSource = EntityOwnership.PLAYER;} 
         else{damageSource = EntityOwnership.ENEMY;}
-        animatedInstance.Bleed();
+       // animatedInstance.Bleed();
+        AudioManager.inst.GetSoundEffect().Play(SystemSFX.inst.bleed);
         if(animatedInstance != null)
-        {animatedInstance.TakeDamage();}
+        {
+           
+            animatedInstance.TakeDamage(c);
+        }
         if(currentHealth <0)
         {currentHealth = 0;}
         if(currentHealth ==0)
@@ -94,8 +118,95 @@ public class Entity : MonoBehaviour
 
     }
 
+    public int ParasiteDamage()
+    {
+        int q = 0;
+        if(statusEffectHandler!=null){
+    foreach (var item in statusEffectHandler.currentEffects)
+        {
+            if(item == StatusEffects.PARASITE){
+                q++;
+            }
+        }
+        if(q!= 0){
+       Color c = new Color();
+        ColorUtility.TryParseHtmlString("#FF00BD",out c);
+
+       SpawnVisualDamage(q,c);
+       }
+        }
+    
+      return q;
+    }
+
+    public void ChangeGuardState(GuardState newState)
+    {
+        if(guard != newState){
+           GuardState oldState = guard;
+            guard = newState;
+
+            if(newState == GuardState.Guard)
+            {
+                if(OwnedByPlayer()){
+                 EventManager.inst.onPlayerEnterGuardState.Invoke();
+                }
+                else{
+                EventManager.inst.onEnemyEnterGuardState.Invoke();
+                }
+             
+            }
+            else  if(newState == GuardState.GuardBroke)
+            {
+                if(OwnedByPlayer()){
+                EventManager.inst.onPlayerGuardBreak.Invoke();
+                }
+                else{
+                EventManager.inst.onEnemyGuardBreak.Invoke();
+                }
+             
+            }
+
+            if(oldState == GuardState.Guard && newState != GuardState.Guard){
+                if(OwnedByPlayer()){
+                 EventManager.inst.onPlayerExitGuardState.Invoke();
+                }
+                else{
+                EventManager.inst.onEnemyExitGuardState.Invoke();
+                }   
+            }
+        }
+    }
+    
+
+    public void SpawnVisualDamage(float q, Color c)
+    {
+        if(goLeft){
+            goLeft = false;
+        }
+        else{
+            goLeft = true;
+        }
+        Debug.Log(gameObject.name);
+      DamageValueGraphic d =  Instantiate(BattleManager.inst.damageValueGraphicPrefab, animatedInstance. transform);
+      d.gameObject.layer = animatedInstance.gameObject.layer;
+      if(statusEffectHandler!=null){  d.transform.localPosition = statusEffectHandler  .transform.localPosition;}
+      else{Debug.Log("Cannot find handler");}
+    
+      d.Spawn((int)q,c,goLeft);
+        
+    }
+
+    public bool OwnedByPlayer(){
+        return ownership == EntityOwnership.PLAYER;
+    }
+
+   
+
     public virtual void Die(EntityOwnership damageSource)
     {
+        if(statusEffectHandler!=null){
+            statusEffectHandler.gameObject.SetActive(false);
+        }
         
         if(damageSource != EntityOwnership.ERROR)
         {CallDeathEvents(damageSource);}
@@ -127,8 +238,8 @@ public class Entity : MonoBehaviour
 
         if(this.GetType() == typeof(Beast))
         { 
-            EntityOwnership ownership = BattleManager.inst.GetBeastOwnership((Beast)this);
-            if(ownership == EntityOwnership.PLAYER)
+           
+            if(OwnedByPlayer())
             {
                 if(damageSource == EntityOwnership.ENEMY)
                 {EventManager.inst.onPlayerBeastKilledByEnemy.Invoke();}

@@ -22,6 +22,13 @@ public class Deck
     public void RemoveCardFromDeck(Card card)
     { cards.Remove(card); }
 
+    public void DestroyCard(Card card)
+    {
+        cards.Remove(card);
+        discard.Remove(card);
+
+    }
+
     bool canFitCard(int cardCost)
     {
         if(TotalDeckCost() + cardCost <= 100)
@@ -32,12 +39,15 @@ public class Deck
     
     public void ResetDiscardPile(){
 
-        if(cards.Count <= 0)
+        
+        foreach (var item in discard)
         {
-            cards = new List<Card>(discard);
-            discard.Clear();
-            Debug.Log("Resetting discard pile");
+            cards.Add(item);
         }
+    
+        discard.Clear();
+        Debug.Log("Resetting discard pile");
+    
     }
 
     public int TotalDeckCost()

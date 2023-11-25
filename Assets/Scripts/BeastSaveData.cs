@@ -9,6 +9,8 @@ public class BeastSaveData
     public float currentHealth;
     public List<string> deckIDs = new List<string>(); 
     public EXPSave exp;
+    public List<StatusEffects> statusEffects = new List<StatusEffects>();
+    public Sin sin;
     //public LocationSer
     
 }

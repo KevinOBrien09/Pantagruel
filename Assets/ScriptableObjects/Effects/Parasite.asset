@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: Parasite
   m_EditorClassIdentifier: 
   statusEffect: 1
-  howManyTurns: 0
-  triggerOnceOnCast: 1
-  triggerOncePerTurn: 0
-  card: {fileID: 11400000, guid: 905474b2024771147aa8b5162da286c7, type: 2}
+  cards:
+  - {fileID: 11400000, guid: 905474b2024771147aa8b5162da286c7, type: 2}

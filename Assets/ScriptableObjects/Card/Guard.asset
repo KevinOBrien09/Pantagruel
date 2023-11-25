@@ -27,7 +27,10 @@ MonoBehaviour:
     volume: 0
   element: 0
   beastClass: 0
-  desc: Enter <b><i>guard</b></i>.
+  desc: Enter guard.
   flavourText: '"A Thorough Description of the Free Knightly and Noble Art of Fencing-Tobias
     Stimmer"'
   deckCost: 0
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0

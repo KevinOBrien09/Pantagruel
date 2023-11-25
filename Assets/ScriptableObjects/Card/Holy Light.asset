@@ -16,15 +16,20 @@ MonoBehaviour:
   cardName: Holy Light
   picture: {fileID: 21300000, guid: 240267a165dabee48a30c88179161b9c, type: 3}
   manaCost: 0
+  vfxSetUp: 
   vfx: 
   castDelay: 0.2
   effects: []
+  playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 8300000, guid: ca7d06f3ca544494289d8b1ec945fae1, type: 3}
     pitchRange: {x: 0, y: 0}
     volume: 0
   element: 6
   beastClass: 5
-  desc: Gain 10 <b>phys</b> for the rest of the turn.
+  desc: Gain 10 phys for the rest of the turn.
   flavourText: 
   deckCost: 0
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0

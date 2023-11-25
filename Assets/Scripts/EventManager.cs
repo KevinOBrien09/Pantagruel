@@ -43,6 +43,14 @@ public class EventManager:Singleton<EventManager>
     public UnityEvent onPlayerBeastKilledByEnemy;
     public UnityEvent onPlayerBeastKilledByPlayer;
 
+    public UnityEvent onPlayerEnterGuardState;
+    public UnityEvent onPlayerExitGuardState;
+    public UnityEvent onPlayerGuardBreak;
+    
+    public UnityEvent onEnemyEnterGuardState;
+    public UnityEvent onEnemyExitGuardState;
+    public UnityEvent onEnemyGuardBreak;
+
     public void AssignEvent(EventEnum eventEnum,UnityAction action)
     {
         switch(eventEnum)
@@ -133,6 +141,25 @@ public class EventManager:Singleton<EventManager>
             break;
             case EventEnum.onPlayerBeastKilledByPlayer:
             onPlayerBeastKilledByPlayer.AddListener(action);
+            break;
+
+              case EventEnum.onPlayerEnterGuardState:
+            onPlayerEnterGuardState.AddListener(action);
+            break;
+            case EventEnum.onPlayerExitGuardState:
+            onPlayerExitGuardState.AddListener(action);
+            break;
+            case EventEnum.onPlayerGuardBreak:
+           onPlayerGuardBreak.AddListener(action);
+            break;
+            case EventEnum.onEnemyEnterGuardState:
+            onEnemyEnterGuardState.AddListener(action);
+            break;
+            case EventEnum.onEnemyExitGuardState:
+            onEnemyExitGuardState.AddListener(action);
+            break;
+            case EventEnum.onEnemyGuardBreak:
+            onEnemyGuardBreak.AddListener(action);
             break;
         
         }
@@ -230,7 +257,25 @@ public class EventManager:Singleton<EventManager>
             case EventEnum.onPlayerBeastKilledByPlayer:
             onPlayerBeastKilledByPlayer.RemoveListener(action);
             break;
-           
+
+            case EventEnum.onPlayerEnterGuardState:
+            onPlayerEnterGuardState.RemoveListener(action);
+            break;
+            case EventEnum.onPlayerExitGuardState:
+            onPlayerExitGuardState.RemoveListener(action);
+            break;
+            case EventEnum.onPlayerGuardBreak:
+           onPlayerGuardBreak.RemoveListener(action);
+            break;
+            case EventEnum.onEnemyEnterGuardState:
+            onEnemyEnterGuardState.RemoveListener(action);
+            break;
+            case EventEnum.onEnemyExitGuardState:
+            onEnemyExitGuardState.RemoveListener(action);
+            break;
+            case EventEnum.onEnemyGuardBreak:
+            onEnemyGuardBreak.RemoveListener(action);
+            break;
         
         }
     }
@@ -268,5 +313,12 @@ public enum EventEnum
         onEnemyBeastKilledByPlayer,
         onEnemyBeastKilledByEnemy,
         onPlayerBeastKilledByEnemy,
-        onPlayerBeastKilledByPlayer
+        onPlayerBeastKilledByPlayer,
+        onPlayerEnterGuardState,
+        onPlayerExitGuardState,
+        onPlayerGuardBreak,
+
+        onEnemyEnterGuardState,
+        onEnemyExitGuardState,
+        onEnemyGuardBreak
     }

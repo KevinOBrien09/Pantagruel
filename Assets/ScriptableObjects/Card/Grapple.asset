@@ -27,7 +27,10 @@ MonoBehaviour:
     volume: 0
   element: 0
   beastClass: 0
-  desc: <color=#286326><b><i>Guard break</i></color></b> both the target and caster.
+  desc: guard break both the target and caster.
   flavourText: '"A Thorough Description of the Free Knightly and Noble Art of Fencing-Tobias
     Stimmer"'
   deckCost: 10
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0

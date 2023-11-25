@@ -1,6 +1,8 @@
  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Linq;
 
 public class Beast : Entity
 {
@@ -9,7 +11,7 @@ public class Beast : Entity
     public int shields;
     public EXP exp = new EXP();
     public Stats statMods = new Stats();
-    
+    public Sin sin;
     
     
     public void Init(BeastSaveData beastSaveData)
@@ -19,7 +21,7 @@ public class Beast : Entity
         currentHealth = beastSaveData.currentHealth;
         exp = new EXP();
         exp.Load( beastSaveData.exp);
-       
+        sin = beastSaveData.sin;
          
         foreach (var id in beastSaveData.deckIDs)
         {
@@ -63,6 +65,11 @@ public class Beast : Entity
         foreach (var card in bso.beastData.wildDeck.deck.cards)  //ONLY DOES WILD DECK ATM
         { cardIDs.Add(card.Id); }
         bsd.deckIDs = cardIDs;
+
+        Array values = Enum.GetValues(typeof(Sin));
+        System. Random random = new System.Random();
+        bsd.sin =  (Sin)values.GetValue(random.Next(values.Length));
+       
         return bsd;
     }
     

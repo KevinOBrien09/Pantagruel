@@ -21,6 +21,7 @@ public class RivalBeastManager:Singleton<RivalBeastManager>
             EXP e = new EXP(); 
             e.PsudeoLevel((int)Random.Range(LocationManager.inst.currentLocation.levelRange.x,LocationManager.inst.currentLocation.levelRange.y),b);
             b.Init(b.PsudeoSave(item));
+            b.ownership = EntityOwnership.ENEMY;
             b.FirstHealthInit(e);
             currentParty.Add(b);
         }

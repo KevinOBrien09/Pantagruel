@@ -27,7 +27,10 @@ MonoBehaviour:
     volume: 0
   element: 0
   beastClass: 15
-  desc: 'Increase the active beast''s MGK and PHYS by 10(+GFB). For every turn this
+  desc: 'Increase the active beast''s mgk and phys by 10(+GFB). For every turn this
     card spends in the discard pile this bonus is increased by 5. '
   flavourText: 
   deckCost: 25
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0

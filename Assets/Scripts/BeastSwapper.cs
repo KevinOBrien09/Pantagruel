@@ -16,7 +16,7 @@ public class BeastSwapper : Singleton<BeastSwapper>
       
         Beast newActiveBeast = b;
        
-        BottomCornerBeastDisplayer.inst.ChangeActiveBeast(newActiveBeast);
+        BottomCornerBeastDisplayer.inst.ChangeActiveBeast(newActiveBeast,true);
         PlayerParty.inst.ChangePartyOrder(newActiveBeast);
         PassiveManager.inst.OrginizePassiveActivity();
         return true;

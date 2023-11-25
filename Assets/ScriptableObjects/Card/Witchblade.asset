@@ -29,6 +29,9 @@ MonoBehaviour:
     volume: 0
   element: 6
   beastClass: 17
-  desc: Deal ({PHYS15%})+({MGK15%}) damage to the opponent.
+  desc: Deal ({PHYS15%})+({MGK15%}) damage to the target.
   flavourText: 
   deckCost: 7
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0

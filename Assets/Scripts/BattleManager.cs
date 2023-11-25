@@ -70,6 +70,7 @@ public class BattleManager:Singleton<BattleManager>
     
     public Dictionary<int,TurnRecord> enemyRecord = new Dictionary<int,TurnRecord>();
     public Queue<QueuedAction> effectsToUse = new Queue<QueuedAction>();
+    public DamageValueGraphic damageValueGraphicPrefab;
     bool statusEffectShit;
     
     public void StartBattle(BattleType battleType)
@@ -296,7 +297,7 @@ public class BattleManager:Singleton<BattleManager>
         {
             while(statusEffectShit)
             {yield return null;}
-            CardManager.inst.DrawCard();
+            CardManager.inst.DrawCard(); //bug?
         }
     }
     
@@ -364,7 +365,7 @@ TriggerQueuedEffects();
                 if(item.statusEffectHandler != null){
                     foreach (var d in item.statusEffectHandler.displays)
                     {
-                        if(d.scriptableObject.triggerOncePerTurn)
+                        if(d.statusEffect == StatusEffects.POISON)
                         {
                            // Debug.Log("og + " + d.scriptableObject.statusEffect.ToString());
                             
@@ -425,7 +426,7 @@ TriggerQueuedEffects();
         enemyRecord.Clear();
         EventManager.inst.onBattleEnd.Invoke();
         turn = 0;
-      
+        effectsToUse.Clear();
         CardStack.inst.Wipe();
         PetManager.inst.LeaveBattle();
         PlayerManager.inst.movement.ReactivateMove();
@@ -446,19 +447,19 @@ TriggerQueuedEffects();
         RightPanelButtonManager.inst.SwapToOverworld();
     }
 
-    public EntityOwnership GetBeastOwnership(Beast b)
-    {
-        if(PlayerParty.inst.party.Contains(b)){
-            return EntityOwnership.PLAYER;
-        }
-        else if(RivalBeastManager.inst.currentParty.Contains(b)){
-            return EntityOwnership.ENEMY;
-        }
-        else
-        {
-            Debug.LogAssertion("Could not find ownership of " + b.scriptableObject.beastData.beastName);
-            return EntityOwnership.ERROR;
-        }
-    }
+    // public EntityOwnership GetBeastOwnership(Beast b)
+    // {
+    //     if(PlayerParty.inst.party.Contains(b)){
+    //         return EntityOwnership.PLAYER;
+    //     }
+    //     else if(RivalBeastManager.inst.currentParty.Contains(b)){
+    //         return EntityOwnership.ENEMY;
+    //     }
+    //     else
+    //     {
+    //         Debug.LogAssertion("Could not find ownership of " + b.scriptableObject.beastData.beastName);
+    //         return EntityOwnership.ERROR;
+    //     }
+    // }
 
 }

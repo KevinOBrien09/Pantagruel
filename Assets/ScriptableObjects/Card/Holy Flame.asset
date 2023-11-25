@@ -16,16 +16,21 @@ MonoBehaviour:
   cardName: Holy Flame
   picture: {fileID: 21300000, guid: 68396058cf75b6147b268100054a0c93, type: 3}
   manaCost: 2
+  vfxSetUp: 
   vfx: 
   castDelay: 0.2
   effects: []
+  playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
   element: 1
   beastClass: 3
-  desc: Deal 12 damage to a target, this is increased to 25 RAW damage if the target
+  desc: Deal 12 damage to a target, this is increased to 25 damage if the target
     is UNDEAD or SODOMITE
   flavourText: 
   deckCost: 10
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0

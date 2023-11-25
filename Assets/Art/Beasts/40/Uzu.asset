@@ -20,7 +20,7 @@ MonoBehaviour:
     flavourText: 
     playerStatusEffectPos: {x: 0, y: -4.5, z: 2, w: 1.5}
     enemyStatusEffectPos: {x: 0, y: -4, z: 2, w: 1.5}
-    bottomCornerPos: {x: 0, y: 0, z: 1}
+    bottomCornerPos: {x: -0.05, y: 0, z: -0.2}
     battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 1192843865154028290, guid: 2e0ca114799136d42938818e6ba7f6a9,
@@ -45,7 +45,7 @@ MonoBehaviour:
       magic: 2
       charisma: 1
       luck: 1
-    element: 2
+    element: 5
     beastClass: 15
     secondaryClass: 0
     passive: {fileID: 0}

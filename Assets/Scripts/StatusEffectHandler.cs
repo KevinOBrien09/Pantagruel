@@ -8,7 +8,9 @@ public class StatusEffectHandler : MonoBehaviour
     public StatusEffectDisplay displayPrefab;
     Vector4 v ;
     public List<StatusEffects> currentEffects = new List<StatusEffects>();
+    public List<StatusEffectEffect> allEffects = new List<StatusEffectEffect>();
     public Beast owner;
+    public Dictionary<Card,StatusEffectDisplay> parasiteStacks = new Dictionary<Card, StatusEffectDisplay>();
 
     public void Init(Beast b,int layer)
     {
@@ -16,7 +18,7 @@ public class StatusEffectHandler : MonoBehaviour
         foreach (Transform g in GetComponentsInChildren<Transform>())
         {g.gameObject.layer = layer;}
         v = new Vector4();
-        if(BattleManager.inst.GetBeastOwnership(b) == EntityOwnership.PLAYER)
+        if(b.OwnedByPlayer())
         {v = b.scriptableObject.beastData.playerStatusEffectPos;}
         else{v = b.scriptableObject.beastData.enemyStatusEffectPos;}
         this.transform.localPosition = new Vector3(v.x,v.y,v.z);
@@ -37,15 +39,16 @@ public class StatusEffectHandler : MonoBehaviour
         return d;
     }
 
-    public void CreateStack(StatusEffectEffect so,EffectArgs args)
+    public StatusEffectDisplay CreateStack(StatusEffects so)
     {
         StatusEffectDisplay d=   CreateNewStack();
-        d.args = args;
-          d.statusEffectHandler = this;
-        d.Init(so);
+  
+
+        d.Init(so,this);
+        currentEffects.Add(so);
         
-      
-        currentEffects.Add(so.statusEffect);
+
+        return d;
     }
 
     public void ClearAllBleeds()
@@ -53,22 +56,41 @@ public class StatusEffectHandler : MonoBehaviour
         List<StatusEffectDisplay> d = new List<StatusEffectDisplay>(displays);
         foreach (var item in d)
         {
-            if(item.statusEffect == StatusEffects.BLEED){
+            if(item.statusEffect == StatusEffects.POISON){
                 item.Kill();
             }
             
         }
     }
-
-    public bool ContainsABleed()
+    
+    public bool ContainsThisEffect(StatusEffects effects)
     {
         foreach (var item in displays)
         {
-            if(item.statusEffect == StatusEffects.BLEED)
+            if(item.statusEffect == effects)
             {return true;}
         }
         return false;
     }
+
+    public void RemoveParasiteStack()
+    {
+        if(ContainsThisEffect(StatusEffects.PARASITE))
+        {
+            StatusEffectDisplay D = null;
+            foreach (var item in displays)
+            {
+                if(item.statusEffect == StatusEffects.PARASITE)
+                {
+                    D = item;
+                    break;
+                }
+            }
+            D.Kill();
+        }
+    }
+
+     
     
     public void MakeCircular(float radius)
     {
@@ -81,6 +103,28 @@ public class StatusEffectHandler : MonoBehaviour
             var spawnPos = Vector3.zero + spawnDir * radius;
             displays[i].transform.localPosition = spawnPos;
 
+        }
+    }
+
+
+    public List<StatusEffects> Save(){
+        return new List<StatusEffects>(currentEffects);
+    }
+
+    public void Load(List<StatusEffects> effects){
+        
+        foreach (var item in effects)
+        {
+            switch(item){
+                case StatusEffects.PARASITE:
+                    CreateStack(item).AddStatusEffectCardToDeck(allEffects[1].cards);
+                break;
+                default:
+                   CreateStack(item);
+
+                break;
+            }
+          
         }
     }
 }

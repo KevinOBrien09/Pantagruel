@@ -31,6 +31,9 @@ MonoBehaviour:
   desc: 'If you KO a unit in the next 2 turns gain 20 additional coins.
 
     <br><size=50%><i><color=grey>This
-    effect does not stack.'
+    card does not stack.'
   flavourText: '"Trumpeters leading Ceasar on Horseback-Jacob of Strasbourg"'
   deckCost: 3
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0

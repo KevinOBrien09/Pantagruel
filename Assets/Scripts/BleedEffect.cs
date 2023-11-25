@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Effects/Bleed", fileName = "Bleed")]
 public class BleedEffect : StatusEffectEffect
 {
-    public override void Trigger(Beast infected,EffectArgs args){
-        infected.Bleed(args);
+    public override void Trigger(Beast infected,bool isPlayer){
+       infected.Bleed(isPlayer);
     }
 }
