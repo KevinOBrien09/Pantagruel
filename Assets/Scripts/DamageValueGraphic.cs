@@ -12,20 +12,20 @@ public class DamageValueGraphic : MonoBehaviour{
         text.color = c;
       
         // transform.localPosition = new Vector3(0,y,transform.localPosition.z);
- float x = 0;
+        float x = 0;
         if(goLeft){
             x = Random.Range(-3,-5); ;
         }
         else{
- x = Random.Range(3,5);
+            x = Random.Range(3,5);
         }
        
        float y = Random.Range(0,5);
         transform.DOLocalMove( new Vector3(x,y,transform.localPosition.z),.7f).OnComplete(()=>{
             
-             text.DOFade(0,.05F).OnComplete(()=>{
- Destroy(gameObject);
-             });
+            text.DOFade(0,.05F).OnComplete(()=>{
+            Destroy(gameObject);
+            });
             
            
         });

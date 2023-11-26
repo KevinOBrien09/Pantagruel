@@ -21,9 +21,7 @@ public class DamagePromise :Promise
                     {totalDamage+=BattleManager.inst.playerRecord[BattleManager.inst.turn].GetDamageAfterSpecificPoint(OGargs.castOrder);}
                     else if(forLoopTurn != CardManager.inst.promiseDict[id].turnCastOn)
                     {totalDamage+=BattleManager.inst.playerRecord[forLoopTurn].GetAllDamageDealtThisTurn();} 
-//                     else if(forLoopTurn == CardManager.inst.promiseDict[id].turnCastOn){
-// totalDamage+=BattleManager.inst.playerRecord[BattleManager.inst.turn].GetDamageAfterSpecificPoint(OGargs.castOrder);
-//                     }
+                   
                 }
             }
             

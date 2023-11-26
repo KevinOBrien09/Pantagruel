@@ -2,6 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class StatMod
+{
+    public StatName stat;
+    public float change;
+    public int turnToDieOn;
+    public bool untilEndOfCombat;
+}
+
+
 public class Entity : MonoBehaviour
 {    
     public enum GuardState{Open,Guard,GuardBroke}
@@ -13,35 +23,47 @@ public class Entity : MonoBehaviour
     public bool KO;
     public StatusEffectHandler statusEffectHandler;
     public bool goLeft =true;
-    //public GuardState guard;
     public EntityOwnership ownership;
     public List<Shield> shields = new List<Shield>();
+    public int dodge = 100;
+    public Stats statMods = new Stats();
+    public List<StatMod> mods = new List<StatMod>();
 
     void Update(){
         currentShield = totalShield();
     }
    
     
-    public void TakeDamage(float amount,EffectArgs args)
+    public float TakeDamage(float amount,EffectArgs args,bool negateShield,Color textColor)
     {
+       
+        
         float oldCurrentHealth = currentHealth;
-        float paradmg = ParasiteDamage();
+        //float paradmg = WoundDamage();
         float damage = amount; 
-        damage += paradmg;
-        float postMitigationDamage =   ShieldHandler(damage);  //may be buggy idk
+      //  damage += paradmg;
+        float postMitigationDamage =damage;
+
+        if(!negateShield)
+        {postMitigationDamage =  ShieldHandler(damage);}
+        float woundDamage = WoundDamage();
+        postMitigationDamage += woundDamage;
         currentHealth = currentHealth-postMitigationDamage;
         EntityOwnership damageSource = EntityOwnership.ERROR;
         if(args.isPlayer)
         {damageSource = EntityOwnership.PLAYER;}
         else
         {damageSource = EntityOwnership.ENEMY;}
-        
+        animatedInstance.Bleed();
         if(currentHealth <0)
         {currentHealth = 0;}
         
  
         int howMuchDamage= (int) oldCurrentHealth - (int) currentHealth;
-        SpawnVisualDamage(howMuchDamage -paradmg,Color.white);
+        if(howMuchDamage-woundDamage > 0){
+            SpawnVisualDamage(howMuchDamage-woundDamage,textColor);  
+        }
+      
 
         if(animatedInstance != null)
         {animatedInstance.TakeDamage(Color.red);}
@@ -75,7 +97,13 @@ public class Entity : MonoBehaviour
         {item.onHit.Invoke(); }
         
         BattleManager.inst.CheckIfGameContinues();
+        return howMuchDamage;
        
+    }
+
+    public void ModifyStat(StatMod mod){
+        mods.Add(mod);
+        statMods.ModStat(mod);
     }
 
     public float ShieldHandler(float damage)
@@ -160,6 +188,7 @@ public class Entity : MonoBehaviour
         foreach (var item in bin)
         {
             shields.Remove(item);
+                    item.display.Kill();
         }
     }
 
@@ -167,6 +196,7 @@ public class Entity : MonoBehaviour
         float q = 0;
         foreach (var item in shields)
         {
+    
             q+=item.value;
         }
 
@@ -174,15 +204,15 @@ public class Entity : MonoBehaviour
     }
 
 
-    public void Bleed(bool isPlayer)
+    public void Poison(bool isPlayer)
     {
         float oldCurrentHealth = currentHealth;
         int damage = Mathf.RoundToInt( (float) Maths.Percent(stats().maxHealth,5)) ;
-        damage += ParasiteDamage();
+        damage += WoundDamage();
         currentHealth = currentHealth - damage;
         int howMuchDamage= (int) oldCurrentHealth - (int) currentHealth;
-         Color c = new Color();
-            ColorUtility.TryParseHtmlString("#7100FF",out c);
+        Color c = new Color();
+        ColorUtility.TryParseHtmlString("#7100FF",out c);
         SpawnVisualDamage(damage,c);
         Debug.Log("BLEED " + howMuchDamage);
         EntityOwnership damageSource = EntityOwnership.ERROR;
@@ -218,22 +248,21 @@ public class Entity : MonoBehaviour
 
     }
 
-    public int ParasiteDamage()
+    public int WoundDamage()
     {
         int q = 0;
-        if(statusEffectHandler!=null){
-    foreach (var item in statusEffectHandler.currentEffects)
+        if(statusEffectHandler!=null)
         {
-            if(item == StatusEffects.PARASITE){
-                q++;
+            foreach (var item in statusEffectHandler.currentEffects)
+            {
+                if(item == StatusEffects.WOUND){
+                   q+=2;
+                }
             }
+            if(q!= 0){
+        
+            SpawnVisualDamage(q,Color.red);
         }
-        if(q!= 0){
-       Color c = new Color();
-        ColorUtility.TryParseHtmlString("#FF00BD",out c);
-
-       SpawnVisualDamage(q,c);
-       }
         }
     
       return q;

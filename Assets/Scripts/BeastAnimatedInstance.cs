@@ -52,7 +52,11 @@ public class BeastAnimatedInstance : MonoBehaviour
             blood.Play();
            
         }
-         AudioManager.inst.GetSoundEffect().Play(SystemSFX.inst.bleed);
+        //  AudioManager.inst.GetSoundEffect().Play(SystemSFX.inst.bleed);
+    }
+
+    public void Dodge(){
+        Debug.Log("Dodge");
     }
 
     public void TakeDamage(Color color)

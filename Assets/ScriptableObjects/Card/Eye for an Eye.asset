@@ -19,8 +19,7 @@ MonoBehaviour:
   vfxSetUp: 
   vfx: Slice1
   castDelay: 0
-  effects:
-  - {fileID: 11400000, guid: 231fb3bec6a2cff4eb7ee4804b7eb616, type: 2}
+  effects: []
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 8300000, guid: 891a3e9febb90ab40a4b72ec4cc35281, type: 3}
@@ -31,3 +30,6 @@ MonoBehaviour:
   desc: Deal 12 damage to the caster and 12 the target.
   flavourText: '"Two eyes and two heads -Wenceslaus Hollar"'
   deckCost: 8
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0

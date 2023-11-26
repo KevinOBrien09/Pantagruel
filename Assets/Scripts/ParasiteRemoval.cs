@@ -5,7 +5,7 @@ using UnityEngine;
 
 [System.Serializable]
 [CreateAssetMenu(menuName = "Effects/ParasiteRemoval", fileName = "ParasiteRemoval")]
-public class  ParasiteRemoval : SelfPercentHealthDamage
+public class  ParasiteRemoval : PercentHealthDamage
 {
     public override void Use(EffectArgs args)
     {

@@ -31,6 +31,21 @@ public static class Maths
 
     }
 
+    public static float ConvertToNegativeAndPostive(float num)
+    {
+        if(num > 0)
+        {
+            return -num;
+        }
+        else if(num < 0)
+        {
+            return Mathf.Abs(num);
+        }
+   
+        return 0;
+        
+    }
+
     public static double Percent(this double number,int percent)
     {
       

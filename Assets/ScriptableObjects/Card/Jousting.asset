@@ -20,7 +20,8 @@ MonoBehaviour:
   vfx: Lance
   castDelay: 0.2
   effects:
-  - {fileID: 11400000, guid: 21386f26c493d7f4197cd4c85e5a457c, type: 2}
+  - {fileID: 11400000, guid: b8a8f6020c5230643a1ca62ca3fcf384, type: 2}
+  - {fileID: 11400000, guid: a2a1a4e98cede01499b8fc0fbd6a37bd, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 8300000, guid: 32bbc0480eae9de4a82083ac2538a0dc, type: 3}
@@ -31,3 +32,6 @@ MonoBehaviour:
   desc: Deal 10 damage to the enemy summon and 10 to the beast.
   flavourText: 
   deckCost: 15
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0

@@ -8,28 +8,28 @@ public class KillOwnPetEffect :Effect
 {
     public override void Use(EffectArgs args)
     {
-        if(args.isPlayer)
-        {
-            BattleManager.TurnRecord.CardIntPair p = new BattleManager.TurnRecord.CardIntPair();
-            p.card = args.card;
-            p.v = (int) PetManager.inst.playerPet.currentHealth;
-             p.castOrder = args.castOrder;
-            BattleManager.inst.playerRecord[BattleManager.inst.turn].damageDealtByEachCard.Add(p);
-          
-            PetManager.inst.playerPet.Die(EntityOwnership.PLAYER);
-        }
-        else
-        {
+        foreach (var item in AffectedEntities(args))
+        { 
+            EntityOwnership ownership;
+            BattleManager.TurnRecord turnRecord;
+            if(args.isPlayer)
+            {
+                ownership = EntityOwnership.PLAYER;
+                turnRecord =  BattleManager.inst.playerRecord[BattleManager.inst.turn];
+            }
+            else
+            {
+                ownership = EntityOwnership.ENEMY;
+                turnRecord =  BattleManager.inst.enemyRecord[BattleManager.inst.turn];
+            }
+
             BattleManager.TurnRecord.CardIntPair p = new BattleManager.TurnRecord.CardIntPair();
             p.card = args.card;
             p.v = (int) PetManager.inst.playerPet.currentHealth;
             p.castOrder = args.castOrder;
-            BattleManager.inst.enemyRecord[BattleManager.inst.turn].damageDealtByEachCard.Add(p);
-            
-            PetManager.inst.enemyPet.Die(EntityOwnership.ENEMY);
+            turnRecord.damageDealtByEachCard.Add(p);
+            PetManager.inst.playerPet.Die(ownership);
         }
-      
-       
     }
 
     public override bool canUse(bool isPlayer)

@@ -71,6 +71,7 @@ public class OverworldMovement : MonoBehaviour
         else
         {
             torch.Bounce();
+            torch.DeductStep();
             EventManager.inst.onStep.Invoke();
             audioSource.pitch = Random.Range(.9f,1.1f);
             audioSource.PlayOneShot(audioSource.clip);
@@ -238,7 +239,7 @@ public class OverworldMovement : MonoBehaviour
         saveData.rot = transform.rotation.eulerAngles;
         saveData.lastRot = rotate.currentRot;
         saveData.torchState = torch.torchOn;
-        saveData.torchTimer = torch.currentCountDown;
+        saveData.torchTimer = torch.currentSteps;
         return saveData;
     }
 

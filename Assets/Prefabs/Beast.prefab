@@ -49,7 +49,7 @@ MonoBehaviour:
   healSFX:
     audioClip: {fileID: 8300000, guid: 63115a50a9d20fc40b4091821a372bd5, type: 3}
     pitchRange: {x: 0.9, y: 1.1}
-    volume: 0.5
+    volume: 1
   shieldSFX:
     audioClip: {fileID: 8300000, guid: 642eddf938bba7548900655faf29d980, type: 3}
     pitchRange: {x: 0.9, y: 1.1}
@@ -60,11 +60,19 @@ MonoBehaviour:
   statusEffectHandler: {fileID: 0}
   goLeft: 1
   ownership: 0
+  dodge: 100
+  statMods:
+    maxHealth: 0
+    def: 0
+    physical: 0
+    magic: 0
+    charisma: 0
+    luck: 0
+  mods: []
   scriptableObject: {fileID: 0}
   deck:
     cards: []
     discard: []
-  shields: 0
   exp:
     level: 0
     currentExp: 0
@@ -73,11 +81,4 @@ MonoBehaviour:
     a: 100
     b: 1.5
     c: 7
-  statMods:
-    maxHealth: 0
-    def: 0
-    physical: 0
-    magic: 0
-    charisma: 0
-    luck: 0
   sin: 0

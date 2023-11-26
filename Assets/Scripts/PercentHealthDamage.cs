@@ -5,31 +5,29 @@ using UnityEngine;
 
 [System.Serializable]
 [CreateAssetMenu(menuName = "Effects/PercentHealthDamage", fileName = "PercentHealthDamage")]
-public class PercentHealthDamage : Effect
+public class PercentHealthDamage : Damage
 {
     [Range(0,100)]public int percent;
     public bool maxHealth,missingHealth,currentHealth;
-    public override void Use(EffectArgs args)
+    public override (float dmg,Color textColor) GetDamageValue(EffectArgs args,Entity target)
     {
-       
-        int damageValue = 0;
+        int v = 0;
         if(maxHealth)
         {
-            damageValue = (int) Maths.Percent(args.target.stats().maxHealth,percent);
-            Debug.Log(percent+"% of " +args.target.stats().maxHealth + " is " + damageValue);
+            v = (int) Maths.Percent(target.stats().maxHealth,percent);
+            Debug.Log(percent+"% of " +target.stats().maxHealth + " is " + v);
         }
         else if(missingHealth)
         {
-            double missingHP= args.target.stats().maxHealth-args.target.currentHealth;
-            damageValue = (int) Maths.Percent(missingHP,percent);
-            Debug.Log(percent+"% of " +missingHP + " is " + damageValue);
+            double missingHP= target.stats().maxHealth-target.currentHealth;
+            v = (int) Maths.Percent(missingHP,percent);
+            Debug.Log(percent+"% of " +missingHP + " is " + v);
         }
         else if(currentHealth){
-            damageValue = (int) Maths.Percent(args.target.currentHealth,percent);
-            Debug.Log(percent+"% of " +args.target.currentHealth + " is " + damageValue);
+            v = (int) Maths.Percent(target.currentHealth,percent);
+            Debug.Log(percent+"% of " +target.currentHealth + " is " + v);
         }
-  
-        args.target.TakeDamage(damageValue,args);
+        return (v,Color.white);
     }
 
 }

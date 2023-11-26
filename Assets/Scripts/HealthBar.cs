@@ -37,7 +37,9 @@ public class HealthBar : MonoBehaviour
         if(healthTxtOneString)
         {
             if(!bold)
-            {current.text = "HP:" +  totalValue.ToString()+"/"+entity.stats().maxHealth.ToString();}
+            {
+                current.text = "HP:" +  totalValue.ToString()+"/"+entity.stats().maxHealth.ToString();
+            }
             else
             {current.text = "HP:" + "<b>" + totalValue.ToString() + "</b>" +"/"+entity.stats().maxHealth.ToString();}
         }
@@ -50,14 +52,18 @@ public class HealthBar : MonoBehaviour
         }
         else
         {
-              if(!bold)
+            if(!bold)
             {
-            current.text =  "<b>"  + totalValue.ToString();
-            max.text = entity.stats().maxHealth.ToString();
+                  current.text = "<b>"  + entity.totalShield().ToString();
+                
+                max.text = entity.currentHealth.ToString() +  "/" + entity.stats().maxHealth.ToString();
             }
-            else{
-                   current.text =  totalValue.ToString();
-            max.text = entity.stats().maxHealth.ToString();
+            else
+            {
+                current.text =  entity.currentHealth .ToString();
+                max.text = entity.stats().maxHealth.ToString();
+
+              
             }
        
         }

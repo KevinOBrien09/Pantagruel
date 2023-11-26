@@ -14,24 +14,21 @@ public class Torch : MonoBehaviour
     [SerializeField] float torchReady,torchDown;
     [SerializeField] Image meterFill;
     [SerializeField] TextMeshProUGUI durationText;
-    public float maxDuration,currentCountDown;
+    public float maxSteps,currentSteps;
     bool left;
     
     void Awake()
     {
         torchOG = torch.anchoredPosition;
-        currentCountDown = maxDuration;
+       currentSteps = maxSteps;
         parent.DOAnchorPosY(torchDown,0);
-        meterFill.fillAmount = currentCountDown/maxDuration;
-        durationText.text =(currentCountDown % maxDuration).ToString("00");
+        meterFill.fillAmount = currentSteps/maxSteps;
+        durationText.text =currentSteps + "Steps.";
     }
 
     public void Load(bool torchState,float timer)
     {
-        torchOn = torchState;
-        currentCountDown = timer;
-        meterFill.fillAmount = currentCountDown/maxDuration;
-        durationText.text =(currentCountDown % maxDuration).ToString("00");
+       currentSteps = timer;
 
         if(torchOn)
         {
@@ -43,8 +40,11 @@ public class Torch : MonoBehaviour
         }
     }
 
-    void Update()
-    {
+    void Update(){
+        // if(currentSteps <= 0){
+        //     DisableTorch();
+        // }
+
         if(!BattleManager.inst.inBattle){
             if(InputManager.input.torch)
             {
@@ -57,32 +57,25 @@ public class Torch : MonoBehaviour
                     EnableTorch();
                 }
             }
+        }
 
-            if(torchOn)
-            {
-                if(currentCountDown > 0)
-                {
-                    currentCountDown -= Time.deltaTime;
-                    meterFill.fillAmount = currentCountDown/maxDuration;
-                    durationText.text =(currentCountDown % maxDuration).ToString("00");
-                }
-                else
-                {
-                    DisableTorch();
-                }
-            }
-        }
-        else
-        {
-            if(torchOn)
-            {DisableTorch();}
-        }
-       
     }
 
+   public void DeductStep(){
+        currentSteps--;
+         meterFill.DOFillAmount(currentSteps/maxSteps,.1f);
+         //fillAmount = ;
+        durationText.text =currentSteps + " Steps.";
+             if(currentSteps <= 0){
+            DisableTorch();
+            
+        }
+    }
+
+    
     public void EnableTorch()
     {
-        if(currentCountDown != 0)
+        if(currentSteps > 0)
         {
             parent.DOAnchorPosY(torchReady,.5f);
             torchOn = true;

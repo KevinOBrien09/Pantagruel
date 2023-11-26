@@ -38,6 +38,34 @@ public struct Stats
         return maxHealth + def + physical + magic + charisma + luck;
     }
 
+    public void ModStat(StatMod statMod)
+    {
+        switch(statMod.stat)
+        {
+            case StatName.HEALTH:
+            maxHealth += statMod.change;
+            break;
+            case StatName.DEFENSE:
+            def += statMod.change;
+            break;
+            case StatName.PHYSICAL:
+            physical += statMod.change;
+            break;
+            case StatName.MAGIC:
+            magic+= statMod.change;
+            break;
+            case StatName.CHARISMA:
+            charisma += statMod.change;
+            break;
+            case StatName.LUCK:
+            luck += statMod.change;
+            break;
+            default:
+            Debug.LogAssertion("NO STAT FOUND");
+            break;
+        }
+    }
+
     public float GetStat(StatName stat)
     {
         switch(stat)
@@ -76,6 +104,7 @@ public class BeastData
     [Header("Fluff")]
     [Space()]
     public string beastName;
+    public SoundData spawn,die;
     [TextArea] public string flavourText;
     [Header("Graphics")]
     [Space()]

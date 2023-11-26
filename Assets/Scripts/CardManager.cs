@@ -44,7 +44,7 @@ public class CardManager:Singleton<CardManager>
         {Destroy(item.gameObject);}
      
         SwitchBeast(beast);
-        ShuffleDeck();
+      currentDeck.Shuffle();
         DrawCard();
         DrawCard();
         DrawCard();
@@ -77,8 +77,9 @@ public class CardManager:Singleton<CardManager>
         handDown = false;
         holder.DOAnchorPosY(0,.2f).OnComplete(()=>
         {
-            MakeHandInteractable();
+           
         });
+         MakeHandInteractable();
     }
 
     public void MakeHandInteractable()
@@ -95,15 +96,13 @@ public class CardManager:Singleton<CardManager>
         {card.DisableInteractable();}
     }
 
-    void ShuffleDeck(){
-        System.Random rng = new  System.Random();
-        
-        var shuffledcards = currentDeck.cards.OrderBy(a => rng.Next()).ToList();
-        currentDeck.cards = shuffledcards;
-    }
+   
 
     public void DrawCard()
     {
+        if(!BattleManager.inst.inBattle){
+            return;
+        }
         if(currentDeck.cards.Count <= 0)
         { currentDeck.ResetDiscardPile(); }
         
@@ -272,7 +271,7 @@ public class CardManager:Singleton<CardManager>
             if(!behaviour.isVapour)
             {
                 if(!usedCard.destroyOnCast){
- currentDeck.discard.Add(usedCard);
+            currentDeck.discard.Add(usedCard);
                 }
                
             }
@@ -284,12 +283,16 @@ public class CardManager:Singleton<CardManager>
             
             RemoveFromHand(behaviour);
             CardStackBehaviour stackBehaviour =  CardStack.inst.CreateActionStack(usedCard,PlayerParty.inst.activeBeast,true);
+          
+          
             foreach (var effect in usedCard.effects)
             { 
                 EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,BattleManager.inst.enemyTarget,true,usedCard,stackBehaviour,
                 BattleManager.inst.playerRecord[BattleManager.inst.turn].cardsPlayedThisTurn.Count-1,usedCard.cardName);
                 effect.Use(args); 
             }
+          
+         
             
             
             StartCoroutine(piss());

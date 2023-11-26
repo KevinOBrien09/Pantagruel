@@ -7,6 +7,6 @@ using UnityEngine;
 public class BleedEffect : StatusEffectEffect
 {
     public override void Trigger(Beast infected,bool isPlayer){
-       infected.Bleed(isPlayer);
+       infected.Poison(isPlayer);
     }
 }

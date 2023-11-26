@@ -37,6 +37,11 @@ public class StatusEffectDisplay : MonoBehaviour
             graphics[3].SetActive(true);
             scriptableObject = statusEffectHandler. allEffects[2];
             break;
+         
+            case StatusEffects.WOUND:
+            graphics[4].SetActive(true);
+            scriptableObject = statusEffectHandler. allEffects[4];
+            break;
             
             default:
             Debug.LogAssertion("Default Case");
@@ -67,8 +72,9 @@ public class StatusEffectDisplay : MonoBehaviour
         if(statusEffectHandler.owner.OwnedByPlayer()){
             foreach (var item in cards)
             {
-              statusEffectHandler. owner.deck.AddCardToDeck(item);
+                statusEffectHandler. owner.deck.AddCardToDeck(item);
                 correspondingCards.Add(item);
+                statusEffectHandler.owner.deck.Shuffle();
             }
            
         }
@@ -77,6 +83,7 @@ public class StatusEffectDisplay : MonoBehaviour
             {
                 EnemyAI.inst.currentDeck.AddCardToDeck(item);
                 correspondingCards.Add(item);
+                EnemyAI.inst.currentDeck.Shuffle();
             }
         }
     }

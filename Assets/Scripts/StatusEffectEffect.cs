@@ -7,7 +7,8 @@ using UnityEngine;
 public class StatusEffectEffect :Effect
 {
     public StatusEffects statusEffect;
-	
+    public bool removeAtEndOfCombat;
+    public int howManyTurns;
     public List<Card> cards = new List<Card>();
     public override void Use(EffectArgs args)
     {StatusEffectDisplay d =  CreateStatusEffectStack(args);}

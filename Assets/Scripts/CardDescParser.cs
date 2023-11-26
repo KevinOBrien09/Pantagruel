@@ -108,8 +108,11 @@ if(str.Contains("%")){
         if(s.Contains("blockade"))
         {s = s.Replace("blockade","<color=#143267><b>Blockade</b></color>");}
 
-        if(s.Contains("heal"))
-        {s = s.Replace("heal","<color=#048263><b>Heal</b></color>");}
+        if(s.Contains("raw"))
+        {s = s.Replace("raw","<b>raw</b>");}
+
+        // if(s.Contains("heal"))
+        // {s = s.Replace("heal","<color=#048263><b>Heal</b></color>");}
 
          if(s.Contains("destroy"))
         {s = s.Replace("destroy","<color=black><b>Destroy</b></color>");}

@@ -66,7 +66,7 @@ public class BeastProfileViewer : Singleton<BeastProfileViewer>
        classification.text = s;
         if(bd.passive != null)
         {
-            beastPassiveName.text = bd.passive.passiveName;
+            beastPassiveName.text = "Passive: " +  bd.passive.passiveName;
             beastPassiveDesc.text = bd.passive.passiveDesc;
         }
         else{

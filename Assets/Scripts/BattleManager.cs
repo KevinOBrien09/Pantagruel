@@ -213,7 +213,7 @@ public class BattleManager:Singleton<BattleManager>
             foreach (var item in CardManager.inst.hand)
             {item.VaporousDissolve();}
             inBattle = false;
-            
+            MusicManager.inst.EndBattleMusic();
             yield return new WaitForEndOfFrame();
             if(PetManager.inst.enemyPet!= null && !PetManager.inst.enemyPet.KO)
             {
@@ -278,26 +278,30 @@ public class BattleManager:Singleton<BattleManager>
     }
 
     public void SwapToPlayerTurn()
-    {
-        EventManager.inst.onNewPlayerTurn.Invoke();
-        CardManager.inst.DeactivateHand();
-        Inventory.inst.ActivateDrag();
-        if(turn % 2 == 0)
+    {     
+        if(inBattle)
         {
-            ManaManager.inst.IncreaseMaxMana();
-            EnemyAI.inst.IncreaseMaxMana();
-        }
-        ManaManager.inst.RegenMana();
-        EnemyAI.inst.RegenMana();
-       IncrementTurn();
-      
+            
+            CardManager.inst.DeactivateHand();
+            Inventory.inst.ActivateDrag();
+            if(turn % 2 == 0)
+            {
+                ManaManager.inst.IncreaseMaxMana();
+                EnemyAI.inst.IncreaseMaxMana();
+            }
+            ManaManager.inst.RegenMana();
+            EnemyAI.inst.RegenMana();
+            IncrementTurn();
+        
 
-        StartCoroutine(q());
-        IEnumerator q()
-        {
-            while(statusEffectShit)
-            {yield return null;}
-            CardManager.inst.DrawCard(); //bug?
+            StartCoroutine(q());
+            IEnumerator q()
+            {
+                while(statusEffectShit)
+                {yield return null;}
+            EventManager.inst.onNewPlayerTurn.Invoke();
+                CardManager.inst.DrawCard(); //bug?
+            }
         }
     }
     
@@ -305,21 +309,57 @@ public class BattleManager:Singleton<BattleManager>
     {
         turn++;
         TurnRecord e = new TurnRecord();
-         TurnRecord p = new TurnRecord();
-         e.turn = turn;
-         p.turn = turn;
+        TurnRecord p = new TurnRecord();
+        e.turn = turn;
+        p.turn = turn;
         enemyRecord.Add(turn,e);
         playerRecord.Add(turn,p);
         CardStack.inst.NewTurn();
         CheckForBadEffects();
         LoadStatusEffects();
-       CheckForStatusEffectBeforeAllowingCards();
+        CheckForStatusEffectBeforeAllowingCards();
+        CheckStatMods();
+    }
+
+    public void CheckStatMods()
+    {
+        foreach (var beast in PlayerParty.inst.party)
+        {
+            List<StatMod> bin = new List<StatMod>();
+            foreach (var mod in beast.mods)
+            {
+                if(!mod.untilEndOfCombat){
+                    if(turn == mod.turnToDieOn)
+                    {
+                        StatMod m = new StatMod();
+                        m.stat = mod.stat;
+                        m.change = Maths.ConvertToNegativeAndPostive(mod.change);
+                        beast.statMods.ModStat(m);
+                        bin.Add(mod);
+                    }
+                }
+                else
+                {
+                    if(!inBattle)
+                    {
+                        StatMod m = new StatMod();
+                        m.stat = mod.stat;
+                        m.change = Maths.ConvertToNegativeAndPostive(mod.change);
+                        beast.statMods.ModStat(m);
+                        bin.Add(mod);
+                    }
+                }
+            }
+            foreach (var mod in bin)
+            {beast.mods.Remove(mod);}
+        }
     }
 
     public void CheckForStatusEffectBeforeAllowingCards()
     {
         statusEffectShit = true;
         TriggerQueuedEffects();
+     
         StartCoroutine(w());
         IEnumerator w()
         {
@@ -422,6 +462,7 @@ TriggerQueuedEffects();
         // {
         //     Debug.Log("Player did " +item.Value + "Damage on turn " + item.Key);
         // }
+        CheckStatMods();
         playerRecord.Clear();
         enemyRecord.Clear();
         EventManager.inst.onBattleEnd.Invoke();
@@ -429,6 +470,7 @@ TriggerQueuedEffects();
         effectsToUse.Clear();
         CardStack.inst.Wipe();
         PetManager.inst.LeaveBattle();
+        PlayerParty.inst.RemoveStatusEffectsEndOfCombat();
         PlayerManager.inst.movement.ReactivateMove();
         WorldViewManager.inst.LeaveBattle();
         BottomPanel.inst.ChangeState(BottomPanel.inst.dialog);

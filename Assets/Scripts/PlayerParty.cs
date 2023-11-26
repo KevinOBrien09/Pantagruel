@@ -12,47 +12,65 @@ public class PlayerParty : Singleton<PlayerParty>
     {
         if(!PlayerManager.inst.load)
         { 
+            List<Beast> p = new List<Beast>(party);
+            List<BeastSaveData> saveDatas = new List<BeastSaveData>();
             foreach (var item in party)
+            {Destroy(item.gameObject);}
+            party.Clear();
+            foreach (var item in p)
             {
                 EXP e = new EXP();
                 e.PsudeoLevel((int)Random.Range(LocationManager.inst.currentLocation.levelRange.x,LocationManager.inst.currentLocation.levelRange.y),item);
                 BeastSaveData bsd = item.PsudeoSave(item.scriptableObject);
                 EXPSave save = new EXPSave();
+                
                 save.currentEXP = e.currentExp;
                 save.level = e.level;
                 save.targetEXP = e.targetExp;
                 bsd.exp = save;
-                item.Init(bsd);
-                item.FirstHealthInit(e);
+               
+               item.FirstHealthInit(e);
                 item.ownership = EntityOwnership.PLAYER;
-                
-             
+                bsd.currentHealth = item.stats().maxHealth;
+                saveDatas.Add(bsd);
             }
-          
-            activeBeast = party[0];
-            BottomCornerBeastDisplayer.inst.CreateAnimatedInstances(party);
-            ApplyLoadedInfo();
-
+            Load(saveDatas);
+         
+      
         }
-        
+    }
+
+    public void RemoveStatusEffectsEndOfCombat()
+    {
+        foreach (var item in party)
+        {
+            item.currentShield = 0;
+            item.shields.Clear();
+            foreach (var b in item.currentHealthBars)
+            {
+                b.UpdateFill();
+                b.UpdateText();
+            }
+            item.statusEffectHandler.WipeAtEndOfCombat();
+        }
     }
 
 
-    public void Load(SaveData data)
+    public void Load( List<BeastSaveData>  data)
     {
         party = new List<Beast>();
         foreach (Transform item in transform)
         { Destroy(item.gameObject); }
         
-        for (int i = 0; i < data.party.Count; i++)  
+        for (int i = 0; i < data.Count; i++)  
         {
             Beast b = Instantiate(beastPrefab,transform);
-            b.Init(data.party[i]);
+            b.Init(data[i]);
             AddNewBeast(b);
             b.exp = new EXP();
-            b.exp.Load(data.party[i].exp);
+            b.exp.Load(data[i].exp);
             b.exp.beast = b;
-            b.sin = data.party[i].sin;
+            b.sin = data[i].sin;
             b.ownership = EntityOwnership.PLAYER;
            
         }
@@ -66,10 +84,10 @@ public class PlayerParty : Singleton<PlayerParty>
         IEnumerator q(){
             yield return new WaitForEndOfFrame();
                 
-            for (int i = 0; i < data.party.Count; i++)  
+            for (int i = 0; i < data.Count; i++)  
             {
             
-                party[i].statusEffectHandler.Load(data.party[i].statusEffects);
+                party[i].statusEffectHandler.Load(data[i].statusEffects);
             }
         }
        

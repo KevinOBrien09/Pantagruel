@@ -21,8 +21,7 @@ MonoBehaviour:
   castDelay: 0.2
   effects:
   - {fileID: 11400000, guid: 6cf636112f9504844b7b2f6d2427370d, type: 2}
-  - {fileID: 11400000, guid: 6cf636112f9504844b7b2f6d2427370d, type: 2}
-  - {fileID: 11400000, guid: 6cf636112f9504844b7b2f6d2427370d, type: 2}
+  - {fileID: 11400000, guid: 14dfa21977fc6e24b889d944a87a1724, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 8300000, guid: fc6f283a4e788a8498955442e85c8ea5, type: 3}

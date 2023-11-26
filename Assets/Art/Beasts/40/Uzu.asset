@@ -15,8 +15,16 @@ MonoBehaviour:
   beastData:
     ANIMATED_PREFAB_DONE: 0
     devNote:
-      note: Keratin Carapace-I cannot bleed.
+      note: 
     beastName: Uzu
+    spawn:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    die:
+      audioClip: {fileID: 8300000, guid: 3da326e1b501fef49bed4779088e8581, type: 3}
+      pitchRange: {x: 0.9, y: 1.1}
+      volume: 0.7
     flavourText: 
     playerStatusEffectPos: {x: 0, y: -4.5, z: 2, w: 1.5}
     enemyStatusEffectPos: {x: 0, y: -4, z: 2, w: 1.5}
@@ -48,5 +56,5 @@ MonoBehaviour:
     element: 5
     beastClass: 15
     secondaryClass: 0
-    passive: {fileID: 0}
+    passive: {fileID: 11400000, guid: ccdc1e6ef923cab4f9697de3c595d656, type: 2}
     catchMod: 0

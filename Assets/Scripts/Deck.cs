@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 [System.Serializable]
 public class Deck
@@ -18,7 +19,12 @@ public class Deck
         else
         {return false;}
     }
-
+   public void Shuffle(){
+        System.Random rng = new  System.Random();
+        
+        var shuffledcards = cards.OrderBy(a => rng.Next()).ToList();
+        cards = shuffledcards;
+    }
     public void RemoveCardFromDeck(Card card)
     { cards.Remove(card); }
 

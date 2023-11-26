@@ -10,7 +10,7 @@ public class Beast : Entity
     public Deck deck;
     
     public EXP exp = new EXP();
-    public Stats statMods = new Stats();
+   
     public Sin sin;
     
     
@@ -52,6 +52,14 @@ public class Beast : Entity
        
     }
 
+    public override void Die(EntityOwnership damageSource)
+    {
+        if(scriptableObject.beastData.die != null){
+AudioManager.inst.GetSoundEffect().Play(scriptableObject.beastData.die);
+        }
+        
+        base.Die(damageSource);
+    }
 
 
 

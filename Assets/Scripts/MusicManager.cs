@@ -35,12 +35,16 @@ public class MusicManager : Singleton<MusicManager>
         dungeon.DOFade(0,.2f).OnComplete(() => battle.DOFade(battlevol,.2f));
     }
 
+    public void EndBattleMusic(){
+ battle.DOFade(0,1f);
+    }
+
     public void Reward()
     {   
         reward.Play();
            reward.DOFade(rewardVol,.25f);
         //makes dungeon go down
-        battle.DOFade(0,.25f);
+       EndBattleMusic();
         dungeon.DOFade(0,.25f);
     }
 

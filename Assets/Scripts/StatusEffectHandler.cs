@@ -41,6 +41,18 @@ public class StatusEffectHandler : MonoBehaviour
 
     public StatusEffectDisplay CreateStack(StatusEffects so)
     {
+        var immune =owner.scriptableObject.beastData.passive as StatusEffectImmunityPassive;
+
+        if (immune != null)
+        {
+            if(so == immune.immunity){
+                Debug.Log("Owner is immune to " + so.ToString() + "!");
+                AudioManager.inst.GetSoundEffect().Play(immune.clink);
+                return null;
+            }
+           
+        }
+      
         StatusEffectDisplay d=   CreateNewStack();
   
 
@@ -90,7 +102,21 @@ public class StatusEffectHandler : MonoBehaviour
         }
     }
 
-     
+    public void WipeAtEndOfCombat(){
+        List<StatusEffectDisplay> bin = new List<StatusEffectDisplay>();
+        foreach (var item in displays)
+        {
+            if(item.scriptableObject.removeAtEndOfCombat){
+               bin.Add(item);
+            }
+            
+        }
+
+        foreach (var item in bin)
+        {
+             item.Kill();
+        }
+    }
     
     public void MakeCircular(float radius)
     {

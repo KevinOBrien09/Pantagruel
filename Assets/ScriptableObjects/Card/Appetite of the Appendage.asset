@@ -18,10 +18,9 @@ MonoBehaviour:
   manaCost: 2
   vfxSetUp: 
   vfx: 
-  castDelay: 0
+  castDelay: 0.5
   effects:
-  - {fileID: 11400000, guid: 6cf636112f9504844b7b2f6d2427370d, type: 2}
-  - {fileID: 11400000, guid: 79b7ea41d60a51949babcb2047393397, type: 2}
+  - {fileID: 11400000, guid: a72515d3ace4f9e4eb7368a6fe09f84a, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 8300000, guid: 00adb275d4187d94081de8bfdd267130, type: 3}
@@ -29,6 +28,9 @@ MonoBehaviour:
     volume: 0.7
   element: 1
   beastClass: 15
-  desc: Deal 5 damage, heal for 5.
+  desc: Drain 5.
   flavourText: 
   deckCost: 6
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0

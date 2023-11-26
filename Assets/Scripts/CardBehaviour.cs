@@ -64,10 +64,10 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
             skillDesc.color = Color.black;
             cardName.text = "<i>Vaporous </i>" + card.cardName;
            // desc = "<size=80%><i>RAPID: Will be DESTROYED at the end of this turn.</i> <br></size>" + desc;
-            foreach (var item in imagesToHaveWobbleShader)
-            {
-                item.material = vaporousWobble;
-            }
+            // foreach (var item in imagesToHaveWobbleShader)
+            // {
+            //     item.material = vaporousWobble;
+            // }
           
         }
 

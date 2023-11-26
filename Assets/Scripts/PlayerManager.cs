@@ -29,7 +29,7 @@ public class PlayerManager : Singleton<PlayerManager>
     public void Load()
     {
         SaveData data = SaveLoad.Load(5);
-        PlayerParty.inst.Load(data);
+        PlayerParty.inst.Load(data.party);
         CardCollection.inst.Load(data.cardCollection);
         movement.Load(data.playerSaveData);
     }

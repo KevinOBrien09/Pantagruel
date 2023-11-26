@@ -49,5 +49,5 @@ MonoBehaviour:
     element: 5
     beastClass: 2
     secondaryClass: 0
-    passive: {fileID: 11400000, guid: 8c56ff9f1fcfe8f419b5147e46a56eb9, type: 2}
+    passive: {fileID: 11400000, guid: 346cf6bf60a37f146a8143f43778d978, type: 2}
     catchMod: 0
