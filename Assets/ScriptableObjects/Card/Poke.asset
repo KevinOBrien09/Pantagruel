@@ -17,7 +17,7 @@ MonoBehaviour:
   picture: {fileID: 21300000, guid: 71d4a2972dcafd9468ad015ba66f17e2, type: 3}
   manaCost: 1
   vfxSetUp: 
-  vfx: 
+  vfx: Bash
   castDelay: 0
   effects:
   - {fileID: 11400000, guid: 0117367ef39ab8945a8e115c474c5435, type: 2}
@@ -34,3 +34,4 @@ MonoBehaviour:
   unplayable: 0
   cannotBeDiscard: 0
   destroyOnCast: 0
+  unDodgeable: 0

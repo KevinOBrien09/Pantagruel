@@ -8,15 +8,28 @@ using UnityEngine.EventSystems;
 public class WorldViewManager:Singleton<WorldViewManager>
 {
     public CanvasGroup worldView;
-    public Image abstractBG;
+    public Image abstractBG,whiteFade;
     
     public bool cardHoveringOverViewport,itemHoveringOverViewport;
     public CardBehaviour currentCardOverViewPort;
     public  ItemStack currentItemStack;
     public void EnterBattle()
     {
-        abstractBG.gameObject.SetActive(true);
-        worldView.DOFade(0,.7f);
+       
+        StartCoroutine(q());
+        IEnumerator q()
+        {
+            yield return new WaitForSeconds( PlayerManager.inst.movement.ZOOMPOV()-.1f);
+            whiteFade.DOFade(1,.5f).OnComplete(()=> {
+                abstractBG.gameObject.SetActive(true);
+                worldView.DOFade(0,.7f).OnComplete(()=>{
+                    whiteFade.DOFade(0,.5f);
+                });
+            });
+
+
+        }
+       
     }
 
     public void LeaveBattle()

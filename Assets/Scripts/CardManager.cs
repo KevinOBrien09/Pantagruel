@@ -253,6 +253,11 @@ public class CardManager:Singleton<CardManager>
         {
             CardManager.inst.DeactivateHand();
           
+            bool dodged = Maths.PercentCalculator(RivalBeastManager.inst.activeBeast.dodge);
+            if(usedCard.unDodgeable)
+            {
+                dodged = false;
+            }
             if(!usedCard.playVFXAfterDelay)
             {}
 
@@ -263,7 +268,12 @@ public class CardManager:Singleton<CardManager>
             }
             
             if(usedCard.soundEffect.audioClip != null)
-            {AudioManager.inst.GetSoundEffect().Play(usedCard.soundEffect); }
+            {
+                if(!dodged){
+ AudioManager.inst.GetSoundEffect().Play(usedCard.soundEffect);
+                }
+                
+            }
             behaviour.gameObject.SetActive(false);
 
             yield return new WaitForSeconds(usedCard.castDelay);
@@ -282,19 +292,16 @@ public class CardManager:Singleton<CardManager>
             ManaManager.inst.Spend(usedCard.manaCost);
             
             RemoveFromHand(behaviour);
-            CardStackBehaviour stackBehaviour =  CardStack.inst.CreateActionStack(usedCard,PlayerParty.inst.activeBeast,true);
           
+           
+ CardStackBehaviour stackBehaviour =  CardStack.inst.CreateActionStack(usedCard,PlayerParty.inst.activeBeast,true,dodged);
           
             foreach (var effect in usedCard.effects)
             { 
                 EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,BattleManager.inst.enemyTarget,true,usedCard,stackBehaviour,
-                BattleManager.inst.playerRecord[BattleManager.inst.turn].cardsPlayedThisTurn.Count-1,usedCard.cardName);
+                BattleManager.inst.playerRecord[BattleManager.inst.turn].cardsPlayedThisTurn.Count-1,usedCard.cardName,dodged);
                 effect.Use(args); 
             }
-          
-         
-            
-            
             StartCoroutine(piss());
             
             IEnumerator piss()

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: CRIT1-DMG-RIVAL
   m_EditorClassIdentifier: 
   targets: 01000000
-  dodgeable: 0
+  dodgeable: 1
   damageValue: 12
+  negateShield: 0
   critChance: 20
   luckPercentage: 100

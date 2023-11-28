@@ -17,6 +17,6 @@ MonoBehaviour:
   operativeState: 1
   immunity: 5
   clink:
-    audioClip: {fileID: 8300000, guid: 63040f115673c4c448c5c6ad309b90b3, type: 3}
+    audioClip: {fileID: 8300000, guid: a64f0bd4da64b3d45911955e1f7b5c78, type: 3}
     pitchRange: {x: 0.9, y: 1}
-    volume: 1
+    volume: 0.5

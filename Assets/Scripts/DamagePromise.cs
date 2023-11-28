@@ -60,7 +60,7 @@ public class DamagePromise :Promise
             if(CardFunctions.oneEffectIsViable(desiredEffects,OGargs.isPlayer)){
                 foreach (var effect in desiredEffects)
                 { 
-                    EffectArgs arg = new EffectArgs(OGargs.caster,BattleManager.inst.enemyTarget,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
+                    EffectArgs arg = new EffectArgs(OGargs.caster,BattleManager.inst.enemyTarget,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName,false);
                     effect.Use(arg); 
                 }
             }

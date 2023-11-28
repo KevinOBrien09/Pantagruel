@@ -110,7 +110,7 @@ public class Promise :Effect
         if(CardFunctions.oneEffectIsViable(desiredEffects,OGargs.isPlayer)){
             foreach (var effect in desiredEffects)
             { 
-                EffectArgs arg = new EffectArgs(OGargs.caster,OGargs.target,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
+                EffectArgs arg = new EffectArgs(OGargs.caster,OGargs.target,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName,false);
                 effect.Use(arg); 
             }
         }
@@ -124,11 +124,11 @@ public class Promise :Effect
             foreach (var effect in badEffects)
             { 
                 if(castBadEffectsOnEnemy){
-                EffectArgs arg = new EffectArgs(OGargs.caster,RivalBeastManager.inst.activeBeast,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
+                EffectArgs arg = new EffectArgs(OGargs.caster,RivalBeastManager.inst.activeBeast,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName,false);
                 effect.Use(arg); 
                 }
                 else{
-                EffectArgs arg = new EffectArgs(OGargs.caster,PlayerParty.inst.activeBeast,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
+                EffectArgs arg = new EffectArgs(OGargs.caster,PlayerParty.inst.activeBeast,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName,false);
                 effect.Use(arg); 
                 }
                 

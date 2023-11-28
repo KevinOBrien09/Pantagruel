@@ -63,14 +63,17 @@ public class BattleManager:Singleton<BattleManager>
     public int turn;
     public int startingMana;
     public Entity enemyTarget;
-    public SoundData leave;
+    public SoundData leave,enter;
     public Entity playerTarget;
     public StatusEffectHandler statusEffectHandlerPrefab;
     public Dictionary<int,TurnRecord> playerRecord = new Dictionary<int,TurnRecord>();
-    
+    public Image passiveProcImage;
+    public SoundData passiveProcSFX;
+    public List<SoundData> dodgeSFX = new List<SoundData>();
     public Dictionary<int,TurnRecord> enemyRecord = new Dictionary<int,TurnRecord>();
     public Queue<QueuedAction> effectsToUse = new Queue<QueuedAction>();
     public DamageValueGraphic damageValueGraphicPrefab;
+    public BattleTextBehaviour battleTextBehaviourPrefab;
     bool statusEffectShit;
     
     public void StartBattle(BattleType battleType)
@@ -78,56 +81,71 @@ public class BattleManager:Singleton<BattleManager>
         inBattle = true;
         turn = 1;
         TurnRecord e = new TurnRecord();
-         TurnRecord p = new TurnRecord();
-         e.turn = turn;
-         p.turn = turn;
+        TurnRecord p = new TurnRecord();
+        e.turn = turn;
+        p.turn = turn;
         enemyRecord.Add(turn,e);
         playerRecord.Add(turn,p);
         turnState = TurnState.Player;
-
+        
         if(battleType == BattleType.Wild)
         {
             RivalBeastManager.inst.CreateEnemyParty(WildEncounterManager.inst.GetEncounter());
             RivalBeastManager.inst.SwapActiveBeast(RivalBeastManager.inst.currentParty[0]);
         }
-        EndTurnButton.inst.Reactivate();
-        BattleField.inst.SetPlayerBeastIcon(PlayerParty.inst.activeBeast);
+
+          BattleField.inst.SetPlayerBeastIcon(PlayerParty.inst.activeBeast);
         BattleField.inst.Init();
         UpperLeftPanel.inst.SwapToBattle();
         SetEnemyTarget(RivalBeastManager.inst.activeBeast);
         SetPlayerTarget(PlayerParty.inst.activeBeast);
-        Inventory.inst.EnableItemDragOnAll();
-        WorldViewManager.inst.EnterBattle();
+        
         BottomPanel.inst.ChangeState(BottomPanel.inst.cards);
         LeftPanel.inst.SwapToBattle();
         BottomLeftPanel.inst.SwapToBattle();
         BottomCornerBeastDisplayer.inst.ToggleBattleBGOff();
-        MusicManager.inst.EnterBattle();
-        CardManager.inst.EnterBattle(PlayerParty.inst.activeBeast);
+       
         RightPanelButtonManager.inst.SwapToBattle();
+        CardStack.inst.EnterBattle();
+        
+        bool trainer = false;
+        if(trainer){
+            BattleIntro.inst.EnterBattle(PlayerParty.inst.activeBeast,RivalBeastManager.inst.activeBeast);
+        }else
+        {
+            WorldViewManager.inst.EnterBattle();
+            StartCoroutine(q());
+            IEnumerator q()
+            {
+                AudioManager.inst.GetSoundEffect().Play(enter);
+               MusicManager.inst.EnterBattle();
+                yield   return new WaitForSeconds(2f);
+                 EnterBattlePartTwo();
+
+            }
+          
+        }
+        
+     
+    }
+
+    public void EnterBattlePartTwo(){
+         CardManager.inst.EnterBattle(PlayerParty.inst.activeBeast);
+        EndTurnButton.inst.Reactivate();
+        Inventory.inst.EnableItemDragOnAll();
+        
         for (int i = 0; i < startingMana; i++)
         {   
             ManaManager.inst.IncreaseMaxMana(); 
             EnemyAI.inst.IncreaseMaxMana();
         }
-        CardStack.inst.EnterBattle();
         ManaManager.inst.RegenMana();
         EnemyAI.inst.RegenMana();
         EnemyAI.inst.DrawRandomCard();
         EnemyAI.inst.DrawRandomCard();
         EnemyAI.inst.DrawRandomCard();
-       // EnemyAI.inst.RebuildCardBacks();
-  
         EventManager.inst.onBattleStart.Invoke();
 
-        StartCoroutine(q());
-        IEnumerator q()
-        {
-            BattleTicker.inst.Type("Fight or flight");
-            yield return new WaitForSeconds(1);
-            BattleTicker.inst.Type("Turn " + turn.ToString());
-        }
-        
     }
 
     public bool CheckIfGameContinues()
@@ -220,10 +238,17 @@ public class BattleManager:Singleton<BattleManager>
                
                 PetManager.inst.enemyPet.Die(EntityOwnership.ERROR);
             }
+         
             yield return new WaitForSeconds(1.5f);
             RewardManager.inst.Open();
            // LeaveBattle();
         }
+    }
+
+    public void PassiveProc(Beast b){
+        passiveProcImage.sprite = b.scriptableObject.beastData.uiPicture;
+        passiveProcImage.DOFade(.2f,.5f).OnComplete(()=>passiveProcImage.DOFade(0,.5F));
+        AudioManager.inst.GetSoundEffect().Play(passiveProcSFX);
     }
 
     public bool partyHasValidMember(List<Beast> b)
@@ -413,7 +438,7 @@ TriggerQueuedEffects();
                             UnityAction ua =()=>    d.Trigger();
                             qa.action = ua;
                             string m =d.scriptableObject.statusEffect.ToString();
-                            qa.args =  new EffectArgs(null,null,false,null,null,-55, MiscFunctions.FirstLetterToUpperCaseOrConvertNullToEmptyString(m));
+                            qa.args =  new EffectArgs(null,null,false,null,null,-55, MiscFunctions.FirstLetterToUpperCaseOrConvertNullToEmptyString(m),false);
                             effectsToUse.Enqueue(qa);
                         }
                     }

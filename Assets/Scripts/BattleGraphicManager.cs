@@ -20,7 +20,7 @@ public class BattleGraphicManager : Singleton<BattleGraphicManager>
         {
             basicRenderer.enabled = false;
             GameObject newBeast = Instantiate(scriptableObject.beastData.beastGraphicPrefab,holder);
-            newBeast.transform.position = scriptableObject.beastData.battlePos;
+            newBeast.transform.localPosition = scriptableObject.beastData.battlePos;
             newBeast.layer =battleLayer;
             foreach (Transform item in newBeast.transform)
             {

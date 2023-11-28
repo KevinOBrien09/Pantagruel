@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 5-DRAIN-RIVAL
   m_EditorClassIdentifier: 
   targets: 01000000
-  dodgeable: 0
+  dodgeable: 1
   damageValue: 5
   negateShield: 0

@@ -10,11 +10,16 @@ public class CreateVapourCardPassive : Passive
     public EventEnum eventEnum;
     public override void Init(Beast b)
     {
-        UnityAction u = () =>CardManager.inst.CreateVapourCard(card);
+        UnityAction u = () => foo();
         PassiveManager.inst.actions.Add(b,new List<UnityAction>());
         PassiveManager.inst.actions[b].Add(u);
         EventManager.inst.AssignEvent(eventEnum,u);
         //onPlayerDrawingCardFirstTimeInTurn.AddListener(u);
+        void foo(){
+            CardManager.inst.CreateVapourCard(card);
+           // BattleManager.inst.PassiveProc(b);
+
+        }
 
     }
 

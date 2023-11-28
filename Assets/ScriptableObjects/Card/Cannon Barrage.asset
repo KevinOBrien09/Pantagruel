@@ -19,8 +19,7 @@ MonoBehaviour:
   vfxSetUp: 
   vfx: 
   castDelay: 0.2
-  effects:
-  - {fileID: 11400000, guid: bf3fcf65fecb5994082de5e05842bedb, type: 2}
+  effects: []
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 8300000, guid: 22773c08c46e07945ba35244fa480e41, type: 3}
@@ -31,3 +30,7 @@ MonoBehaviour:
   desc: Deal 15 damage to <b><i>everyone</b></i>.
   flavourText: 
   deckCost: 12
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0
+  unDodgeable: 0

@@ -25,9 +25,13 @@ public class Entity : MonoBehaviour
     public bool goLeft =true;
     public EntityOwnership ownership;
     public List<Shield> shields = new List<Shield>();
-    public int dodge = 100;
+    public int dodge;
     public Stats statMods = new Stats();
     public List<StatMod> mods = new List<StatMod>();
+
+    void Start(){
+        dodge = 5;
+    }
 
     void Update(){
         currentShield = totalShield();
@@ -304,7 +308,8 @@ public class Entity : MonoBehaviour
         if(damageSource != EntityOwnership.ERROR)
         {CallDeathEvents(damageSource);}
         KO = true;
-        animatedInstance.Dissolve();
+    
+        animatedInstance.Dissolve(1);
     }
 
     void CallDeathEvents(EntityOwnership damageSource)

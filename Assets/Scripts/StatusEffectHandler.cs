@@ -47,7 +47,8 @@ public class StatusEffectHandler : MonoBehaviour
         {
             if(so == immune.immunity){
                 Debug.Log("Owner is immune to " + so.ToString() + "!");
-                AudioManager.inst.GetSoundEffect().Play(immune.clink);
+               // AudioManager.inst.GetSoundEffect().Play(immune.clink);
+                BattleManager.inst.PassiveProc(owner);
                 return null;
             }
            

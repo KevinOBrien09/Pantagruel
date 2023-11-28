@@ -30,7 +30,7 @@ public class Catch :Effect
                 CardManager.inst.StartCoroutine(q());
                 IEnumerator q(){
                     yield return new WaitForSeconds(1f);
-                    b.animatedInstance.Dissolve();
+                    b.animatedInstance.Dissolve(1);
                     BattleTicker.inst.Type("is captured!");
                     
                     BattleManager.inst.Win();

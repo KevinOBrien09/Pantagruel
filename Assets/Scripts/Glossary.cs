@@ -18,8 +18,7 @@ public class Glossary:Singleton<Glossary>
             GlossaryEntry e = Instantiate(entryPrefab,holder);
             e.Apply(item);
         }
-
-          gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
    public void Close(){

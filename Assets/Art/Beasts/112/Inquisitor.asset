@@ -18,11 +18,23 @@ MonoBehaviour:
       note: For every damaging card you play increase my phsy+mgk by 5 for the rest
         of the turn.
     beastName: Inquisitor
+    spawn:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    die:
+      audioClip: {fileID: 8300000, guid: f7f6112bd2b7fe84fb8800a8b40a351b, type: 3}
+      pitchRange: {x: 0.9, y: 1.1}
+      volume: 1
+    scream:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
     flavourText: '"Butcher them all. God will be their judge"'
     playerStatusEffectPos: {x: 0, y: 14, z: 2, w: 1}
     enemyStatusEffectPos: {x: 0, y: 9, z: 2, w: 1.5}
     bottomCornerPos: {x: 0.075, y: -1.5, z: 0}
-    battlePos: {x: 0, y: 0, z: 2}
+    battlePos: {x: 0, y: -0.1, z: 0}
     beastGraphicPrefab: {fileID: 7239769961303039187, guid: c2cabca1198a0074a81184f868a59744,
       type: 3}
     uiPicture: {fileID: -9142641608525391146, guid: 03009ee19b26f6b41916b9a5c042ae5d,
@@ -34,7 +46,7 @@ MonoBehaviour:
     bestiaryID: 112
     wildDeck: {fileID: 11400000, guid: 80d5131422f00c4458ffe3c9b0906f53, type: 2}
     baseStats:
-      maxHealth: 350
+      maxHealth: 35
       def: 5
       physical: 15
       magic: 5

@@ -18,6 +18,6 @@ public class Card :GUIDScriptableObject
     [TextArea(5,5)] public string desc;
      [TextArea] public string flavourText;
     public int deckCost;
-    public bool unplayable,cannotBeDiscard,destroyOnCast;
+    public bool unplayable,cannotBeDiscard,destroyOnCast,unDodgeable;
   
 }

@@ -11,12 +11,20 @@ public class StatusEffectEffect :Effect
     public int howManyTurns;
     public List<Card> cards = new List<Card>();
     public override void Use(EffectArgs args)
-    {StatusEffectDisplay d =  CreateStatusEffectStack(args);}
+    {
+        StatusEffectDisplay d =  CreateStatusEffectStack(args);
+    }
 
     public StatusEffectDisplay CreateStatusEffectStack(EffectArgs args)
 	{
         if(args.target.statusEffectHandler != null)
-		{return  args.target.statusEffectHandler.CreateStack(statusEffect); }
+		{
+            if(!args.dodged && dodgeable){
+  return  args.target.statusEffectHandler.CreateStack(statusEffect);
+            }
+            
+          
+        }
         return null;
     }
 

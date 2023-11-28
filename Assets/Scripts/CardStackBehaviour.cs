@@ -19,7 +19,7 @@ public class CardStackBehaviour : MonoBehaviour, IPointerClickHandler
     public GameObject meterGO;
    
     
-    public void Init(Card card,Beast b,bool isPlayer)
+    public void Init(Card card,Beast b,bool isPlayer,bool dodged)
     {
         if(isPlayer){
             bg.color = blue;
@@ -28,6 +28,9 @@ public class CardStackBehaviour : MonoBehaviour, IPointerClickHandler
             bg.color = red;
         }
         cardName.text = card.cardName;
+        if(dodged){
+            cardName.text += " - <i><color=grey>dodged.";
+        }
         cardPic.sprite = card.picture;
 
         savedCard = card;

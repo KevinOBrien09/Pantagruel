@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 360358364193378434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3.5, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3863311279711936008}
@@ -54,7 +54,6 @@ MonoBehaviour:
   springBoneManagers:
   - {fileID: 214052598797124128}
   - {fileID: 6712074711369966450}
-  winds: []
   currentWind: 0
   windPressure: 0.01
 --- !u!95 &4450804659612596606

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 25%PHYS-DMG-RIVAL
   m_EditorClassIdentifier: 
   targets: 01000000
-  dodgeable: 0
+  dodgeable: 1
   damageValue: 0
   negateShield: 0
   percentage: 25

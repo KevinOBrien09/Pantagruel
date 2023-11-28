@@ -17,11 +17,23 @@ MonoBehaviour:
     devNote:
       note: 
     beastName: Pikeman
+    spawn:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    die:
+      audioClip: {fileID: 8300000, guid: 7346a06b62d9afd4980f213d673bdb15, type: 3}
+      pitchRange: {x: 0.8, y: 0.9}
+      volume: 1
+    scream:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
     flavourText: 
     playerStatusEffectPos: {x: 0, y: -4.5, z: 2, w: 1.5}
     enemyStatusEffectPos: {x: -1, y: 12, z: 2, w: 1}
     bottomCornerPos: {x: 0, y: -1.5, z: 0}
-    battlePos: {x: 0, y: -0.075, z: 2}
+    battlePos: {x: 0, y: -0.075, z: 0}
     beastGraphicPrefab: {fileID: 2690162855002317290, guid: 15fef0f91a6eb35418ddaabe44420e94,
       type: 3}
     uiPicture: {fileID: -2920359113916870920, guid: 01ed9e5c00d0487489ff20332c501148,

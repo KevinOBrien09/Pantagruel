@@ -130,11 +130,18 @@ public class EnemyAI : Singleton<EnemyAI>
                     
                     if(usedCard.soundEffect.audioClip != null)
                     {AudioManager.inst.GetSoundEffect().Play(usedCard.soundEffect); }
-                   CardStackBehaviour cardStackBehaviour =   CardStack.inst.CreateActionStack(usedCard,RivalBeastManager.inst.activeBeast,false);
+                
+                    bool dodged = Maths.PercentCalculator(PlayerParty.inst.activeBeast.dodge);
+                    if(usedCard.unDodgeable)
+                    {
+                        dodged = false;
+                    }
+   CardStackBehaviour cardStackBehaviour =   CardStack.inst.CreateActionStack(usedCard,RivalBeastManager.inst.activeBeast,false,dodged);
+
                     foreach (var effect in usedCard.effects)
                     {
                         EffectArgs args = new EffectArgs(RivalBeastManager.inst.activeBeast,BattleManager.inst.playerTarget,
-                        false,usedCard,cardStackBehaviour,BattleManager.inst.enemyRecord[BattleManager.inst.turn].cardsPlayedThisTurn.IndexOf(usedCard),usedCard.cardName);
+                        false,usedCard,cardStackBehaviour,BattleManager.inst.enemyRecord[BattleManager.inst.turn].cardsPlayedThisTurn.IndexOf(usedCard),usedCard.cardName,dodged);
                         effect.Use(args);
                     }
                   

@@ -29,6 +29,11 @@ public class OverworldMovement : MonoBehaviour
     public int encounterChance = 10;
     public int timeOutMin,timeOutMax;
     bool lastTorchState;
+    float ogPOV;
+    public float zoomPOV;
+    void Start(){
+        ogPOV = cam.fieldOfView;
+    }
     void OnEnable()
     {canMove = true;}
     
@@ -58,6 +63,16 @@ public class OverworldMovement : MonoBehaviour
             if(!rotate.isRotating & !isMoving)
             {Move(dir);}
         }
+    }
+
+    public float ZOOMPOV(){
+        float dur = .2f;
+        cam.DOFieldOfView(zoomPOV,dur);
+        return dur;
+    }
+
+    public void ResetPOV(){
+
     }
     
     void Move(Dir dir)

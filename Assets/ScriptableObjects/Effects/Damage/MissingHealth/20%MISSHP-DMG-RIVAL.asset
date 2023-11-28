@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f89693efbdb734380580d24be1cd38, type: 3}
   m_Name: 20%MISSHP-DMG-RIVAL
   m_EditorClassIdentifier: 
+  targets: 01000000
+  dodgeable: 1
+  damageValue: 0
+  negateShield: 0
   percent: 20
   maxHealth: 0
   missingHealth: 1

@@ -11,7 +11,7 @@ public class BeastAnimatedInstance : MonoBehaviour
     public List<SpringBone> springBones = new List<SpringBone>();
     public Color32 grey = new Color32(97,97,97,255);
     Color defaultColour;
-
+    bool dodgeDir;
     Animator animator;
     Entity beast;
     StatusEffectHandler effectHandler;
@@ -42,7 +42,7 @@ public class BeastAnimatedInstance : MonoBehaviour
         else{
             Debug.Log("NoPetStatusEffects");
         }
-      
+        dodgeDir = Maths.FiftyFifty();
         b.animatedInstance = this;
         beast = b;
     }
@@ -55,8 +55,45 @@ public class BeastAnimatedInstance : MonoBehaviour
         //  AudioManager.inst.GetSoundEffect().Play(SystemSFX.inst.bleed);
     }
 
-    public void Dodge(){
-        Debug.Log("Dodge");
+    public void Dodge()
+    {
+
+       
+        AudioManager.inst.GetSoundEffect().Play(BattleManager.inst.dodgeSFX[Random.Range(0,BattleManager.inst.dodgeSFX.Count)]);
+        ToggleSpringBones(false);
+        if(dodgeDir)//right
+        {
+            SpawnText();
+            transform.DOMoveX(1f,.2f).OnComplete(()=>
+            {
+                transform.DOMoveX(-.2f,.2f).OnComplete(()=>
+                {transform.DOMoveX(0,.2f);ToggleSpringBones(true);});
+            });
+        }
+        else//left
+        {
+            transform.DOMoveX(-1f,.2f).OnComplete(()=>
+            {SpawnText();
+                transform.DOMoveX(.2f,.2f).OnComplete(()=>
+                {transform.DOMoveX(0,.2f);ToggleSpringBones(true);});
+            });
+        }
+
+        if(dodgeDir){
+dodgeDir = false;
+        }else{
+            dodgeDir = true;
+        }
+        BattleTicker.inst.Type("Dodge!");
+        void SpawnText(){
+            // BattleTextBehaviour b = Instantiate(BattleManager.inst.battleTextBehaviourPrefab,transform);
+            // b. transform.SetParent(null,true);
+            // b.transform.position = new Vector3(0,0,2);
+        
+            // b.gameObject.layer = this.gameObject.layer;
+            // b.Spawn("Dodge!",Color.white,beast.goLeft);
+        }
+      
     }
 
     public void TakeDamage(Color color)
@@ -198,9 +235,9 @@ public class BeastAnimatedInstance : MonoBehaviour
        
     }
 
-    public void Dissolve()
+    public void Dissolve(float dissTime)
     {
-        float dissTime = 1;
+       // float dissTime = 1;
         foreach (var item in renderers)
         {
             DOVirtual.Float( item.material.GetFloat("_DissolvePower"),0,dissTime,v  => 

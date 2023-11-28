@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wound
   m_EditorClassIdentifier: 
   targets: 
-  dodgeable: 0
+  dodgeable: 1
   statusEffect: 5
   removeAtEndOfCombat: 1
   howManyTurns: 0

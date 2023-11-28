@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a2b751962c706e4895d252882f503be, type: 3}
   m_Name: Parasite
   m_EditorClassIdentifier: 
+  targets: 
+  dodgeable: 1
   statusEffect: 1
+  removeAtEndOfCombat: 0
+  howManyTurns: 0
   cards:
   - {fileID: 11400000, guid: 905474b2024771147aa8b5162da286c7, type: 2}

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Shield
   m_EditorClassIdentifier: 
   glossName: Shield
-  desc: Absorbs damage in place of health.
+  desc: Absorbs damage in place of health. A shield is worth 10% max health.

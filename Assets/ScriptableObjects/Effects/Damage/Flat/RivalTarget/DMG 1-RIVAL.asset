@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: DMG 1-RIVAL
   m_EditorClassIdentifier: 
   targets: 01000000
-  dodgeable: 0
+  dodgeable: 1
   damageValue: 1
+  negateShield: 0
+  hit:
+    audioClip: {fileID: 8300000, guid: b99f66a16dd52f040a15ed94cecc98b0, type: 3}
+    pitchRange: {x: 0.9, y: 1}
+    volume: 1

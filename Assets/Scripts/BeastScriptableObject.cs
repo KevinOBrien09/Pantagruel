@@ -104,7 +104,7 @@ public class BeastData
     [Header("Fluff")]
     [Space()]
     public string beastName;
-    public SoundData spawn,die;
+    public SoundData spawn,die,scream;
     [TextArea] public string flavourText;
     [Header("Graphics")]
     [Space()]

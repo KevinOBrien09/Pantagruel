@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db125cf09a5b1d541a6b5d0a9246717a, type: 3}
   m_Name: Poison
   m_EditorClassIdentifier: 
+  targets: 
+  dodgeable: 1
   statusEffect: 0
+  removeAtEndOfCombat: 0
   howManyTurns: 0
-  triggerOnceOnCast: 0
-  triggerOncePerTurn: 1
+  cards: []

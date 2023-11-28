@@ -21,7 +21,7 @@ MonoBehaviour:
   castDelay: 0
   effects:
   - {fileID: 11400000, guid: e599809a110710e4796e1c0027dbdd2b, type: 2}
-  - {fileID: 11400000, guid: 0117367ef39ab8945a8e115c474c5435, type: 2}
+  - {fileID: 11400000, guid: 36593789721779343a5d7b1c6a2e0ded, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 8300000, guid: af6322b35587ded418a6810c69d10243, type: 3}
@@ -35,3 +35,4 @@ MonoBehaviour:
   unplayable: 0
   cannotBeDiscard: 0
   destroyOnCast: 0
+  unDodgeable: 0

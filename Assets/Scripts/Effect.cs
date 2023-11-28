@@ -106,9 +106,10 @@ public class EffectArgs
     public string tickerTitle;
     public CardStackBehaviour stackBehaviour;
     public int castOrder;
+    public bool dodged;
     
 
-    public EffectArgs(Entity CASTER,Entity TARGET,bool ISPLAYER, Card CARD,CardStackBehaviour STACK,int CASTORDER,string TICKERTITLE)
+    public EffectArgs(Entity CASTER,Entity TARGET,bool ISPLAYER, Card CARD,CardStackBehaviour STACK,int CASTORDER,string TICKERTITLE,bool DODGED)
     {
         caster = CASTER;
         target =TARGET;
@@ -117,6 +118,7 @@ public class EffectArgs
         stackBehaviour = STACK;
         castOrder = CASTORDER;
         tickerTitle = TICKERTITLE;
+        dodged = DODGED;
         
     }
 }
