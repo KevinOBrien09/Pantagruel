@@ -33,5 +33,5 @@ MonoBehaviour:
     volume: 1
   playerPos: {x: 0, y: -0.7, z: 0}
   playerScale: {x: 0.1, y: 0.1, z: 1}
-  enemyPos: {x: 0, y: -0.7, z: 0.19}
+  enemyPos: {x: 0, y: -0.5, z: 1}
   enemyScale: {x: 0.15, y: 0.15, z: 0.15}

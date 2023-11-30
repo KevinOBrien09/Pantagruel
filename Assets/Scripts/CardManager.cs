@@ -16,12 +16,18 @@ public class ActionEventPair{
     public int turnToDieOn;
 }
 
+public class CardSFXPair{
+    public Card card;
+    public SoundData sfx;
+}
+
 public class CardManager:Singleton<CardManager>                   
 {
+    public enum CardState{NORMAL,VAPOUR,MANIFESTED}
     public CardBehaviour prefab;
     public RectTransform holder;
     public List<CardBehaviour> hand = new List<CardBehaviour>();
-   
+    public bool blockade;
     float holderOgPos;
     public float downHodlerPos;
     public Deck currentDeck;
@@ -31,6 +37,7 @@ public class CardManager:Singleton<CardManager>
     public bool handDown;
     public Dictionary<string,ActionEventPair> promiseDict = new Dictionary<string,ActionEventPair>();
     public List<Promise> promiseList = new List<Promise>();
+    Dictionary<int,CardSFXPair> predetermindedDraws = new Dictionary<int, CardSFXPair>();
     
     public void EnterBattle(Beast beast)
     {
@@ -44,10 +51,11 @@ public class CardManager:Singleton<CardManager>
         {Destroy(item.gameObject);}
      
         SwitchBeast(beast);
-      currentDeck.Shuffle();
-        DrawCard();
-        DrawCard();
-        DrawCard();
+        currentDeck.Shuffle();
+        CreateCardBehaviour(DrawCard());
+        CreateCardBehaviour( DrawCard());
+        CreateCardBehaviour(DrawCard());
+        MakeHandInteractable();
         ActivateHand();
     }
 
@@ -69,6 +77,25 @@ public class CardManager:Singleton<CardManager>
         {
             hand.Remove(item);
             Destroy(item.gameObject);
+        }
+    }
+
+    public void CreateVapourCard(Card card)
+    {
+        if(hand.Count < 6) //does not work if hand is full
+        {
+            EventManager.inst.onPlayerVapourCardCreation.Invoke();
+            CreateCardBehaviour(card,CardState.VAPOUR);
+        }
+
+    }
+
+
+
+    public void AddManifestedCardToDeck(Card c){
+        if(hand.Count < 7)
+        {
+            CreateCardBehaviour(c,CardState.MANIFESTED);
         }
     }
 
@@ -96,12 +123,46 @@ public class CardManager:Singleton<CardManager>
         {card.DisableInteractable();}
     }
 
+    public void HideHand(){
+        handDown = true;
+        holder.DOAnchorPosY(-550,.2f);
+        foreach(CardBehaviour card in hand)
+        {card.DisableInteractable();}
+    }
+
+    public void AddPredeterminedDraw(Card card, DrawCardAtSpecifiedTurn dcst)
+    {
+        int i = BattleManager.inst.turn + dcst.inHowManyTurns;
+        CardSFXPair csfx = new CardSFXPair();
+        csfx.card = card;
+        csfx.sfx = dcst.sfxSummon;
+   
+        if(!predetermindedDraws.ContainsKey(i))
+        {
+            predetermindedDraws.Add(i,csfx);
+        }
+        else
+        {
+            predetermindedDraws[i] = csfx;
+        }
+    }
+
+    public bool currentTurnDrawIsPredeterminded()
+    {return predetermindedDraws.ContainsKey(BattleManager.inst.turn);}
+
+    public Card DrawPredeterminedCard(){
+        Card c = predetermindedDraws[BattleManager.inst.turn].card;
+        AudioManager.inst.GetSoundEffect().Play(predetermindedDraws[BattleManager.inst.turn].sfx);
+        predetermindedDraws.Remove(BattleManager.inst.turn);
+        return c;
+    }
+
    
 
-    public void DrawCard()
+    public Card DrawCard()
     {
         if(!BattleManager.inst.inBattle){
-            return;
+            return null;
         }
         if(currentDeck.cards.Count <= 0)
         { currentDeck.ResetDiscardPile(); }
@@ -114,21 +175,15 @@ public class CardManager:Singleton<CardManager>
                 {
                     if(playableCardInDeck()){
                            Debug.Log("Playable card found in main deck");
-                        Card ca = CardFunctions.DrawPlayableCard(currentDeck);
-                        CreateCardBehaviour(ca); 
-                        MakeHandInteractable();
+                    return CardFunctions.DrawPlayableCard(currentDeck);
+                       
                     }
                     else if(playableCardInDiscard())
                     {
                         Debug.Log("Playable card found in discard");
                         currentDeck.ResetDiscardPile();
-                        StartCoroutine(Q());
-                        IEnumerator Q(){
-                            yield return new WaitForEndOfFrame();
-                            Card ca = CardFunctions.DrawPlayableCard(currentDeck);
-                        CreateCardBehaviour(ca); 
-                        MakeHandInteractable();
-                        }
+                           return CardFunctions.DrawPlayableCard(currentDeck);
+                      
                         
                     }
                     else
@@ -136,20 +191,24 @@ public class CardManager:Singleton<CardManager>
                         Debug.Log("No playable cards anywhere XD");
                     }
                   
-                    return;
+                    return null;
                 }
             }
            
            
-            Card c = CardFunctions.DrawRandomCard(currentDeck);
-            CreateCardBehaviour(c); 
-            MakeHandInteractable();
+           // Card c = 
+            return CardFunctions.DrawRandomCard(currentDeck);
+            // CreateCardBehaviour(c); 
+            // MakeHandInteractable();
             
             
         }
         else
-        { Debug.Log("Hand is full!"); }
+        { Debug.Log("Hand is full!"); 
+         return null;}
     }
+
+    
 
     public bool playableCardInHand(){
         bool b = false;
@@ -197,7 +256,7 @@ public class CardManager:Singleton<CardManager>
         List<CardBehaviour> fuckery = new List<CardBehaviour>();
         foreach (var item in hand)
         {
-            if(item.isVapour){
+            if(item.state == CardState.VAPOUR){
                 fuckery.Add(item);
                 item.transform.SetParent(BottomPanel.inst.transform);
                 //item.rt.DOAnchorPosY(-85,.2f);
@@ -218,24 +277,15 @@ public class CardManager:Singleton<CardManager>
         }
     }
 
-    public void CreateVapourCard(Card card)
-    {
-        if(hand.Count < 7)
-        {
-            EventManager.inst.onPlayerVapourCardCreation.Invoke();
-            CreateCardBehaviour(card,true);
-        }
+ 
 
-    }
-
-
-    public void CreateCardBehaviour(Card card,bool isVapour = false)
+    public void CreateCardBehaviour(Card card,CardState state = CardState.NORMAL)
     {
         if(card != null)
         {
             EventManager.inst.onPlayerDrawCard.Invoke();
             CardBehaviour newCard = Instantiate(prefab,holder);
-            newCard.Init(card,isVapour);
+            newCard.Init(card,state);
             hand.Add(newCard);
             AudioManager.inst.GetSoundEffect().Play(drawCard);
         }
@@ -270,7 +320,7 @@ public class CardManager:Singleton<CardManager>
             if(usedCard.soundEffect.audioClip != null)
             {
                 if(!dodged){
- AudioManager.inst.GetSoundEffect().Play(usedCard.soundEffect);
+                AudioManager.inst.GetSoundEffect().Play(usedCard.soundEffect);
                 }
                 
             }
@@ -278,10 +328,10 @@ public class CardManager:Singleton<CardManager>
 
             yield return new WaitForSeconds(usedCard.castDelay);
             BattleEffectManager.inst.Play(usedCard.vfx);
-            if(!behaviour.isVapour)
+            if(behaviour.state == CardState.NORMAL)
             {
-                if(!usedCard.destroyOnCast){
-            currentDeck.discard.Add(usedCard);
+                if(!usedCard.destroyOnCast)
+                {currentDeck.discard.Add(usedCard);
                 }
                
             }
@@ -292,9 +342,7 @@ public class CardManager:Singleton<CardManager>
             ManaManager.inst.Spend(usedCard.manaCost);
             
             RemoveFromHand(behaviour);
-          
-           
- CardStackBehaviour stackBehaviour =  CardStack.inst.CreateActionStack(usedCard,PlayerParty.inst.activeBeast,true,dodged);
+            CardStackBehaviour stackBehaviour =  CardStack.inst.CreateActionStack(usedCard,PlayerParty.inst.activeBeast,true,dodged);
           
             foreach (var effect in usedCard.effects)
             { 
@@ -302,7 +350,7 @@ public class CardManager:Singleton<CardManager>
                 BattleManager.inst.playerRecord[BattleManager.inst.turn].cardsPlayedThisTurn.Count-1,usedCard.cardName,dodged);
                 effect.Use(args); 
             }
-            StartCoroutine(piss());
+           BattleManager.inst. StartCoroutine(piss());
             
             IEnumerator piss()
             {
@@ -320,6 +368,7 @@ public class CardManager:Singleton<CardManager>
 
     public void LeaveBattle()
     {
+      
         foreach (var item in promiseDict)
         {
             foreach (var eventEnum in item.Value.subbedEvents)

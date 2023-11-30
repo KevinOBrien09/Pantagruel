@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcc542b43770e7640b91db463cc8a693, type: 3}
+  m_Name: Manifest-Loaf
+  m_EditorClassIdentifier: 
+  targets: 
+  dodgeable: 0
+  cardsToManifest:
+  - {fileID: 11400000, guid: 7771d3ac4cb86cc4e8dce610de2e9e30, type: 2}
+  - {fileID: 11400000, guid: 2acb2cf3a79dab644b7a979b82f6f708, type: 2}

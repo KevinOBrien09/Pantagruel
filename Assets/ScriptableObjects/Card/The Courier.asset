@@ -19,7 +19,8 @@ MonoBehaviour:
   vfxSetUp: 
   vfx: 
   castDelay: 0.2
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: 75510ddf9a0cbc84e8deff60101d2d24, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 0}
@@ -30,3 +31,7 @@ MonoBehaviour:
   desc: Select one of 3 random cards from your deck to be drawn in 2 turns.
   flavourText: '"The Little Courier-Albrecht Durer"'
   deckCost: 8
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0
+  unDodgeable: 0

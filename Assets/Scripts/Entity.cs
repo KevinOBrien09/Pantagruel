@@ -30,7 +30,7 @@ public class Entity : MonoBehaviour
     public List<StatMod> mods = new List<StatMod>();
 
     void Start(){
-        dodge = 5;
+        dodge = 50;
     }
 
     void Update(){

@@ -14,25 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beastData:
     ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
     beastName: Pistachio
+    spawn:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    die:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    scream:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
     flavourText: 
-    bottomCornerPos: {x: 0, y: -0.25}
+    playerStatusEffectPos: {x: 0, y: -4.5, z: 2, w: 1.5}
+    enemyStatusEffectPos: {x: 0, y: 9, z: 2, w: 1.5}
+    bottomCornerPos: {x: 0, y: -0.25, z: 0}
     battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 8288426215254106694, guid: 565c6fd13070e544b90719ba71b1369c,
       type: 3}
     mainSprite: {fileID: -2681809406195053031, guid: 565c6fd13070e544b90719ba71b1369c,
       type: 3}
+    outLine: {fileID: 0}
     facingRight: 0
     bestiaryID: 8
-    wildDeck: {fileID: 0}
-    stats:
-      maxHealth: 131
-      def: 18
-      physical: 23
+    wildDeck: {fileID: 11400000, guid: 1141da0cf2a2da849b58c699dc6239e8, type: 2}
+    baseStats:
+      maxHealth: 0
+      def: 0
+      physical: 0
       magic: 0
-      charisma: 13
-      luck: 10
+      charisma: 0
+      luck: 0
     statGrowthPerLevel:
       maxHealth: 5
       def: 1

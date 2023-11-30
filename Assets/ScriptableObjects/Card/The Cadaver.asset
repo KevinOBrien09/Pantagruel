@@ -31,3 +31,7 @@ MonoBehaviour:
   desc: <b>Summon:</b> a Corpse.
   flavourText: '"The wise will take the warning"'
   deckCost: 0
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0
+  unDodgeable: 1

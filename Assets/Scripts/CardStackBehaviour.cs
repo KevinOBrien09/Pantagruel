@@ -86,7 +86,7 @@ public class CardStackBehaviour : MonoBehaviour, IPointerClickHandler
     public void ConditionFailed(){
         meterGO.SetActive(false);
         actionResult.enabled = true;
-    actionResult.text = "<color=red> Condition Failed.";
+        actionResult.text = "<color=red> Condition Failed.";
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -100,7 +100,10 @@ public class CardStackBehaviour : MonoBehaviour, IPointerClickHandler
          
             cards.Add(savedCard);
             CardViewer.inst.manuallyLoadCards = true;
+            if(!CardManifester.inst.isManifesting){
             CardManager.inst.DeactivateHand();
+            }
+            
             CardViewer.inst.ManuallyLoadCards(cards);
             CardViewer.inst.Open(savedCard);
         }

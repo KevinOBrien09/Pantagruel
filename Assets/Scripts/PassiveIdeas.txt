@@ -18,6 +18,7 @@
 //arrow characters, use arrows in iventory
 //character gains damage based on how much tarot they are missing
 //heals when a summon dies
+//gain extra max card in hand
 
 //Pride: Gain 1% of your target exp per exp gain.
 //Wrath: Gain .5 extra phys per level.

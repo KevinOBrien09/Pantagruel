@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5669258e2f96143ae00c7ec3de4b40, type: 3}
+  m_Name: CourierEffect
+  m_EditorClassIdentifier: 
+  targets: 
+  dodgeable: 0
+  howManyCardsToChoseFrom: 3
+  inHowManyTurns: 2
+  sfxSummon:
+    audioClip: {fileID: 8300000, guid: e6c89155e83071340b224aa040842473, type: 3}
+    pitchRange: {x: 0.9, y: 1}
+    volume: 0.8
+  sfxChoose:
+    audioClip: {fileID: 8300000, guid: 4a21b41e94de66943b52097e7385a997, type: 3}
+    pitchRange: {x: 0.9, y: 1}
+    volume: 1

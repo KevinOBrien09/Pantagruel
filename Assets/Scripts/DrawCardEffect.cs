@@ -13,7 +13,8 @@ public class DrawCardEffect :Effect
         if(args.isPlayer){
             for (int i = 0; i < numberOfCardsToBeDrawn; i++)
             {
-                CardManager.inst.DrawCard();
+                CardManager.inst.CreateCardBehaviour(CardManager.inst.DrawCard())    ; 
+            CardManager.inst.MakeHandInteractable();
             }
         }
         else{

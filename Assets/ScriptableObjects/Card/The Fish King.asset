@@ -16,10 +16,12 @@ MonoBehaviour:
   cardName: The Fish King
   picture: {fileID: 21300000, guid: 1f221a759b0f34541853e1eaef0feff4, type: 3}
   manaCost: 2
+  vfxSetUp: 
   vfx: 
   castDelay: 0
   effects:
   - {fileID: 11400000, guid: 837a9a561fc937b48adc3b7b9351168e, type: 2}
+  playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
@@ -29,3 +31,7 @@ MonoBehaviour:
   desc: <b>Summon:</b> The Fish King
   flavourText: 
   deckCost: 5
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0
+  unDodgeable: 1

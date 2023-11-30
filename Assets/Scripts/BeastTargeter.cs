@@ -12,8 +12,9 @@ public class BeastTargeter:Singleton<BeastTargeter>
     public GameObject cards;
     public List<BeastTargeterButton> buttons = new List<BeastTargeterButton>();
     public void Open(List<Beast> B)
-    {
-        cards.SetActive(false);
+    {BattleManager.inst.FUCKOFF = true;
+ cards.SetActive(false);
+       EndTurnButton.inst.Deactivate();
         foreach (var item in B)
         {
             BeastTargeterButton btb =  Instantiate(buttonPrefab,buttonHolder);
@@ -29,6 +30,7 @@ public class BeastTargeter:Singleton<BeastTargeter>
         foreach (var item in buttons)
         {Destroy(item.gameObject);}
         buttons.Clear();
+        BattleManager.inst.FUCKOFF = false;
         BattleField.inst.SetPlayerBeastIcon(b);
         BattleManager.inst.EndTurn();
         CardManager.inst.SwitchBeast(b);

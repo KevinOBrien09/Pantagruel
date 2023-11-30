@@ -17,24 +17,39 @@ MonoBehaviour:
     devNote:
       note: chance to see what card is drawn by opponent.
     beastName: Scout
+    spawn:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    die:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    scream:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
     flavourText: '"The coast is clear... for now"'
-    bottomCornerPos: {x: 0, y: -0.25}
+    playerStatusEffectPos: {x: 0, y: -4.5, z: 2, w: 1.5}
+    enemyStatusEffectPos: {x: 0, y: 9, z: 2, w: 1.5}
+    bottomCornerPos: {x: 0, y: -0.25, z: 0}
     battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 7965088197702528346, guid: a4cc741db417dba479ee87d45cfc8db8,
       type: 3}
     mainSprite: {fileID: 3727870464966811, guid: a4cc741db417dba479ee87d45cfc8db8,
       type: 3}
+    outLine: {fileID: 0}
     facingRight: 0
     bestiaryID: 77
-    wildDeck: {fileID: 0}
-    stats:
-      maxHealth: 59
-      def: 7
-      physical: 21
-      magic: 9
-      charisma: 5
-      luck: 5
+    wildDeck: {fileID: 11400000, guid: 9cdb4c4e03b279d479964cb5306283ff, type: 2}
+    baseStats:
+      maxHealth: 0
+      def: 0
+      physical: 0
+      magic: 0
+      charisma: 0
+      luck: 0
     statGrowthPerLevel:
       maxHealth: 3
       def: 2

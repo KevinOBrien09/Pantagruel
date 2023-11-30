@@ -113,6 +113,7 @@ public class BattleManager:Singleton<BattleManager>
             BattleIntro.inst.EnterBattle(PlayerParty.inst.activeBeast,RivalBeastManager.inst.activeBeast);
         }else
         {
+                BattleTicker.inst.Type("Fight or flight");
             WorldViewManager.inst.EnterBattle();
             StartCoroutine(q());
             IEnumerator q()
@@ -120,6 +121,7 @@ public class BattleManager:Singleton<BattleManager>
                 AudioManager.inst.GetSoundEffect().Play(enter);
                MusicManager.inst.EnterBattle();
                 yield   return new WaitForSeconds(2f);
+                    BattleTicker.inst.Type("Turn " +  BattleManager.inst.turn.ToString());
                  EnterBattlePartTwo();
 
             }
@@ -324,8 +326,23 @@ public class BattleManager:Singleton<BattleManager>
             {
                 while(statusEffectShit)
                 {yield return null;}
-            EventManager.inst.onNewPlayerTurn.Invoke();
-                CardManager.inst.DrawCard(); //bug?
+                EventManager.inst.onNewPlayerTurn.Invoke();
+                Card c = null;
+                if(!CardManager.inst.blockade)
+                {
+                    if(!CardManager.inst.currentTurnDrawIsPredeterminded())
+                    { c = CardManager.inst.DrawCard();}
+                    else
+                    { c = CardManager.inst.DrawPredeterminedCard();}
+
+                }
+              
+                if(c != null)
+                {
+                    CardManager.inst.CreateCardBehaviour(c)    ; //bug?
+                    
+                }
+                CardManager.inst.MakeHandInteractable();
             }
         }
     }
@@ -395,6 +412,7 @@ public class BattleManager:Singleton<BattleManager>
             EndTurnButton.inst.Reactivate();
             CardManager.inst.MakeHandInteractable();
             CardManager.inst.ActivateHand();
+             yield return new WaitForSeconds(.5f);
             BattleTicker.inst.Type("Make your move");
         }
     }
@@ -493,6 +511,7 @@ TriggerQueuedEffects();
         EventManager.inst.onBattleEnd.Invoke();
         turn = 0;
         effectsToUse.Clear();
+        PlayerManager.inst.movement.ResetPOV();
         CardStack.inst.Wipe();
         PetManager.inst.LeaveBattle();
         PlayerParty.inst.RemoveStatusEffectsEndOfCombat();

@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deck:
     cards:
-    - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
-    - {fileID: 11400000, guid: 03462aa98e784f54993928c4a9b23d05, type: 2}
+    - {fileID: 11400000, guid: 7dfa20122f8d91f4c9ec5e6a14a3a685, type: 2}
     discard: []
   combos: []

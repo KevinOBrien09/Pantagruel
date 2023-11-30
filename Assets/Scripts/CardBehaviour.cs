@@ -14,27 +14,27 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
     public RectTransform rt;
     public TextMeshProUGUI cardName;    
     public TextMeshProUGUI manaCost;    
-    public TextMeshProUGUI skillDesc;  
+
     public GameObject manaGem;
     public CanvasGroup canvasGroup;
     public Image icon;
-    public Image BG,paper;
-    public Color32 vaporousBlue;
+    public Image paper;
+    public Color32 vaporousBlue,manifestedRed;
     public List<Image> imagesToHaveWobbleShader = new List<Image>();
     public List<Image> imagesToHaveDissolveShader = new List<Image>();
     public Material vaporousWobble,vaporousDissolve;
     public float yUp;
     public bool interactable;
-    public bool isVapour;
+    public CardManager.CardState state;
     public GameObject manaIconGO;
     Canvas parentCanvas;
     Vector2 ogPos;
     List<Tween> activeTweens = new List<Tween>();
-    string desc;
+   
     float moveSpeed = .2f;
     int OGSorting;
     bool up;
-    bool descShown;
+   
     
     void Start()
     {
@@ -43,38 +43,38 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
         ogPos = rt.anchoredPosition;
     }
 
-    public void Init(Card newCard,bool isVapour_ = false)
+    public void Init(Card newCard,CardManager.CardState state)
     {
         card = newCard;
         icon.sprite = card.picture;
         cardName.text = card.cardName;
-        desc = newCard.desc;
-        if(card.manaCost == 0){
-           manaIconGO.SetActive(false);
-        }
-        else{
-            manaCost.text = RomanNumerals.ToRoman(card.manaCost);
-        }
+        gameObject.name = card.cardName;
+        if(card.manaCost == 0)
+        {manaIconGO.SetActive(false);}
+        else
+        {manaCost.text = RomanNumerals.ToRoman(card.manaCost);}
 
-        if(isVapour_)
+        switch (state)
         {
-            isVapour = true;
-            BG.color = Color.white;
+            case CardManager.CardState.VAPOUR:
+           
             paper.color = vaporousBlue;
-            skillDesc.color = Color.black;
+            icon.material = vaporousWobble;
             cardName.text = "<i>Vaporous </i>" + card.cardName;
-           // desc = "<size=80%><i>RAPID: Will be DESTROYED at the end of this turn.</i> <br></size>" + desc;
-            // foreach (var item in imagesToHaveWobbleShader)
-            // {
-            //     item.material = vaporousWobble;
-            // }
-          
+            break;
+            case CardManager.CardState.MANIFESTED:
+            paper.color = manifestedRed;
+            icon.material = vaporousWobble;
+            cardName.text = "<i>" + card.cardName;
+            break;
+
+            
+            default:
+            break;
         }
-
-      
+        this.state = state;
     }
-
-
+    
     public void VaporousDissolve()
     {
         List<Material> m = new List<Material>();
@@ -84,10 +84,6 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
             item.material = mat;
             m.Add(mat);
         } 
-
-        // cardName.transform.SetParent(BG.transform);
-        // manaCost.transform.SetParent(BG.transform);
-      
         float dissTime = 1.5f;
         foreach (var item in m)
         {
@@ -123,33 +119,12 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
         foreach (var item in activeTweens)
         {item.Kill();}
         CardManager.inst.Use(card,this);
-      //  Debug.Log(card.cardName + " was Cast");
+      
     }
 
     public bool canCast()
     {return CardFunctions.canCast(card,true);}
-
-    public void ShowDesc()
-    {
-        descShown = true;
-        icon.enabled = false;
-     //   manaCost.enabled = false;
-        skillDesc.enabled = true;
-        skillDesc.text = CardDescParser.GetBeastValues(card,PlayerParty.inst.activeBeast);
-        //desc;
-        manaGem.SetActive(false);
-    }
     
-    public void HideDesc()
-    {
-        descShown = false;
-        icon.enabled = true;
-        //manaCost.enabled = true;
-          manaGem.SetActive(true);
-        skillDesc.enabled = false;
-        skillDesc.text = string.Empty;
-    }
-
     public void GoUp()
     {
         activeTweens.Add(rt.DOAnchorPosY(yUp,moveSpeed));
@@ -180,11 +155,7 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
         if(gameObject != null)
         {
             if(up && !dragging)
-            {
-                if(descShown)
-                {HideDesc();}
-                GoDown();
-            }
+            {GoDown();}
         }
     }
     
@@ -206,8 +177,6 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
         {
             if(eventData.button == PointerEventData.InputButton.Left)
             {
-                if(descShown)
-                {HideDesc();}
                 GoDown();
                 dragging = false;
             }
@@ -231,21 +200,12 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
         if(eventData.button == PointerEventData.InputButton.Right)
         {
             List<Card> cards = new List<Card>();
-            // foreach (var item in CardManager.inst.hand)
-            // {
-            //     if(!cards.Contains(item.card)) 
-            //     {cards.Add(item.card);}
-            // }
             cards.Add(card);
             CardViewer.inst.manuallyLoadCards = true;
             CardManager.inst.DeactivateHand();
             CardViewer.inst.ManuallyLoadCards(cards);
             CardViewer.inst.Open(card);
             GoDown();
-            // if(descShown)
-            // {HideDesc();}
-            // else
-            // {ShowDesc();}
         }
     }
 

@@ -15,11 +15,12 @@ MonoBehaviour:
   Id: 1efe554b-fa29-4731-8660-4e6b0563a77d
   cardName: Baker Boy
   picture: {fileID: 21300000, guid: 5755f7303a149ae499d91f78f06e5531, type: 3}
-  manaCost: 6
+  manaCost: 1
   vfxSetUp: 
   vfx: 
   castDelay: 0
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: 4fcf3f2a073cb734cb499efa33bdaf47, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 0}
@@ -30,3 +31,7 @@ MonoBehaviour:
   desc: 'Manifest <i>Loaf</i> at the start of your turn for 3 turns. '
   flavourText: "\"Baker Boy-Anne Claude Philippe de Tubi\xE8res\""
   deckCost: 12
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0
+  unDodgeable: 1

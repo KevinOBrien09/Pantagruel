@@ -72,7 +72,7 @@ public class OverworldMovement : MonoBehaviour
     }
 
     public void ResetPOV(){
-
+    cam.DOFieldOfView(ogPOV,0);
     }
     
     void Move(Dir dir)

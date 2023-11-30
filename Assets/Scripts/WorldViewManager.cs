@@ -33,9 +33,12 @@ public class WorldViewManager:Singleton<WorldViewManager>
     }
 
     public void LeaveBattle()
-    {
-       
-        worldView.DOFade(1,.7f).OnComplete(()=>{ abstractBG.gameObject.SetActive(false);});
+     {
+    //       whiteFade.DOFade(1,.5f).OnComplete(()=>{
+    //          whiteFade.DOFade(0,.5f);
+worldView.DOFade(1,.7f).OnComplete(()=>{ abstractBG.gameObject.SetActive(false);});
+        //   });
+        
     }
     
     
@@ -43,7 +46,8 @@ public class WorldViewManager:Singleton<WorldViewManager>
     {
         CardBehaviour cb = null;
         ItemStack id = null;
-        if(other.gameObject.transform.parent.parent.TryGetComponent<CardBehaviour>(out cb))
+        Debug.Log(other.gameObject.name);
+        if(other.gameObject.transform.parent.TryGetComponent<CardBehaviour>(out cb))
         {
             if(CardBehaviour.dragging){
                 cardHoveringOverViewport=true;
@@ -64,7 +68,7 @@ public class WorldViewManager:Singleton<WorldViewManager>
     {
         CardBehaviour cb = null;
         ItemStack id = null;
-        if(other.gameObject.transform.parent.parent.TryGetComponent<CardBehaviour>(out cb))
+        if(other.gameObject.transform.parent.TryGetComponent<CardBehaviour>(out cb))
         {
             if(CardBehaviour.dragging){
                 cardHoveringOverViewport=false;

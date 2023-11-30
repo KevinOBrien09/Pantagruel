@@ -34,7 +34,7 @@ MonoBehaviour:
     playerStatusEffectPos: {x: 0, y: 14, z: 2, w: 1}
     enemyStatusEffectPos: {x: 0, y: 9, z: 2, w: 1.5}
     bottomCornerPos: {x: 0.075, y: -1.5, z: 0}
-    battlePos: {x: 0, y: -0.1, z: 0}
+    battlePos: {x: 0, y: -0.1, z: 0.5}
     beastGraphicPrefab: {fileID: 7239769961303039187, guid: c2cabca1198a0074a81184f868a59744,
       type: 3}
     uiPicture: {fileID: -9142641608525391146, guid: 03009ee19b26f6b41916b9a5c042ae5d,

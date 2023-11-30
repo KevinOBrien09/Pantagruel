@@ -121,14 +121,19 @@ public class CardViewer : Singleton<CardViewer>
         LoadCard(cards[index]);
     }
 
-    public void Close(){
-        if(gameObject.activeSelf){
-            AudioManager.inst.GetSoundEffect().Play(SystemSFX.inst.closeWindow);
-        }
-        if(BattleManager.inst.inBattle){
-            CardManager.inst.ActivateHand();
-              cards.Clear();
-              manuallyLoadCards = false;
+    public void Close()
+    {
+        if(gameObject.activeSelf)
+        {AudioManager.inst.GetSoundEffect().Play(SystemSFX.inst.closeWindow); }
+
+        if(BattleManager.inst.inBattle)
+        {
+            if(!CardManifester.inst.isManifesting){
+CardManager.inst.ActivateHand();
+            cards.Clear();
+            manuallyLoadCards = false;
+            }
+            
         }
         
         gameObject.SetActive(false);

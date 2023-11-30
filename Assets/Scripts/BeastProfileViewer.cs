@@ -18,6 +18,9 @@ public class BeastProfileViewer : Singleton<BeastProfileViewer>
     }
 
    public void Open(Beast b){
+    if(CardManifester.inst.isManifesting){
+        return;
+    }
         Apply(b);
         gameObject.SetActive(true);
     }

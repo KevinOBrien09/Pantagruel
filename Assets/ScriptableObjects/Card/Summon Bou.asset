@@ -23,11 +23,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0e9532906878b9c4da8015f2f57ed2d9, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
-    audioClip: {fileID: 0}
-    pitchRange: {x: 0, y: 0}
-    volume: 0
+    audioClip: {fileID: 8300000, guid: 8ca6159ab5bce954a80363fc39791e38, type: 3}
+    pitchRange: {x: 0.9, y: 1}
+    volume: 1
   element: 3
   beastClass: 7
   desc: <b>Summon:</b> Bou
   flavourText: 
   deckCost: 0
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0
+  unDodgeable: 1

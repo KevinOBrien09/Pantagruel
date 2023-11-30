@@ -20,8 +20,8 @@ MonoBehaviour:
   vfx: Slice
   castDelay: 0
   effects:
+  - {fileID: 11400000, guid: 8d5ed8e6c09ee704395400a30486f89b, type: 2}
   - {fileID: 11400000, guid: e599809a110710e4796e1c0027dbdd2b, type: 2}
-  - {fileID: 11400000, guid: 36593789721779343a5d7b1c6a2e0ded, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 8300000, guid: af6322b35587ded418a6810c69d10243, type: 3}
@@ -29,7 +29,7 @@ MonoBehaviour:
     volume: 0.5
   element: 0
   beastClass: 10
-  desc: Apply a bleed stack and then deal 10 raw damage to the target.
+  desc: Deal 10 raw damage and add a bleed stack to the target.
   flavourText: '"Cain Killing Abel-Albrecht Durer"'
   deckCost: 7
   unplayable: 0
