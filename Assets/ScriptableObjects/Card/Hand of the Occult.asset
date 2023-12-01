@@ -19,14 +19,19 @@ MonoBehaviour:
   vfxSetUp: 
   vfx: 
   castDelay: 0
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: 84054934666afb34e9a70a71b08bdfb7, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
   element: 0
-  beastClass: 17
+  beastClass: 16
   desc: Draw an OCCULT card from your deck.
   flavourText: 
   deckCost: 0
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0
+  unDodgeable: 0

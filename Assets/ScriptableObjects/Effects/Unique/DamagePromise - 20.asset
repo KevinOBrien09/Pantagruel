@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0605d286c9ed934293cc34466b06e06, type: 3}
   m_Name: DamagePromise - 20
   m_EditorClassIdentifier: 
+  targets: 
+  dodgeable: 0
   desiredEffects:
-  - {fileID: 11400000, guid: 6c4f0dec416b47f4a8b2602b42414523, type: 2}
+  - {fileID: 11400000, guid: f1ba2893e245ccc4288e51a75b15b833, type: 2}
   badEffects:
   - {fileID: 11400000, guid: 6c4f0dec416b47f4a8b2602b42414523, type: 2}
   castBadEffectsOnEnemy: 0
@@ -25,7 +27,7 @@ MonoBehaviour:
     volume: 1
   eventEnums: 1800000019000000
   unStackable: 1
-  turnDuration: 3
+  turnDuration: 2
   turnLimit: 1
   meter: 1
   meterMax: 20

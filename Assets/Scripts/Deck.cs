@@ -42,6 +42,16 @@ public class Deck
         else
         {return false;}
     }
+
+    public bool deckContainsCardOfTrait(BeastClass beastClass)
+    {
+        foreach (var item in cards)
+        {
+            if(item.beastClass == beastClass)
+            {return true;}
+        }
+        return false;
+    }
     
     public void ResetDiscardPile(){
 

@@ -105,7 +105,13 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
     public void EnableInteractable()
     {
         interactable = true;
-        canvas.overrideSorting = true;
+        StartCoroutine(q());
+        IEnumerator q(){
+   canvas.overrideSorting = false;
+   yield return new WaitForEndOfFrame();
+      canvas.overrideSorting = true;
+        }
+     
     }
 
     public void DisableInteractable()

@@ -28,16 +28,17 @@ MonoBehaviour:
     volume: 1
   element: 5
   beastClass: 17
-  desc: 'If you deal 40 damage within the next 3 turns trigger <i><b>Blood Spike</i></b>
-    on the enemy beast, otherwise deal it to your active beast. <br> <u><i><b>Blood
-    Spike</i></b></u>
+  desc: 'If you deal 20 damage within the next 2 turns trigger <i><b>Blood Spike</i></b>
+    on the enemy beast, otherwise deal it to the caster. <br> <u><i><b>Blood Spike</i></b></u>
 
-    Deal 20% max health damage to the target.
+    Deal
+    20% max health damage to the target.
 
-    <br><i><color=grey>This
-    card does not stack.'
+    <br><i><color=grey>This card does not
+    stack.'
   flavourText: '"The Knight, from The Dance of Death - Hans Holbein the Younger"'
   deckCost: 0
   unplayable: 0
   cannotBeDiscard: 0
   destroyOnCast: 0
+  unDodgeable: 1

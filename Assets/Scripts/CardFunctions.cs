@@ -21,6 +21,32 @@ public static class CardFunctions
         }
     }
 
+    public static Card DrawCardOfSpecificTrait(Deck deck,BeastClass beastClass)
+    {
+        if(deck.deckContainsCardOfTrait(beastClass)){
+            if(deck.cards.Count > 0)
+            {
+                foreach (var item in deck.cards)
+                {
+                    if(item.beastClass == beastClass){
+                        Card card = item;
+                        deck.cards.Remove(card);
+                        return card;
+                    }
+                }
+            
+               
+            }
+            else
+            {
+                Debug.Log("Deck is empty");
+                return null;
+            }
+        }
+        return null;
+     
+    }
+
     public static Card DrawPlayableCard(Deck deck)
     {
         if(deck.cards.Count > 0)
