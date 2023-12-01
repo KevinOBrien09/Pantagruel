@@ -87,7 +87,7 @@ public class BattleManager:Singleton<BattleManager>
         enemyRecord.Add(turn,e);
         playerRecord.Add(turn,p);
         turnState = TurnState.Player;
-        
+             AngelStage.inst.Toggle();
         if(battleType == BattleType.Wild)
         {
             RivalBeastManager.inst.CreateEnemyParty(WildEncounterManager.inst.GetEncounter());
@@ -360,12 +360,13 @@ public class BattleManager:Singleton<BattleManager>
         CheckForBadEffects();
         LoadStatusEffects();
         CheckForStatusEffectBeforeAllowingCards();
-        CheckStatMods();
+        CheckStatMods(PlayerParty.inst.party);
+        CheckStatMods(RivalBeastManager.inst.currentParty);
     }
 
-    public void CheckStatMods()
+    public void CheckStatMods(List<Beast> e )
     {
-        foreach (var beast in PlayerParty.inst.party)
+        foreach (var beast in e)
         {
             List<StatMod> bin = new List<StatMod>();
             foreach (var mod in beast.mods)
@@ -456,7 +457,7 @@ TriggerQueuedEffects();
                             UnityAction ua =()=>    d.Trigger();
                             qa.action = ua;
                             string m =d.scriptableObject.statusEffect.ToString();
-                            qa.args =  new EffectArgs(null,null,false,null,null,-55, MiscFunctions.FirstLetterToUpperCaseOrConvertNullToEmptyString(m),false);
+                            qa.args =  new EffectArgs(null, null,null,null,-55, MiscFunctions.FirstLetterToUpperCaseOrConvertNullToEmptyString(m));
                             effectsToUse.Enqueue(qa);
                         }
                     }
@@ -485,7 +486,7 @@ TriggerQueuedEffects();
                 Debug.Log("Remove " + item.Value);
                 foreach (var e in item.Value.subbedEvents)
                 {EventManager.inst.RemoveEvent(e,item.Value.action);}
-                CardStackBehaviour b =  CardStack.inst.CreateActionStack(item.Value.args.card,(Beast) item.Value.args.caster,item.Value.args.isPlayer);
+                CardStackBehaviour b =  CardStack.inst.CreateActionStack(item.Value.args.card,(Beast) item.Value.args.caster);
                 b.ConditionFailed();
                 
                 if( item.Value.promise. unStackable){
@@ -505,7 +506,7 @@ TriggerQueuedEffects();
         // {
         //     Debug.Log("Player did " +item.Value + "Damage on turn " + item.Key);
         // }
-        CheckStatMods();
+        CheckStatMods(PlayerParty.inst.party);
         playerRecord.Clear();
         enemyRecord.Clear();
         EventManager.inst.onBattleEnd.Invoke();
@@ -531,6 +532,7 @@ TriggerQueuedEffects();
         BattleTicker.inst.Type(LocationManager.inst.currentLocation.locationName);
         Inventory.inst.DisableItemDragOnAll();
         RightPanelButtonManager.inst.SwapToOverworld();
+         AngelStage.inst.Toggle();
     }
 
     // public EntityOwnership GetBeastOwnership(Beast b)

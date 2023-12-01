@@ -30,7 +30,7 @@ MonoBehaviour:
       pitchRange: {x: 0, y: 0}
       volume: 0
     flavourText: 
-    playerStatusEffectPos: {x: 0, y: -4.5, z: 2, w: 1.5}
+    playerStatusEffectPos: {x: 0, y: 1.35, z: 2, w: 1.5}
     enemyStatusEffectPos: {x: 0, y: 9, z: 2, w: 1.5}
     bottomCornerPos: {x: 0, y: -0.25, z: 0}
     battlePos: {x: 0, y: 0, z: 2}

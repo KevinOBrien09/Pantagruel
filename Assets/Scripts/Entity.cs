@@ -28,6 +28,7 @@ public class Entity : MonoBehaviour
     public int dodge;
     public Stats statMods = new Stats();
     public List<StatMod> mods = new List<StatMod>();
+    public bool stunned;
 
     void Start(){
         dodge = 50;
@@ -54,7 +55,7 @@ public class Entity : MonoBehaviour
         postMitigationDamage += woundDamage;
         currentHealth = currentHealth-postMitigationDamage;
         EntityOwnership damageSource = EntityOwnership.ERROR;
-        if(args.isPlayer)
+        if(args.caster.OwnedByPlayer())
         {damageSource = EntityOwnership.PLAYER;}
         else
         {damageSource = EntityOwnership.ENEMY;}
@@ -271,6 +272,18 @@ public class Entity : MonoBehaviour
     
       return q;
     }
+
+    public void Stun()
+    {
+        stunned = true;
+        animatedInstance.Stun();
+    }
+
+    public void ClearStun()
+    {
+        stunned = false;
+    }
+
 
 
     

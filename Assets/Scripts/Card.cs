@@ -12,7 +12,7 @@ public class Card :GUIDScriptableObject
     public float castDelay = .2f;
     public List<Effect> effects = new List<Effect>();
     public bool playVFXAfterDelay;
-    public SoundData soundEffect;
+    public SoundData soundEffect,missSound;
     public Element element;
     public BeastClass beastClass;
     [TextArea(5,5)] public string desc;

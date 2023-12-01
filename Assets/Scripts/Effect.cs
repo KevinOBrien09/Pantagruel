@@ -7,7 +7,8 @@ using UnityEngine;
 public class Effect :ScriptableObject
 {
     public List<EffectTarget> targets = new List<EffectTarget>();
-    public bool dodgeable;
+  
+    public bool offensive;
    
     public virtual void  Use(EffectArgs args)
     {
@@ -20,6 +21,9 @@ public class Effect :ScriptableObject
   
 
     }
+
+   
+   
 
     public List<Entity> AffectedEntities(EffectArgs args)
     {
@@ -35,7 +39,7 @@ public class Effect :ScriptableObject
 
     public Entity GetTarget(EffectTarget target,EffectArgs args)
     {
-       if(args. isPlayer)
+       if(args.caster.OwnedByPlayer())
        {
             switch (target)
             {
@@ -57,7 +61,7 @@ public class Effect :ScriptableObject
                 return PetManager.inst.enemyPet;
                 default:
                 Debug.Log("DEFAULT CASE.");
-                return args.target;
+                return null;
             }
         }
         else
@@ -82,7 +86,7 @@ public class Effect :ScriptableObject
                 return PetManager.inst.playerPet;
                 default:
                 Debug.Log("DEFAULT CASE.");
-                return args.target;
+                return null;
             }
 
         }
@@ -95,30 +99,36 @@ public class Effect :ScriptableObject
         return true;
     }
 } 
-public enum EffectTarget{CASTER,RIVALTARGET,RIVALPET,RIVALBEAST,MYPET,MYBEAST,MYTARGET}
+public enum EffectTarget{CASTER,RIVALTARGET,RIVALPET,RIVALBEAST,MYPET,MYBEAST,MYTARGET,UTILITY}
 
 public class EffectArgs
 {
     public Entity caster;
-    public Entity target;
-    public  bool isPlayer;
     public Card card; 
     public string tickerTitle;
     public CardStackBehaviour stackBehaviour;
     public int castOrder;
-    public bool dodged;
+    public Entity target;
+ 
     
 
-    public EffectArgs(Entity CASTER,Entity TARGET,bool ISPLAYER, Card CARD,CardStackBehaviour STACK,int CASTORDER,string TICKERTITLE,bool DODGED)
+    public EffectArgs(Entity CASTER,Entity TARGET,Card CARD,CardStackBehaviour STACK,int CASTORDER,string TICKERTITLE)
     {
         caster = CASTER;
-        target =TARGET;
-        isPlayer = ISPLAYER;
+        target = TARGET;
+        // target =TARGET;
+        // isPlayer = ISPLAYER;
         card = CARD;
         stackBehaviour = STACK;
         castOrder = CASTORDER;
         tickerTitle = TICKERTITLE;
-        dodged = DODGED;
+      
         
     }
+}
+
+[System.Serializable]
+public class AdditionalEffect{
+    
+
 }

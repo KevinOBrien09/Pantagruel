@@ -30,6 +30,7 @@ MonoBehaviour:
       pitchRange: {x: 0, y: 0}
       volume: 0
     flavourText: 
+    stunBirdHeight: 17.7
     playerStatusEffectPos: {x: 0, y: -4.5, z: 2, w: 1.5}
     enemyStatusEffectPos: {x: -1, y: 12, z: 2, w: 1}
     bottomCornerPos: {x: 0, y: -1.5, z: 0}

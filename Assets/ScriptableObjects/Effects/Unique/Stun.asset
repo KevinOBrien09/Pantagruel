@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e35d3fd34e2c2d44b514adffff1f0ac, type: 3}
-  m_Name: Wound
+  m_Script: {fileID: 11500000, guid: b7c1ed8de17556f46a2cf25732a1981a, type: 3}
+  m_Name: Stun
   m_EditorClassIdentifier: 
-  targets: 
-  dodgeable: 1
-  statusEffect: 5
-  removeAtEndOfCombat: 1
-  howManyTurns: 0
-  cards: []
+  targets: 01000000
+  offensive: 1

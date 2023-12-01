@@ -11,15 +11,11 @@ public class DrawCardOfSpecificTrait :Effect
     public bool lookForElement;
     public override void Use(EffectArgs args)
     {
-        if(args.isPlayer)
+        if(args.caster.OwnedByPlayer())
         {
-           
             CardManager.inst.CreateCardBehaviour(CardManager.inst.DrawCardOfSpecificTrait(beastClass)); 
-                CardManager.inst.ActivateHand();
-                 CardManager.inst.MakeHandInteractable();
-          
-           
-            
+            CardManager.inst.ActivateHand();
+            CardManager.inst.MakeHandInteractable();
         }
         else{
             Debug.LogAssertion("make enemy draw card");

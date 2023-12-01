@@ -10,7 +10,7 @@ public class BonusGoldAtEndOfCombatEffect :Effect
 
     public override void Use(EffectArgs args)
     {
-        if(args.isPlayer)
+        if(args.caster.OwnedByPlayer())
         {RewardManager.inst.additionalGold += bonusGold;} 
         else
         {Debug.LogAssertion("make enemy have reward??");}

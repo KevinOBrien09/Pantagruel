@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cb03a470100ce48a17133dd4ca9338, type: 3}
   m_Name: GainShield
   m_EditorClassIdentifier: 
-  targets: 
-  dodgeable: 0
+  targets: 00000000
+  offensive: 0
   statusEffect: 0
   removeAtEndOfCombat: 1
   howManyTurns: 0

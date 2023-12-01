@@ -14,10 +14,10 @@ public class Catch :Effect
         BattleTicker.inst.Type("The beast....");
 
         CardManager.inst.DeactivateHand();
-   
-        if(CatchManager.IsCaptureSuccessful(ballPower,(Beast) args .target))
+    
+        if(CatchManager.IsCaptureSuccessful(ballPower,(Beast) RivalBeastManager.inst.activeBeast))
         {
-            PlayerParty.inst.AddNewBeast((Beast)args .target);
+            PlayerParty.inst.AddNewBeast((Beast)RivalBeastManager.inst.activeBeast);
             PassiveManager.inst.OrginizePassiveActivity();
             Beast b = RivalBeastManager.inst.activeBeast;
             RivalBeastManager.inst.RemoveActiveBeast();

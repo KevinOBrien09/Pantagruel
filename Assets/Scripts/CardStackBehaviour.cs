@@ -19,9 +19,9 @@ public class CardStackBehaviour : MonoBehaviour, IPointerClickHandler
     public GameObject meterGO;
    
     
-    public void Init(Card card,Beast b,bool isPlayer,bool dodged)
+    public void Init(Card card,Beast caster,bool dodged)
     {
-        if(isPlayer){
+        if(caster.OwnedByPlayer()){
             bg.color = blue;
         }
         else{
@@ -34,7 +34,7 @@ public class CardStackBehaviour : MonoBehaviour, IPointerClickHandler
         cardPic.sprite = card.picture;
 
         savedCard = card;
-        caster = b;
+        this.caster = caster;
         turnPlayed = BattleManager.inst.turn;
         Promise p = null;
        

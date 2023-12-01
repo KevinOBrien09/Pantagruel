@@ -108,6 +108,7 @@ public class BeastData
     [TextArea] public string flavourText;
     [Header("Graphics")]
     [Space()]
+    public float stunBirdHeight = 20;
     public Vector4 playerStatusEffectPos =  new Vector4(0,-4.5f,2,1.5f);
     public Vector4 enemyStatusEffectPos =  new Vector4(0,9,2,1.5f);
     public Vector3 bottomCornerPos = new Vector2(0,-.25f);

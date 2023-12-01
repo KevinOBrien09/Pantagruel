@@ -18,13 +18,16 @@ MonoBehaviour:
   manaCost: 1
   vfxSetUp: 
   vfx: Slice1
-  castDelay: 0.2
+  castDelay: 0.4
   effects:
   - {fileID: 11400000, guid: 6cf636112f9504844b7b2f6d2427370d, type: 2}
-  - {fileID: 11400000, guid: 0b3b431db58fa76408f6f8b19cc7c562, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 8300000, guid: fc6f283a4e788a8498955442e85c8ea5, type: 3}
+    pitchRange: {x: 0.9, y: 1}
+    volume: 1
+  missSound:
+    audioClip: {fileID: 8300000, guid: 889aee39a60ef1f4ea83050b4c443fb4, type: 3}
     pitchRange: {x: 0.9, y: 1}
     volume: 1
   element: 0

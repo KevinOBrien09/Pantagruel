@@ -13,15 +13,14 @@ public class StatModiferEffect : Effect
     public bool untilEndOfCombat;
     public override void Use(EffectArgs args)
     {
-        foreach (var item in AffectedEntities(args))
-        { 
+        
             StatMod mod = new StatMod();
             mod.change = amount;
             mod.stat = statName;
             mod.turnToDieOn = duration + BattleManager.inst.turn;
             mod.untilEndOfCombat = untilEndOfCombat;
-            item.ModifyStat(mod);
-        }
+           args.target.ModifyStat(mod);
+        
     }
      
     

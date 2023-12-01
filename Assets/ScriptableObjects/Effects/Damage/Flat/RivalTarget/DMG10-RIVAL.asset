@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DMG10-RIVAL
   m_EditorClassIdentifier: 
   targets: 01000000
-  dodgeable: 1
+  offensive: 1
   damageValue: 10
   negateShield: 0
   hit:

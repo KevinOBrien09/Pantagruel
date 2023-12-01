@@ -9,6 +9,7 @@ public class BattleGraphicManager : Singleton<BattleGraphicManager>
     public int battleLayer;
     public SpriteRenderer basicRenderer;
     public BeastAnimatedInstance animatedInstance;
+    public GameObject stunBirds;
     public void Init(BeastScriptableObject scriptableObject)
     {
         if(currentBeast != null)
@@ -31,6 +32,17 @@ public class BattleGraphicManager : Singleton<BattleGraphicManager>
             AI.Init(RivalBeastManager.inst.activeBeast);
             animatedInstance = AI;
             currentBeast = newBeast;
+            if(AI.stunBirds == null){
+               GameObject birds =  Instantiate(stunBirds,AI.transform);
+                foreach (Transform item in MiscFunctions.GatherAllTransforms(birds.transform,new List<Transform>()))
+                {
+                    item.gameObject.layer = battleLayer;
+                }
+               birds.transform.localPosition = new Vector3(birds.transform.localPosition.x,
+               scriptableObject.beastData.stunBirdHeight,birds.transform.localPosition.z);
+               birds.SetActive(false);
+               AI.stunBirds = birds;
+            }
 
         }
         else
@@ -41,6 +53,17 @@ public class BattleGraphicManager : Singleton<BattleGraphicManager>
             BeastAnimatedInstance AI =   basicRenderer.gameObject.AddComponent<BeastAnimatedInstance>();
             AI.Init(RivalBeastManager.inst.activeBeast);
             animatedInstance = AI;
+            if(AI.stunBirds == null){
+               GameObject birds =  Instantiate(stunBirds,AI.transform);
+                foreach (Transform item in MiscFunctions.GatherAllTransforms(birds.transform,new List<Transform>()))
+                {
+                    item.gameObject.layer = battleLayer;
+                }
+               birds.transform.localPosition = new Vector3(birds.transform.localPosition.x,
+               scriptableObject.beastData.stunBirdHeight,birds.transform.localPosition.z);
+               birds.SetActive(false);
+               AI.stunBirds = birds;
+            }
         }
     }
 

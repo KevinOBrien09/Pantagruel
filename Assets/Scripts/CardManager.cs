@@ -21,6 +21,12 @@ public class CardSFXPair{
     public SoundData sfx;
 }
 
+public class HitData{
+    public Entity entity;
+    public bool dodged;
+    public List<Effect> effects = new List<Effect>();
+}
+
 public class CardManager:Singleton<CardManager>                   
 {
     public enum CardState{NORMAL,VAPOUR,MANIFESTED}
@@ -351,14 +357,11 @@ public class CardManager:Singleton<CardManager>
         IEnumerator q()
         {
             CardManager.inst.DeactivateHand();
-          
-            bool dodged = Maths.PercentCalculator(RivalBeastManager.inst.activeBeast.dodge);
-            if(usedCard.unDodgeable)
-            {
-                dodged = false;
-            }
-            if(!usedCard.playVFXAfterDelay)
-            {}
+            behaviour.gameObject.SetActive(false);
+            // bool dodged = Maths.PercentCalculator(RivalBeastManager.inst.activeBeast.dodge);
+            // if(usedCard.unDodgeable)
+            // {dodged = false;}
+         
 
             if(usedCard.playVFXAfterDelay)
             {
@@ -366,41 +369,101 @@ public class CardManager:Singleton<CardManager>
                 {BattleEffectManager.inst.Play(usedCard.vfxSetUp);}
             }
             
-            if(usedCard.soundEffect.audioClip != null)
-            {
-                if(!dodged){
-                AudioManager.inst.GetSoundEffect().Play(usedCard.soundEffect);
-                }
-                
-            }
-            behaviour.gameObject.SetActive(false);
+            Dictionary<Entity,HitData> dict = new Dictionary<Entity, HitData>();
+            bool atleastOneHit = false;
+            foreach (var effect in usedCard.effects)
+            { 
+                EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,null,  null,null,-99,"");
+               
+                foreach (var item in effect.AffectedEntities(args))
+                {
+                    if(item != null)
+                    {
+                        if(!dict.ContainsKey(item))
+                        {
+                            if(effect.offensive)
+                            { 
+                                HitData data = new HitData();
+                                data.entity = item;
+                                if(item.stunned)
+                                { data.dodged = false;}
+                                else{ data.dodged = Maths.PercentCalculator(item.dodge);}
+                               
+                                data.effects = new List<Effect>();
+                                data.effects. Add(effect);
+                                dict.Add(item,data);
 
+                                if(!data.dodged){
+                                    atleastOneHit = true;
+                                }
+                            
+                            }
+                            else
+                            {
+                                HitData data = new HitData();
+                                data.entity = item;
+                                data.dodged = false;
+                                data.effects = new List<Effect>();
+                                data.effects. Add(effect);
+                                dict.Add(item,data);
+                                atleastOneHit = true;
+                            }
+                            
+                        }
+                    }
+                   
+                }
+            }
+            if(atleastOneHit){
+      AudioManager.inst.GetSoundEffect().Play(usedCard.soundEffect);
+            }
+            else{
+                AudioManager.inst.GetSoundEffect().Play(usedCard.missSound);
+            }
+      
             yield return new WaitForSeconds(usedCard.castDelay);
+
+
             BattleEffectManager.inst.Play(usedCard.vfx);
+
             if(behaviour.state == CardState.NORMAL)
             {
                 if(!usedCard.destroyOnCast)
-                {currentDeck.discard.Add(usedCard);
-                }
-               
+                {currentDeck.discard.Add(usedCard);}
             }
 
             if(usedCard.playVFXAfterDelay)
             {BattleEffectManager.inst.Play(usedCard.vfx);}
+
             BattleTicker.inst.Type(usedCard.cardName);
             ManaManager.inst.Spend(usedCard.manaCost);
+
             
+               
             RemoveFromHand(behaviour);
-            CardStackBehaviour stackBehaviour =  CardStack.inst.CreateActionStack(usedCard,PlayerParty.inst.activeBeast,true,dodged);
-          
-            foreach (var effect in usedCard.effects)
-            { 
-                EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,BattleManager.inst.enemyTarget,true,usedCard,stackBehaviour,
-                BattleManager.inst.playerRecord[BattleManager.inst.turn].cardsPlayedThisTurn.Count-1,usedCard.cardName,dodged);
-                effect.Use(args); 
+            CardStackBehaviour stackBehaviour =  CardStack.inst.CreateActionStack(usedCard,PlayerParty.inst.activeBeast);
+   
+            foreach (var targets in dict)
+            {
+                foreach (var effect in targets.Value.effects)
+                { 
+                    EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,targets.Value.entity, usedCard,stackBehaviour,
+                    BattleManager.inst.playerRecord[BattleManager.inst.turn].cardsPlayedThisTurn.Count-1,usedCard.cardName);
+                    
+                    if(effect.offensive)
+                    {
+                        if(targets.Value.dodged) //if the target dodged
+                        {targets.Value.entity.animatedInstance.Dodge();}
+                        else
+                        {effect.Use(args);}
+                    }
+                    else
+                    { effect.Use(args); }
+                }
             }
-           BattleManager.inst. StartCoroutine(piss());
-            
+
+           
+            BattleManager.inst. StartCoroutine(piss());
             IEnumerator piss()
             {
                 while(BattleManager.inst.FUCKOFF)

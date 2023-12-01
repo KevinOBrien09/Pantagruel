@@ -10,7 +10,7 @@ public class DrawCardEffect :Effect
 
     public override void Use(EffectArgs args)
     {
-        if(args.isPlayer){
+        if(args.caster.OwnedByPlayer()){
             for (int i = 0; i < numberOfCardsToBeDrawn; i++)
             {
                 CardManager.inst.CreateCardBehaviour(CardManager.inst.DrawCard())    ; 

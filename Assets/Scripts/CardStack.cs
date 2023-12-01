@@ -55,11 +55,11 @@ public class CardStack : Singleton<CardStack> //holder for card history
     }
 
 
-    public CardStackBehaviour CreateActionStack(Card c,Beast b,bool isPlayer,bool dodged = false)
+    public CardStackBehaviour CreateActionStack(Card c,Beast caster,bool dodged = false)
     {
 
         CardStackBehaviour action = Instantiate(cardStackBehaviour,holder);
-        action.Init(c,b,isPlayer,dodged);
+        action.Init(c,caster,dodged);
         behaviours.Add(action);
         turnActionDict[BattleManager.inst.turn].Add(c);
         DOVirtual.Float( scrollbar.value,1,.2f,v  => 

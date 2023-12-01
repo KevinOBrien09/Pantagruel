@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: 10-DMG-RIVALPET
   m_EditorClassIdentifier: 
   targets: 02000000
-  dodgeable: 1
+  offensive: 1
   damageValue: 10
+  negateShield: 0
+  hit:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0

@@ -11,9 +11,12 @@ public class ChangeGuardStateEffect :StatusEffectEffect
 
     public override void Use(EffectArgs args)
     {
-       // ;
-        args.caster.AddShield(args.caster.statusEffectHandler.CreateStack(StatusEffects.SHIELD));
-       // ChangeGuardState(state);
+       
+            if(args.target.statusEffectHandler != null)
+            {args.target.AddShield(args.target.statusEffectHandler.CreateStack(StatusEffects.SHIELD));}
+            else
+            {Debug.LogWarning(args.target.name + " has no status effect handler cannot add shield");}
+        
     }
 
 }

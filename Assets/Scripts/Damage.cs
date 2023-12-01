@@ -10,19 +10,26 @@ public class Damage :Effect
     public float damageValue;
     public bool negateShield;
     public SoundData hit;
+    public Effect additionalEffect;
     public override void Use(EffectArgs args)
     {
 
        
-        foreach (var item in AffectedEntities(args))
+        
+        
+          
+        (float,Color textColor) q = GetDamageValue(args,args.target);
+        args.target.TakeDamage(q.Item1,args,negateShield,q.textColor);
+        if(additionalEffect !=null)
         {
-            if(dodgeable && args.dodged){
-                item.animatedInstance.Dodge();
-                return;
+            foreach (var item in additionalEffect. AffectedEntities(args))
+            {
+                EffectArgs ea = new EffectArgs(args.caster,item,args.card,args.stackBehaviour,args.castOrder,args.tickerTitle);
+                additionalEffect. Use(ea);
             }
-            (float,Color textColor) q = GetDamageValue(args,item);
-            item.TakeDamage(q.Item1,args,negateShield,q.textColor);
+          
         }
+       
          //AudioManager.inst.GetSoundEffect().Play(hit);
     }
 

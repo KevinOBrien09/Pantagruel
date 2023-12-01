@@ -10,7 +10,10 @@ public class ParasiteEffect : StatusEffectEffect
 
     public override void Use(EffectArgs args)
     {
-       CreateStatusEffectStack(args).AddStatusEffectCardToDeck(cards);
+        
+            CreateStatusEffectStack(args.target).AddStatusEffectCardToDeck(cards);
+        
+       
     }
      
     

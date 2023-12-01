@@ -8,7 +8,7 @@ public class SwapBeastEffect :Effect
 {
     public override void Use(EffectArgs args)
     {
-        if(args.isPlayer){
+        if(args.caster.OwnedByPlayer()){
             List<Beast> b = new List<Beast>(PlayerParty.inst.party);
             b.Remove(PlayerParty.inst.activeBeast);
         

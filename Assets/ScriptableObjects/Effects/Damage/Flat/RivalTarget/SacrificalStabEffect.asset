@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c4bb26bdc9d9a54ebc71a3c8db8b370, type: 3}
-  m_Name: DMG 5-RIVAL
+  m_Name: SacrificalStabEffect
   m_EditorClassIdentifier: 
   targets: 01000000
-  dodgeable: 1
+  offensive: 1
   damageValue: 5
   negateShield: 0
   hit:
     audioClip: {fileID: 8300000, guid: b99f66a16dd52f040a15ed94cecc98b0, type: 3}
     pitchRange: {x: 0.9, y: 1}
     volume: 1
+  additionalEffect: {fileID: 11400000, guid: 14dfa21977fc6e24b889d944a87a1724, type: 2}

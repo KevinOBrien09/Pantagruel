@@ -22,7 +22,7 @@ public class Promise :Effect
     public override void Use(EffectArgs args)
     {  
         string id =  Guid.NewGuid().ToString(); //check if already in dict
-        if(args.isPlayer)
+        if(args.caster.OwnedByPlayer())
         {
           foo:
             if(!CardManager.inst.promiseDict.ContainsKey(id))
@@ -99,18 +99,18 @@ public class Promise :Effect
 
     public void ExecuteFluff(EffectArgs args){
         AudioManager.inst.GetSoundEffect().Play(soundData);
-        if(args.target == RivalBeastManager.inst.activeBeast){
-  BattleEffectManager.inst.Play(vfx);
+        if(!args.caster.OwnedByPlayer()){
+        BattleEffectManager.inst.Play(vfx);
         }
       
     }
 
     public virtual void ExecuteEffects(EffectArgs OGargs)
     {
-        if(CardFunctions.oneEffectIsViable(desiredEffects,OGargs.isPlayer)){
+        if(CardFunctions.oneEffectIsViable(desiredEffects,OGargs.caster.OwnedByPlayer())){
             foreach (var effect in desiredEffects)
             { 
-                EffectArgs arg = new EffectArgs(OGargs.caster,OGargs.target,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName,false);
+                EffectArgs arg = new EffectArgs(OGargs.caster,OGargs.target, OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
                 effect.Use(arg); 
             }
         }
@@ -120,15 +120,15 @@ public class Promise :Effect
     public virtual void ExecuteBadEffects(EffectArgs OGargs)
     {
         ExecuteFluff(OGargs);
-        if(CardFunctions.oneEffectIsViable(badEffects,OGargs.isPlayer)){
+        if(CardFunctions.oneEffectIsViable(badEffects,OGargs.caster.OwnedByPlayer())){
             foreach (var effect in badEffects)
             { 
                 if(castBadEffectsOnEnemy){
-                EffectArgs arg = new EffectArgs(OGargs.caster,RivalBeastManager.inst.activeBeast,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName,false);
+                EffectArgs arg = new EffectArgs(OGargs.caster,OGargs.target, OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
                 effect.Use(arg); 
                 }
                 else{
-                EffectArgs arg = new EffectArgs(OGargs.caster,PlayerParty.inst.activeBeast,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName,false);
+                EffectArgs arg = new EffectArgs(OGargs.caster,OGargs.target,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
                 effect.Use(arg); 
                 }
                 
@@ -138,7 +138,7 @@ public class Promise :Effect
     }
 
    public void CreateSuccessfullActionStack(EffectArgs OGargs){
-  CardStackBehaviour b = CardStack.inst.CreateActionStack( OGargs.card,(Beast) OGargs.caster,OGargs.isPlayer);
+  CardStackBehaviour b = CardStack.inst.CreateActionStack( OGargs.card,(Beast) OGargs.caster);
         b.ConditionFufilled();
     }
 

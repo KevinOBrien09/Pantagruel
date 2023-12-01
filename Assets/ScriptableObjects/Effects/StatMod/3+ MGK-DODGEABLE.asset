@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 3+ MGK-DODGEABLE
   m_EditorClassIdentifier: 
   targets: 00000000
-  dodgeable: 1
+  offensive: 0
   statName: 2
   amount: 3
   duration: 1

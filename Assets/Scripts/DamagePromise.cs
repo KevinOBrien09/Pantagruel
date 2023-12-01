@@ -9,7 +9,7 @@ public class DamagePromise :Promise
 {
     public override void PromiseFufilled(EffectArgs OGargs,   string id)
     {
-        if(OGargs.isPlayer)
+        if(OGargs.caster.OwnedByPlayer())
         {
             int totalDamage = 0;
             for (int i = CardManager.inst.promiseDict[id].turnCastOn; i < CardManager.inst.promiseDict[id].turnToDieOn; i++)
@@ -55,12 +55,12 @@ public class DamagePromise :Promise
 
     public override void ExecuteEffects(EffectArgs OGargs)
     {   
-        if(OGargs.isPlayer)
+        if(OGargs.caster.OwnedByPlayer())
         {
-            if(CardFunctions.oneEffectIsViable(desiredEffects,OGargs.isPlayer)){
+            if(CardFunctions.oneEffectIsViable(desiredEffects,OGargs.caster.OwnedByPlayer())){
                 foreach (var effect in desiredEffects)
                 { 
-                    EffectArgs arg = new EffectArgs(OGargs.caster,BattleManager.inst.enemyTarget,OGargs.isPlayer,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName,false);
+                    EffectArgs arg = new EffectArgs(OGargs.caster,OGargs.target,  OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
                     effect.Use(arg); 
                 }
             }

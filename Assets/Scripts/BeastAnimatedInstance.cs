@@ -16,7 +16,7 @@ public class BeastAnimatedInstance : MonoBehaviour
     Entity beast;
     StatusEffectHandler effectHandler;
     public ParticleSystem blood;
-
+    public GameObject stunBirds;
     public void Init(Entity b)
     {
         SpriteRenderer a = null;
@@ -53,6 +53,22 @@ public class BeastAnimatedInstance : MonoBehaviour
            
         }
         //  AudioManager.inst.GetSoundEffect().Play(SystemSFX.inst.bleed);
+    }
+
+    public void Stun(){
+        TakeDamage(Color.yellow);
+        stunBirds.SetActive(true);
+     
+      
+    }
+
+     public void RemoveStun(){
+        
+        stunBirds.SetActive(false);
+        
+   
+
+      
     }
 
     public void Dodge()

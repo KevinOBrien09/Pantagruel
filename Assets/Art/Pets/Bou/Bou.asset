@@ -17,7 +17,7 @@ MonoBehaviour:
   uiPicture: {fileID: -1757901818, guid: 0f43fd9836c91bf41bc77914f5c3857c, type: 3}
   petName: Bou
   stats:
-    maxHealth: 1
+    maxHealth: 35
     def: 0
     physical: 0
     magic: 0

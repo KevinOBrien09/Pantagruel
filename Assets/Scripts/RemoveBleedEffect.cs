@@ -8,7 +8,13 @@ public class RemoveBleedEffect : Effect
 {
     public override void Use(EffectArgs args)
     {
-        args.caster.statusEffectHandler.ClearAllBleeds();
+        
+        
+            if(args.target.statusEffectHandler != null)
+            {  args.target.statusEffectHandler.ClearAllBleeds();}
+            else
+            {Debug.LogWarning(args.target.name + " has no status effect handler cannot remove bleed");}
+        
     }
 
     public override bool canUse(bool isPlayer)

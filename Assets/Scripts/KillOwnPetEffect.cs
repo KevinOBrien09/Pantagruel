@@ -8,11 +8,10 @@ public class KillOwnPetEffect :Effect
 {
     public override void Use(EffectArgs args)
     {
-        foreach (var item in AffectedEntities(args))
-        { 
+        
             EntityOwnership ownership;
             BattleManager.TurnRecord turnRecord;
-            if(args.isPlayer)
+            if(args.caster.OwnedByPlayer())
             {
                 ownership = EntityOwnership.PLAYER;
                 turnRecord =  BattleManager.inst.playerRecord[BattleManager.inst.turn];
@@ -29,7 +28,7 @@ public class KillOwnPetEffect :Effect
             p.castOrder = args.castOrder;
             turnRecord.damageDealtByEachCard.Add(p);
             PetManager.inst.playerPet.Die(ownership);
-        }
+        
     }
 
     public override bool canUse(bool isPlayer)

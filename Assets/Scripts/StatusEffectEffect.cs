@@ -12,16 +12,19 @@ public class StatusEffectEffect :Effect
     public List<Card> cards = new List<Card>();
     public override void Use(EffectArgs args)
     {
-        StatusEffectDisplay d =  CreateStatusEffectStack(args);
+        
+            StatusEffectDisplay d =  CreateStatusEffectStack(args.target);
+        
+
     }
 
-    public StatusEffectDisplay CreateStatusEffectStack(EffectArgs args)
+    public StatusEffectDisplay CreateStatusEffectStack(Entity e)
 	{
-        if(args.target.statusEffectHandler != null)
+        if(e.statusEffectHandler != null)
 		{
-            if(!args.dodged && dodgeable){
-  return  args.target.statusEffectHandler.CreateStack(statusEffect);
-            }
+            // if(!e.dodged && dodgeable){ //check dodge
+                return e.statusEffectHandler.CreateStack(statusEffect);
+           // }
             
           
         }
