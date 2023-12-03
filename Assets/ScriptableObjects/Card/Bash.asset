@@ -21,6 +21,7 @@ MonoBehaviour:
   castDelay: 0.2
   effects:
   - {fileID: 11400000, guid: e47572d6914d37746950ca2575d0697a, type: 2}
+  - {fileID: 11400000, guid: 36593789721779343a5d7b1c6a2e0ded, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 8300000, guid: 69186b39e5efe8e40a14467b08c1bab0, type: 3}
@@ -32,10 +33,10 @@ MonoBehaviour:
     volume: 0
   element: 4
   beastClass: 10
-  desc: <b>Stun</b> the target.
+  desc: ' Deal 10 damage and <b>stun</b> the target. This card is undodgeable.'
   flavourText: <i>"AND STAY DOWN!"</i>
   deckCost: 9
   unplayable: 0
   cannotBeDiscard: 0
   destroyOnCast: 0
-  unDodgeable: 0
+  unDodgeable: 1

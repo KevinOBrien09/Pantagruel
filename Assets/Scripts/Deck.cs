@@ -62,7 +62,7 @@ public class Deck
         }
     
         discard.Clear();
-        Debug.Log("Resetting discard pile");
+       // Debug.Log("Resetting discard pile");
     
     }
 

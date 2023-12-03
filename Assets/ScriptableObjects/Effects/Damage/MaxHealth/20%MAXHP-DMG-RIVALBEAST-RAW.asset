@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2f89693efbdb734380580d24be1cd38, type: 3}
-  m_Name: 20%MAXHP-DMG-RIVALBEAST
+  m_Name: 20%MAXHP-DMG-RIVALBEAST-RAW
   m_EditorClassIdentifier: 
   targets: 03000000
-  dodgeable: 0
+  offensive: 0
   damageValue: 0
-  negateShield: 0
+  negateShield: 1
   hit:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
+  additionalEffect: {fileID: 0}
   percent: 20
   maxHealth: 1
   missingHealth: 0

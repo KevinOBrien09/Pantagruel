@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722da891be6a48a45b633c7a3eb9a96f, type: 3}
   m_Name: Promise-Triumph
   m_EditorClassIdentifier: 
+  targets: 00000000
+  offensive: 0
   desiredEffects:
   - {fileID: 11400000, guid: 472649e11b4f6f6459dc675d1726c605, type: 2}
   badEffects: []
-  castBadEffectsOnEnemy: 0
-  parentCard: {fileID: 11400000, guid: 1b66478c61ef7834c9b0328172d7c204, type: 2}
   vfx: 
   soundData:
     audioClip: {fileID: 8300000, guid: 30685bb33cd90694cb1e6027bd59302f, type: 3}

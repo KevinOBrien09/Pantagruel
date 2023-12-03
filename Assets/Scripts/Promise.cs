@@ -8,8 +8,6 @@ using System;
 public class Promise :Effect
 {
     public List<Effect> desiredEffects,badEffects;
-    public bool castBadEffectsOnEnemy;
-    public Card parentCard;
     public string vfx;
     public SoundData soundData;
     public List<EventEnum> eventEnums = new List<EventEnum>();
@@ -17,7 +15,7 @@ public class Promise :Effect
     public int turnDuration;
     public bool turnLimit;
     public bool meter;
-     public int meterMax;
+    public int meterMax;
 
     public override void Use(EffectArgs args)
     {  
@@ -47,9 +45,7 @@ public class Promise :Effect
                 CardManager.inst.promiseDict.Add(id,pair);
              
 
-                if(unStackable){
-                CardManager.inst.promiseList.Add(this);
-                }
+                if(unStackable){CardManager.inst.promiseList.Add(this);} //added to list to ensure one exists.
                
             }
             else{
@@ -57,6 +53,9 @@ public class Promise :Effect
                 id = Guid.NewGuid().ToString(); 
                 goto foo;
             }
+        }
+        else{
+            Debug.Log("Add enemy promises");
         }
     }
 
@@ -123,14 +122,9 @@ public class Promise :Effect
         if(CardFunctions.oneEffectIsViable(badEffects,OGargs.caster.OwnedByPlayer())){
             foreach (var effect in badEffects)
             { 
-                if(castBadEffectsOnEnemy){
                 EffectArgs arg = new EffectArgs(OGargs.caster,OGargs.target, OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
                 effect.Use(arg); 
-                }
-                else{
-                EffectArgs arg = new EffectArgs(OGargs.caster,OGargs.target,OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
-                effect.Use(arg); 
-                }
+              
                 
             }
         }
@@ -142,7 +136,7 @@ public class Promise :Effect
         b.ConditionFufilled();
     }
 
-    public void RemoveEvent(string id)
+    public virtual void RemoveEvent(string id)
     {
       
       

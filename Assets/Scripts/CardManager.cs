@@ -358,11 +358,6 @@ public class CardManager:Singleton<CardManager>
         {
             CardManager.inst.DeactivateHand();
             behaviour.gameObject.SetActive(false);
-            // bool dodged = Maths.PercentCalculator(RivalBeastManager.inst.activeBeast.dodge);
-            // if(usedCard.unDodgeable)
-            // {dodged = false;}
-         
-
             if(usedCard.playVFXAfterDelay)
             {
                 if(usedCard.vfxSetUp!=string.Empty)
@@ -371,55 +366,56 @@ public class CardManager:Singleton<CardManager>
             
             Dictionary<Entity,HitData> dict = new Dictionary<Entity, HitData>();
             bool atleastOneHit = false;
+         
             foreach (var effect in usedCard.effects)
             { 
                 EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,null,  null,null,-99,"");
                
-                foreach (var item in effect.AffectedEntities(args))
+                foreach (var target in effect.AffectedEntities(args))
                 {
-                    if(item != null)
+                    if(target != null)
                     {
-                        if(!dict.ContainsKey(item))
+                        if(!dict.ContainsKey(target))
                         {
+                            HitData data = new HitData();
+                            data.entity = target;
+                            dict.Add(target,data);
                             if(effect.offensive)
                             { 
-                                HitData data = new HitData();
-                                data.entity = item;
-                                if(item.stunned)
+                                if(target.stunned|usedCard.unDodgeable)
                                 { data.dodged = false;}
-                                else{ data.dodged = Maths.PercentCalculator(item.dodge);}
-                               
-                                data.effects = new List<Effect>();
-                                data.effects. Add(effect);
-                                dict.Add(item,data);
-
-                                if(!data.dodged){
-                                    atleastOneHit = true;
-                                }
-                            
+                                else{ data.dodged = Maths.PercentCalculator(target.dodge);}
+                                if(!data.dodged)
+                                {atleastOneHit = true;}
                             }
                             else
                             {
-                                HitData data = new HitData();
-                                data.entity = item;
                                 data.dodged = false;
-                                data.effects = new List<Effect>();
-                                data.effects. Add(effect);
-                                dict.Add(item,data);
                                 atleastOneHit = true;
                             }
-                            
                         }
                     }
+                    else
+                    {dict[target].effects.Add(effect);}
                    
                 }
             }
-            if(atleastOneHit){
-      AudioManager.inst.GetSoundEffect().Play(usedCard.soundEffect);
+
+            foreach (var effect in usedCard.effects)
+            { 
+                foreach (var item in dict)
+                {               
+                    EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,null,  null,null,-99,"");
+                 if(effect.AffectedEntities(args).Contains(item.Value.entity))
+                 {item.Value.effects.Add(effect);}    
+                    
+                }
             }
-            else{
-                AudioManager.inst.GetSoundEffect().Play(usedCard.missSound);
-            }
+
+            if(atleastOneHit)
+            {AudioManager.inst.GetSoundEffect().Play(usedCard.soundEffect);}
+            else
+            {AudioManager.inst.GetSoundEffect().Play(usedCard.missSound);}
       
             yield return new WaitForSeconds(usedCard.castDelay);
 
@@ -445,6 +441,7 @@ public class CardManager:Singleton<CardManager>
    
             foreach (var targets in dict)
             {
+               
                 foreach (var effect in targets.Value.effects)
                 { 
                     EffectArgs args = new EffectArgs(PlayerParty.inst.activeBeast,targets.Value.entity, usedCard,stackBehaviour,

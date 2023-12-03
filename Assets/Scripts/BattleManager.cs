@@ -8,45 +8,15 @@ using DG.Tweening;
 public enum EntityOwnership{ERROR,PLAYER,ENEMY}
 public class BattleManager:Singleton<BattleManager>                   
 {
+    [System.Serializable]
     public class TurnRecord
     {
         public int turn;
         public List<Card> cardsPlayedThisTurn = new List<Card>();
-        public List<CardIntPair> damageDealtByEachCard = new List<CardIntPair>();
-        public int bleedDamage;
-        public class CardIntPair{
-            public Card card;
-            public int v;
-            public int castOrder;
-        }
+        public int totalTurnDamage;
         
 
-        public int GetAllDamageDealtThisTurn()
-        {
-            int i = 0;
-            foreach (var item in damageDealtByEachCard)
-            {i+=item.v;}
-            i+= bleedDamage;
-            return i;
-        }
-
-        public int GetDamageAfterSpecificPoint(int indexPromiseCardWasCastOn)
-        {
-            int q = 0;
-            
-            for (int i = indexPromiseCardWasCastOn; i <cardsPlayedThisTurn.Count; i++)
-            {
-                foreach (var item in damageDealtByEachCard)
-                {
-                    if(item.castOrder == i){
-                        q+= item.v;
-                    }
-                }
-            }
-            q+=bleedDamage;
-            return q;
-        }
-
+       
     }
 
     public class QueuedAction{
@@ -66,11 +36,11 @@ public class BattleManager:Singleton<BattleManager>
     public SoundData leave,enter;
     public Entity playerTarget;
     public StatusEffectHandler statusEffectHandlerPrefab;
-    public Dictionary<int,TurnRecord> playerRecord = new Dictionary<int,TurnRecord>();
+    public GenericDictionary<int,TurnRecord> playerRecord = new GenericDictionary<int,TurnRecord>();
     public Image passiveProcImage;
     public SoundData passiveProcSFX;
     public List<SoundData> dodgeSFX = new List<SoundData>();
-    public Dictionary<int,TurnRecord> enemyRecord = new Dictionary<int,TurnRecord>();
+    public GenericDictionary<int,TurnRecord> enemyRecord = new GenericDictionary<int,TurnRecord>();
     public Queue<QueuedAction> effectsToUse = new Queue<QueuedAction>();
     public DamageValueGraphic damageValueGraphicPrefab;
     public BattleTextBehaviour battleTextBehaviourPrefab;
@@ -130,6 +100,8 @@ public class BattleManager:Singleton<BattleManager>
         
      
     }
+
+   
 
     public void EnterBattlePartTwo(){
          CardManager.inst.EnterBattle(PlayerParty.inst.activeBeast);
@@ -291,6 +263,14 @@ public class BattleManager:Singleton<BattleManager>
         
     }
 
+    public void RecordPlayerDamage(int dmg){
+        playerRecord[turn].totalTurnDamage +=dmg;
+    }
+
+    public void RecordEnemyDamage(int dmg){
+        enemyRecord[turn].totalTurnDamage +=dmg;
+    }
+
     public void SwapToEnemyTurn()
     {      
         
@@ -326,7 +306,7 @@ public class BattleManager:Singleton<BattleManager>
             {
                 while(statusEffectShit)
                 {yield return null;}
-                EventManager.inst.onNewPlayerTurn.Invoke();
+             
                 Card c = null;
                 if(!CardManager.inst.blockade)
                 {
@@ -356,7 +336,9 @@ public class BattleManager:Singleton<BattleManager>
         p.turn = turn;
         enemyRecord.Add(turn,e);
         playerRecord.Add(turn,p);
+        EventManager.inst.onNewPlayerTurn.Invoke();
         CardStack.inst.NewTurn();
+          
         CheckForBadEffects();
         LoadStatusEffects();
         CheckForStatusEffectBeforeAllowingCards();

@@ -45,7 +45,7 @@ public class EnemyAI : Singleton<EnemyAI>
         if(currentDeck.cards.Count <= 0)
         {
             currentDeck.ResetDiscardPile();
-            Debug.Log("Resetting discard pile");
+            // Debug.Log("Resetting discard pile");
             return;
         }
         
@@ -79,7 +79,7 @@ public class EnemyAI : Singleton<EnemyAI>
             }
             else
             {  
-                Debug.Log("Has a combo do turn");
+                // Debug.Log("Has a combo do turn");
                 
                
                 List<Card> toBeUsed = new List<Card>();

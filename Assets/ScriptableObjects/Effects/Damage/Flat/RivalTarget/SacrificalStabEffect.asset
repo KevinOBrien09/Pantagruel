@@ -20,4 +20,4 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: b99f66a16dd52f040a15ed94cecc98b0, type: 3}
     pitchRange: {x: 0.9, y: 1}
     volume: 1
-  additionalEffect: {fileID: 11400000, guid: 14dfa21977fc6e24b889d944a87a1724, type: 2}
+  additionalEffect: {fileID: 11400000, guid: 0b3b431db58fa76408f6f8b19cc7c562, type: 2}

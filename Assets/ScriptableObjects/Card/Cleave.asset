@@ -20,13 +20,17 @@ MonoBehaviour:
   vfx: Slice
   castDelay: 0
   effects:
-  - {fileID: 11400000, guid: 8d5ed8e6c09ee704395400a30486f89b, type: 2}
   - {fileID: 11400000, guid: e599809a110710e4796e1c0027dbdd2b, type: 2}
+  - {fileID: 11400000, guid: 8d5ed8e6c09ee704395400a30486f89b, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 8300000, guid: af6322b35587ded418a6810c69d10243, type: 3}
     pitchRange: {x: 0.8, y: 0.9}
     volume: 0.5
+  missSound:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
   element: 0
   beastClass: 10
   desc: Deal 10 raw damage and add a bleed stack to the target.

@@ -10,34 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec03d198f138b2c4099b0c760090b965, type: 3}
-  m_Name: DeathSpike
+  m_Name: Devious Deal
   m_EditorClassIdentifier: 
   Id: da43ed2c-7ff8-49f2-bb6b-c90ec96cb2c4
-  cardName: Blood Spike
-  picture: {fileID: 21300000, guid: 534f8248482a7684ab206f63db0a1409, type: 3}
+  cardName: Devious Deal
+  picture: {fileID: 21300000, guid: fc6667ea3c8df7448ba75671a5660d66, type: 3}
   manaCost: 1
   vfxSetUp: 
   vfx: BloodCurse
   castDelay: 0
   effects:
-  - {fileID: 11400000, guid: 3effefece8f975a4bb79e31c787ae023, type: 2}
+  - {fileID: 11400000, guid: f8ace41ad24fe784b8e91f60bf0b7756, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 8300000, guid: 040f29e538da04e489b725c9544d9383, type: 3}
     pitchRange: {x: 0.9, y: 1.1}
     volume: 1
-  element: 5
+  missSound:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
+  element: 1
   beastClass: 17
-  desc: 'If you deal 20 damage within the next 2 turns trigger <i><b>Blood Spike</i></b>
-    on the enemy beast, otherwise deal it to the caster. <br> <u><i><b>Blood Spike</i></b></u>
+  desc: 'If you deal 40 damage within the next 2 turns trigger <i><b>Satanic Spike</i></b>
+    on the enemy beast, otherwise trigger it on the caster. <br> <u><i><b>Satanic
+    Spike</i></b></u>
 
-    Deal
-    20% max health damage to the target.
+    Deal 20% max health raw damage to the target.
 
-    <br><i><color=grey>This card does not
-    stack.'
-  flavourText: '"The Knight, from The Dance of Death - Hans Holbein the Younger"'
-  deckCost: 0
+    <br><i><color=grey>This
+    card does not stack.'
+  flavourText: '"Covenant with the Devil - Jacobus Buys"'
+  deckCost: 25
   unplayable: 0
   cannotBeDiscard: 0
   destroyOnCast: 0

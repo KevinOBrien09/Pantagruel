@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: 20%MAXHP-DMG-CASTER
   m_EditorClassIdentifier: 
   targets: 00000000
-  dodgeable: 0
+  offensive: 0
   damageValue: 0
-  negateShield: 0
+  negateShield: 1
   hit:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
+  additionalEffect: {fileID: 0}
   percent: 20
   maxHealth: 1
   missingHealth: 0

@@ -1,70 +1,36 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using System;
+
 [System.Serializable]
 [CreateAssetMenu(menuName = "Effects/DamagePromise", fileName = "DamagePromise")]
 public class DamagePromise :Promise
 {
-    public override void PromiseFufilled(EffectArgs OGargs,   string id)
+    public int howMuchDamage, howManyTurns;
+
+    public override void Use(EffectArgs args)
     {
-        if(OGargs.caster.OwnedByPlayer())
-        {
-            int totalDamage = 0;
-            for (int i = CardManager.inst.promiseDict[id].turnCastOn; i < CardManager.inst.promiseDict[id].turnToDieOn; i++)
-            {
-                int forLoopTurn = i;
-                if(BattleManager.inst.playerRecord.ContainsKey(forLoopTurn))//bug prone
-                { 
-                    if(CardManager.inst.promiseDict[id].turnCastOn == BattleManager.inst.turn)
-                    {totalDamage+=BattleManager.inst.playerRecord[BattleManager.inst.turn].GetDamageAfterSpecificPoint(OGargs.castOrder);}
-                    else if(forLoopTurn != CardManager.inst.promiseDict[id].turnCastOn)
-                    {totalDamage+=BattleManager.inst.playerRecord[forLoopTurn].GetAllDamageDealtThisTurn();} 
-                   
-                }
-            }
-            
-            OGargs.stackBehaviour.UpdateBar((float) totalDamage,(float)meterMax);
-         
-            if(totalDamage >= meterMax)
-            {       
-                BattleManager.QueuedAction qa = new BattleManager.QueuedAction();
-              
-                UnityAction a = ()=> poopoo();
-                qa.action = a;
-                qa.args = OGargs;
-                BattleManager.inst.effectsToUse.Enqueue(qa);
-                RemoveEvent(id);
-                void poopoo()
-                {
-                    ExecuteEffects(OGargs);
-                    CreateSuccessfullActionStack(OGargs);
-                    
-                    ExecuteFluff(OGargs);
-            
-                    if(unStackable)
-                    {
-                        if(CardManager.inst.promiseList.Contains(this))
-                        {CardManager.inst.promiseList.Remove(this);}
-                    }
-                }
-            }
-        }
+        base.Use(args);
+  
     }
 
-    public override void ExecuteEffects(EffectArgs OGargs)
-    {   
-        if(OGargs.caster.OwnedByPlayer())
-        {
-            if(CardFunctions.oneEffectIsViable(desiredEffects,OGargs.caster.OwnedByPlayer())){
-                foreach (var effect in desiredEffects)
-                { 
-                    EffectArgs arg = new EffectArgs(OGargs.caster,OGargs.target,  OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
-                    effect.Use(arg); 
-                }
-            }
-        }
-       
+    public override void RemoveEvent(string id)
+    {
+        base.RemoveEvent(id);
+
+    }
+
+    public override void PromiseFufilled(EffectArgs OGargs, string id)
+    {
+        base.PromiseFufilled(OGargs, id);
+        Debug.Log("Poo XD");
+    }
+
+    public override void ExecuteBadEffects(EffectArgs OGargs)
+    {
+        base.ExecuteBadEffects(OGargs);
+        Debug.Log("BADSTUFF XC");
     }
 }

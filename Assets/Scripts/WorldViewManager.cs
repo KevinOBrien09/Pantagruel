@@ -46,7 +46,7 @@ worldView.DOFade(1,.7f).OnComplete(()=>{ abstractBG.gameObject.SetActive(false);
     {
         CardBehaviour cb = null;
         ItemStack id = null;
-        Debug.Log(other.gameObject.name);
+     
         if(other.gameObject.transform.parent.TryGetComponent<CardBehaviour>(out cb))
         {
             if(CardBehaviour.dragging){

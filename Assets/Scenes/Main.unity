@@ -35825,7 +35825,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 27ee24195a056904f949bf98fff31e2c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.25
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -64261,7 +64261,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26636
+  m_Name: pb_Mesh26642
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -105940,7 +105940,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 961749464}
   m_HandleRect: {fileID: 961749463}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

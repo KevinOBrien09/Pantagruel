@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0605d286c9ed934293cc34466b06e06, type: 3}
+  m_Name: DamagePromise - 40
+  m_EditorClassIdentifier: 
+  targets: 00000000
+  offensive: 0
+  desiredEffects:
+  - {fileID: 11400000, guid: f1ba2893e245ccc4288e51a75b15b833, type: 2}
+  badEffects:
+  - {fileID: 11400000, guid: 6c4f0dec416b47f4a8b2602b42414523, type: 2}
+  vfx: BloodSpike
+  soundData:
+    audioClip: {fileID: 8300000, guid: 378b42191fc1ef445a694bb11ea5d96a, type: 3}
+    pitchRange: {x: 0.9, y: 1}
+    volume: 1
+  eventEnums: 1800000019000000
+  unStackable: 1
+  turnDuration: 2
+  turnLimit: 1
+  meter: 1
+  meterMax: 20

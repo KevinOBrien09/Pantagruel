@@ -31,7 +31,7 @@ public class Entity : MonoBehaviour
     public bool stunned;
 
     void Start(){
-        dodge = 50;
+        dodge = -1;
     }
 
     void Update(){
@@ -78,24 +78,15 @@ public class Entity : MonoBehaviour
 
         if(damageSource == EntityOwnership.ENEMY)
         {
-            BattleManager.TurnRecord.CardIntPair p = new BattleManager.TurnRecord.CardIntPair();
-            p.card = args.card;
-            p.v = howMuchDamage;
-            p.castOrder = args.castOrder;
-            BattleManager.inst.enemyRecord[BattleManager.inst.turn].damageDealtByEachCard.Add(p);
+            
+            BattleManager.inst.RecordEnemyDamage(howMuchDamage);
             EventManager.inst.onEnemyDealDamage.Invoke();
         }
         else
         { 
-            BattleManager.TurnRecord.CardIntPair p = new BattleManager.TurnRecord.CardIntPair();
-            p.card = args.card;
-            p.v = howMuchDamage;
-            p.castOrder = args.castOrder;
-            BattleManager.inst.playerRecord[BattleManager.inst.turn].damageDealtByEachCard.Add(p);
+            BattleManager.inst.RecordPlayerDamage(howMuchDamage);
             EventManager.inst.onPlayerDealDamage.Invoke(); 
         }
-
- 
         
         ClearShields();
         foreach (var item in currentHealthBars)
@@ -238,12 +229,12 @@ public class Entity : MonoBehaviour
 
         if(damageSource == EntityOwnership.ENEMY)
         {
-            BattleManager.inst.enemyRecord[BattleManager.inst.turn].bleedDamage += howMuchDamage;
+            BattleManager.inst.RecordEnemyDamage(howMuchDamage);
             EventManager.inst.onEnemyDealDamage.Invoke();
         }
         else
         { 
-            BattleManager.inst.playerRecord[BattleManager.inst.turn].bleedDamage += howMuchDamage;
+            BattleManager.inst.RecordPlayerDamage(howMuchDamage);
             EventManager.inst.onPlayerDealDamage.Invoke(); 
         }
         foreach (var item in currentHealthBars)
