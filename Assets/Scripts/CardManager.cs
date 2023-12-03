@@ -110,7 +110,7 @@ public class CardManager:Singleton<CardManager>
         handDown = false;
         holder.DOAnchorPosY(0,.2f).OnComplete(()=>
         {
-           
+           EndTurnButton.inst.Reactivate();
         });
          MakeHandInteractable();
     }
@@ -122,7 +122,7 @@ public class CardManager:Singleton<CardManager>
     }
     
     public void DeactivateHand()
-    {
+    {EndTurnButton.inst.Deactivate();
         handDown = true;
         holder.DOAnchorPosY(downHodlerPos,.2f);
         foreach(CardBehaviour card in hand)
@@ -165,51 +165,16 @@ public class CardManager:Singleton<CardManager>
 
     public Card DrawCardOfSpecificTrait(BeastClass beastClass)
     {
-        if(!BattleManager.inst.inBattle){
-            return null;
-        }
+        if(!BattleManager.inst.inBattle)
+        { return null; }
         if(currentDeck.cards.Count <= 0)
         { currentDeck.ResetDiscardPile(); }
         
         if(hand.Count < 7)
-        { 
-            // if(hand.Count == 6)
-            // {
-            //     if(!playableCardInHand())
-            //     {
-            //         if(playableCardInDeck()){
-            //                Debug.Log("Playable card found in main deck");
-            //         return CardFunctions.DrawPlayableCard(currentDeck);
-                       
-            //         }
-            //         else if(playableCardInDiscard())
-            //         {
-            //             Debug.Log("Playable card found in discard");
-            //             currentDeck.ResetDiscardPile();
-            //                return CardFunctions.DrawPlayableCard(currentDeck);
-                      
-                        
-            //         }
-            //         else
-            //         {
-            //             Debug.Log("No playable cards anywhere XD");
-            //         }
-                  
-            //         return null;
-            //     }
-            // }
-           
-           
-           // Card c = 
-            return CardFunctions.DrawCardOfSpecificTrait(currentDeck,beastClass);
-            // CreateCardBehaviour(c); 
-            // MakeHandInteractable();
-            
-            
-        }
+        { return CardFunctions.DrawCardOfSpecificTrait(currentDeck,beastClass); }
         else
         { Debug.Log("Hand is full!"); 
-         return null;}
+        return null;}
     }
 
    

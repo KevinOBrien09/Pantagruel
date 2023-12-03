@@ -38,8 +38,7 @@ MonoBehaviour:
 
     Deal 20% max health raw damage to the target.
 
-    <br><i><color=grey>This
-    card does not stack.'
+'
   flavourText: '"Covenant with the Devil - Jacobus Buys"'
   deckCost: 25
   unplayable: 0

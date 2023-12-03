@@ -14,19 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targets: 00000000
   offensive: 0
-  desiredEffects: []
-  badEffects:
+  desiredEffects:
   - {fileID: 11400000, guid: f1ba2893e245ccc4288e51a75b15b833, type: 2}
+  badEffects:
+  - {fileID: 11400000, guid: 6c4f0dec416b47f4a8b2602b42414523, type: 2}
   vfx: BloodSpike
   soundData:
     audioClip: {fileID: 8300000, guid: 378b42191fc1ef445a694bb11ea5d96a, type: 3}
     pitchRange: {x: 0.9, y: 1}
     volume: 1
-  eventEnums: 
-  unStackable: 1
+  eventEnums: 1800000019000000
+  unStackable: 0
   turnDuration: 2
   turnLimit: 1
   meter: 1
-  meterMax: 25
+  meterMax: 20
   howMuchDamage: 0
   howManyTurns: 0

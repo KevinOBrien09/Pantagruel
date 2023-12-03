@@ -74840,6 +74840,7 @@ GameObject:
   - component: {fileID: 1289623356}
   - component: {fileID: 1289623357}
   - component: {fileID: 1289623358}
+  - component: {fileID: 1289623359}
   m_Layer: 0
   m_Name: BattleMaster
   m_TagString: Untagged
@@ -74892,6 +74893,9 @@ MonoBehaviour:
   playerTarget: {fileID: 0}
   statusEffectHandlerPrefab: {fileID: 2169810128117795210, guid: 500bf2d6f21d6bc48b1e2cc5a02b79c7,
     type: 3}
+  playerRecord:
+    list: []
+    keyCollision: 0
   passiveProcImage: {fileID: 1208932368}
   passiveProcSFX:
     audioClip: {fileID: 8300000, guid: ae3b742abfe143242ba647e7d177775c, type: 3}
@@ -74907,6 +74911,9 @@ MonoBehaviour:
   - audioClip: {fileID: 8300000, guid: 688b4bf579486e14eb5ff1d5f8426b7f, type: 3}
     pitchRange: {x: 0.9, y: 1}
     volume: 1
+  enemyRecord:
+    list: []
+    keyCollision: 0
   damageValueGraphicPrefab: {fileID: 5224818057533397880, guid: 2811d0e4b3f160c48894b70d6d3e2f63,
     type: 3}
   battleTextBehaviourPrefab: {fileID: 5106688653428190553, guid: 701c0e36ef99e2a48ad228e7a4ba99a1,
@@ -74961,6 +74968,21 @@ MonoBehaviour:
   beastPrefab: {fileID: 182945522429868192, guid: 5140d1c6e9f7225498f71416cdcfc7cb,
     type: 3}
   currentParty: []
+--- !u!114 &1289623359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289623354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75b190d8a59cfc42b992f8d87f56764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dict:
+    list: []
+    keyCollision: 0
 --- !u!1 &1290090067
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deck:
     cards:
-    - {fileID: 11400000, guid: 1b66478c61ef7834c9b0328172d7c204, type: 2}
+    - {fileID: 11400000, guid: cbdf3044615ac644d9b41da01389d1c8, type: 2}
     - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
     - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
-    - {fileID: 11400000, guid: cbdf3044615ac644d9b41da01389d1c8, type: 2}
-    - {fileID: 11400000, guid: cbdf3044615ac644d9b41da01389d1c8, type: 2}
-    - {fileID: 11400000, guid: cbdf3044615ac644d9b41da01389d1c8, type: 2}
+    - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
+    - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
+    - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
+    - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
     discard: []
   combos: []

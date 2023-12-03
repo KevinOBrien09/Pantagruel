@@ -24,30 +24,7 @@ public class Promise :Effect
         {
           foo:
             if(!CardManager.inst.promiseDict.ContainsKey(id))
-            {
-                UnityAction u = ()=> PromiseFufilled(args,id);
-                ActionEventPair pair = new ActionEventPair();
-                pair.ID = id;
-                pair.promise = this;
-                pair.action = u;
-                pair.args = args;
-                pair.turnCastOn = BattleManager.inst.turn;
-                if(turnLimit)
-                {
-                   int ttdo = BattleManager.inst.turn + turnDuration + 1;//counts same turn add 1 to negate
-                   pair.turnToDieOn = ttdo;
-                }
-                foreach (var item in eventEnums)
-                {
-                    EventManager.inst.AssignEvent(item,u);
-                    pair.subbedEvents.Add(item);
-                }
-                CardManager.inst.promiseDict.Add(id,pair);
-             
-
-                if(unStackable){CardManager.inst.promiseList.Add(this);} //added to list to ensure one exists.
-               
-            }
+            { SetUpPlayerPromise(id,args); }
             else{
                 Debug.LogAssertion("HOLY SHIT IDENTICAL GUID :o");
                 id = Guid.NewGuid().ToString(); 
@@ -57,6 +34,30 @@ public class Promise :Effect
         else{
             Debug.Log("Add enemy promises");
         }
+    }
+
+    public void SetUpPlayerPromise(string id,EffectArgs args){
+        UnityAction u = ()=> PromiseFufilled(args,id);
+        ActionEventPair pair = new ActionEventPair();
+        pair.ID = id;
+        pair.promise = this;
+        pair.action = u;
+        pair.args = args;
+        pair.turnCastOn = BattleManager.inst.turn;
+        if(turnLimit)
+        {
+            int ttdo = BattleManager.inst.turn + turnDuration + 1;//counts same turn add 1 to negate
+            pair.turnToDieOn = ttdo;
+        }
+        foreach (var item in eventEnums)
+        {
+            EventManager.inst.AssignEvent(item,u);
+            pair.subbedEvents.Add(item);
+        }
+        CardManager.inst.promiseDict.Add(id,pair);
+        
+
+        if(unStackable){CardManager.inst.promiseList.Add(this);} //added to list to ensure one exists.
     }
 
     public override bool canUse(bool isPlayer)
@@ -98,7 +99,7 @@ public class Promise :Effect
 
     public void ExecuteFluff(EffectArgs args){
         AudioManager.inst.GetSoundEffect().Play(soundData);
-        if(!args.caster.OwnedByPlayer()){
+        if(args.caster.OwnedByPlayer()){
         BattleEffectManager.inst.Play(vfx);
         }
       
@@ -109,21 +110,28 @@ public class Promise :Effect
         if(CardFunctions.oneEffectIsViable(desiredEffects,OGargs.caster.OwnedByPlayer())){
             foreach (var effect in desiredEffects)
             { 
-                EffectArgs arg = new EffectArgs(OGargs.caster,OGargs.target, OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
+               foreach (var item in effect. AffectedEntities(OGargs))
+                {
+                     EffectArgs arg = new EffectArgs(OGargs.caster,item, OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
                 effect.Use(arg); 
+                }
             }
         }
        
     }
 
-    public virtual void ExecuteBadEffects(EffectArgs OGargs)
+    public virtual void ExecuteBadEffects(EffectArgs OGargs,string id ="")
     {
         ExecuteFluff(OGargs);
         if(CardFunctions.oneEffectIsViable(badEffects,OGargs.caster.OwnedByPlayer())){
             foreach (var effect in badEffects)
             { 
-                EffectArgs arg = new EffectArgs(OGargs.caster,OGargs.target, OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
-                effect.Use(arg); 
+                foreach (var item in effect.AffectedEntities(OGargs))
+                {
+                    EffectArgs arg = new EffectArgs(OGargs.caster,item, OGargs.card,OGargs.stackBehaviour,OGargs.castOrder,OGargs.card.cardName);
+                    effect.Use(arg); 
+                }
+               
               
                 
             }

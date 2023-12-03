@@ -80,11 +80,13 @@ public class Entity : MonoBehaviour
         {
             
             BattleManager.inst.RecordEnemyDamage(howMuchDamage);
+            DamageTracker.inst.RecordEnemyDamage(howMuchDamage);
             EventManager.inst.onEnemyDealDamage.Invoke();
         }
         else
         { 
             BattleManager.inst.RecordPlayerDamage(howMuchDamage);
+            DamageTracker.inst.RecordPlayerDamage(howMuchDamage);
             EventManager.inst.onPlayerDealDamage.Invoke(); 
         }
         
@@ -230,11 +232,13 @@ public class Entity : MonoBehaviour
         if(damageSource == EntityOwnership.ENEMY)
         {
             BattleManager.inst.RecordEnemyDamage(howMuchDamage);
+            DamageTracker.inst.RecordEnemyDamage(howMuchDamage);
             EventManager.inst.onEnemyDealDamage.Invoke();
         }
         else
         { 
             BattleManager.inst.RecordPlayerDamage(howMuchDamage);
+            DamageTracker.inst.RecordPlayerDamage(howMuchDamage);
             EventManager.inst.onPlayerDealDamage.Invoke(); 
         }
         foreach (var item in currentHealthBars)

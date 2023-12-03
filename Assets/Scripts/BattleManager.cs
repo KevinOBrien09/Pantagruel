@@ -459,7 +459,7 @@ TriggerQueuedEffects();
             {
                 if(item.Value.promise.badEffects.Count != 0)
                 {
-                  UnityAction a = ()=>  item.Value.promise.ExecuteBadEffects(item.Value.args);
+                  UnityAction a = ()=>  item.Value.promise.ExecuteBadEffects(item.Value.args,item.Key);
                   QueuedAction qa = new QueuedAction();
                   qa.action = a;
                   qa.args = item.Value.args;
