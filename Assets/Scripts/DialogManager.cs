@@ -13,47 +13,30 @@ public class DialogManager : Singleton<DialogManager>
     public Dialog currentConversation;
     public Character speaker;
     public bool inDialog;
+    public Image rightPic,leftPic;
     public int index = -1;
     [SerializeField] Button[] buttonsToDisable;
-    [SerializeField] TMP_Typewriter[] typewriters;
+    [SerializeField] TMP_Typewriter typewriter;
     [SerializeField] TextMeshProUGUI nameText;
+    [SerializeField] AudioSource dialogClick;
     List<DialogBlock> listOfBlocks = new List<DialogBlock>();
     Queue<DialogBlock> blocks = new Queue<DialogBlock>();
     Queue<DialogBlock> previousBlocks = new Queue<DialogBlock>();
     bool allowInput;
-    bool talking;
-
+    bool Talking;
+    public Vector2 leftSilent,leftSpeaking,rightSilent,rightSpeaking;
     void Start(){
         nameText.text = "";
-         typewriters[0].Play("",40,()=>
+         typewriter.Play("",40,()=>
         {
             Talking = false;
         
         });
+        rightPic.DOFade(0,0);
+        leftPic.DOFade(0,0);
  
     }
 
-    [HideInInspector] public bool Talking
-    {
-        get { return talking ; }
-        set
-        {
-            if( value == talking )
-            { return; }
-            // talking = value ;
-            // if(talking)
-            // { 
-            //     if(displayedActors.Contains(speaker))
-            //     { speaker.uiActor.mouth.Play(.1f,true); }
-            
-            // }
-            // else
-            // { 
-            //     if(displayedActors.Contains(speaker))
-            //     { speaker.uiActor.mouth.Stop(); }
-            // }   
-        } 
-    }
 
     void ToggleButtons(bool b)
     {
@@ -102,14 +85,16 @@ public class DialogManager : Singleton<DialogManager>
     {
         if(allowInput)
         {
-            
+             if(!dialogClick.isPlaying && Talking){
+                dialogClick.Play();
+            }
                 
             if(Input.GetMouseButtonDown(0)|Input.GetKeyDown(KeyCode.Space))
             { 
                 if(Talking)
                 {   
-                    typewriters[0].Skip();
-                    typewriters[1].Skip();
+                    typewriter.Skip();
+                   
                 }
                 else
                 {
@@ -141,6 +126,7 @@ public class DialogManager : Singleton<DialogManager>
 
     public void ProcessBlock(DialogBlock currentBlock)
     {
+        Talking = true;
         index = listOfBlocks.IndexOf(currentBlock);
         speaker = currentBlock.speaker;
         
@@ -150,20 +136,39 @@ public class DialogManager : Singleton<DialogManager>
         { nameText.text = speaker.characterName; }
 
         nameText.color = speaker.charColour;
+        if(speaker.characterIcon != null)
+        {
+            if(!currentBlock.showLeft)
+            {
+                rightPic.DOFade(1,.25f);
+                rightPic.sprite = speaker.characterIcon;
+                rightPic.GetComponent<RectTransform>().DOAnchorPos(rightSpeaking,.2f);
+                leftPic.GetComponent<RectTransform>().DOAnchorPos(leftSilent,.2f);
+            }
+            else
+            {
+                leftPic.DOFade(1,.25f);
+                leftPic.sprite = speaker.characterIcon;
+                 rightPic.GetComponent<RectTransform>().DOAnchorPos(rightSilent,.2f);
+                leftPic.GetComponent<RectTransform>().DOAnchorPos(leftSpeaking,.2f);
+            }
+           
+        }
 
         string dialog = currentBlock.dialog;
         if(currentBlock.isThought)
         {
             dialog = "<i>" + dialog + "</i>";
-            typewriters[0].m_textUI.color = Color.gray;
+            typewriter.m_textUI.color = Color.gray;
         }
         else
-        { typewriters[0].m_textUI.color = Color.white; }
+        { typewriter.m_textUI.color = Color.white; }
 
     
-        Talking = true;
-        typewriters[0].Play(dialog,40,()=>
+      
+        typewriter.Play(dialog,40,()=>
         {
+           
             Talking = false;
         
         });
@@ -173,10 +178,12 @@ public class DialogManager : Singleton<DialogManager>
     {
         allowInput = false;
         inDialog = false;
-       
+        rightPic.DOFade(0,.2f);
+        leftPic.DOFade(0,.2f);
+ 
         OverworldMovement.canMove = true;
         Interactor.inst.RenableInteraction();
-        typewriters[0].Play("",40,()=>
+        typewriter.Play("",40,()=>
         {
             Talking = false;
         

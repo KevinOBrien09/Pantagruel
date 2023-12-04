@@ -13,8 +13,17 @@ public class RotatePlayer : MonoBehaviour
     [SerializeField] float rotateSpeed;
     [SerializeField] OverworldMovement move;
     [SerializeField] TextMeshProUGUI dirText;
-
     public bool isRotating;
+
+    void Start(){
+        InitRotation(NESW.inst.GetDirection(this.transform));
+    }
+
+    public void InitRotation(CardinalDirection dir)
+    {
+        currentRot = dir;
+        CardinalDirectionDisplay.inst.InitDisplay(dir);
+    }
 
    
     public void StartRotate(Dir dir)
@@ -39,7 +48,15 @@ public class RotatePlayer : MonoBehaviour
         isRotating = true;
         float newRot = transform.rotation.eulerAngles.y+num;
         CardinalDirection previousRot = currentRot;
-        transform.DORotate(new Vector3(transform.rotation.eulerAngles.x,newRot,transform.rotation.eulerAngles.z),rotateSpeed).OnComplete(() => isRotating = false);
+        Debug.Log("new rot " + newRot);
+        if(newRot >= 360)
+        {
+            transform.DORotate(new Vector3(transform.rotation.eulerAngles.x,0,transform.rotation.eulerAngles.z),rotateSpeed).OnComplete(() => {isRotating = false;         
+            transform.rotation =Quaternion.Euler(0,0,0);});
+        }
+        else
+        {transform.DORotate(new Vector3(transform.rotation.eulerAngles.x,newRot,transform.rotation.eulerAngles.z),rotateSpeed).OnComplete(() => isRotating = false);}
+      
         if(num < 0)
         {
             if(currentRot == CardinalDirection.N)

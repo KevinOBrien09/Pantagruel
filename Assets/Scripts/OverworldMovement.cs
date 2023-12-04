@@ -176,19 +176,22 @@ public class OverworldMovement : MonoBehaviour
 
     void CheckForEncounter()
     {
-        if(encounterTimeOut == 0)
-        {
-            int n = Random.Range(-1,100);
-            if(n <= encounterChance)
+        if(detectEncouters){
+            if(encounterTimeOut == 0)
             {
-              //  Debug.Log( n + "Encounter");
-                encounterTimeOut = Random.Range(timeOutMin,timeOutMax);
-                canMove = false;
-                lastTorchState = torch.torchOn;
-                torch.DisableTorch();
-                BattleManager.inst.StartBattle(BattleType.Wild);
+                int n = Random.Range(0,100);
+                if(n <= encounterChance)
+                {
+                //  Debug.Log( n + "Encounter");
+                    encounterTimeOut = Random.Range(timeOutMin,timeOutMax);
+                    canMove = false;
+                    lastTorchState = torch.torchOn;
+                    torch.DisableTorch();
+                    BattleManager.inst.StartBattle(BattleType.Wild);
+                }
             }
         }
+       
     }
 
     public void ReactivateMove()
@@ -262,8 +265,7 @@ public class OverworldMovement : MonoBehaviour
     {
         transform.position = data.pos;
         transform.rotation = Quaternion.Euler(data.rot.x,data.rot.y,data.rot.z);
-        rotate.currentRot = data.lastRot;
-        CardinalDirectionDisplay.inst.InitDisplay(rotate.currentRot);
+        rotate.InitRotation(data.lastRot);
         torch.Load(data.torchState,data.torchTimer);
     }
 }

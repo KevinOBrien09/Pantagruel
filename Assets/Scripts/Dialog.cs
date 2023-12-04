@@ -12,8 +12,8 @@ public class DialogBlock
 {
     public string customName;
     public Character speaker;
-    public string dialog;
-    public bool isThought;
+  [TextArea(10,10)]  public string dialog;
+    public bool isThought,showLeft;
 
 }
 

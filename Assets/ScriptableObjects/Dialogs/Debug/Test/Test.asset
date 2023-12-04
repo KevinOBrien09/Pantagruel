@@ -14,16 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blocks:
   - customName: 
-    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
-    dialog: A tree.
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: Lovely night out isn't it brother!
     isThought: 0
+    showLeft: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
-    dialog: Woop di doop.
+    dialog: Tis indeed sire.
     isThought: 0
+    showLeft: 1
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: "You take care out on those roads now. Those daemons will strike when
+      you least expect it. \n"
+    isThought: 0
+    showLeft: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: Make sure you keep your torch abright, they fear the light.
+    isThought: 0
+    showLeft: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
-    dialog: XD
+    dialog: I will try, thank you sire.
     isThought: 0
+    showLeft: 1
   dialogBlockLanguages: []
   textAsset: {fileID: 4900000, guid: d592842822643d444a86a07a10399185, type: 3}
