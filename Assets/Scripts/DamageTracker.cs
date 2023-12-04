@@ -54,6 +54,11 @@ public class DamageTracker:Singleton<DamageTracker>
         }
     }
 
+    public void Wipe(){
+        playerDict.Clear();
+        enemyDict.Clear();
+    }
+
     public void RemoveEffect(string id)
     {
         if(playerDict.ContainsKey(id))

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d11aedf986ff0234c99d4109067c43ca, type: 3}
+  m_Name: Alastor
+  m_EditorClassIdentifier: 
+  beastData:
+    ANIMATED_PREFAB_DONE: 0
+    devNote:
+      note: 
+    beastName: Alastor
+    spawn:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    die:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    scream:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    flavourText: 
+    stunBirdHeight: 20
+    playerStatusEffectPos: {x: 0, y: -4.5, z: 2, w: 1.5}
+    enemyStatusEffectPos: {x: 0, y: 9, z: 2, w: 1.5}
+    bottomCornerPos: {x: 0, y: -0.25, z: 0}
+    battlePos: {x: 0, y: 0, z: 2}
+    beastGraphicPrefab: {fileID: 0}
+    uiPicture: {fileID: 2099613962, guid: 56c85b8a43bfa7b4cad417f2750d53c9, type: 3}
+    mainSprite: {fileID: -2005426263, guid: 56c85b8a43bfa7b4cad417f2750d53c9, type: 3}
+    outLine: {fileID: 21300000, guid: e9d71220435238a46a68fbbe9522e35a, type: 3}
+    facingRight: 1
+    bestiaryID: 121
+    wildDeck: {fileID: 11400000, guid: 1141da0cf2a2da849b58c699dc6239e8, type: 2}
+    baseStats:
+      maxHealth: 55
+      def: 0
+      physical: 25
+      magic: 5
+      charisma: 0
+      luck: 0
+    statGrowthPerLevel:
+      maxHealth: 0
+      def: 0
+      physical: 0
+      magic: 0
+      charisma: 0
+      luck: 0
+    element: 1
+    beastClass: 16
+    secondaryClass: 0
+    passive: {fileID: 0}
+    catchMod: 0

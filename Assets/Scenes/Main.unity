@@ -25521,6 +25521,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7eab2d64325d32d4182c2b226a6e9fa8, type: 2}
   - {fileID: 11400000, guid: 0d442daae25fe8d44bc03c831e579e3e, type: 2}
   - {fileID: 11400000, guid: 70f10b2b2f039c649bdf4e338a52c78a, type: 2}
+  - {fileID: 11400000, guid: d18dca19c3c82b24080f45d72ac04d57, type: 2}
   cardBank:
   - {fileID: 11400000, guid: ea117adaef8ad4d43a9ff396daf4d0b4, type: 2}
   - {fileID: 11400000, guid: dcc17a352c1fc7145937526ad61b5cda, type: 2}
@@ -74980,7 +74981,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75b190d8a59cfc42b992f8d87f56764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dict:
+  playerDict:
+    list: []
+    keyCollision: 0
+  enemyDict:
     list: []
     keyCollision: 0
 --- !u!1 &1290090067
@@ -105962,7 +105966,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 961749464}
   m_HandleRect: {fileID: 961749463}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

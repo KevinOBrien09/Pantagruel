@@ -494,6 +494,7 @@ TriggerQueuedEffects();
         EventManager.inst.onBattleEnd.Invoke();
         turn = 0;
         effectsToUse.Clear();
+        DamageTracker.inst.Wipe();
         PlayerManager.inst.movement.ResetPOV();
         CardStack.inst.Wipe();
         PetManager.inst.LeaveBattle();

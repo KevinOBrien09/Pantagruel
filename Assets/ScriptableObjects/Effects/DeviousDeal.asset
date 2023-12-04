@@ -28,6 +28,6 @@ MonoBehaviour:
   turnDuration: 2
   turnLimit: 1
   meter: 1
-  meterMax: 20
+  meterMax: 40
   howMuchDamage: 0
   howManyTurns: 0
