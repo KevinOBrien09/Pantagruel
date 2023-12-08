@@ -15,29 +15,27 @@ MonoBehaviour:
   blocks:
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
-    dialog: Lovely night out isn't it brother!
+    dialog: Good morning brother!
     isThought: 0
     showLeft: 0
+    cameraState: 2
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
-    dialog: Tis indeed sire.
+    dialog: Good morning. Sire.
     isThought: 0
     showLeft: 1
+    cameraState: 1
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
-    dialog: "You take care out on those roads now. Those daemons will strike when
-      you least expect it. \n"
+    dialog: You should be safe from those daemons in the daylight.
     isThought: 0
     showLeft: 0
+    cameraState: 3
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
-    dialog: Make sure you keep your torch abright, they fear the light.
+    dialog: 'They fear the light, you see. '
     isThought: 0
     showLeft: 0
-  - customName: 
-    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
-    dialog: I will try, thank you sire.
-    isThought: 0
-    showLeft: 1
+    cameraState: 4
   dialogBlockLanguages: []
   textAsset: {fileID: 4900000, guid: d592842822643d444a86a07a10399185, type: 3}

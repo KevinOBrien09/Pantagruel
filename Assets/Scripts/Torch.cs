@@ -66,7 +66,8 @@ public class Torch : MonoBehaviour
     }
 
    public void DeductStep(){
-        currentSteps--;
+    if(torchOn){
+currentSteps--;
          meterFill.DOFillAmount(currentSteps/maxSteps,.1f);
          //fillAmount = ;
         durationText.text =currentSteps + " Steps.";
@@ -74,6 +75,8 @@ public class Torch : MonoBehaviour
             DisableTorch();
             
         }
+    }
+        
     }
 
     

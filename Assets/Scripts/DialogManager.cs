@@ -127,6 +127,7 @@ public class DialogManager : Singleton<DialogManager>
     public void ProcessBlock(DialogBlock currentBlock)
     {
         Talking = true;
+        CameraManager.inst.ChangeCameraState(currentBlock.cameraState);
         index = listOfBlocks.IndexOf(currentBlock);
         speaker = currentBlock.speaker;
         
@@ -138,23 +139,31 @@ public class DialogManager : Singleton<DialogManager>
         nameText.color = speaker.charColour;
         if(speaker.characterIcon != null)
         {
-            if(!currentBlock.showLeft)
+            if(currentBlock.isThought)
             {
-                rightPic.DOFade(1,.25f);
-                rightPic.sprite = speaker.characterIcon;
-                rightPic.GetComponent<RectTransform>().DOAnchorPos(rightSpeaking,.2f);
-                leftPic.GetComponent<RectTransform>().DOAnchorPos(leftSilent,.2f);
+                rightPic.DOFade(0,.2f);
+                leftPic.DOFade(0,.2f);
             }
-            else
-            {
-                leftPic.DOFade(1,.25f);
-                leftPic.sprite = speaker.characterIcon;
-                 rightPic.GetComponent<RectTransform>().DOAnchorPos(rightSilent,.2f);
-                leftPic.GetComponent<RectTransform>().DOAnchorPos(leftSpeaking,.2f);
+            else{
+                if(!currentBlock.showLeft)
+                {
+                    rightPic.DOFade(1,.25f);
+                    rightPic.sprite = speaker.characterIcon;
+                    rightPic.GetComponent<RectTransform>().DOAnchorPos(rightSpeaking,.2f);
+                    leftPic.GetComponent<RectTransform>().DOAnchorPos(leftSilent,.2f);
+                }
+                else
+                {
+                    leftPic.DOFade(1,.25f);
+                    leftPic.sprite = speaker.characterIcon;
+                    rightPic.GetComponent<RectTransform>().DOAnchorPos(rightSilent,.2f);
+                    leftPic.GetComponent<RectTransform>().DOAnchorPos(leftSpeaking,.2f);
+                }
             }
            
+           
         }
-
+      
         string dialog = currentBlock.dialog;
         if(currentBlock.isThought)
         {
@@ -180,7 +189,7 @@ public class DialogManager : Singleton<DialogManager>
         inDialog = false;
         rightPic.DOFade(0,.2f);
         leftPic.DOFade(0,.2f);
- 
+
         OverworldMovement.canMove = true;
         Interactor.inst.RenableInteraction();
         typewriter.Play("",40,()=>
@@ -190,7 +199,8 @@ public class DialogManager : Singleton<DialogManager>
         });
         
         nameText.text = "";
-        StartCoroutine(q());
+        CameraManager.inst.ChangeCameraState(CameraState.NORMAL);
+        StartCoroutine(q());;
         IEnumerator q()
         {
             yield return new WaitForSeconds(.175f);

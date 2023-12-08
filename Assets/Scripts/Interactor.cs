@@ -20,6 +20,7 @@ public class Interactor: Singleton<Interactor>
                     bool poop = hit.transform.gameObject. TryGetComponent<DialogHolder>(out h);
                     if(poop){
                         DialogManager.inst.StartConversation(h.dialog);
+                  
                         canInteract = false;
                     }
                     Debug.Log(hit.transform.gameObject.name + poop);

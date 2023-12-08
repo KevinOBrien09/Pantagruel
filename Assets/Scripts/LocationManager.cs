@@ -10,15 +10,21 @@ public class LocationManager : Singleton<LocationManager>
 
     protected  override void Awake()
     {
-     base.Awake();
-        OrgniseDict(testing);
+        base.Awake();
+       ChangeLocation(testing);
     }
 
-    void OrgniseDict(Location newLocation)
-    {
+    public void ChangeLocation(Location newLocation){
         currentLocation = newLocation;
+        BattleTicker.inst.Type(currentLocation.locationName);
+        OrgniseDict();
+    }
+
+    void OrgniseDict()
+    {
+      
         dict.Clear();
-        foreach (var item in newLocation.beastsInLocation)
+        foreach (var item in currentLocation.beastsInLocation)
         {dict.Add(item.biome,item.scriptableObject);}
     }
 

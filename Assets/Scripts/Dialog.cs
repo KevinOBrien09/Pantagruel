@@ -14,6 +14,7 @@ public class DialogBlock
     public Character speaker;
   [TextArea(10,10)]  public string dialog;
     public bool isThought,showLeft;
+    public CameraState cameraState;
 
 }
 
