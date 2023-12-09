@@ -512,7 +512,7 @@ TriggerQueuedEffects();
         UpperLeftPanel.inst.  SwapToOverworld();
         BottomCornerBeastDisplayer.inst.ToggleBattleBGOn();
         AudioManager.inst.GetSoundEffect().Play(leave);
-        BattleTicker.inst.Type(LocationManager.inst.currentLocation.locationName);
+        BattleTicker.inst.Type(LocationManager.inst.currentSubLocation.locationName);
         Inventory.inst.DisableItemDragOnAll();
         RightPanelButtonManager.inst.SwapToOverworld();
          AngelStage.inst.Toggle();

@@ -10,14 +10,7 @@ public class SaveData
     public List<BeastSaveData> backBenched = new List<BeastSaveData>();
     public List<string> cardCollection = new List<string>();
     public PlayerSaveData playerSaveData;
-    // public int scene;
-    // public int gold;
-    // public Date date;
-    // public EXPSave exp;
-    // public List<UnitSaveData> party = new List<UnitSaveData>();
-    // public List<InventorySaveData> inventory = new List<InventorySaveData>();
-    // public List<UnitSaveData> enemies = new List<UnitSaveData>();
-    // public CameraFollow.CameraSaveData cameraSaveData;
-    // public SceneState sceneState;
+    public LocationSaveData locationSaveData;
+   
 }
 

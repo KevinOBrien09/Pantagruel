@@ -23,6 +23,7 @@ public class PlayerManager : Singleton<PlayerManager>
         mainData.party = partySave.b;
         mainData.playerSaveData = movement.Save();
         mainData.cardCollection = CardCollection.inst.Save();
+        mainData.locationSaveData = LocationManager.inst.Save();
         return mainData;
     }
 
@@ -32,5 +33,6 @@ public class PlayerManager : Singleton<PlayerManager>
         PlayerParty.inst.Load(data.party);
         CardCollection.inst.Load(data.cardCollection);
         movement.Load(data.playerSaveData);
+        LocationManager.inst.Load(data.locationSaveData);
     }
 }

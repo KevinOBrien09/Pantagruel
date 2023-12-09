@@ -19,17 +19,30 @@ MonoBehaviour:
     isThought: 1
     showLeft: 0
     cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: It appears to be locked.
     isThought: 1
     showLeft: 0
     cameraState: 1
+    soundEffect:
+      audioClip: {fileID: 8300000, guid: 5abb467018791ff4ea5376cab20b9567, type: 3}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 0.7
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: 'I have no business here anyhow, '
     isThought: 1
     showLeft: 0
     cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
   dialogBlockLanguages: []
+  moveDir: 1
   textAsset: {fileID: 0}

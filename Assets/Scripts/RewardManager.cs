@@ -80,7 +80,7 @@ public class RewardManager : Singleton<RewardManager>
         {
             CardViewer.inst.manuallyLoadCards = true;
             System.Random rng = new  System.Random();
-            var shuffledcards = LocationManager.inst.currentLocation.cardRewards.OrderBy(a => rng.Next()).ToList();
+            var shuffledcards = LocationManager.inst.currentSubLocation.cardRewards.OrderBy(a => rng.Next()).ToList();
             int howManyCards = 3;
             for (int i = 0; i < howManyCards; i++)
             {
@@ -95,7 +95,7 @@ public class RewardManager : Singleton<RewardManager>
 
         
         int howMuchGold = (int) Random.Range
-        (LocationManager.inst.currentLocation.goldRewardRange.x,LocationManager.inst.currentLocation.goldRewardRange.y); 
+        (LocationManager.inst.currentSubLocation.goldRewardRange.x,LocationManager.inst.currentSubLocation.goldRewardRange.y); 
       
         int o = Inventory.inst.gold;
         int n = howMuchGold;

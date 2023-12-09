@@ -118,7 +118,7 @@ public class DeckEditor : Singleton<DeckEditor>
         createdTickers.Clear();
         CardViewer.inst.Close();
         BeastProfileViewer.inst.Leave();
-        BattleTicker.inst.Type(LocationManager.inst.currentLocation.locationName);
+        BattleTicker.inst.Type(LocationManager.inst.currentSubLocation.locationName);
         currentButton = null;
         if(currentState == DeckEditorState.IN_SUB_MENU)
         {beastSubmenu.anchoredPosition = new Vector2(beastListShown,beastSubmenu.anchoredPosition.y);}

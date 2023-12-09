@@ -12,6 +12,8 @@ public class Location : ScriptableObject
         public Biome biome;
     }
     public string locationName;
+    public GameObject prefab;
+    public bool detectEncouters;
     public List<BeastSOBiomePair> beastsInLocation = new List<BeastSOBiomePair>();
     public List<Card> cardRewards = new List<Card>();
     public Vector2 goldRewardRange;

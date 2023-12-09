@@ -15,15 +15,24 @@ MonoBehaviour:
   blocks:
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
-    dialog: A memoir of our departed brothers.
+    dialog: A memory of our departed brothers.
     isThought: 1
     showLeft: 0
     cameraState: 1
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: I hope they are at peace.
     isThought: 1
     showLeft: 0
     cameraState: 1
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
   dialogBlockLanguages: []
+  moveDir: -1
   textAsset: {fileID: 0}

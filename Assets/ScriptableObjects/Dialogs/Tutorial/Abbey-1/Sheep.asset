@@ -19,11 +19,20 @@ MonoBehaviour:
     isThought: 1
     showLeft: 0
     cameraState: 1
+    soundEffect:
+      audioClip: {fileID: 8300000, guid: bd32cff160210734eb4c98eccd05f726, type: 3}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 0.5
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: 'We make sure to produce it when possible. '
     isThought: 1
     showLeft: 0
     cameraState: 1
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
   dialogBlockLanguages: []
+  moveDir: -1
   textAsset: {fileID: 0}

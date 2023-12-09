@@ -12,6 +12,7 @@ public class PlayerParty : Singleton<PlayerParty>
     {
         if(!PlayerManager.inst.load)
         { 
+               LocationManager.inst.   ChangeMainLocation( LocationManager.inst.   gameStart);
             List<Beast> p = new List<Beast>(party);
             List<BeastSaveData> saveDatas = new List<BeastSaveData>();
             foreach (var item in party)
@@ -20,7 +21,7 @@ public class PlayerParty : Singleton<PlayerParty>
             foreach (var item in p)
             {
                 EXP e = new EXP();
-                e.PsudeoLevel((int)Random.Range(LocationManager.inst.currentLocation.levelRange.x,LocationManager.inst.currentLocation.levelRange.y),item);
+                e.PsudeoLevel((int)Random.Range(LocationManager.inst.currentSubLocation.levelRange.x,LocationManager.inst.currentSubLocation.levelRange.y),item);
                 BeastSaveData bsd = item.PsudeoSave(item.scriptableObject);
                 EXPSave save = new EXPSave();
                 

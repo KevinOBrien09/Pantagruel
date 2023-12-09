@@ -128,6 +128,7 @@ public class DialogManager : Singleton<DialogManager>
     {
         Talking = true;
         CameraManager.inst.ChangeCameraState(currentBlock.cameraState);
+        AudioManager.inst.GetSoundEffect().Play(currentBlock.soundEffect);
         index = listOfBlocks.IndexOf(currentBlock);
         speaker = currentBlock.speaker;
         
@@ -191,6 +192,10 @@ public class DialogManager : Singleton<DialogManager>
         leftPic.DOFade(0,.2f);
 
         OverworldMovement.canMove = true;
+        if(currentConversation.moveDir >= 0){
+        PlayerManager.inst.movement.StartMove((Dir)currentConversation.moveDir);
+        }
+       
         Interactor.inst.RenableInteraction();
         typewriter.Play("",40,()=>
         {

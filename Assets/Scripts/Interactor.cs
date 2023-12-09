@@ -16,14 +16,17 @@ public class Interactor: Singleton<Interactor>
                 RaycastHit hit;
                 if(Physics.Raycast(transform.position,transform.forward *rayDist,maxDistance: rayDist,hitInfo: out hit,layerMask:mask))
                 {
-                    DialogHolder h = null;
-                    bool poop = hit.transform.gameObject. TryGetComponent<DialogHolder>(out h);
-                    if(poop){
-                        DialogManager.inst.StartConversation(h.dialog);
-                  
-                        canInteract = false;
+                    if(!PlayerManager.inst.movement.isMoving && !PlayerManager.inst.movement.rotate.isRotating){
+Interactable i = null;
+                    bool dia = hit.transform.gameObject. TryGetComponent<Interactable>(out i);
+                    if(dia){
+                      i.Go();  
+                      canInteract = false;
                     }
-                    Debug.Log(hit.transform.gameObject.name + poop);
+                   
+                    }
+                   
+                  
                 }
                 
             }

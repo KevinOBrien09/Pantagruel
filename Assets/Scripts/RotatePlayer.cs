@@ -15,9 +15,9 @@ public class RotatePlayer : MonoBehaviour
     [SerializeField] TextMeshProUGUI dirText;
     public bool isRotating;
 
-    void Start(){
-        InitRotation(NESW.inst.GetDirection(this.transform));
-    }
+    // void Start(){
+       
+    // }
 
     public void InitRotation(CardinalDirection dir)
     {

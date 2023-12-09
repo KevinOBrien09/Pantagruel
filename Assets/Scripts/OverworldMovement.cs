@@ -8,6 +8,7 @@ public class PlayerSaveData{
     public Vector3 pos;
     public Vector3 rot;
     public CardinalDirection lastRot;
+   
     public bool torchState;
     public float torchTimer;
 }
@@ -22,7 +23,7 @@ public class OverworldMovement : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float stride;
     [SerializeField] AudioSource audioSource;
-    [SerializeField] bool detectEncouters;
+    public bool detectEncouters;
     [SerializeField] float rayLength = 3;
     [SerializeField] Torch torch;
     public int encounterTimeOut;
@@ -261,10 +262,15 @@ public class OverworldMovement : MonoBehaviour
         return saveData;
     }
 
+    public void InitPosRot(Vector3 pos,Vector3 rot)
+    {
+        transform.position = pos;
+        transform.rotation = Quaternion.Euler(rot.x,rot.y,rot.z);
+    }
+
     public void Load(PlayerSaveData data)
     {
-        transform.position = data.pos;
-        transform.rotation = Quaternion.Euler(data.rot.x,data.rot.y,data.rot.z);
+        InitPosRot(data.pos,data.rot);
         rotate.InitRotation(data.lastRot);
         torch.Load(data.torchState,data.torchTimer);
     }

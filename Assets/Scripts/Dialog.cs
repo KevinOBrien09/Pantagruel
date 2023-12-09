@@ -12,9 +12,11 @@ public class DialogBlock
 {
     public string customName;
     public Character speaker;
-  [TextArea(10,10)]  public string dialog;
+    [TextArea(10,10)]  public string dialog;
     public bool isThought,showLeft;
     public CameraState cameraState;
+    public SoundData soundEffect;
+    
 
 }
 
@@ -38,6 +40,8 @@ public class Dialog:ScriptableObject
 {
     public List<DialogBlock> blocks = new List<DialogBlock>();
     public List<DialogBlockLanguage> dialogBlockLanguages = new List<DialogBlockLanguage>();
+    
+public int moveDir = -1;
     public TextAsset textAsset;
    
     #if UNITY_EDITOR

@@ -19,7 +19,7 @@ public class RivalBeastManager:Singleton<RivalBeastManager>
         {
             Beast b = Instantiate(beastPrefab,transform);
             EXP e = new EXP(); 
-            e.PsudeoLevel((int)Random.Range(LocationManager.inst.currentLocation.levelRange.x,LocationManager.inst.currentLocation.levelRange.y),b);
+            e.PsudeoLevel((int)Random.Range(LocationManager.inst.currentSubLocation.levelRange.x,LocationManager.inst.currentSubLocation.levelRange.y),b);
             b.Init(b.PsudeoSave(item));
             b.ownership = EntityOwnership.ENEMY;
             b.FirstHealthInit(e);

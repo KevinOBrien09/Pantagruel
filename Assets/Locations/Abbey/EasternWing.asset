@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 635a20c82770dea428c8eaf094a32c9d, type: 3}
+  m_Name: EasternWing
+  m_EditorClassIdentifier: 
+  locationName: Eastern Wing
+  prefab: {fileID: 2644235655099837428, guid: beaba94878f6ee5499483da1f1784ffa, type: 3}
+  detectEncouters: 0
+  beastsInLocation:
+  - scriptableObject:
+    - {fileID: 11400000, guid: 561a0fe7d242fb245ae9e2cdfa1bd646, type: 2}
+    biome: 0
+  cardRewards:
+  - {fileID: 11400000, guid: cbdf3044615ac644d9b41da01389d1c8, type: 2}
+  - {fileID: 11400000, guid: f6e739f8c22a0ff4ba1ccc9ad9b91bca, type: 2}
+  - {fileID: 11400000, guid: ae7a2449b03c05b428c0931f6ca7a2a3, type: 2}
+  goldRewardRange: {x: 10, y: 50}
+  levelRange: {x: 1, y: 10}
