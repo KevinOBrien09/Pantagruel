@@ -27,7 +27,7 @@ public class Inventory:Singleton<Inventory>
         {
             AddItem(item);
         }
-AddGold(50);
+
         DisableItemDragOnAll();
         
     }

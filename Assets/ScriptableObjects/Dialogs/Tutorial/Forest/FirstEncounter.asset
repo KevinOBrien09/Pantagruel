@@ -1,0 +1,165 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47ea6e94e2a7fe4fa0534161af2c13a, type: 3}
+  m_Name: FirstEncounter
+  m_EditorClassIdentifier: 
+  blocks:
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: ....
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 8300000, guid: 5a6a1f37836a8f247a6ee6ea63765c03, type: 3}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 1.1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: -1
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: Hold up.
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0.9, y: 1.1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: -1
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: Did you hear that?
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0.9, y: 1.1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: -1
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: Curses!
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 8300000, guid: d977ef53d7ad2b642909fd641e7d0df6, type: 3}
+      pitchRange: {x: 0.9, y: 1.1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 8300000, guid: ac742890c4c5f2842910c5ed5a091aee, type: 3}
+      pitchRange: {x: 0.8, y: 0.8}
+      volume: 1
+    worldEvents:
+    - dropUzu
+    comic: {fileID: 0}
+    moveDir: -1
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: Brother, Stand back!
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - moveEdvard1
+    comic: {fileID: 0}
+    moveDir: -1
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: I will take care of this fiend!
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 1.2, y: 1.2}
+      volume: 1
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 1
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: HIYAA
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 8300000, guid: 69186b39e5efe8e40a14467b08c1bab0, type: 3}
+      pitchRange: {x: 0.9, y: 1.1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - moveEdvard2
+    - edvardEnterTear
+    comic: {fileID: 0}
+    moveDir: -1
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: By god..
+    isThought: 1
+    showLeft: 1
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: -1
+  dialogBlockLanguages: []
+  locationDialog:
+    moveAfterDialog: 0
+    subLocRot: {x: 0, y: 0, z: 0}
+    subLocPos: {x: 0, y: 0, z: 0}
+    subLoc: {fileID: 0}
+    mainLocation: {fileID: 0}
+  changeMusicBack: 0
+  moveDir: -1
+  textAsset: {fileID: 0}

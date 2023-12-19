@@ -32,6 +32,7 @@ public class OverworldMovement : MonoBehaviour
     bool lastTorchState;
     float ogPOV;
     public float zoomPOV;
+   
     void Start(){
         ogPOV = cam.fieldOfView;
     }
@@ -39,7 +40,8 @@ public class OverworldMovement : MonoBehaviour
     {canMove = true;}
     
     void Update()
-    {
+    {   if(canMove)
+        {
         if(InputManager.input.wasdDown[0])
         {StartMove(Dir.Forwards);}
         else if(InputManager.input.wasdDown[1])
@@ -55,15 +57,15 @@ public class OverworldMovement : MonoBehaviour
         else if(InputManager.input.rotateRight){
             rotate.StartRotate(Dir.Right);
         }
+        }
     }
 
     public void StartMove(Dir dir)
     {
-        if(canMove)
-        {
-            if(!rotate.isRotating & !isMoving)
-            {Move(dir);}
-        }
+        
+        if(!rotate.isRotating & !isMoving)
+        {Move(dir);}
+        
     }
 
     public float ZOOMPOV(){
@@ -74,6 +76,13 @@ public class OverworldMovement : MonoBehaviour
 
     public void ResetPOV(){
     cam.DOFieldOfView(ogPOV,0);
+    }
+
+    public void ChangeFootStepSFX(AudioClip clip){
+        if(clip == null){
+            return;
+        }
+        audioSource.clip = clip;
     }
     
     void Move(Dir dir)
@@ -236,20 +245,7 @@ public class OverworldMovement : MonoBehaviour
         {return false;}
     }
 
-    public Biome GetBiome()
-    {
-        RaycastHit bleh;
-        bool hit = Physics.Raycast(cam.transform.position,-Vector3.up *rayLength,out bleh  , Mathf.Infinity);
-        if(bleh.collider != null)
-        {
-            return bleh.collider.gameObject.GetComponent<Floor>().tileType;
-        }
-        else
-        {
-            Debug.LogWarning("No Floor script found");
-            return Biome.WoopsieDoopsie;
-        }
-    }
+
 
     public PlayerSaveData Save()
     {

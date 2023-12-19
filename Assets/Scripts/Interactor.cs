@@ -8,7 +8,9 @@ public class Interactor: Singleton<Interactor>
     public LayerMask mask;
     public bool canInteract;
     void Update(){
-
+        if(DialogManager.inst.inDialog){
+            return;
+        }
         if(canInteract)
         {
             if(InputManager.input.space)

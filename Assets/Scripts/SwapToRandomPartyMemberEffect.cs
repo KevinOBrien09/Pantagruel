@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Effects/RandomSwapBeast", fileName = "RandomSwap")]
 public class SwapToRandomPartyMemberEffect :Effect
 {
+    
     public override void Use(EffectArgs args)
     {
         if(args.caster.OwnedByPlayer()){
@@ -25,7 +26,7 @@ public class SwapToRandomPartyMemberEffect :Effect
 
     public override bool canUse(bool isPlayer)
     {
-        if(PlayerParty.inst.party.Count < 2)
+        if(PlayerParty.inst.party.Count == 1)
         {return false;}
         else
         {return true ;}

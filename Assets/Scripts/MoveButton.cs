@@ -7,8 +7,11 @@ public class MoveButton:MonoBehaviour
 {
     public void Move(int dir)
     {
+        if(OverworldMovement. canMove)
+        {
         PlayerManager.inst.movement.StartMove((Dir)dir);
          EventSystem.current.SetSelectedGameObject(null);
+        }
     }
 
     public void Rotate(int rot)

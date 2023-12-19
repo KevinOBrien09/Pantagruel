@@ -15,9 +15,21 @@ public class DialogBlock
     [TextArea(10,10)]  public string dialog;
     public bool isThought,showLeft;
     public CameraState cameraState;
-    public SoundData soundEffect;
+  
+    public SoundData soundEffect,changeMusic;
+    public string[] worldEvents;
+    public Sprite comic;
+    public int moveDir = -1;
+  
     
 
+}
+[System.Serializable]
+public class LocationDialogStuff{
+ public bool moveAfterDialog;
+ public Vector3 subLocRot,subLocPos;
+    public Location subLoc;
+    public MainLocation mainLocation;
 }
 
 [System.Serializable]
@@ -40,6 +52,8 @@ public class Dialog:ScriptableObject
 {
     public List<DialogBlock> blocks = new List<DialogBlock>();
     public List<DialogBlockLanguage> dialogBlockLanguages = new List<DialogBlockLanguage>();
+     public LocationDialogStuff locationDialog;
+       public bool changeMusicBack;
     
 public int moveDir = -1;
     public TextAsset textAsset;

@@ -9,17 +9,21 @@ public class CameraManager : Singleton<CameraManager>
 {
     public CameraState currentState;
     public GameObject CUBE;
+    void Start(){
+        CUBE.SetActive(false);
+    }
     public void ChangeCameraState(CameraState newState)
     {
         if(currentState == newState)
         {return;}
 
-CUBE.SetActive(false);
+        //CUBE.SetActive(false);
         float rotSpeed = .25f;
         switch (newState)
         {
             case CameraState.NORMAL:
-            transform.DOLocalRotate(new Vector3(0,0,0),rotSpeed).OnComplete(()=> CUBE.SetActive(true));
+            transform.DOLocalRotate(new Vector3(0,0,0),rotSpeed);
+            //.OnComplete(()=> CUBE.SetActive(true));
             break;
             case CameraState.DOWN:
             transform.DOLocalRotate(new Vector3(25,0,0),rotSpeed);

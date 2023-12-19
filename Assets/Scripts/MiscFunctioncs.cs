@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 public static class MiscFunctions
 {
 
@@ -50,5 +51,20 @@ public static class MiscFunctions
 
     public static string FirstLetterToUpperCaseOrConvertNullToEmptyString(string str)
     {return str?.First().ToString().ToUpper() + str?.Substring(1).ToLower();}
+
+
+    #if UNITY_EDITOR
+    [MenuItem("Func/RandomizeTrees")]
+    static void RandomizeTrees()
+    {
+        foreach (TreeRotationRandomiser item in GameObject.FindObjectsOfType(typeof(TreeRotationRandomiser)))
+        {
+            item.Randomize();
+        }
+      
+    }
+
+    
+  #endif
 
 }

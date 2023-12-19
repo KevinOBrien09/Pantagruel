@@ -9,7 +9,7 @@ public class Billboard : MonoBehaviour
     
     void Start()
     {
-        cam = Camera.main.transform;
+        cam = GameObject.FindGameObjectWithTag("CameraHolder").transform;
     }
 
     void LateUpdate()

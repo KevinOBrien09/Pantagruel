@@ -16,7 +16,7 @@ public class LocationManager : Singleton<LocationManager>
     public MainLocation currentMainLoc;
     public Location currentSubLocation;
     public Image blackFade;
-    public Dictionary<Biome,List<BeastScriptableObject>> dict = new Dictionary<Biome, List<BeastScriptableObject>>();
+    List<BeastScriptableObject> encounterableBeast = new List<BeastScriptableObject>();
     public List<MainLocation> allMainLocs = new List<MainLocation>();
     Dictionary<string,MainLocation> mainLocDict = new Dictionary<string, MainLocation>();
     public GameObject currentSubLocationInstance;
@@ -38,9 +38,31 @@ public class LocationManager : Singleton<LocationManager>
         UpperLeftPanel.inst.ChangeLocationText(currentMainLoc); 
     }
 
+    public void ChangeMainLocationWithFade(MainLocation mainLocation)
+    {
+        OverworldMovement.canMove = false;
+        Interactor.inst.canInteract = false;
+        if(mainLocation.bgMusic.audioClip != null)
+        {
+            MusicManager.inst.ChangeBGMusicWithFade(mainLocation.bgMusic);
+        }
+        blackFade.DOFade(1,.25f).OnComplete(()=>
+        {
+            ChangeMainLocation(mainLocation);
+            StartCoroutine(q());
+            IEnumerator q()
+            {
+                
+                yield return new WaitForSeconds(.2f);
+                blackFade.DOFade(0,.25f).OnComplete(()=>{  OverworldMovement.canMove =  true; Interactor.inst.canInteract = true;});
+            }
+        });
+    }
+
     public void ChangeSubLocationWithFade(Location newLocation,Vector3 p,Vector3 r)
     {
         OverworldMovement.canMove = false;
+        Interactor.inst.canInteract = false;
         blackFade.DOFade(1,.25f).OnComplete(()=>
         {
             ChangeSubLocation(newLocation,p,r);
@@ -48,7 +70,7 @@ public class LocationManager : Singleton<LocationManager>
             IEnumerator q()
             {
                 yield return new WaitForSeconds(.2f);
-                blackFade.DOFade(0,.25f).OnComplete(()=>{  OverworldMovement.canMove =  true;});
+                blackFade.DOFade(0,.25f).OnComplete(()=>{  OverworldMovement.canMove =  true;Interactor.inst.canInteract = true;});
             }
         });
     }
@@ -57,15 +79,23 @@ public class LocationManager : Singleton<LocationManager>
         currentSubLocation = newLocation;
         BattleTicker.inst.Type(currentSubLocation.locationName);
         PlayerManager.inst.movement.detectEncouters = currentSubLocation.detectEncouters;
-        PlayerManager.inst.movement.InitPosRot(p,r);
-        PlayerManager.inst.movement.rotate.InitRotation(NESW.inst.GetDirection(PlayerManager.inst.movement.rotate.transform));
+        PlayerManager.inst.movement.ChangeFootStepSFX(newLocation.footStep.audioClip);
         if(!EDITINGINSTANCE)
-        {
+        {  PlayerManager.inst.movement.InitPosRot(p,r);
+        
             if(currentSubLocationInstance != null)
             {Destroy(currentSubLocationInstance);}
             currentSubLocationInstance = Instantiate(currentSubLocation.prefab,Vector3.zero,Quaternion.identity);
         }
+        PlayerManager.inst.movement.rotate.InitRotation(NESW.inst.GetDirection(PlayerManager.inst.movement.rotate.transform));
         Interactor.inst.RenableInteraction();
+
+        if(newLocation.isCutScene){
+            CutsceneManager.inst.EnterCutscene(newLocation);
+        }
+        else{
+            CutsceneManager.inst.LeaveCutscene();
+        }
         OrgniseDict();
     }
 
@@ -91,15 +121,15 @@ public class LocationManager : Singleton<LocationManager>
     void OrgniseDict()
     {
       
-        dict.Clear();
+        encounterableBeast.Clear();
         foreach (var item in currentSubLocation.beastsInLocation)
-        {dict.Add(item.biome,item.scriptableObject);}
+        {encounterableBeast.Add(item);}
     }
 
 
-    public BeastScriptableObject GetEncounter(Biome biome)
+    public BeastScriptableObject GetEncounter()
     {
-        return dict[biome][Random.Range(0,dict[biome].Count)];
+        return encounterableBeast[Random.Range(0,encounterableBeast.Count)];
     }
 
 

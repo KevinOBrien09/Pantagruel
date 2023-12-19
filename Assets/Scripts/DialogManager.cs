@@ -13,7 +13,7 @@ public class DialogManager : Singleton<DialogManager>
     public Dialog currentConversation;
     public Character speaker;
     public bool inDialog;
-    public Image rightPic,leftPic;
+    public Image rightPic,leftPic,comic;
     public int index = -1;
     [SerializeField] Button[] buttonsToDisable;
     [SerializeField] TMP_Typewriter typewriter;
@@ -24,6 +24,7 @@ public class DialogManager : Singleton<DialogManager>
     Queue<DialogBlock> previousBlocks = new Queue<DialogBlock>();
     bool allowInput;
     bool Talking;
+    bool musicWasChanged;
     public Vector2 leftSilent,leftSpeaking,rightSilent,rightSpeaking;
     void Start(){
         nameText.text = "";
@@ -51,7 +52,7 @@ public class DialogManager : Singleton<DialogManager>
         //     if(newConversation.conversationType == ConversationType.NORMAL && !newConversation.keepReputationBarOnScreen)
         //     {ReputationManager.inst.Hide();}
         // }
-
+        comic.DOFade(0,0);
         listOfBlocks.Clear();
         ToggleButtons(false);
         index = -1;
@@ -131,6 +132,46 @@ public class DialogManager : Singleton<DialogManager>
         AudioManager.inst.GetSoundEffect().Play(currentBlock.soundEffect);
         index = listOfBlocks.IndexOf(currentBlock);
         speaker = currentBlock.speaker;
+
+        if(currentBlock.comic != null){
+            comic.gameObject.SetActive(true);
+            comic.sprite = currentBlock.comic;
+            if(comic.color.a != 1){
+                
+                comic.DOFade(1,.25F);
+            }
+           
+        }
+        else{
+            if(comic.gameObject.activeSelf){
+                comic.DOFade(1,.25F).OnComplete(()=>{
+                comic.gameObject.SetActive(false);
+                });
+                 
+            }
+        }
+        foreach (var item in currentBlock.worldEvents)
+        {
+            if(item != string.Empty)
+            {
+                if(WorldEventManager.inst != null)
+                {
+                    WorldEventManager.inst.ProcessEvent(item);
+                }
+                else
+                {Debug.LogAssertion("No WorldEvent Manager");}
+            
+            }
+        }
+
+        if(currentBlock.moveDir >= 0){
+        PlayerManager.inst.movement.StartMove((Dir)currentBlock.moveDir);
+        }
+
+        if(currentBlock.changeMusic.audioClip != null){
+            MusicManager.inst.ChangeBGMusic(currentBlock.changeMusic);
+            musicWasChanged = true;
+        }
         
         if(currentBlock.customName != string.Empty)
         { nameText.text = currentBlock.customName; }
@@ -186,6 +227,43 @@ public class DialogManager : Singleton<DialogManager>
 
     public void End()
     {
+
+        if(currentConversation.locationDialog.moveAfterDialog)
+        {
+            if(currentConversation.locationDialog.subLoc != null)
+            {
+                LocationManager.inst.ChangeSubLocationWithFade
+                (currentConversation.locationDialog.subLoc,currentConversation.locationDialog.subLocRot,currentConversation.locationDialog.subLocPos);
+            }
+            else if( currentConversation.locationDialog.mainLocation != null)
+            {
+                LocationManager.inst.ChangeMainLocationWithFade(currentConversation.locationDialog.mainLocation);
+            }
+            CameraManager.inst.ChangeCameraState(CameraState.NORMAL);
+            allowInput = false;
+            inDialog = false;
+            rightPic.DOFade(0,.2f);
+            leftPic.DOFade(0,.2f);
+            typewriter.Play("",40,()=>
+            {Talking = false;});
+        
+            nameText.text = "";
+            ToggleButtons(true);
+            //Interactor.inst.RenableInteraction();
+            return;
+        }
+        if(musicWasChanged && currentConversation.changeMusicBack){
+            MusicManager.inst.ChangeBGMusic(LocationManager.inst.currentMainLoc.bgMusic);
+            musicWasChanged = false;
+        }
+
+        if(comic.gameObject.activeSelf){
+            comic.DOFade(1,.25F).OnComplete(()=>{
+            comic.gameObject.SetActive(false);
+            });
+                 
+        }
+
         allowInput = false;
         inDialog = false;
         rightPic.DOFade(0,.2f);

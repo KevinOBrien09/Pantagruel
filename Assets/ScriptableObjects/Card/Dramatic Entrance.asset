@@ -21,12 +21,15 @@ MonoBehaviour:
   castDelay: 0
   effects:
   - {fileID: 11400000, guid: 012ad1936acc43f4f83fbf96648aa454, type: 2}
-  - {fileID: 11400000, guid: 04385888d984eb046838c39dc94fd329, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 8300000, guid: ef1dfb321a915b2419a9f86b41a1a1cb, type: 3}
     pitchRange: {x: 0.9, y: 1}
     volume: 1
+  missSound:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
   element: 3
   beastClass: 8
   desc: '<i>Swap</i> to a random beast in your party.  Deal 10 damage to <i> everything</i>
@@ -35,3 +38,5 @@ MonoBehaviour:
   deckCost: 11
   unplayable: 0
   cannotBeDiscard: 0
+  destroyOnCast: 0
+  unDodgeable: 0

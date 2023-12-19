@@ -12,7 +12,7 @@ public class PlayerParty : Singleton<PlayerParty>
     {
         if(!PlayerManager.inst.load)
         { 
-               LocationManager.inst.   ChangeMainLocation( LocationManager.inst.   gameStart);
+            LocationManager.inst.   ChangeMainLocation( LocationManager.inst.   gameStart);
             List<Beast> p = new List<Beast>(party);
             List<BeastSaveData> saveDatas = new List<BeastSaveData>();
             foreach (var item in party)
@@ -34,6 +34,9 @@ public class PlayerParty : Singleton<PlayerParty>
                 item.ownership = EntityOwnership.PLAYER;
                 bsd.currentHealth = item.stats().maxHealth;
                 saveDatas.Add(bsd);
+                if(party.Count == 0){
+                BottomCornerBeastDisplayer.inst.NoBeast();   
+                }
             }
             Load(saveDatas);
          
@@ -75,21 +78,25 @@ public class PlayerParty : Singleton<PlayerParty>
             b.ownership = EntityOwnership.PLAYER;
            
         }
-            
-        //Active beast is the 0th entry of the party.
-        activeBeast = party[0];
-        BottomCornerBeastDisplayer.inst.CreateAnimatedInstances(party);
- 
-         ApplyLoadedInfo();
-        StartCoroutine(q());
-        IEnumerator q(){
+        
+        if(party.Count == 0)
+        {
+            BottomCornerBeastDisplayer.inst.NoBeast();   
+        }
+        else
+        {
+            BottomCornerBeastDisplayer.inst.YesBeast();   
+            activeBeast = party[0];
+            BottomCornerBeastDisplayer.inst.CreateAnimatedInstances(party);
+            ApplyLoadedInfo();
+            StartCoroutine(q());
+        }
+        
+        IEnumerator q()
+        {
             yield return new WaitForEndOfFrame();
-                
             for (int i = 0; i < data.Count; i++)  
-            {
-            
-                party[i].statusEffectHandler.Load(data[i].statusEffects);
-            }
+            {party[i].statusEffectHandler.Load(data[i].statusEffects);}
         }
        
     }

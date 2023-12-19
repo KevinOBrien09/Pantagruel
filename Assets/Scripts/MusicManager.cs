@@ -12,12 +12,39 @@ public class MusicManager : Singleton<MusicManager>
     
     void Start()
     { 
-        battlevol = battle.volume;
-        dungvol = dungeon.volume;
-        rewardVol = reward.volume;
+        ResetVol();
         battle.Play();
         dungeon.Play();
         battle.DOFade(0,0);
+    }
+
+    public void ResetVol(){
+        battlevol = battle.volume;
+        dungvol = dungeon.volume;
+        rewardVol = reward.volume;
+    }
+
+    public void ChangeBGMusicWithFade(SoundData newSong){
+        dungeon.DOFade(0,.25f).OnComplete(()=>
+        {
+            StartCoroutine(q());
+            IEnumerator q()
+            {
+                ChangeBGMusic(newSong);
+                dungeon.DOFade(0,0);
+                yield return new WaitForSeconds(.2f);
+                dungeon.DOFade(dungvol,1);
+            }
+
+        });
+    }
+
+    public void ChangeBGMusic(SoundData newSong){
+        dungeon.clip = newSong.audioClip;
+        dungeon.volume = newSong.volume;
+        dungeon.pitch = newSong.pitchRange.x;
+        dungeon.Play();
+        ResetVol();
     }
 
     public void ChangeToDungeon()

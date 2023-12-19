@@ -6,7 +6,9 @@ public class Interactable: MonoBehaviour
 {
     
 
-    public virtual void Go(){
+    public virtual void Go()
+    {
+       
         Debug.Log(gameObject.name);
     }
 
