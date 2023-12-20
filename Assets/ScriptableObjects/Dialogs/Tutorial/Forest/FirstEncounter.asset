@@ -32,7 +32,7 @@ MonoBehaviour:
     moveDir: -1
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
-    dialog: Hold up.
+    dialog: '''old up.'
     isThought: 0
     showLeft: 0
     cameraState: 0
@@ -66,18 +66,69 @@ MonoBehaviour:
     moveDir: -1
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
-    dialog: Curses!
+    dialog: ...
     isThought: 0
     showLeft: 0
     cameraState: 0
     soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: -1
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: ......
+    isThought: 1
+    showLeft: 1
+    cameraState: 0
+    soundEffect:
       audioClip: {fileID: 8300000, guid: d977ef53d7ad2b642909fd641e7d0df6, type: 3}
-      pitchRange: {x: 0.9, y: 1.1}
+      pitchRange: {x: 0.9, y: 1}
       volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: -1
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: ...
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: -1
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: Curses, an ambush!
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 8300000, guid: 3da326e1b501fef49bed4779088e8581, type: 3}
+      pitchRange: {x: 0.9, y: 1.1}
+      volume: 0.66
     changeMusic:
       audioClip: {fileID: 8300000, guid: ac742890c4c5f2842910c5ed5a091aee, type: 3}
       pitchRange: {x: 0.8, y: 0.8}
-      volume: 1
+      volume: 0.66
     worldEvents:
     - dropUzu
     comic: {fileID: 0}
@@ -102,7 +153,7 @@ MonoBehaviour:
     moveDir: -1
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
-    dialog: I will take care of this fiend!
+    dialog: I will make quick work of this fiend!
     isThought: 0
     showLeft: 0
     cameraState: 0
@@ -119,14 +170,14 @@ MonoBehaviour:
     moveDir: 1
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
-    dialog: HIYAA
+    dialog: HURRAH!
     isThought: 0
     showLeft: 0
     cameraState: 0
     soundEffect:
       audioClip: {fileID: 8300000, guid: 69186b39e5efe8e40a14467b08c1bab0, type: 3}
       pitchRange: {x: 0.9, y: 1.1}
-      volume: 1
+      volume: 0.75
     changeMusic:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
@@ -138,7 +189,7 @@ MonoBehaviour:
     moveDir: -1
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
-    dialog: By god..
+    dialog: What on earth!
     isThought: 1
     showLeft: 1
     cameraState: 0

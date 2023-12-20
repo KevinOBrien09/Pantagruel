@@ -150,19 +150,22 @@ public class DialogManager : Singleton<DialogManager>
                  
             }
         }
-        foreach (var item in currentBlock.worldEvents)
-        {
-            if(item != string.Empty)
+        if(currentBlock.worldEvents.Length != 0){
+            foreach (var item in currentBlock.worldEvents)
             {
-                if(WorldEventManager.inst != null)
+                if(item != string.Empty)
                 {
-                    WorldEventManager.inst.ProcessEvent(item);
+                    if(WorldEventManager.inst != null)
+                    {
+                        WorldEventManager.inst.ProcessEvent(item);
+                    }
+                    else
+                    {Debug.LogAssertion("No WorldEvent Manager");}
+                
                 }
-                else
-                {Debug.LogAssertion("No WorldEvent Manager");}
-            
             }
         }
+      
 
         if(currentBlock.moveDir >= 0){
         PlayerManager.inst.movement.StartMove((Dir)currentBlock.moveDir);

@@ -1,0 +1,472 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47ea6e94e2a7fe4fa0534161af2c13a, type: 3}
+  m_Name: Justice1
+  m_EditorClassIdentifier: 
+  blocks:
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: What is this woman?
+    isThought: 1
+    showLeft: 0
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: Woman
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: 'Veritas. '
+    isThought: 0
+    showLeft: 0
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: Woman
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: Omnia.
+    isThought: 0
+    showLeft: 0
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: Woman
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: Vincit
+    isThought: 0
+    showLeft: 0
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: 'She''s heeding me no attention. '
+    isThought: 1
+    showLeft: 0
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: 'She''s repeating the same latin phrase over and over.
+
+      "Veritas
+      omnia vincit"...
+
+      Truth conquers all....'
+    isThought: 1
+    showLeft: 0
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: Woman
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: 'Oh my?!
+
+      What''s this?'
+    isThought: 0
+    showLeft: 0
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: Woman
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: A mortal can see me?
+    isThought: 0
+    showLeft: 0
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: What's going on? Who are you? Is Edvard safe!
+    isThought: 0
+    showLeft: 1
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: I am Justice. I am an angel.
+    isThought: 0
+    showLeft: 0
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: '!
+
+'
+    isThought: 1
+    showLeft: 1
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: 'It is odd that you can see me, but I won''t dwell on it. '
+    isThought: 0
+    showLeft: 0
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: Your friend is inside an Ophanim.
+    isThought: 0
+    showLeft: 0
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: I am here to ensure the emergant soul can return to the material realm.
+      That my task.
+    isThought: 0
+    showLeft: 0
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: 'Do you expect me to know what an Ophanim is?
+
+      Angel or not, explain
+      yourself!
+
+'
+    isThought: 0
+    showLeft: 1
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: Damn it! Another one!
+    isThought: 1
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: 'Oh good god it''s over, I''m surrounded! '
+    isThought: 1
+    showLeft: 0
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: 'Ohohoho!
+
+      I think you''ll be finding out what an Ophanim is soon
+      enough brother!'
+    isThought: 0
+    showLeft: 0
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: Curse you woman!
+    isThought: 1
+    showLeft: 0
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: "*sigh* \nThat's no way a Holyman should be talking about an angel now
+      is it...."
+    isThought: 0
+    showLeft: 0
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: Of course the angel can read my mind...
+    isThought: 1
+    showLeft: 1
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: I suggest you say your final prayers.
+    isThought: 0
+    showLeft: 1
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: 'I think the penace for cursing an angel is 500 Hail Mary''s?
+
+      Better
+      do it briskly.'
+    isThought: 0
+    showLeft: 0
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: This is it.
+    isThought: 1
+    showLeft: 1
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: This is where I die.
+    isThought: 1
+    showLeft: 1
+    cameraState: 2
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: 0
+  dialogBlockLanguages: []
+  locationDialog:
+    moveAfterDialog: 0
+    subLocRot: {x: 0, y: 0, z: 0}
+    subLocPos: {x: 0, y: 0, z: 0}
+    subLoc: {fileID: 0}
+    mainLocation: {fileID: 0}
+  changeMusicBack: 0
+  moveDir: -1
+  textAsset: {fileID: 0}
