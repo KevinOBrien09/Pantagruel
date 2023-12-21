@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47ea6e94e2a7fe4fa0534161af2c13a, type: 3}
+  m_Name: Seeker
+  m_EditorClassIdentifier: 
+  blocks:
+  - customName: 
+    speaker: {fileID: 11400000, guid: 5fe373b2da15e1f48aeb2597b4666754, type: 2}
+    dialog: <i>Knowledge. Strategy. Truth.
+    isThought: 0
+    showLeft: 1
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+  dialogBlockLanguages: []
+  locationDialog:
+    moveAfterDialog: 0
+    subLocRot: {x: 0, y: 0, z: 0}
+    subLocPos: {x: 0, y: 0, z: 0}
+    subLoc: {fileID: 0}
+    mainLocation: {fileID: 0}
+  changeMusicBack: 0
+  doNotReset: 1
+  moveDir: -1
+  textAsset: {fileID: 0}

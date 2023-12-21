@@ -7,7 +7,7 @@ using System.IO;
 
 
 
- [System.Serializable]
+[System.Serializable]
 public class DialogBlock
 {
     public string customName;
@@ -15,11 +15,17 @@ public class DialogBlock
     [TextArea(10,10)]  public string dialog;
     public bool isThought,showLeft;
     public CameraState cameraState;
-  
     public SoundData soundEffect,changeMusic;
     public string[] worldEvents;
     public Sprite comic;
     public int moveDir = -1;
+    public rot rotation;
+
+    [System.Serializable]
+    public class rot{
+        public bool forceRotation;
+        public float playerYRotation;
+    }
   
     
 
@@ -54,6 +60,7 @@ public class Dialog:ScriptableObject
     public List<DialogBlockLanguage> dialogBlockLanguages = new List<DialogBlockLanguage>();
      public LocationDialogStuff locationDialog;
        public bool changeMusicBack;
+       public bool doNotReset;
     
 public int moveDir = -1;
     public TextAsset textAsset;

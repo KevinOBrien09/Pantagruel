@@ -23,6 +23,16 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
       volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: 'No more than 20 minutes of our time. '
@@ -33,6 +43,16 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
       volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   dialogBlockLanguages: []
   locationDialog:
     moveAfterDialog: 0
@@ -40,5 +60,6 @@ MonoBehaviour:
     subLocPos: {x: 0, y: 0, z: 0}
     subLoc: {fileID: 0}
     mainLocation: {fileID: 0}
+  changeMusicBack: 0
   moveDir: -1
   textAsset: {fileID: 0}

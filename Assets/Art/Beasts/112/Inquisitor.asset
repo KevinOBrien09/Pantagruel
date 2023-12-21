@@ -19,9 +19,9 @@ MonoBehaviour:
         of the turn.
     beastName: Inquisitor
     spawn:
-      audioClip: {fileID: 0}
-      pitchRange: {x: 0, y: 0}
-      volume: 0
+      audioClip: {fileID: 8300000, guid: 3cab8b5f3b65cba4dbe29d08d49868f4, type: 3}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 1
     die:
       audioClip: {fileID: 8300000, guid: f7f6112bd2b7fe84fb8800a8b40a351b, type: 3}
       pitchRange: {x: 0.9, y: 1.1}
@@ -31,6 +31,7 @@ MonoBehaviour:
       pitchRange: {x: 0, y: 0}
       volume: 0
     flavourText: '"Butcher them all. God will be their judge"'
+    stunBirdHeight: 20
     playerStatusEffectPos: {x: 0, y: 14, z: 2, w: 1}
     enemyStatusEffectPos: {x: 0, y: 9, z: 2, w: 1.5}
     bottomCornerPos: {x: 0.075, y: -1.5, z: 0}

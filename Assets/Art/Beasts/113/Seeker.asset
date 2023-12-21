@@ -18,14 +18,19 @@ MonoBehaviour:
       note: 
     beastName: Seeker
     spawn:
-      audioClip: {fileID: 0}
-      pitchRange: {x: 0, y: 0}
-      volume: 0
-    die:
       audioClip: {fileID: 8300000, guid: 93689b96175013a49bc75d886b64db85, type: 3}
       pitchRange: {x: 0.9, y: 1.1}
       volume: 1
+    die:
+      audioClip: {fileID: 8300000, guid: 381f8e46421bf69469446f38c19065cd, type: 3}
+      pitchRange: {x: 0.9, y: 1.1}
+      volume: 1
+    scream:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
     flavourText: '"I will find the truth, no matter the cost"'
+    stunBirdHeight: 20
     playerStatusEffectPos: {x: 0, y: 14, z: 2, w: 1.5}
     enemyStatusEffectPos: {x: 0, y: 9, z: 2, w: 1.5}
     bottomCornerPos: {x: 0, y: -1.5, z: 0}

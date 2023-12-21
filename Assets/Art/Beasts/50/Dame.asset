@@ -18,14 +18,19 @@ MonoBehaviour:
       note: 'heals party members after every battle. '
     beastName: Dame
     spawn:
-      audioClip: {fileID: 0}
+      audioClip: {fileID: 8300000, guid: 51c0c5ef3eb7b0042a06078c38480b32, type: 3}
       pitchRange: {x: 0, y: 0}
       volume: 0
     die:
       audioClip: {fileID: 8300000, guid: a8ae6a709c88ac644927761ca73a9056, type: 3}
       pitchRange: {x: 0.9, y: 1}
       volume: 1
+    scream:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
     flavourText: 
+    stunBirdHeight: 20
     playerStatusEffectPos: {x: 0, y: -4.5, z: 2, w: 1.5}
     enemyStatusEffectPos: {x: 0, y: 9, z: 2, w: 1.5}
     bottomCornerPos: {x: 0, y: -1.5, z: 0}

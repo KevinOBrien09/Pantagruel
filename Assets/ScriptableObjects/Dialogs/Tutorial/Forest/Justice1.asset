@@ -22,14 +22,17 @@ MonoBehaviour:
     soundEffect:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
-      volume: 0
+      volume: -1
     changeMusic:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 1
+      playerYRotation: 0
   - customName: Woman
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: 'Veritas. '
@@ -39,14 +42,17 @@ MonoBehaviour:
     soundEffect:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
-      volume: 0
+      volume: -1
     changeMusic:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: Woman
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: Omnia.
@@ -56,14 +62,17 @@ MonoBehaviour:
     soundEffect:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
-      volume: 0
+      volume: -1
     changeMusic:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: Woman
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: Vincit
@@ -80,7 +89,10 @@ MonoBehaviour:
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: 'She''s heeding me no attention. '
@@ -97,7 +109,10 @@ MonoBehaviour:
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: 'She''s repeating the same latin phrase over and over.
@@ -119,7 +134,10 @@ MonoBehaviour:
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: Woman
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: 'Oh my?!
@@ -138,7 +156,10 @@ MonoBehaviour:
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: Woman
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: A mortal can see me?
@@ -155,7 +176,10 @@ MonoBehaviour:
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: What's going on? Who are you? Is Edvard safe!
@@ -172,7 +196,10 @@ MonoBehaviour:
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: I am Justice. I am an angel.
@@ -189,13 +216,14 @@ MonoBehaviour:
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
-    dialog: '!
-
-'
-    isThought: 1
+    dialog: '!'
+    isThought: 0
     showLeft: 1
     cameraState: 2
     soundEffect:
@@ -209,6 +237,9 @@ MonoBehaviour:
     worldEvents: []
     comic: {fileID: 0}
     moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: 'It is odd that you can see me, but I won''t dwell on it. '
@@ -225,7 +256,10 @@ MonoBehaviour:
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: Your friend is inside an Ophanim.
@@ -242,10 +276,13 @@ MonoBehaviour:
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
-    dialog: I am here to ensure the emergant soul can return to the material realm.
+    dialog: I am here to ensure the victorious soul can return to the material realm.
       That my task.
     isThought: 0
     showLeft: 0
@@ -260,7 +297,10 @@ MonoBehaviour:
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: 'Do you expect me to know what an Ophanim is?
@@ -282,7 +322,10 @@ MonoBehaviour:
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: Damn it! Another one!
@@ -297,15 +340,19 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
       volume: 0
-    worldEvents: []
+    worldEvents:
+    - uzuDrop2
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
-    dialog: 'Oh good god it''s over, I''m surrounded! '
+    dialog: Two more!
     isThought: 1
-    showLeft: 0
-    cameraState: 2
+    showLeft: 1
+    cameraState: 0
     soundEffect:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
@@ -314,9 +361,38 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
       volume: 0
-    worldEvents: []
+    worldEvents:
+    - uzuDrop3
+    - uzuDrop4
+    - uzuDrop5
+    - uzuDrop6
+    - uzuDrop7
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: 1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: 'Oh good god it''s over, I''m surrounded! '
+    isThought: 1
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - uzuf1
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 1
+      playerYRotation: 180
   - customName: 
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: 'Ohohoho!
@@ -325,7 +401,7 @@ MonoBehaviour:
       enough brother!'
     isThought: 0
     showLeft: 0
-    cameraState: 2
+    cameraState: 0
     soundEffect:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
@@ -334,15 +410,19 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
       volume: 0
-    worldEvents: []
+    worldEvents:
+    - uzuf2
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: Curse you woman!
     isThought: 1
     showLeft: 0
-    cameraState: 2
+    cameraState: 0
     soundEffect:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
@@ -351,16 +431,20 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
       volume: 0
-    worldEvents: []
+    worldEvents:
+    - uzuf3
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: "*sigh* \nThat's no way a Holyman should be talking about an angel now
       is it...."
     isThought: 0
     showLeft: 0
-    cameraState: 2
+    cameraState: 0
     soundEffect:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
@@ -369,15 +453,19 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
       volume: 0
-    worldEvents: []
+    worldEvents:
+    - uzuf4
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: Of course the angel can read my mind...
     isThought: 1
     showLeft: 1
-    cameraState: 2
+    cameraState: 0
     soundEffect:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
@@ -386,15 +474,19 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
       volume: 0
-    worldEvents: []
+    worldEvents:
+    - uzuf5
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: I suggest you say your final prayers.
     isThought: 0
-    showLeft: 1
-    cameraState: 2
+    showLeft: 0
+    cameraState: 0
     soundEffect:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
@@ -403,9 +495,13 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
       volume: 0
-    worldEvents: []
+    worldEvents:
+    - uzuf6
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: 'I think the penace for cursing an angel is 500 Hail Mary''s?
@@ -414,7 +510,7 @@ MonoBehaviour:
       do it briskly.'
     isThought: 0
     showLeft: 0
-    cameraState: 2
+    cameraState: 0
     soundEffect:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
@@ -423,43 +519,308 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
       volume: 0
-    worldEvents: []
+    worldEvents:
+    - uzuf7
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: 1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: This is it.
     isThought: 1
     showLeft: 1
-    cameraState: 2
+    cameraState: 0
     soundEffect:
-      audioClip: {fileID: 0}
-      pitchRange: {x: 0, y: 0}
-      volume: 0
+      audioClip: {fileID: 8300000, guid: a0b12edd0829e764797124c90acaaa69, type: 3}
+      pitchRange: {x: 0.9, y: 1.1}
+      volume: 1
     changeMusic:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
       volume: 0
-    worldEvents: []
+    worldEvents:
+    - dropPlayerRot
+    - uzuRot1
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: This is where I die.
     isThought: 1
     showLeft: 1
-    cameraState: 2
+    cameraState: 0
     soundEffect:
-      audioClip: {fileID: 0}
-      pitchRange: {x: 0, y: 0}
-      volume: 0
+      audioClip: {fileID: 8300000, guid: 3da326e1b501fef49bed4779088e8581, type: 3}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 1
     changeMusic:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: 'It''s dripping puss onto my face.
+
+      It burns...'
+    isThought: 1
+    showLeft: 1
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 8300000, guid: 8fb8ff4573e3acb4f872f17865f739ca, type: 3}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: '!'
+    isThought: 1
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 8300000, guid: 84f7c61ea17ffa74b86dab40d76c1db0, type: 3}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - uzuKnockbackr
+    - edvardBack
+    - hideAngel
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: Brother! On your feet!
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: Edvard!
+    isThought: 0
+    showLeft: 1
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - standUp
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 1
+      playerYRotation: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: This is no time for salutations brother.
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - uzuf6
+    - standUzuUp
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: I'm sure you can tell but the situation is dire.
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: I've never seen so many of these wretched creatures in one place.
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: Watch your back, that snail was only dazed.
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 1
+      playerYRotation: 180
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: Oh come on!
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - uzuDrop8
+    - uzuDrop9
+    - uzuDrop10
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 1
+      playerYRotation: 180
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: Oh to hell with it!
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - uzuf7
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 1
+      playerYRotation: 180
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: Brother grab a soul gem. Any of them! Quickly!
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 1
+      playerYRotation: 180
+  - customName: ' '
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: 
+    isThought: 1
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - starter
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 1
+      playerYRotation: 180
   dialogBlockLanguages: []
   locationDialog:
     moveAfterDialog: 0
@@ -468,5 +829,6 @@ MonoBehaviour:
     subLoc: {fileID: 0}
     mainLocation: {fileID: 0}
   changeMusicBack: 0
+  doNotReset: 1
   moveDir: -1
   textAsset: {fileID: 0}

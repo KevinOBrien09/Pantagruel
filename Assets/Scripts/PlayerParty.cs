@@ -131,7 +131,25 @@ public class PlayerParty : Singleton<PlayerParty>
             Debug.Log(b.name + " passive not set up");
         }
         
-        party.Add(b);
+       
+
+        if(party.Count == 0)
+        {
+           BottomCornerBeastDisplayer.inst.YesBeast();   
+            activeBeast = b;
+             party.Add(b);
+            BottomCornerBeastDisplayer.inst.CreateAnimatedInstances(party);
+            ApplyLoadedInfo();
+        }
+        else{
+             party.Add(b);
+        }
+      
+            
+           
+       
+          
+        
     }
 
     #if UNITY_EDITOR

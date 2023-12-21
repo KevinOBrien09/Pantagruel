@@ -30,6 +30,9 @@ MonoBehaviour:
     worldEvents: []
     comic: {fileID: 0}
     moveDir: -1
+    rotation:
+      forceRotation: 1
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: '''old up.'
@@ -47,6 +50,9 @@ MonoBehaviour:
     worldEvents: []
     comic: {fileID: 0}
     moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: Did you hear that?
@@ -64,6 +70,9 @@ MonoBehaviour:
     worldEvents: []
     comic: {fileID: 0}
     moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: ...
@@ -81,6 +90,9 @@ MonoBehaviour:
     worldEvents: []
     comic: {fileID: 0}
     moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: ......
@@ -98,6 +110,9 @@ MonoBehaviour:
     worldEvents: []
     comic: {fileID: 0}
     moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: ...
@@ -115,6 +130,9 @@ MonoBehaviour:
     worldEvents: []
     comic: {fileID: 0}
     moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: Curses, an ambush!
@@ -133,6 +151,9 @@ MonoBehaviour:
     - dropUzu
     comic: {fileID: 0}
     moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: Brother, Stand back!
@@ -151,6 +172,9 @@ MonoBehaviour:
     - moveEdvard1
     comic: {fileID: 0}
     moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: I will make quick work of this fiend!
@@ -167,7 +191,10 @@ MonoBehaviour:
       volume: 1
     worldEvents: []
     comic: {fileID: 0}
-    moveDir: 1
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: HURRAH!
@@ -187,6 +214,9 @@ MonoBehaviour:
     - edvardEnterTear
     comic: {fileID: 0}
     moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: What on earth!
@@ -204,6 +234,9 @@ MonoBehaviour:
     worldEvents: []
     comic: {fileID: 0}
     moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
   dialogBlockLanguages: []
   locationDialog:
     moveAfterDialog: 0

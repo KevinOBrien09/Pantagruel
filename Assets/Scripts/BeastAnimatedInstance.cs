@@ -144,9 +144,10 @@ dodgeDir = false;
         }
     }
 
-   public void ToggleSpringBones(bool state){
-  foreach (var item in springBones)
-            {item.ignoreSpringBone = true;}
+    public void ToggleSpringBones(bool state)
+    {
+        foreach (var item in springBones)
+        {item.ignoreSpringBone = !state;}
     }
 
     public void Heal()

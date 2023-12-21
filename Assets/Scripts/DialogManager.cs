@@ -171,6 +171,11 @@ public class DialogManager : Singleton<DialogManager>
         PlayerManager.inst.movement.StartMove((Dir)currentBlock.moveDir);
         }
 
+        if(currentBlock.rotation.forceRotation)
+        {  PlayerManager.inst.movement.rotate.ForceRotation(currentBlock.rotation.playerYRotation);
+
+        }
+
         if(currentBlock.changeMusic.audioClip != null){
             MusicManager.inst.ChangeBGMusic(currentBlock.changeMusic);
             musicWasChanged = true;
@@ -267,32 +272,42 @@ public class DialogManager : Singleton<DialogManager>
                  
         }
 
-        allowInput = false;
-        inDialog = false;
-        rightPic.DOFade(0,.2f);
-        leftPic.DOFade(0,.2f);
-
-        OverworldMovement.canMove = true;
+      
+        if(!currentConversation.doNotReset){
+           Reset();
+        }
+        
         if(currentConversation.moveDir >= 0){
         PlayerManager.inst.movement.StartMove((Dir)currentConversation.moveDir);
         }
        
-        Interactor.inst.RenableInteraction();
-        typewriter.Play("",40,()=>
-        {
-            Talking = false;
-        
-        });
-        
-        nameText.text = "";
-        CameraManager.inst.ChangeCameraState(CameraState.NORMAL);
-        StartCoroutine(q());;
-        IEnumerator q()
-        {
-            yield return new WaitForSeconds(.175f);
-            ToggleButtons(true);
-        }
      
+     
+        CameraManager.inst.ChangeCameraState(CameraState.NORMAL);
+       
+     
+    }
+
+    public void Reset(){
+ allowInput = false;
+            inDialog = false;
+            rightPic.DOFade(0,.2f);
+            leftPic.DOFade(0,.2f);
+            OverworldMovement.canMove = true;
+            typewriter.Play("",40,()=>
+            {
+                Talking = false;
+            
+            });
+        
+            nameText.text = "";
+           Interactor.inst.RenableInteraction();
+            StartCoroutine(q());;
+            IEnumerator q()
+            {
+                yield return new WaitForSeconds(.175f);
+                ToggleButtons(true);
+            }
     }
     
    

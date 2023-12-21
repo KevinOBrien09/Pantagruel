@@ -32,6 +32,7 @@ public class OverworldMovement : MonoBehaviour
     bool lastTorchState;
     float ogPOV;
     public float zoomPOV;
+    
    
     void Start(){
         ogPOV = cam.fieldOfView;
@@ -76,6 +77,10 @@ public class OverworldMovement : MonoBehaviour
 
     public void ResetPOV(){
     cam.DOFieldOfView(ogPOV,0);
+    }
+
+    public void ResetPOVTimer(){
+    cam.DOFieldOfView(ogPOV,.2f);
     }
 
     public void ChangeFootStepSFX(AudioClip clip){

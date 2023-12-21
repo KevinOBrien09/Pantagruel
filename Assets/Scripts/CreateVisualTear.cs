@@ -22,7 +22,10 @@ public class CreateVisualTear : WorldEvent
                 {
                     item.gameObject.SetActive(false);
                 }
-                otherEvent.Go();
+                if(otherEvent != null){
+                     otherEvent.Go(); 
+                }
+              
                 StartCoroutine (q());
                 IEnumerator q()
                 { yield return new WaitForSeconds(.2f);

@@ -5,10 +5,10 @@ using DG.Tweening;
 
 public class MusicManager : Singleton<MusicManager>
 {
-    [SerializeField] AudioSource dungeon;
-    [SerializeField]  AudioSource battle;
-    [SerializeField]  AudioSource reward;
-    float battlevol,dungvol,rewardVol;
+   public AudioSource dungeon;
+    public  AudioSource battle;
+public  AudioSource reward;
+   public float battlevol,dungvol,rewardVol;
     
     void Start()
     { 

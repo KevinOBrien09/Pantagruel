@@ -7,11 +7,27 @@ public class MoveObjectWorldEvent : WorldEvent
 {
     public GameObject objectToMove;
     public Vector3 endPos;
+    public bool local;
     public float time = 1;
     public override void Go(){
         if(!objectToMove.activeSelf){
             objectToMove.SetActive(true);
         }
-        objectToMove.transform.DOMove(endPos,time);
+        if(!local){
+   objectToMove.transform.DOMove(endPos,time);
+        }
+        else{
+               objectToMove.transform.DOLocalMove(endPos,time);
+        }
+     
     }
+
+    [ContextMenu("Get Pos")]
+    void DoSomething()
+    {
+        if(objectToMove != null){
+            endPos = objectToMove.transform.position;
+        }
+    }
+
 }

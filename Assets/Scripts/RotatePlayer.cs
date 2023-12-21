@@ -25,6 +25,26 @@ public class RotatePlayer : MonoBehaviour
         CardinalDirectionDisplay.inst.InitDisplay(dir);
     }
 
+    public void ForceRotation(float y)
+    {
+        if(y >= 360)
+        {
+            transform.DORotate(new Vector3(transform.rotation.eulerAngles.x,0,transform.rotation.eulerAngles.z),rotateSpeed).OnComplete(() => {
+            isRotating = false;         
+            transform.rotation =Quaternion.Euler(0,0,0);
+            InitRotation(NESW.inst.GetDirection(transform));});
+        }
+        else
+        {
+            transform.DORotate(new Vector3(transform.rotation.eulerAngles.x,y,transform.rotation.eulerAngles.z),rotateSpeed).OnComplete(() => {
+            isRotating = false; 
+            InitRotation(NESW.inst.GetDirection(transform));});
+        }
+
+
+       
+    }
+
    
     public void StartRotate(Dir dir)
     {
