@@ -20,7 +20,7 @@ MonoBehaviour:
     spawn:
       audioClip: {fileID: 8300000, guid: 93689b96175013a49bc75d886b64db85, type: 3}
       pitchRange: {x: 0.9, y: 1.1}
-      volume: 1
+      volume: 0.6
     die:
       audioClip: {fileID: 8300000, guid: 381f8e46421bf69469446f38c19065cd, type: 3}
       pitchRange: {x: 0.9, y: 1.1}

@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a2e20747472d9458a15439b66166d3, type: 3}
   m_Name: Summon-Cadaver
   m_EditorClassIdentifier: 
+  targets: 00000000
+  offensive: 0
   pet: {fileID: 11400000, guid: bab3bf0415de5e04fa67520d00249006, type: 2}

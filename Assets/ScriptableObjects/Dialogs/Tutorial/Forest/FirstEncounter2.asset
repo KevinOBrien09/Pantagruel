@@ -15,7 +15,7 @@ MonoBehaviour:
   blocks:
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
-    dialog: 'Brace yourself brother. '
+    dialog: Brother out of the way!
     isThought: 0
     showLeft: 0
     cameraState: 0
@@ -33,6 +33,50 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: It is pissed!
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 8300000, guid: 50859fc21f0ed204ba4f02f7c8075809, type: 3}
+      pitchRange: {x: 0.9, y: 1.1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
+    dialog: Its'g going to attack!
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 8300000, guid: 3da326e1b501fef49bed4779088e8581, type: 3}
+      pitchRange: {x: 0.9, y: 1.1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - uzuLeap
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 1
   dialogBlockLanguages: []
   locationDialog:
     moveAfterDialog: 0

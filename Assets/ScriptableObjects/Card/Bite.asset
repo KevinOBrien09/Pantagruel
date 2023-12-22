@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec03d198f138b2c4099b0c760090b965, type: 3}
+  m_Name: Bite
+  m_EditorClassIdentifier: 
+  Id: 7ad48dcd-50f3-429b-ab7f-185561a9cbca
+  cardName: Bite
+  picture: {fileID: 21300000, guid: dfdd86795e421f146a69384dfbf23909, type: 3}
+  manaCost: 2
+  vfxSetUp: 
+  vfx: 
+  webLink: https://commons.wikimedia.org/wiki/File:Illustration_at_page_184_of_Bill_the_Minder.png
+  castDelay: 0.2
+  effects:
+  - {fileID: 11400000, guid: 4d787eef2c34aa343a35c1e38211fc1f, type: 2}
+  - {fileID: 11400000, guid: 0117367ef39ab8945a8e115c474c5435, type: 2}
+  playVFXAfterDelay: 0
+  soundEffect:
+    audioClip: {fileID: 8300000, guid: 6b935443c1785ba4885c7e10d8f9e387, type: 3}
+    pitchRange: {x: 0.9, y: 1}
+    volume: 1
+  missSound:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
+  element: 5
+  beastClass: 0
+  desc: Deal 1 damage and apply a poision stack to the target.
+  flavourText: From Robinson, W. Heath's Bill the Minder.
+  deckCost: 6
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0
+  unDodgeable: 0

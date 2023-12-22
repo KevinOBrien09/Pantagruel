@@ -9,9 +9,10 @@ public class MusicManager : Singleton<MusicManager>
     public  AudioSource battle;
 public  AudioSource reward;
    public float battlevol,dungvol,rewardVol;
-    
+    float battleOg;
     void Start()
     { 
+        battleOg = battle.volume;
         ResetVol();
         battle.Play();
         dungeon.Play();
@@ -59,7 +60,7 @@ public  AudioSource reward;
         battle.Play();
         //makes dungeon go down
         reward.DOFade(0,1);
-         battle.DOFade(battlevol,.0f);
+         battle.DOFade(battleOg,.0f);
         dungeon.DOFade(0,.2f);
       //  .OnComplete(() =>);
     }

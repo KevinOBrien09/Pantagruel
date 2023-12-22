@@ -59,10 +59,10 @@ public class BottomCornerBeastDisplayer: Singleton<BottomCornerBeastDisplayer>
         beastLevel.text = "";
         healthBar.gameObject.SetActive(false);
         lvlText.gameObject.SetActive(false);
-        // healthBar.fill.fillAmount = 0;
-        // healthBar.current.text = "0";
-        // healthBar.max.text = "0";
-      //  healthBar.shieldFill.fillAmount = 0;
+        healthBar.fill.fillAmount = 0;
+        healthBar.current.text = "0";
+        healthBar.max.text = "0";
+        healthBar.shieldFill.fillAmount = 0;
     }
 
     public void YesBeast(){

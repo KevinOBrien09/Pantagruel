@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Poison
   m_EditorClassIdentifier: 
   targets: 
-  dodgeable: 1
+  offensive: 1
   statusEffect: 0
   removeAtEndOfCombat: 0
   howManyTurns: 0

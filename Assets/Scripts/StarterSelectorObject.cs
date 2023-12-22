@@ -75,18 +75,20 @@ public class StarterSelectorObject : MonoBehaviour
         desc.Play(descs[selectedBeast],50,()=>{});
         typewriter.Play(selectedBeast.beastData.beastName,30,()=>{});
          this.selectedBeast = selectedBeast;
+            AudioManager.inst.GetSoundEffect().Play(selectedBeast.beastData.spawn);
     }
 
     public void BeastSelected(BeastScriptableObject selectedBeast)
     {
         this.selectedBeast = selectedBeast;
+        AudioManager.inst.GetSoundEffect().Play(selectedBeast.beastData.spawn);
         foreach (var item in clickerDict)
         {
             ChangeBeastSpriteOrder(clickerDict[item.Key].GetChild(1).gameObject,"Default");
             ChangeBeastSpriteColour(clickerDict[item.Key].GetChild(1).gameObject,grey);
         }
         ChangeBeastSpriteOrder(clickerDict[this.selectedBeast].GetChild(1).gameObject,"Pet");
-        ChangeBeastSpriteColour(clickerDict[this.selectedBeast].GetChild(1).gameObject,Color.white);
+        ChangeBeastSpriteColour(clickerDict[this.selectedBeast].GetChild(1).gameObject,lightGrey);
         typewriter.Play(selectedBeast.beastData.beastName,30,()=>{});
         desc.Play(descs[selectedBeast],50,()=>{});
     }

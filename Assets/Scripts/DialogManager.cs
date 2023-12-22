@@ -229,8 +229,13 @@ public class DialogManager : Singleton<DialogManager>
         {
            
             Talking = false;
+            if(currentBlock.end){
+            End();
+        }
         
         });
+
+        
     }
 
     public void End()
@@ -302,7 +307,7 @@ public class DialogManager : Singleton<DialogManager>
         
             nameText.text = "";
            Interactor.inst.RenableInteraction();
-            StartCoroutine(q());;
+           BattleManager.inst. StartCoroutine(q());;
             IEnumerator q()
             {
                 yield return new WaitForSeconds(.175f);

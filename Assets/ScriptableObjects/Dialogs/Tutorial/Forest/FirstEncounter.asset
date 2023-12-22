@@ -33,6 +33,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 1
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: '''old up.'
@@ -53,6 +54,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: Did you hear that?
@@ -73,6 +75,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: ...
@@ -93,6 +96,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: ......
@@ -113,6 +117,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: ...
@@ -133,6 +138,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: Curses, an ambush!
@@ -144,9 +150,9 @@ MonoBehaviour:
       pitchRange: {x: 0.9, y: 1.1}
       volume: 0.66
     changeMusic:
-      audioClip: {fileID: 8300000, guid: ac742890c4c5f2842910c5ed5a091aee, type: 3}
-      pitchRange: {x: 0.8, y: 0.8}
-      volume: 0.66
+      audioClip: {fileID: 8300000, guid: 9da2b25c552d5484caf152d80f65fbd3, type: 3}
+      pitchRange: {x: 0.9, y: 0.9}
+      volume: 1
     worldEvents:
     - dropUzu
     comic: {fileID: 0}
@@ -154,6 +160,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: Brother, Stand back!
@@ -175,6 +182,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: I will make quick work of this fiend!
@@ -195,6 +203,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: HURRAH!
@@ -212,11 +221,13 @@ MonoBehaviour:
     worldEvents:
     - moveEdvard2
     - edvardEnterTear
+    - toggleGoBack
     comic: {fileID: 0}
     moveDir: -1
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: What on earth!
@@ -237,6 +248,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   dialogBlockLanguages: []
   locationDialog:
     moveAfterDialog: 0
@@ -245,5 +257,6 @@ MonoBehaviour:
     subLoc: {fileID: 0}
     mainLocation: {fileID: 0}
   changeMusicBack: 0
+  doNotReset: 0
   moveDir: -1
   textAsset: {fileID: 0}

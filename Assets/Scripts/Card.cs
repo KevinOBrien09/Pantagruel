@@ -9,6 +9,7 @@ public class Card :GUIDScriptableObject
     public Sprite picture;
     public int manaCost;
     public string vfxSetUp, vfx;
+    public string webLink;
     public float castDelay = .2f;
     public List<Effect> effects = new List<Effect>();
     public bool playVFXAfterDelay;

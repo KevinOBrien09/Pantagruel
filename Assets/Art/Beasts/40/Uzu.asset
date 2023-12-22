@@ -30,6 +30,7 @@ MonoBehaviour:
       pitchRange: {x: 0, y: 0}
       volume: 0
     flavourText: 
+    stunBirdHeight: 20
     playerStatusEffectPos: {x: 0, y: -4.5, z: 2, w: 1.5}
     enemyStatusEffectPos: {x: 0, y: -4, z: 2, w: 1.5}
     bottomCornerPos: {x: -0.05, y: 0, z: -0.2}
@@ -42,7 +43,7 @@ MonoBehaviour:
     outLine: {fileID: 0}
     facingRight: 0
     bestiaryID: 40
-    wildDeck: {fileID: 11400000, guid: 9cdb4c4e03b279d479964cb5306283ff, type: 2}
+    wildDeck: {fileID: 11400000, guid: 4f39c8b0e0c93d04ab9765ec45da293f, type: 2}
     baseStats:
       maxHealth: 30
       def: 0

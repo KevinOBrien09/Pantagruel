@@ -15,7 +15,7 @@ MonoBehaviour:
   blocks:
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
-    dialog: What is this woman?
+    dialog: Who is this woman?
     isThought: 1
     showLeft: 0
     cameraState: 2
@@ -33,6 +33,29 @@ MonoBehaviour:
     rotation:
       forceRotation: 1
       playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: What is this thing?
+    isThought: 1
+    showLeft: 0
+    cameraState: 1
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0.9, y: 1}
+      volume: 1
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - 
+    comic: {fileID: 0}
+    moveDir: -1
+    rotation:
+      forceRotation: 0
+      playerYRotation: 180
+    end: 0
   - customName: Woman
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: 'Veritas. '
@@ -53,6 +76,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: Woman
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: Omnia.
@@ -73,9 +97,10 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: Woman
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
-    dialog: Vincit
+    dialog: Vincit.
     isThought: 0
     showLeft: 0
     cameraState: 2
@@ -93,9 +118,12 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
-    dialog: 'She''s heeding me no attention. '
+    dialog: 'She''s repeating a mantra in latin.
+
+      "Truth conquers all"'
     isThought: 1
     showLeft: 0
     cameraState: 2
@@ -113,31 +141,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
-  - customName: 
-    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
-    dialog: 'She''s repeating the same latin phrase over and over.
-
-      "Veritas
-      omnia vincit"...
-
-      Truth conquers all....'
-    isThought: 1
-    showLeft: 0
-    cameraState: 2
-    soundEffect:
-      audioClip: {fileID: 0}
-      pitchRange: {x: 0, y: 0}
-      volume: 0
-    changeMusic:
-      audioClip: {fileID: 0}
-      pitchRange: {x: 0, y: 0}
-      volume: 0
-    worldEvents: []
-    comic: {fileID: 0}
-    moveDir: -1
-    rotation:
-      forceRotation: 0
-      playerYRotation: 0
+    end: 0
   - customName: Woman
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: 'Oh my?!
@@ -160,6 +164,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: Woman
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: A mortal can see me?
@@ -180,6 +185,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: What's going on? Who are you? Is Edvard safe!
@@ -200,9 +206,12 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
-    dialog: I am Justice. I am an angel.
+    dialog: 'My name Justice. I am what you would call
+
+      an Angel.'
     isThought: 0
     showLeft: 0
     cameraState: 2
@@ -220,6 +229,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: '!'
@@ -236,10 +246,11 @@ MonoBehaviour:
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
-    moveDir: 0
+    moveDir: -1
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: 'It is odd that you can see me, but I won''t dwell on it. '
@@ -260,6 +271,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: Your friend is inside an Ophanim.
@@ -280,6 +292,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: I am here to ensure the victorious soul can return to the material realm.
@@ -301,6 +314,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: 'Do you expect me to know what an Ophanim is?
@@ -326,6 +340,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: Damn it! Another one!
@@ -347,6 +362,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: Two more!
@@ -372,6 +388,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: 'Oh good god it''s over, I''m surrounded! '
@@ -393,6 +410,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 1
       playerYRotation: 180
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: 'Ohohoho!
@@ -417,6 +435,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: Curse you woman!
@@ -438,6 +457,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: "*sigh* \nThat's no way a Holyman should be talking about an angel now
@@ -460,6 +480,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: Of course the angel can read my mind...
@@ -481,6 +502,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: I suggest you say your final prayers.
@@ -502,6 +524,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
     dialog: 'I think the penace for cursing an angel is 500 Hail Mary''s?
@@ -526,6 +549,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: This is it.
@@ -548,9 +572,10 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
-    dialog: This is where I die.
+    dialog: This is how I die.
     isThought: 1
     showLeft: 1
     cameraState: 0
@@ -568,6 +593,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: 'It''s dripping puss onto my face.
@@ -590,6 +616,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: '!'
@@ -613,6 +640,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: Brother! On your feet!
@@ -633,6 +661,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: Edvard!
@@ -654,6 +683,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 1
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: This is no time for salutations brother.
@@ -676,6 +706,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: I'm sure you can tell but the situation is dire.
@@ -696,6 +727,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: I've never seen so many of these wretched creatures in one place.
@@ -716,6 +748,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 0
       playerYRotation: 0
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: Watch your back, that snail was only dazed.
@@ -736,9 +769,12 @@ MonoBehaviour:
     rotation:
       forceRotation: 1
       playerYRotation: 180
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
-    dialog: Oh come on!
+    dialog: 'Heh!
+
+      The more the merrier they say!'
     isThought: 0
     showLeft: 0
     cameraState: 0
@@ -759,6 +795,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 1
       playerYRotation: 180
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: Oh to hell with it!
@@ -780,6 +817,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 1
       playerYRotation: 180
+    end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
     dialog: Brother grab a soul gem. Any of them! Quickly!
@@ -787,7 +825,7 @@ MonoBehaviour:
     showLeft: 0
     cameraState: 0
     soundEffect:
-      audioClip: {fileID: 0}
+      audioClip: {fileID: 8300000, guid: d977ef53d7ad2b642909fd641e7d0df6, type: 3}
       pitchRange: {x: 0.9, y: 1}
       volume: 1
     changeMusic:
@@ -800,6 +838,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 1
       playerYRotation: 180
+    end: 0
   - customName: ' '
     speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
     dialog: 
@@ -821,6 +860,7 @@ MonoBehaviour:
     rotation:
       forceRotation: 1
       playerYRotation: 180
+    end: 0
   dialogBlockLanguages: []
   locationDialog:
     moveAfterDialog: 0

@@ -19,8 +19,8 @@ MonoBehaviour:
     beastName: Dame
     spawn:
       audioClip: {fileID: 8300000, guid: 51c0c5ef3eb7b0042a06078c38480b32, type: 3}
-      pitchRange: {x: 0, y: 0}
-      volume: 0
+      pitchRange: {x: 0.9, y: 1}
+      volume: 0.6
     die:
       audioClip: {fileID: 8300000, guid: a8ae6a709c88ac644927761ca73a9056, type: 3}
       pitchRange: {x: 0.9, y: 1}

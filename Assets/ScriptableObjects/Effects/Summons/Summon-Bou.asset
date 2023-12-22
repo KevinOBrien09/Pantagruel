@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a2e20747472d9458a15439b66166d3, type: 3}
   m_Name: Summon-Bou
   m_EditorClassIdentifier: 
+  targets: 00000000
+  offensive: 0
   pet: {fileID: 11400000, guid: 6eeecbf3b1db83447acf62b5a5ee3c01, type: 2}

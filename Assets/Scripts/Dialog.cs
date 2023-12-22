@@ -20,6 +20,7 @@ public class DialogBlock
     public Sprite comic;
     public int moveDir = -1;
     public rot rotation;
+    public bool end;
 
     [System.Serializable]
     public class rot{
