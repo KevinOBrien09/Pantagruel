@@ -130,6 +130,7 @@ public class CardViewer : Singleton<CardViewer>
         {
             if(!CardManifester.inst.isManifesting){
 CardManager.inst.ActivateHand();
+EndTurnButton.inst.Reactivate();
             cards.Clear();
             manuallyLoadCards = false;
             }

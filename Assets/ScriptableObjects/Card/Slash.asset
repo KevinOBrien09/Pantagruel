@@ -18,6 +18,7 @@ MonoBehaviour:
   manaCost: 1
   vfxSetUp: 
   vfx: Slice1
+  webLink: 
   castDelay: 0
   effects:
   - {fileID: 11400000, guid: 36593789721779343a5d7b1c6a2e0ded, type: 2}
@@ -27,6 +28,10 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 84f7c61ea17ffa74b86dab40d76c1db0, type: 3}
     pitchRange: {x: 0.9, y: 1.1}
     volume: 0.5
+  missSound:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
   element: 0
   beastClass: 0
   desc: Deal 10+({PHYS10%}) damage to the target.
@@ -35,3 +40,4 @@ MonoBehaviour:
   unplayable: 0
   cannotBeDiscard: 0
   destroyOnCast: 0
+  unDodgeable: 0

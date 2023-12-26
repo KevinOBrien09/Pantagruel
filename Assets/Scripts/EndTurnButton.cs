@@ -15,6 +15,8 @@ public class EndTurnButton : Singleton<EndTurnButton>
         AudioManager.inst.GetSoundEffect().Play(click);
     }
 
+   
+
     public void Deactivate()
     {
         button.interactable = false;
@@ -22,6 +24,18 @@ public class EndTurnButton : Singleton<EndTurnButton>
 
     public void Reactivate()
     {
+        if(TutorialManager.inst.isInBasics3()){
+            if(CardManager.inst.hand.Count == 0){
+                TutorialManager.inst.ProcessEvent("TURNBUTTON");
+               button.interactable = true;  
+            }
+            return;
+        }
+        if(BattleManager.inst.inTutorial)
+        {
+            return;
+        }
+     
          button.interactable = true;
     }
 

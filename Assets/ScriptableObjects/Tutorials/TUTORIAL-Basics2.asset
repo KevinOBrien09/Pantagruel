@@ -1,0 +1,303 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47ea6e94e2a7fe4fa0534161af2c13a, type: 3}
+  m_Name: TUTORIAL-Basics2
+  m_EditorClassIdentifier: 
+  blocks:
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: ...
+    isThought: 1
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - '@'
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: 'This is so wrong. '
+    isThought: 1
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - '@'
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: 'I can feel the bile burn the back of my throat.  '
+    isThought: 1
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: 'I just utilized evil. '
+    isThought: 1
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: How can I redeem myself from this...
+    isThought: 0
+    showLeft: 1
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: Look at the blue bars. Those are <i><color=#0895B2> mana</color></i>
+      bars.
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - EMANA
+    - PMANA
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: '<i><color=#0895B2>Mana</color></i> is the energy the daemon needs in
+      order to use abilities.  Every spell will draw from your mana pool.
+
+'
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: At the start of every turn cycle you will regenerate a bit of <i><color=#0895B2>mana</color></i>.
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: This sounds like vile witchcraft...
+    isThought: 1
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - '@'
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: 'In order to proceed you must let the enemy daemon complete the turn
+      cycle. '
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - '@'
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: To do so click the end turn button to your right.
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - TURNBUTTON
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: Why is a messenger of the Lord teaching me about sorcery?
+    isThought: 1
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - TURNBUTTON
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  dialogBlockLanguages: []
+  locationDialog:
+    moveAfterDialog: 0
+    subLocRot: {x: 0, y: 0, z: 0}
+    subLocPos: {x: 0, y: 0, z: 0}
+    subLoc: {fileID: 0}
+    mainLocation: {fileID: 0}
+  changeMusicBack: 0
+  doNotReset: 0
+  moveDir: -1
+  textAsset: {fileID: 0}

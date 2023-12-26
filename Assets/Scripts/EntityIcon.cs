@@ -37,6 +37,11 @@ public class EntityIcon : MonoBehaviour,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if(BattleManager.inst.inTutorial){
+            return;
+        }
+
+
         if(eventData.button ==PointerEventData.InputButton.Right && BattleManager.inst.inBattle){
             var beast = e as Beast;
             var pet = e as PetBehaviour;

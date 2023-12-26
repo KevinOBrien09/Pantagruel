@@ -12,7 +12,8 @@ public class PlayerParty : Singleton<PlayerParty>
     {
         if(!PlayerManager.inst.load)
         { 
-            LocationManager.inst.   ChangeMainLocation( LocationManager.inst.   gameStart);
+         
+            LocationManager.inst.   ChangeMainLocation(LocationManager.inst.   gameStart);
             List<Beast> p = new List<Beast>(party);
             List<BeastSaveData> saveDatas = new List<BeastSaveData>();
             foreach (var item in party)

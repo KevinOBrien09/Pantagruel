@@ -13,8 +13,13 @@ MonoBehaviour:
   m_Name: 10%PHYS-DMG-RIVAL
   m_EditorClassIdentifier: 
   targets: 01000000
-  dodgeable: 1
+  offensive: 0
   damageValue: 0
   negateShield: 0
+  hit:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
+  additionalEffect: {fileID: 0}
   percentage: 10
-  stat: 1
+  stat: 2

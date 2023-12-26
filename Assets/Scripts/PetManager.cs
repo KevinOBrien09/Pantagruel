@@ -44,7 +44,7 @@ public class PetManager:Singleton<PetManager>
  
         enemyPet.Init(p,EntityOwnership.ENEMY);
         enemyPet.transform.GetChild(0).gameObject.layer = 7;
-        RivalBeastManager.inst.healthBar.SummonPetHealthBar(enemyPet);
+        //RivalBeastManager.inst.healthBar.SummonPetHealthBar(enemyPet);
         BattleManager.inst.SetEnemyTarget(enemyPet);
         RivalBeastManager.inst.activeBeast.animatedInstance.MoveBack(EntityOwnership.ENEMY);
         BattleField.inst.Summon(p,enemyPet,EntityOwnership.ENEMY);
@@ -70,7 +70,7 @@ public class PetManager:Singleton<PetManager>
       
                 //RivalBeastManager.inst.healthBar.entity = null;
                        BattleField.inst.enemyPet.healthBar.entity = null;
-                RivalBeastManager.inst.healthBar.RemovePetHealthBar();
+                //RivalBeastManager.inst.healthBar.RemovePetHealthBar();
                  BattleField.inst.enemyPet.gameObject.SetActive(false);
                  if(enemyPet!=null){
                     Destroy(enemyPet.gameObject);

@@ -11,6 +11,7 @@ public class SaveData
     public List<string> cardCollection = new List<string>();
     public PlayerSaveData playerSaveData;
     public LocationSaveData locationSaveData;
+    public List<TutorialProgressSaveable> tutorialProgress = new List<TutorialProgressSaveable>();
    
 }
 

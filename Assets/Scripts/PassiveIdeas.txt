@@ -36,3 +36,7 @@
 //player fights guy boss fight
 //player goes back to monasatry and opens door
 //demo ends title card.
+
+
+
+//What a beast is//what a card is//mana//passive//health

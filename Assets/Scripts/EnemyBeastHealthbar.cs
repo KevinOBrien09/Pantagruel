@@ -5,24 +5,24 @@ using DG.Tweening;
 
 public class EnemyBeastHealthbar : HealthBar
 {
-    public HealthBar targetedPetHealthBar;
+    //public HealthBar targetedPetHealthBar;
     [SerializeField] Color32 ogRed,dampenRed,grey;
 
-    public void SummonPetHealthBar(PetBehaviour e){
-        targetedPetHealthBar.gameObject.SetActive(true);
-        targetedPetHealthBar.entity = e;
+    // public void SummonPetHealthBar(PetBehaviour e){
+    //     targetedPetHealthBar.gameObject.SetActive(true);
+    //     targetedPetHealthBar.entity = e;
     
-        e.currentHealthBars.Add( targetedPetHealthBar);
-        targetedPetHealthBar.onInit.Invoke();
-        DampenHealthBar();
-    }
+    //     e.currentHealthBars.Add( targetedPetHealthBar);
+    //     targetedPetHealthBar.onInit.Invoke();
+    //     DampenHealthBar();
+    // }
 
-    public void RemovePetHealthBar(){
-        targetedPetHealthBar.gameObject.SetActive(false);
-        targetedPetHealthBar.entity = null;
+    // public void RemovePetHealthBar(){
+    //     targetedPetHealthBar.gameObject.SetActive(false);
+    //     targetedPetHealthBar.entity = null;
      
-        UnDampenHealthBar();
-    }
+    //     UnDampenHealthBar();
+    // }
 
     public void DampenHealthBar(){
         fill.DOColor( dampenRed,.2f);

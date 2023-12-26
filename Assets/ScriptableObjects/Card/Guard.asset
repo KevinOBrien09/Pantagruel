@@ -18,6 +18,7 @@ MonoBehaviour:
   manaCost: 2
   vfxSetUp: 
   vfx: 
+  webLink: 
   castDelay: 0
   effects:
   - {fileID: 11400000, guid: 5607f5a0ba170c7449fce8ebadb24b54, type: 2}
@@ -26,12 +27,17 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
+  missSound:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
   element: 0
   beastClass: 0
-  desc: Gain a shield.
+  desc: Gain a 10 HP shield.
   flavourText: '"A Thorough Description of the Free Knightly and Noble Art of Fencing-Tobias
     Stimmer"'
   deckCost: 0
   unplayable: 0
   cannotBeDiscard: 0
   destroyOnCast: 0
+  unDodgeable: 0

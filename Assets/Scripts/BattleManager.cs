@@ -45,7 +45,8 @@ public class BattleManager:Singleton<BattleManager>
     public DamageValueGraphic damageValueGraphicPrefab;
     public BattleTextBehaviour battleTextBehaviourPrefab;
     bool statusEffectShit;
-    
+    public bool inTutorial;
+    public bool doNotTurnOnEndTurnButton;
     public void StartBattle(BattleType battleType)
     {
         inBattle = true;
@@ -63,14 +64,15 @@ public class BattleManager:Singleton<BattleManager>
             RivalBeastManager.inst.CreateEnemyParty(WildEncounterManager.inst.GetEncounter());
             RivalBeastManager.inst.SwapActiveBeast(RivalBeastManager.inst.currentParty[0]);
         }
-
+        EndTurnButton.inst.Deactivate();
           BattleField.inst.SetPlayerBeastIcon(PlayerParty.inst.activeBeast);
         BattleField.inst.Init();
         UpperLeftPanel.inst.SwapToBattle();
         SetEnemyTarget(RivalBeastManager.inst.activeBeast);
         SetPlayerTarget(PlayerParty.inst.activeBeast);
-        
-        BottomPanel.inst.ChangeState(BottomPanel.inst.cards);
+            EnemyAI.inst.manaHandler.SwapBeast(RivalBeastManager.inst.activeBeast);
+        CardManager.inst.manaHandler.SwapBeast(PlayerParty.inst.activeBeast);
+       
         LeftPanel.inst.SwapToBattle();
         BottomLeftPanel.inst.SwapToBattle();
         BottomCornerBeastDisplayer.inst.ToggleBattleBGOff();
@@ -83,43 +85,132 @@ public class BattleManager:Singleton<BattleManager>
             BattleIntro.inst.EnterBattle(PlayerParty.inst.activeBeast,RivalBeastManager.inst.activeBeast);
         }else
         {
-                BattleTicker.inst.Type("Fight or flight");
+            BattleTicker.inst.Type("The Ophanim");
             WorldViewManager.inst.EnterBattle();
             StartCoroutine(q());
             IEnumerator q()
             {
                 AudioManager.inst.GetSoundEffect().Play(enter);
-               MusicManager.inst.EnterBattle();
-                yield   return new WaitForSeconds(2f);
-                    BattleTicker.inst.Type("Turn " +  BattleManager.inst.turn.ToString());
-                 EnterBattlePartTwo();
+                if(!TutorialManager.inst.ExecuteTutorial(TutorialEnum.BASICS))
+                {
+                    MusicManager.inst.EnterBattle();
+                }
+                else{
+                MusicManager.inst.SHUTUP();
 
+                }
+                yield   return new WaitForSeconds(2f);
+                BattleTicker.inst.Type("Turn " +  BattleManager.inst.turn.ToString());
+                EnterBattlePartTwo();
             }
-          
         }
+    }
+    
+    public void EnterBattlePartTwo()
+    {
+       
         
-     
+        // for (int i = 0; i < startingMana; i++)
+        // {   
+        //     ManaManager.inst.IncreaseMaxMana(); 
+        //     EnemyAI.inst.IncreaseMaxMana();
+        // }
+        // ManaManager.inst.RegenMana();
+        // EnemyAI.inst.RegenMana();
+    
+        EnemyAI.inst.DrawRandomCard();
+        EnemyAI.inst.DrawRandomCard();
+        EnemyAI.inst.DrawRandomCard();
+        //   /CardManager.inst.EnterBattle(PlayerParty.inst.activeBeast);
+        if(TutorialManager.inst.ExecuteTutorial(TutorialEnum.BASICS))
+        {
+       
+          
+            TutorialTextTime(TutorialManager.inst.GetTutorial(TutorialEnum.BASICS));
+            
+            
+        }
+        else
+        {
+           
+            BottomPanel.inst.ChangeState(BottomPanel.inst.cards);
+            CardManager.inst.EnterBattle(PlayerParty.inst.activeBeast);
+            EndTurnButton.inst.Reactivate();
+            Inventory.inst.EnableItemDragOnAll();
+           
+            EventManager.inst.onBattleStart.Invoke();
+        }
+    }
+    
+    public void TutorialTextTime(Dialog tutorial)
+    { 
+        inTutorial = true;
+        BottomPanel.inst.ChangeState(BottomPanel.inst.dialog);
+        DialogManager.inst.StartConversation(tutorial);
+       
+        CardManager.inst.HideHand();
+        Inventory.inst.DisableItemDragOnAll();
+        EndTurnButton.inst.Deactivate();
     }
 
-   
+    public void ExitTutorial(TutorialEnum tutorialEnum){
+        switch (tutorialEnum)
+        {
+            case TutorialEnum.BASICS:
+          //  MusicManager.inst.EnterBattle();
+            BottomPanel.inst.ChangeState(BottomPanel.inst.cards);
+           
+            
+            CardManager.inst.TutorialStart(PlayerParty.inst.activeBeast);
+            //CardManager.inst.EnterBattle(PlayerParty.inst.activeBeast);
+            DialogManager.inst.HidePotraits();
+            CardManager.inst.ActivateHand();
+            EndTurnButton.inst.Reactivate();
+            Inventory.inst.EnableItemDragOnAll();
+            EventManager.inst.onBattleStart.Invoke();
+            return;
 
-    public void EnterBattlePartTwo(){
-         CardManager.inst.EnterBattle(PlayerParty.inst.activeBeast);
-        EndTurnButton.inst.Reactivate();
-        Inventory.inst.EnableItemDragOnAll();
-        
-        for (int i = 0; i < startingMana; i++)
-        {   
-            ManaManager.inst.IncreaseMaxMana(); 
-            EnemyAI.inst.IncreaseMaxMana();
+            case TutorialEnum.BASICS2:
+            BottomPanel.inst.ChangeState(BottomPanel.inst.cards);
+            DialogManager.inst.HidePotraits();
+            CheckForStatusEffectBeforeAllowingCards();
+            break;
+
+            case TutorialEnum.BASICS3:
+            
+            BottomPanel.inst.ChangeState(BottomPanel.inst.cards);
+            DialogManager.inst.HidePotraits();
+            string guardID = "a81f0e7c-ab70-464e-995e-f02f199d30ad";
+            string slashID = "cafdbe56-857e-454d-9cf2-a8c07371f4cf";
+            CardManager.inst.CreateCardBehaviour(  CardManager.inst.DrawSpecificCard(slashID));
+            CardManager.inst.CreateCardBehaviour(  CardManager.inst.DrawSpecificCard(guardID));
+           // doNotTurnOnEndTurnButton = true;
+            CheckForStatusEffectBeforeAllowingCards();
+         
+            break;
+
+            case TutorialEnum.BASICS4:
+            
+            BottomPanel.inst.ChangeState(BottomPanel.inst.cards);
+            DialogManager.inst.HidePotraits();
+            string slashIDq = "cafdbe56-857e-454d-9cf2-a8c07371f4cf";
+            CardManager.inst.CreateCardBehaviour(  CardManager.inst.DrawSpecificCard(slashIDq));
+            // string guardID = "a81f0e7c-ab70-464e-995e-f02f199d30ad";
+            // string slashID = "cafdbe56-857e-454d-9cf2-a8c07371f4cf";
+            // CardManager.inst.CreateCardBehaviour(  CardManager.inst.DrawSpecificCard(slashID));
+            // CardManager.inst.CreateCardBehaviour(  CardManager.inst.DrawSpecificCard(guardID));
+           // doNotTurnOnEndTurnButton = true;
+            CheckForStatusEffectBeforeAllowingCards();
+            EndTurnButton.inst.Deactivate();
+         
+                break;
+            
+            default:
+            Debug.LogAssertion("DEFAULT CASE OWOWOWOWWOW");
+            break;
         }
-        ManaManager.inst.RegenMana();
-        EnemyAI.inst.RegenMana();
-        EnemyAI.inst.DrawRandomCard();
-        EnemyAI.inst.DrawRandomCard();
-        EnemyAI.inst.DrawRandomCard();
-        EventManager.inst.onBattleStart.Invoke();
 
+        inTutorial = false;
     }
 
     public bool CheckIfGameContinues()
@@ -129,19 +220,12 @@ public class BattleManager:Singleton<BattleManager>
         }
         bool playerActiveBeastIsDead = PlayerParty.inst.activeBeast.currentHealth <= 0;
         bool enemyActiveDeastIsDead = RivalBeastManager.inst.activeBeast.currentHealth <= 0;
-        //bool enemySummonIsDead = 
-       
-           
         
-       
-
         if(playerActiveBeastIsDead)
         {
-          
             if(partyHasValidMember(PlayerParty.inst.party))
             {
                 Debug.Log("ForceSwap");
-                
                 return true;
             }
             else
@@ -152,8 +236,7 @@ public class BattleManager:Singleton<BattleManager>
             }
         }
 
-        // if(enemyTarget.currentHealth <= 0)
-        // {
+       
             if(enemyActiveDeastIsDead)
             {  
                 if(partyHasValidMember(RivalBeastManager.inst.currentParty))
@@ -170,32 +253,53 @@ public class BattleManager:Singleton<BattleManager>
             else{
                 //move forward set enemybeast target
             }
-       // }
-
-      //  Debug.LogAssertion("UH OH!");
         return true;
-
-        
     }
 
-    public bool queuedEffect(){
-        return effectsToUse.Count > 0;
-    }
+    public bool queuedEffect()
+    {return effectsToUse.Count > 0;}
 
    
 
-    public void SetEnemyTarget(Entity e){
-        enemyTarget = e;
-    }
+    public void SetEnemyTarget(Entity e)
+    {enemyTarget = e;}
 
-    public void SetPlayerTarget(Entity e){
-        playerTarget = e;
-    }
+    public void SetPlayerTarget(Entity e)
+    {playerTarget = e;}
 
     public void Win()
     {
         Debug.Log("Win");
         CardManager.inst.DeactivateHand();
+
+        if(TutorialManager.inst.currentTutorial == TutorialManager.inst.GetTutorial(TutorialEnum.BASICS4))
+        {
+            StartCoroutine(a());
+            IEnumerator a()
+            {
+                EndTurnButton.inst.Deactivate();
+                CardManager.inst.DeactivateHand();
+                foreach (var item in CardManager.inst.hand)
+                {item.VaporousDissolve();}
+                inBattle = false;
+                MusicManager.inst.SHUTUP();
+                MusicManager.inst.ChangeBGMusic(LocationManager.inst.currentSubLocation.bgMusic);
+                MusicManager.inst.ChangeToDungeon();
+                yield return new WaitForEndOfFrame();
+                if(PetManager.inst.enemyPet!= null && !PetManager.inst.enemyPet.KO)
+                {PetManager.inst.enemyPet.Die(EntityOwnership.ERROR);}
+            
+                yield return new WaitForSeconds(1.5f);
+                LeaveBattle();
+                DialogManager.inst.  ToggleButtons(true);
+                Interactor.inst.RenableInteraction();
+                TutorialManager.inst.LeaveFirstBattle();
+
+            }
+          
+            Debug.Log("XD");
+            return;
+        }
         StartCoroutine(q());
 
         IEnumerator q()
@@ -208,10 +312,7 @@ public class BattleManager:Singleton<BattleManager>
             MusicManager.inst.EndBattleMusic();
             yield return new WaitForEndOfFrame();
             if(PetManager.inst.enemyPet!= null && !PetManager.inst.enemyPet.KO)
-            {
-               
-                PetManager.inst.enemyPet.Die(EntityOwnership.ERROR);
-            }
+            {PetManager.inst.enemyPet.Die(EntityOwnership.ERROR);}
          
             yield return new WaitForSeconds(1.5f);
             RewardManager.inst.Open();
@@ -219,7 +320,8 @@ public class BattleManager:Singleton<BattleManager>
         }
     }
 
-    public void PassiveProc(Beast b){
+    public void PassiveProc(Beast b)
+    {
         passiveProcImage.sprite = b.scriptableObject.beastData.uiPicture;
         passiveProcImage.DOFade(.2f,.5f).OnComplete(()=>passiveProcImage.DOFade(0,.5F));
         AudioManager.inst.GetSoundEffect().Play(passiveProcSFX);
@@ -241,6 +343,7 @@ public class BattleManager:Singleton<BattleManager>
     {
        if(CheckIfGameContinues()) 
        {
+            TutorialManager.inst.ProcessEvent("@");
             EventManager.inst.onNewTurn.Invoke();
             Inventory.inst.itemsUsedThisTurn.Clear();
          
@@ -263,13 +366,11 @@ public class BattleManager:Singleton<BattleManager>
         
     }
 
-    public void RecordPlayerDamage(int dmg){
-        playerRecord[turn].totalTurnDamage +=dmg;
-    }
+    public void RecordPlayerDamage(int dmg)
+    {playerRecord[turn].totalTurnDamage +=dmg;}
 
-    public void RecordEnemyDamage(int dmg){
-        enemyRecord[turn].totalTurnDamage +=dmg;
-    }
+    public void RecordEnemyDamage(int dmg)
+    {enemyRecord[turn].totalTurnDamage +=dmg;}
 
     public void SwapToEnemyTurn()
     {      
@@ -291,22 +392,39 @@ public class BattleManager:Singleton<BattleManager>
             
             CardManager.inst.DeactivateHand();
             Inventory.inst.ActivateDrag();
-            if(turn % 2 == 0)
-            {
-                ManaManager.inst.IncreaseMaxMana();
-                EnemyAI.inst.IncreaseMaxMana();
-            }
-            ManaManager.inst.RegenMana();
-            EnemyAI.inst.RegenMana();
+            EnemyAI.inst.manaHandler.Gain(RivalBeastManager.inst.activeBeast.stats().manaRegen);
+            CardManager.inst.manaHandler.Gain(PlayerParty.inst.activeBeast.stats().manaRegen);
+            // if(turn % 2 == 0)
+            // {
+            //     ManaManager.inst.IncreaseMaxMana();
+            //     EnemyAI.inst.IncreaseMaxMana();
+            // }
+            // ManaManager.inst.RegenMana();
+            // EnemyAI.inst.RegenMana();
             IncrementTurn();
         
 
-            StartCoroutine(q());
+            if(TutorialManager.inst.ExecuteTutorial(TutorialEnum.BASICS3))
+            {
+                TutorialTextTime(TutorialManager.inst.GetTutorial(TutorialEnum.BASICS3));
+
+                return;
+            }
+            else if(TutorialManager.inst.ExecuteTutorial(TutorialEnum.BASICS4)){
+ TutorialTextTime(TutorialManager.inst.GetTutorial(TutorialEnum.BASICS4));
+            }
+           
+            else{
+                StartCoroutine(q());
+            }
+
+
+           
             IEnumerator q()
             {
                 while(statusEffectShit)
                 {yield return null;}
-             
+                
                 Card c = null;
                 if(!CardManager.inst.blockade)
                 {
@@ -319,8 +437,7 @@ public class BattleManager:Singleton<BattleManager>
               
                 if(c != null)
                 {
-                    CardManager.inst.CreateCardBehaviour(c)    ; //bug?
-                    
+                    CardManager.inst.CreateCardBehaviour(c); 
                 }
                 CardManager.inst.MakeHandInteractable();
             }
@@ -338,6 +455,12 @@ public class BattleManager:Singleton<BattleManager>
         playerRecord.Add(turn,p);
         EventManager.inst.onNewPlayerTurn.Invoke();
         CardStack.inst.NewTurn();
+
+        if(TutorialManager.inst.ExecuteTutorial(TutorialEnum.BASICS3))
+        {
+            TutorialTextTime(TutorialManager.inst.GetTutorial(TutorialEnum.BASICS3));
+            return;
+        }
           
         CheckForBadEffects();
         LoadStatusEffects();
@@ -392,11 +515,15 @@ public class BattleManager:Singleton<BattleManager>
             {yield return null;}
             yield return new WaitForSeconds(.5f);
             statusEffectShit = false;
-            EndTurnButton.inst.Reactivate();
+   
             CardManager.inst.MakeHandInteractable();
             CardManager.inst.ActivateHand();
-             yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(.5f);
             BattleTicker.inst.Type("Make your move");
+            yield return new WaitForSeconds(.5f);
+            EndTurnButton.inst.Reactivate();
+
+            
         }
     }
 
@@ -413,7 +540,7 @@ public class BattleManager:Singleton<BattleManager>
                 qa.action.Invoke();
                 BattleTicker.inst.Type(qa.args.tickerTitle);
                 if(CheckIfGameContinues()){
-TriggerQueuedEffects();
+                    TriggerQueuedEffects();
                 }
                 
             }
@@ -506,7 +633,8 @@ TriggerQueuedEffects();
         LeftPanel.inst.SwapToOverworld();
         MusicManager.inst.ChangeToDungeon();
         CardManager.inst.LeaveBattle();
-        ManaManager.inst.LeaveBattle();
+        EnemyAI.inst.manaHandler.Wipe();
+        CardManager.inst.manaHandler.Wipe();
         EnemyAI.inst.LeaveBattle();
         RivalBeastManager.inst.Wipe();
         UpperLeftPanel.inst.  SwapToOverworld();

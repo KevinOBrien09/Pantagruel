@@ -810,8 +810,7 @@ MonoBehaviour:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}
       volume: 0
-    worldEvents:
-    - uzuf7
+    worldEvents: []
     comic: {fileID: 0}
     moveDir: -1
     rotation:

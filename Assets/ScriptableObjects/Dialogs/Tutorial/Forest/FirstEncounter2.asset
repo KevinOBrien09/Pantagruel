@@ -29,6 +29,7 @@ MonoBehaviour:
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
+    move: 0
     moveDir: -1
     rotation:
       forceRotation: 0
@@ -50,6 +51,7 @@ MonoBehaviour:
       volume: 0
     worldEvents: []
     comic: {fileID: 0}
+    move: 0
     moveDir: -1
     rotation:
       forceRotation: 0
@@ -57,7 +59,7 @@ MonoBehaviour:
     end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: c1cbd966e3a6410449b5df7437433ba4, type: 2}
-    dialog: Its'g going to attack!
+    dialog: Its' going to at-!
     isThought: 0
     showLeft: 0
     cameraState: 0
@@ -72,6 +74,7 @@ MonoBehaviour:
     worldEvents:
     - uzuLeap
     comic: {fileID: 0}
+    move: 0
     moveDir: -1
     rotation:
       forceRotation: 0

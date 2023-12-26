@@ -18,7 +18,8 @@ public class DialogBlock
     public SoundData soundEffect,changeMusic;
     public string[] worldEvents;
     public Sprite comic;
-    public int moveDir = -1;
+    public bool move;
+    public  Dir moveDir;
     public rot rotation;
     public bool end;
 

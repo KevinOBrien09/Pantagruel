@@ -14,8 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locationName: Infirmary
   prefab: {fileID: 4091476003508458906, guid: 6081f265c81418e4f9195356fe1d8f50, type: 3}
-  detectEncouters: 0
-  beastsInLocation: []
+  bgMusic:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
+  footStep:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
+  detectEncouters: 1
+  beastsInLocation:
+  - {fileID: 11400000, guid: a958369a932061042940eebaffe08b0d, type: 2}
   cardRewards: []
   goldRewardRange: {x: 0, y: 0}
   levelRange: {x: 0, y: 0}

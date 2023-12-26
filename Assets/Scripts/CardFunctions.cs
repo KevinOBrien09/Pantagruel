@@ -105,8 +105,14 @@ public static class CardFunctions
 
     public static bool canCast(Card c, bool isPlayer)
     {
-        bool hasMana = ManaManager.inst.currentMana >= c.manaCost;
+        int currMana;
+        if(isPlayer)
+        { currMana = CardManager.inst.manaHandler. currentMana; }
+        else
+        {currMana = EnemyAI.inst.manaHandler. currentMana;}
       
+        bool hasMana = currMana >= c.manaCost;
+        
         if(hasMana && oneEffectIsViable(c.effects,isPlayer))
         {return true;}
         else

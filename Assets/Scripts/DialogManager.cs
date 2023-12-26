@@ -25,6 +25,7 @@ public class DialogManager : Singleton<DialogManager>
     bool allowInput;
     bool Talking;
     bool musicWasChanged;
+    public bool freeze;
     public Vector2 leftSilent,leftSpeaking,rightSilent,rightSpeaking;
     void Start(){
         nameText.text = "";
@@ -39,7 +40,7 @@ public class DialogManager : Singleton<DialogManager>
     }
 
 
-    void ToggleButtons(bool b)
+   public void ToggleButtons(bool b)
     {
         foreach (var item in buttonsToDisable)
         {item.interactable = b;}
@@ -84,13 +85,16 @@ public class DialogManager : Singleton<DialogManager>
 
     void Update()
     {
+        if(freeze){
+            return;
+        }
         if(allowInput)
         {
              if(!dialogClick.isPlaying && Talking){
                 dialogClick.Play();
             }
                 
-            if(Input.GetMouseButtonDown(0)|Input.GetKeyDown(KeyCode.Space))
+            if(Input.GetMouseButtonDown(0)|Input.GetKey(KeyCode.Space)) //CHANGE
             { 
                 if(Talking)
                 {   
@@ -150,10 +154,25 @@ public class DialogManager : Singleton<DialogManager>
                  
             }
         }
+
         if(currentBlock.worldEvents.Length != 0){
+
             foreach (var item in currentBlock.worldEvents)
             {
-                if(item != string.Empty)
+                if(BattleManager.inst.inTutorial){
+                    if(item != string.Empty)
+                    {
+                        if(WorldEventManager.inst != null)
+                        {
+                          TutorialManager.inst.ProcessEvent(item);
+                        }
+                        else
+                        {Debug.LogAssertion("No WorldEvent Manager");}
+                    
+                    }
+                }
+                else{
+ if(item != string.Empty)
                 {
                     if(WorldEventManager.inst != null)
                     {
@@ -163,13 +182,17 @@ public class DialogManager : Singleton<DialogManager>
                     {Debug.LogAssertion("No WorldEvent Manager");}
                 
                 }
+                }
+               
             }
         }
       
-
-        if(currentBlock.moveDir >= 0){
-        PlayerManager.inst.movement.StartMove((Dir)currentBlock.moveDir);
+        if(currentBlock.move){
+  if(currentBlock.moveDir >= 0){
+        PlayerManager.inst.movement.StartMove(currentBlock.moveDir);
         }
+        }
+      
 
         if(currentBlock.rotation.forceRotation)
         {  PlayerManager.inst.movement.rotate.ForceRotation(currentBlock.rotation.playerYRotation);
@@ -240,6 +263,10 @@ public class DialogManager : Singleton<DialogManager>
 
     public void End()
     {
+        if(BattleManager.inst.inTutorial){
+            TutorialManager.inst.Leave();
+            return;
+        }
 
         if(currentConversation.locationDialog.moveAfterDialog)
         {
@@ -255,8 +282,7 @@ public class DialogManager : Singleton<DialogManager>
             CameraManager.inst.ChangeCameraState(CameraState.NORMAL);
             allowInput = false;
             inDialog = false;
-            rightPic.DOFade(0,.2f);
-            leftPic.DOFade(0,.2f);
+           HidePotraits();
             typewriter.Play("",40,()=>
             {Talking = false;});
         
@@ -293,19 +319,29 @@ public class DialogManager : Singleton<DialogManager>
      
     }
 
+    public void HidePotraits(){
+ rightPic.DOFade(0,.2f);
+            leftPic.DOFade(0,.2f);
+    }
+
+    public void ClearNameAndDialogText(){
+        
+            nameText.text = "";
+          typewriter.Play("",40,()=>
+            {
+                Talking = false;
+            
+            });
+    }
+
     public void Reset(){
  allowInput = false;
             inDialog = false;
             rightPic.DOFade(0,.2f);
             leftPic.DOFade(0,.2f);
             OverworldMovement.canMove = true;
-            typewriter.Play("",40,()=>
-            {
-                Talking = false;
-            
-            });
+          ClearNameAndDialogText();
         
-            nameText.text = "";
            Interactor.inst.RenableInteraction();
            BattleManager.inst. StartCoroutine(q());;
             IEnumerator q()

@@ -47,17 +47,23 @@ MonoBehaviour:
     wildDeck: {fileID: 11400000, guid: 5cd1c28a6f153a04aac37ad7b269cdcb, type: 2}
     baseStats:
       maxHealth: 45
-      def: 0
-      physical: 0
-      magic: 0
-      charisma: 0
-      luck: 0
+      maxMana: 12
+      maxDeckCost: 0
+      deckCostPerLevel: 0
+      manaRegen: 2
+      physical: 10
+      magic: 20
+      dodge: 5
+      luck: 6
     statGrowthPerLevel:
       maxHealth: 4
-      def: 1
+      maxMana: 1
+      maxDeckCost: 0
+      deckCostPerLevel: 0
+      manaRegen: 2
       physical: 0
       magic: 3
-      charisma: 2
+      dodge: 0
       luck: 1
     element: 2
     beastClass: 17

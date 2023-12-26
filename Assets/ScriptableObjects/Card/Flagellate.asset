@@ -18,6 +18,7 @@ MonoBehaviour:
   manaCost: 1
   vfxSetUp: 
   vfx: 
+  webLink: 
   castDelay: 0.2
   effects: []
   playVFXAfterDelay: 0
@@ -25,7 +26,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
-  element: 3
+  missSound:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
+  element: 1
   beastClass: 3
   desc: Inflicate the caster with 2 bleed stacks, bleed stacks now give a bonus {PHYS
     30%} per stack. This effect lasts for 2 turns.

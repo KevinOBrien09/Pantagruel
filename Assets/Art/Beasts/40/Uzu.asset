@@ -43,20 +43,26 @@ MonoBehaviour:
     outLine: {fileID: 0}
     facingRight: 0
     bestiaryID: 40
-    wildDeck: {fileID: 11400000, guid: 4f39c8b0e0c93d04ab9765ec45da293f, type: 2}
+    wildDeck: {fileID: 11400000, guid: b15190f2ce257c4468723438df8de56c, type: 2}
     baseStats:
-      maxHealth: 30
-      def: 0
+      maxHealth: 28
+      maxMana: 10
+      maxDeckCost: 0
+      deckCostPerLevel: 0
+      manaRegen: 0
       physical: 0
       magic: 0
-      charisma: 0
+      dodge: 0
       luck: 0
     statGrowthPerLevel:
-      maxHealth: 2
-      def: 2
+      maxHealth: 1
+      maxMana: 0.5
+      maxDeckCost: 0
+      deckCostPerLevel: 0
+      manaRegen: 1
       physical: 3
       magic: 2
-      charisma: 1
+      dodge: 0
       luck: 1
     element: 5
     beastClass: 15

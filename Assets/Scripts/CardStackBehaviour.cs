@@ -91,7 +91,7 @@ public class CardStackBehaviour : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(!BattleManager.inst.inBattle){
+        if(!BattleManager.inst.inBattle | BattleManager.inst.inTutorial){
             return;
         }
         if(eventData.button == PointerEventData.InputButton.Right)

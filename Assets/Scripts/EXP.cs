@@ -55,7 +55,8 @@ public class EXP
     }
 
     public void PsudeoLevel(int fakeLevel,Beast b)
-    {  beast = b;
+    { 
+        beast = b;
         int c = GetExpForCurrentLevel(fakeLevel);
       
         Init(c);

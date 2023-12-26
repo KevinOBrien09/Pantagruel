@@ -9,6 +9,7 @@ public class BeastLeapWorldEvent : WorldEvent
     public Vector3 preparePos;
     public Vector3 endPos;
     public Beast encounteredBeast;
+    public SoundData sfx;
     public float back,forward;
     public override void Go(){
         if(!objectToMove.activeSelf){
@@ -16,6 +17,7 @@ public class BeastLeapWorldEvent : WorldEvent
         }
         
         objectToMove.transform.DOMove(preparePos,back).OnComplete(()=>{
+            AudioManager.inst.GetSoundEffect().Play(sfx);
             BattleManager.inst.StartBattle(BattleType.Wild);
         objectToMove.transform.DOMove(endPos,forward);
    });

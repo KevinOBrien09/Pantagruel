@@ -155,11 +155,12 @@ public class Entity : MonoBehaviour
         return 0;
     }
 
-    public void AddShield(StatusEffectDisplay display)
+    public void AddShield(float amount, StatusEffectDisplay display)
     {
         Shield s = new Shield();
         s.display = display;
-        s.value = Mathf.RoundToInt( (float) Maths.Percent(stats().maxHealth,10));
+        s.value = amount; 
+        //Mathf.RoundToInt( (float) Maths.Percent(stats().maxHealth,10));
         shields.Add(s);
        //currentShield+= 
        

@@ -16,9 +16,24 @@ MonoBehaviour:
     ANIMATED_PREFAB_DONE: 0
     devNote:
       note: Whereever I am, increase the duration of your burn effects by 1 turn.
-    beastName: Ablazish
+    beastName: Ablaz
+    spawn:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    die:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    scream:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
     flavourText: '"I''m all fired up!"'
-    bottomCornerPos: {x: 0, y: -1.5}
+    stunBirdHeight: 20
+    playerStatusEffectPos: {x: 0, y: -4.5, z: 2, w: 1.5}
+    enemyStatusEffectPos: {x: 0, y: -5.5, z: 2, w: 1.5}
+    bottomCornerPos: {x: 0, y: -1.5, z: 0}
     battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 3465286685962602723, guid: 76cf50e4a037e7f489c5d05ca4ec2164,
@@ -28,20 +43,22 @@ MonoBehaviour:
     outLine: {fileID: 0}
     facingRight: 0
     bestiaryID: 6
-    wildDeck: {fileID: 11400000, guid: 80d5131422f00c4458ffe3c9b0906f53, type: 2}
+    wildDeck: {fileID: 11400000, guid: b15190f2ce257c4468723438df8de56c, type: 2}
     baseStats:
-      maxHealth: 30
-      def: 3
+      maxHealth: 20
+      maxMana: 101
+      manaRegen: 1
       physical: 5
       magic: 25
-      charisma: 3
+      dodge: 0
       luck: 5
     statGrowthPerLevel:
       maxHealth: 4
-      def: 1
+      maxMana: 0
+      manaRegen: 0
       physical: 0
       magic: 2
-      charisma: 1
+      dodge: 0
       luck: 0
     element: 1
     beastClass: 7

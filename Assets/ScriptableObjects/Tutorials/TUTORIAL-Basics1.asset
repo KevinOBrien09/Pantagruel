@@ -1,0 +1,594 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f47ea6e94e2a7fe4fa0534161af2c13a, type: 3}
+  m_Name: TUTORIAL-Basics1
+  m_EditorClassIdentifier: 
+  blocks:
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: 'Ugh...
+
+      My head...'
+    isThought: 0
+    showLeft: 1
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: Where am I?
+    isThought: 0
+    showLeft: 1
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: 'This is the inside of an Ophanim brother. '
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: 'A sentient, holy battling ground. '
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: Two souls enter.
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: 'One soul leaves. '
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: Do you understand the implication?
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: 'You must kill that daemon in order to escape. '
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 8300000, guid: cd91e5c1fcf614144b735f4e8fb00b5c, type: 3}
+      pitchRange: {x: 1, y: 1}
+      volume: 0.35
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: 'W-what!
+
+      But how!'
+    isThought: 0
+    showLeft: 1
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: 'Luckily your friend gave you that gem earlier. '
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: 'It contains a soul of a daemon. '
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: It is possessing you right now.
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: 'No...
+
+'
+    isThought: 0
+    showLeft: 1
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: 'Consider yourself lucky brother, without it you''d be a dead man right
+      now. '
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: "Use its power. \nSmite evil with evil."
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: 'To the right is your healthbar. When your daemon reaches 0 HP <i><b>you</b></i>
+      will take damage. '
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - PLAYERHPBAR
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: 'If you reach 0 HP and have no daemon to protect you
+
+      well...'
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: You will die...
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: I feel sick.
+    isThought: 1
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - '@'
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: This can't be happening..
+    isThought: 1
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: ef39baaaeda6509488ded3e0c93bd2ce, type: 2}
+    dialog: 'I am a man of the Lord!
+
+      I can''t possibly be possessed by a devil!'
+    isThought: 1
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: Pull yourself together brother!
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents: []
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: Reduce the rival daemon's HP to 0 and you will escape!
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - ENEMYHPBAR
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: To use a skill drag it into the center window!
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - '@'
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  - customName: 
+    speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
+    dialog: Try using <i> Slash</i> on the enemy!
+    isThought: 0
+    showLeft: 0
+    cameraState: 0
+    soundEffect:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    changeMusic:
+      audioClip: {fileID: 0}
+      pitchRange: {x: 0, y: 0}
+      volume: 0
+    worldEvents:
+    - '@'
+    - POINTATCARD
+    comic: {fileID: 0}
+    move: 0
+    moveDir: 0
+    rotation:
+      forceRotation: 0
+      playerYRotation: 0
+    end: 0
+  dialogBlockLanguages: []
+  locationDialog:
+    moveAfterDialog: 0
+    subLocRot: {x: 0, y: 0, z: 0}
+    subLocPos: {x: 0, y: 0, z: 0}
+    subLoc: {fileID: 0}
+    mainLocation: {fileID: 0}
+  changeMusicBack: 0
+  doNotReset: 0
+  moveDir: -1
+  textAsset: {fileID: 0}

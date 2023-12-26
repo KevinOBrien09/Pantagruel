@@ -24,15 +24,18 @@ public class LocationManager : Singleton<LocationManager>
 
     protected  override void Awake()
     {
+        base.Awake();
         foreach (var item in allMainLocs)
         {mainLocDict.Add(item.Id,item);}
-        base.Awake();
+
   
     }
 
     public void ChangeMainLocation(MainLocation mainLocation)
     {
         currentMainLoc = mainLocation;
+       
+
         ChangeSubLocation(mainLocation.subLocations[0],mainLocation.playerPos,mainLocation.playerRot);
 
         UpperLeftPanel.inst.ChangeLocationText(currentMainLoc); 

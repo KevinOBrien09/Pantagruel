@@ -25,6 +25,12 @@ public  AudioSource reward;
         rewardVol = reward.volume;
     }
 
+    public void SHUTUP(){
+           battle.DOFade(0,0);
+           dungeon.DOFade(0,0);
+        reward.DOFade(0,0);
+    }
+
     public void ChangeBGMusicWithFade(SoundData newSong){
         dungeon.DOFade(0,.25f).OnComplete(()=>
         {

@@ -33,6 +33,7 @@ public class CardManager:Singleton<CardManager>
     public CardBehaviour prefab;
     public RectTransform holder;
     public List<CardBehaviour> hand = new List<CardBehaviour>();
+    public ManaHandler manaHandler;
     public bool blockade;
     float holderOgPos;
     public float downHodlerPos;
@@ -65,6 +66,23 @@ public class CardManager:Singleton<CardManager>
         ActivateHand();
     }
 
+    public void TutorialStart(Beast beast){
+        foreach (var item in PlayerParty.inst.party)
+        {
+            deckDict.Add(item,item.deck);
+           // deckDict[item].cards = new List<Card>(item.deck.cards);
+        }
+          foreach (var item in hand)
+        {Destroy(item.gameObject);}
+         SwitchBeast(beast);
+        currentDeck.Shuffle(); 
+        string slashID = "cafdbe56-857e-454d-9cf2-a8c07371f4cf";
+        CreateCardBehaviour(DrawSpecificCard(slashID));
+        MakeHandInteractable();
+        ActivateHand();
+    }
+
+
     public void SwitchBeast(Beast beast)
     {
        DestroyHand();
@@ -96,6 +114,20 @@ public class CardManager:Singleton<CardManager>
 
     }
 
+    public Card DrawSpecificCard(string id)
+    {
+        foreach (var item in currentDeck.cards)
+        {
+            if(item.Id == id){
+                currentDeck.cards.Remove(item);
+                return item;
+            }
+        }
+       
+        Debug.LogAssertion(id + " was not found!");
+        return null;
+    }
+
 
 
     public void AddManifestedCardToDeck(Card c){
@@ -107,10 +139,13 @@ public class CardManager:Singleton<CardManager>
 
     public void ActivateHand()
     {
+       
         handDown = false;
         holder.DOAnchorPosY(0,.2f).OnComplete(()=>
         {
-           EndTurnButton.inst.Reactivate();
+        //    if(!BattleManager.inst.inTutorial){ // i do not know why this was here.
+        //      EndTurnButton.inst.Reactivate();
+        // }
         });
          MakeHandInteractable();
     }
@@ -397,7 +432,7 @@ public class CardManager:Singleton<CardManager>
             {BattleEffectManager.inst.Play(usedCard.vfx);}
 
             BattleTicker.inst.Type(usedCard.cardName);
-            ManaManager.inst.Spend(usedCard.manaCost);
+            manaHandler.Spend(usedCard.manaCost);
 
             
                
@@ -424,7 +459,12 @@ public class CardManager:Singleton<CardManager>
                 }
             }
 
-           
+           if(TutorialManager.inst.ExecuteTutorial(TutorialEnum.BASICS2)){
+               BattleManager.inst. TutorialTextTime(TutorialManager.inst.GetTutorial(TutorialEnum.BASICS2));
+               yield return null;
+            }
+
+
             BattleManager.inst. StartCoroutine(piss());
             IEnumerator piss()
             {

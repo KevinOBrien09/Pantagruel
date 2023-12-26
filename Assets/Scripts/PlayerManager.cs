@@ -24,6 +24,7 @@ public class PlayerManager : Singleton<PlayerManager>
         mainData.playerSaveData = movement.Save();
         mainData.cardCollection = CardCollection.inst.Save();
         mainData.locationSaveData = LocationManager.inst.Save();
+        mainData.tutorialProgress = TutorialManager.inst.Save();
         return mainData;
     }
 
@@ -34,5 +35,6 @@ public class PlayerManager : Singleton<PlayerManager>
         CardCollection.inst.Load(data.cardCollection);
         movement.Load(data.playerSaveData);
         LocationManager.inst.Load(data.locationSaveData);
+        TutorialManager.inst.Load(data.tutorialProgress);
     }
 }

@@ -14,14 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deck:
     cards:
+    - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
+    - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
+    - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
+    - {fileID: 11400000, guid: 8fa54af805f23944596030a9a2c67cd8, type: 2}
+    - {fileID: 11400000, guid: 8fa54af805f23944596030a9a2c67cd8, type: 2}
     - {fileID: 11400000, guid: 03462aa98e784f54993928c4a9b23d05, type: 2}
     - {fileID: 11400000, guid: 03462aa98e784f54993928c4a9b23d05, type: 2}
-    - {fileID: 11400000, guid: 03462aa98e784f54993928c4a9b23d05, type: 2}
+    - {fileID: 11400000, guid: f8eb0610bfbaa784fabd528ffa9d1a1c, type: 2}
+    - {fileID: 11400000, guid: f8eb0610bfbaa784fabd528ffa9d1a1c, type: 2}
+    - {fileID: 11400000, guid: 602bed6557f0a4f4b975008073968f11, type: 2}
+    - {fileID: 11400000, guid: 602bed6557f0a4f4b975008073968f11, type: 2}
+    - {fileID: 11400000, guid: 8f7b361f8cd570a4c91bba404a77219e, type: 2}
+    - {fileID: 11400000, guid: 8f7b361f8cd570a4c91bba404a77219e, type: 2}
     - {fileID: 11400000, guid: cbdf3044615ac644d9b41da01389d1c8, type: 2}
     - {fileID: 11400000, guid: cbdf3044615ac644d9b41da01389d1c8, type: 2}
-    - {fileID: 11400000, guid: df9aaa018e0bcce4f953ec8b4cad66f8, type: 2}
-    - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
-    - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
-    - {fileID: 11400000, guid: f47578d16f77c1843a25d9395c148cf5, type: 2}
     discard: []
   combos: []

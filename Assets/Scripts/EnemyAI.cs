@@ -7,17 +7,12 @@ using System.Linq;
 
 public class EnemyAI : Singleton<EnemyAI>
 {
-    public int maxMana;
-    public int currentMana;
-    public int maxManaBase = 8;
+    
     public Deck currentDeck;
     public List<Card> hand = new List<Card>();
-    public List<ManaGem> gems = new List<ManaGem>();
-    public List<ManaGem>  activeGems = new List<ManaGem>();
-    public TextMeshProUGUI manaCountText;
     public GameObject cardBack;
     public RectTransform cardBackHolder;
-
+    public ManaHandler manaHandler;
     Dictionary<int,GameObject> backDict = new Dictionary<int, GameObject>();
     Dictionary<Beast,Deck> deckDict = new Dictionary<Beast, Deck>();
     
@@ -125,7 +120,7 @@ public class EnemyAI : Singleton<EnemyAI>
                    
                     hand.Remove(usedCard);
                     currentDeck.discard.Add(usedCard);
-                    SpendMana(usedCard.manaCost);
+                    manaHandler.Spend(usedCard.manaCost);
                     EventManager.inst.onEnemyCastCard.Invoke();
                     
                     if(usedCard.soundEffect.audioClip != null)
@@ -167,22 +162,27 @@ public class EnemyAI : Singleton<EnemyAI>
         List<CardCombo> validCombos = new List<CardCombo>();
         foreach (var combo in wildDeck.combos)
         {
-            bool hasCardsForCombo = combo.requiredCards.All(comboCard => hand.Any(handCard => handCard == comboCard));
-            if(hasCardsForCombo)
+           // bool hasCardsForCombo = combo.requiredCards.All(comboCard => hand.Any(handCard => handCard == comboCard));
+            if(hasCardsForCombo(combo))
             { 
-                if( currentMana >= combo.fullManaCost())
-                {
+                Debug.Log("1");
+                if(manaHandler.currentMana >= combo.fullManaCost())
+                {    Debug.Log("2");
                     bool allCardsAreCastable = true;
                     foreach (var item in combo.requiredCards)
                     {
                         if(!CardFunctions.canCast(item,false))
                         {allCardsAreCastable = false;}
+                         
                     }
 
                     if(allCardsAreCastable)
-                    {validCombos.Add(combo);}
+                    {validCombos.Add(combo);
+                     Debug.Log("4");}
                 }
             }
+
+            Debug.Log(validCombos.Count +" valid combos");
         }
 
       
@@ -195,6 +195,22 @@ public class EnemyAI : Singleton<EnemyAI>
             return null;
         }
        
+    }
+
+    bool hasCardsForCombo(CardCombo c)
+    {
+        bool b = true;
+        foreach (var comboCard in c.requiredCards)
+        {
+            if(!hand.Contains(comboCard))
+            {
+                b = false;
+                break;
+            }
+        }
+
+
+        return b;
     }
     
     public void RebuildCardBacks()
@@ -211,60 +227,19 @@ public class EnemyAI : Singleton<EnemyAI>
         }
     }
 
-    public void IncreaseMaxMana()
-    {
-        if(maxManaBase != maxMana)
-        {
-            maxMana++;
-
-            for (int i = 0; i < maxMana; i++)
-            {
-                if(!gems[i].active)
-                {
-                    gems[i].Activate();
-                    activeGems.Add(gems[i]);
-                }
-            }
-        }
-    }
-
-    public void SpendMana(int manaCost)
-    {
-        currentMana = currentMana- manaCost;
-        UpdateDisplay();
-    }
-    
-    public void RegenMana()
-    {
-        currentMana = maxMana;
-        UpdateDisplay();
-    }
-
-    public void UpdateDisplay()
-    {
-        foreach (var item in activeGems)
-        {item.TurnOffCircle();}
-
-        for (int i = 0; i < currentMana; i++)
-        {activeGems[i].TurnOnCircle();}
-
-        manaCountText.text = currentMana + "/" + maxMana;
-    }
+  
 
     public void LeaveBattle(){
         currentDeck = null;
-        maxMana =0;
-        currentMana = 0;
-        foreach (var item in gems)
-        {item.Deactivate();}
+       
        
         deckDict.Clear();
        
-        activeGems.Clear();
+
          hand.Clear();
         RebuildCardBacks();
         backDict.Clear();
        
-        UpdateDisplay();
+      
     }
 }

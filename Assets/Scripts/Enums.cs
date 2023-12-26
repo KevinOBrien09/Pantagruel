@@ -3,7 +3,7 @@ using System;
 public enum BattleType{Wild,Trainer}
 
 
-public enum StatName{HEALTH,PHYSICAL,MAGIC,DEFENSE,CHARISMA,LUCK}
+public enum StatName{HEALTH,MANA,PHYSICAL,MAGIC,MANAREGEN,DODGE,LUCK}
 public enum StatusEffects{POISON,PARASITE,HOLYWATER,SHIELD,SHIELDBREAK,WOUND}
 
 public enum Element{NONE,FIRE,WATER,WIND,STONE,GRASS,LIGHTNING}

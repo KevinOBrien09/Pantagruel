@@ -93,7 +93,7 @@ worldView.DOFade(1,.7f).OnComplete(()=>{ abstractBG.gameObject.SetActive(false);
         {
             if(Input.GetMouseButtonUp(0))
             {
-                if(currentCardOverViewPort.canCast())
+                if( CardFunctions.canCast(currentCardOverViewPort.card,true))
                 {
                     currentCardOverViewPort.Cast();
                     cardHoveringOverViewport = false;
@@ -104,9 +104,9 @@ worldView.DOFade(1,.7f).OnComplete(()=>{ abstractBG.gameObject.SetActive(false);
 
                     AudioManager.inst.GetSoundEffect().Play(SystemSFX.inst.errorSound);
                     Debug.Log("cannot cast" + currentCardOverViewPort.card.cardName);
-                    if(ManaManager.inst.currentMana < currentCardOverViewPort.card.manaCost){
-ManaManager.inst.FlashMana();
-                    }
+//                     if(ManaManager.inst.currentMana < currentCardOverViewPort.card.manaCost){
+// ManaManager.inst.FlashMana();
+//                     }
                         cardHoveringOverViewport = false;
                     currentCardOverViewPort = null;
                    

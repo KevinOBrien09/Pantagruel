@@ -6,20 +6,27 @@ using UnityEngine;
 public struct Stats
 {
     public float maxHealth;
-    public float def;
+    public float maxMana;
+    public float maxDeckCost;
+    public float deckCostPerLevel;
+    public float manaRegen;
     public float physical;
     public float magic;
-    public float charisma;
+    public float dodge;
     public float luck;
+
 
     
     public Stats(Stats s)
     {
         maxHealth = s.maxHealth;
-        def = s.def;
+        maxMana = s.maxMana;
+        maxDeckCost = s.maxDeckCost;
+        deckCostPerLevel = s.deckCostPerLevel;
+        manaRegen = s.manaRegen;
+        dodge = s.dodge;
         physical = s.physical;
         magic = s.magic;
-        charisma = s.charisma;
         luck = s.luck;
    
     }
@@ -27,15 +34,18 @@ public struct Stats
     public void StackStats(Stats s)
     {
         maxHealth += s.maxHealth;
-        def += s.def;
+        maxMana += s.maxMana;
+        maxDeckCost += s.maxDeckCost;
+        deckCostPerLevel += s.deckCostPerLevel;
+        manaRegen += s.manaRegen;
+        dodge += s.dodge;
         physical += s.physical;
         magic += s.magic;
-        charisma +=s.charisma;
         luck +=s.luck;
     }
 
     public float GetStatTotal(){
-        return maxHealth + def + physical + magic + charisma + luck;
+        return maxHealth + maxMana + physical + magic + dodge + manaRegen + luck;
     }
 
     public void ModStat(StatMod statMod)
@@ -45,8 +55,8 @@ public struct Stats
             case StatName.HEALTH:
             maxHealth += statMod.change;
             break;
-            case StatName.DEFENSE:
-            def += statMod.change;
+            case StatName.MANA:
+            maxMana += statMod.change;
             break;
             case StatName.PHYSICAL:
             physical += statMod.change;
@@ -54,8 +64,11 @@ public struct Stats
             case StatName.MAGIC:
             magic+= statMod.change;
             break;
-            case StatName.CHARISMA:
-            charisma += statMod.change;
+            case StatName.DODGE:
+            dodge += statMod.change;
+            break;
+            case StatName.MANAREGEN:
+            manaRegen+= statMod.change;
             break;
             case StatName.LUCK:
             luck += statMod.change;
@@ -72,14 +85,16 @@ public struct Stats
         {
             case StatName.HEALTH:
             return maxHealth;
-            case StatName.DEFENSE:
-            return def;
+            case StatName.MANA:
+            return maxMana;
             case StatName.PHYSICAL:
             return physical;
             case StatName.MAGIC:
             return magic;
-            case StatName.CHARISMA:
-            return charisma;
+            case StatName.MANAREGEN:
+            return manaRegen;
+            case StatName.DODGE:
+            return dodge;
             case StatName.LUCK:
             return luck;
             default:
