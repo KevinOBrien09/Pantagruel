@@ -20,8 +20,8 @@ public class OverworldMovement : MonoBehaviour
     public RotatePlayer rotate;
     [SerializeField] Camera cam;
     [SerializeField] LayerMask mask;
-    [SerializeField] float moveSpeed;
-    [SerializeField] float stride;
+    public float moveSpeed;
+   public float stride;
     [SerializeField] AudioSource audioSource;
     public bool detectEncouters;
     [SerializeField] float rayLength = 3;
@@ -32,10 +32,12 @@ public class OverworldMovement : MonoBehaviour
     bool lastTorchState;
     float ogPOV;
     public float zoomPOV;
+   public float ogMoveSpeed;
     
    
     void Start(){
         ogPOV = cam.fieldOfView;
+        ogMoveSpeed = moveSpeed;
     }
     void OnEnable()
     {canMove = true;}

@@ -150,7 +150,7 @@ MonoBehaviour:
     end: 0
   - customName: 
     speaker: {fileID: 11400000, guid: cfd2ff0aab093b043b51af63935c7ee8, type: 2}
-    dialog: You know full well I know your mind brother.
+    dialog: 'You know I am aware of  your mind. '
     isThought: 0
     showLeft: 0
     cameraState: 0

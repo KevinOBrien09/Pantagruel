@@ -107,9 +107,9 @@ public class CardBehaviour : MonoBehaviour,IPointerEnterHandler,IPointerExitHand
         interactable = true;
         StartCoroutine(q());
         IEnumerator q(){
-   canvas.overrideSorting = false;
-   yield return new WaitForEndOfFrame();
-      canvas.overrideSorting = true;
+            canvas.overrideSorting = false;
+            yield return new WaitForEndOfFrame();
+            canvas.overrideSorting = true;
         }
      
     }

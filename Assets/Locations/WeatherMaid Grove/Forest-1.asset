@@ -10,24 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 635a20c82770dea428c8eaf094a32c9d, type: 3}
-  m_Name: Infirmary
+  m_Name: Forest-1
   m_EditorClassIdentifier: 
-  locationName: Infirmary
-  prefab: {fileID: 4091476003508458906, guid: 6081f265c81418e4f9195356fe1d8f50, type: 3}
+  locationName: Weathermaid-1
+  prefab: {fileID: 2393896197044781408, guid: 726faf5d0b3c81d41bbbf0d365127f88, type: 3}
   bgMusic:
-    audioClip: {fileID: 0}
-    pitchRange: {x: 0, y: 0}
-    volume: 0
+    audioClip: {fileID: 8300000, guid: bff75666cfc3b73469c8bd4d161f7da3, type: 3}
+    pitchRange: {x: 0.9, y: 0.9}
+    volume: 1
   footStep:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
-  detectEncouters: 1
-  beastsInLocation:
-  - {fileID: 11400000, guid: a958369a932061042940eebaffe08b0d, type: 2}
+  detectEncouters: 0
+  beastsInLocation: []
   cardRewards: []
   goldRewardRange: {x: 0, y: 0}
   levelRange: {x: 0, y: 0}
-  isCutScene: 1
-  dialogToLoadOnEnter: {fileID: 11400000, guid: 541c5840b78e828479a951e657a367a6,
-    type: 2}
+  isCutScene: 0
+  dialogToLoadOnEnter: {fileID: 0}

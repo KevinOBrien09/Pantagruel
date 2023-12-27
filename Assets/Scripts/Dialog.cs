@@ -34,8 +34,8 @@ public class DialogBlock
 }
 [System.Serializable]
 public class LocationDialogStuff{
- public bool moveAfterDialog;
- public Vector3 subLocRot,subLocPos;
+    public bool moveAfterDialog;
+    public Vector3 subLocRot,subLocPos;
     public Location subLoc;
     public MainLocation mainLocation;
 }

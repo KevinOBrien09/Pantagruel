@@ -64,6 +64,16 @@ public static class MiscFunctions
       
     }
 
+    //  [MenuItem("Func/KillOutlines")]
+    // static void KillOutlines()
+    // {
+    //     foreach (Outline item in GameObject.FindObjectsOfType(typeof(Outline)))
+    //     {
+    //       Outline.DestroyImmediate(item);
+    //     }
+      
+    // }
+
     
   #endif
 

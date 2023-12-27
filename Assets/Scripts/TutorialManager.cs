@@ -27,7 +27,7 @@ public class TutorialManager: Singleton<TutorialManager>
     public GenericDictionary<TutorialEnum,Dialog> tutorialDict = new GenericDictionary<TutorialEnum, Dialog>();
     public GenericDictionary<string,TutorialArrow> tutorialArrowDict = new GenericDictionary<string, TutorialArrow>();
     public Dialog currentTutorial;
-
+    public Dialog leaveFirstBattle;
 
    
     public bool ExecuteTutorial(TutorialEnum tutorial)
@@ -78,7 +78,10 @@ public class TutorialManager: Singleton<TutorialManager>
     }
 
     public void LeaveFirstBattle(){
+        PlayerManager.inst.movement.InitPosRot(PlayerManager.inst.movement.transform.position,leaveFirstBattle.locationDialog.subLocRot);
+        PlayerManager.inst.movement.rotate.InitRotation(NESW.inst.GetDirection(PlayerManager.inst.movement.rotate.transform));
 
+DialogManager.inst.StartConversation(leaveFirstBattle);
     }
 
     public bool isInBasics3()

@@ -112,45 +112,28 @@ public class PlayerParty : Singleton<PlayerParty>
     
     void ApplyLoadedInfo()
     {
-        
-          PassiveManager.inst.OrginizePassiveActivity();
+        PassiveManager.inst.OrginizePassiveActivity();
         BottomCornerBeastDisplayer.inst.ChangeActiveBeast(activeBeast,false);
-      
-        
     }
 
     public void AddNewBeast(Beast b)
     {
         b.ownership = EntityOwnership.PLAYER;
         if(b.scriptableObject.beastData.passive != null)
-        {
-            PassiveManager.inst.AddNewBeast(b);
-            
-    
-        }
-        else{
-            Debug.Log(b.name + " passive not set up");
-        }
+        {PassiveManager.inst.AddNewBeast(b);}
+        else
+        {Debug.Log(b.name + " passive not set up");}
         
-       
-
         if(party.Count == 0)
         {
            BottomCornerBeastDisplayer.inst.YesBeast();   
             activeBeast = b;
-             party.Add(b);
+            party.Add(b);
             BottomCornerBeastDisplayer.inst.CreateAnimatedInstances(party);
             ApplyLoadedInfo();
         }
-        else{
-             party.Add(b);
-        }
-      
-            
-           
-       
-          
-        
+        else
+        {party.Add(b);}
     }
 
     #if UNITY_EDITOR

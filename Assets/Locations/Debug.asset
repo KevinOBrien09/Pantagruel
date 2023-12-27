@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab79685d843da6243903e819a299d882, type: 3}
-  m_Name: Weathermaid Grove
+  m_Name: Debug
   m_EditorClassIdentifier: 
-  Id: f2f4fba0-3c7c-4262-b207-1f8369f87d18
-  locName: Weathermaid Grove
+  Id: 311572c3-5a61-40df-b44a-d2736ef7241c
+  locName: Debugging
   bgMusic:
-    audioClip: {fileID: 8300000, guid: 29b509f8f0346434eb31b9f59c7606bf, type: 3}
-    pitchRange: {x: 1, y: 0}
-    volume: 0.5
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
   subLocations:
-  - {fileID: 11400000, guid: 10d25ab258db8d246b89d18a7869d097, type: 2}
-  - {fileID: 11400000, guid: 3b3b7b354f540d14c91478a22136406a, type: 2}
+  - {fileID: 11400000, guid: d9d0deebd0ff2af4da47e15f578ef1f5, type: 2}
   playerPos: {x: 0, y: 0, z: 0}
   playerRot: {x: 0, y: 0, z: 0}

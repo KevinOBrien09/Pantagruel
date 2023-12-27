@@ -13,6 +13,7 @@ public class BottomCornerBeastDisplayer: Singleton<BottomCornerBeastDisplayer>
     public TextMeshProUGUI beastName,beastLevel,lvlText;
     public HealthBar healthBar;
     public Image bg;
+    public GameObject manaBar;
     GameObject animatedPrefabInstance;
     Beast beast;
     Dictionary<Beast,BeastAnimatedInstance> instances = new Dictionary<Beast, BeastAnimatedInstance>();
@@ -64,6 +65,7 @@ public class BottomCornerBeastDisplayer: Singleton<BottomCornerBeastDisplayer>
         beastName.text = "";
         //beastLevel.text = "";
         healthBar.gameObject.SetActive(false);
+         manaBar.gameObject.SetActive(false);
         //lvlText.gameObject.SetActive(false);
         healthBar.fill.fillAmount = 0;
         healthBar.current.text = "0";
@@ -73,6 +75,7 @@ public class BottomCornerBeastDisplayer: Singleton<BottomCornerBeastDisplayer>
 
     public void YesBeast(){
         healthBar.gameObject.SetActive(true);
+        manaBar.gameObject.SetActive(true);
         //lvlText.gameObject.SetActive(true);
     }
 

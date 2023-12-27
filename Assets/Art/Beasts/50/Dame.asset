@@ -18,7 +18,7 @@ MonoBehaviour:
       note: 'heals party members after every battle. '
     beastName: Dame
     spawn:
-      audioClip: {fileID: 8300000, guid: 51c0c5ef3eb7b0042a06078c38480b32, type: 3}
+      audioClip: {fileID: 8300000, guid: d4179066a90ae474499ff099d63c9159, type: 3}
       pitchRange: {x: 0.9, y: 1}
       volume: 0.6
     die:
@@ -47,8 +47,10 @@ MonoBehaviour:
     wildDeck: {fileID: 11400000, guid: 1141da0cf2a2da849b58c699dc6239e8, type: 2}
     baseStats:
       maxHealth: 45
-      maxMana: 150
-      manaRegen: 5
+      maxMana: 5
+      maxDeckCost: 0
+      deckCostPerLevel: 0
+      manaRegen: 1
       physical: 20
       magic: 15
       dodge: 3
@@ -56,6 +58,8 @@ MonoBehaviour:
     statGrowthPerLevel:
       maxHealth: 4
       maxMana: 0
+      maxDeckCost: 0
+      deckCostPerLevel: 0
       manaRegen: 0
       physical: 0
       magic: 4

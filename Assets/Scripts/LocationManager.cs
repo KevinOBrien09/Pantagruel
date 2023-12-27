@@ -57,7 +57,9 @@ public class LocationManager : Singleton<LocationManager>
             {
                 
                 yield return new WaitForSeconds(.2f);
-                blackFade.DOFade(0,.25f).OnComplete(()=>{  OverworldMovement.canMove =  true; Interactor.inst.canInteract = true;});
+                blackFade.DOFade(0,.25f).OnComplete(()=>{  if(DialogManager.inst.inDialog){
+                        return;
+                    }  OverworldMovement.canMove =  true; Interactor.inst.canInteract = true;});
             }
         });
     }
@@ -73,13 +75,20 @@ public class LocationManager : Singleton<LocationManager>
             IEnumerator q()
             {
                 yield return new WaitForSeconds(.2f);
-                blackFade.DOFade(0,.25f).OnComplete(()=>{  OverworldMovement.canMove =  true;Interactor.inst.canInteract = true;});
+                blackFade.DOFade(0,.25f).OnComplete(()=>{  
+                    if(DialogManager.inst.inDialog){
+                        return;
+                    }
+                    OverworldMovement.canMove =  true;Interactor.inst.canInteract = true;
+                });
             }
         });
     }
 
+
     void ChangeSubLocation(Location newLocation,Vector3 p,Vector3 r){
-        currentSubLocation = newLocation;
+
+           currentSubLocation = newLocation;
         BattleTicker.inst.Type(currentSubLocation.locationName);
         PlayerManager.inst.movement.detectEncouters = currentSubLocation.detectEncouters;
         PlayerManager.inst.movement.ChangeFootStepSFX(newLocation.footStep.audioClip);
@@ -92,14 +101,19 @@ public class LocationManager : Singleton<LocationManager>
         }
         PlayerManager.inst.movement.rotate.InitRotation(NESW.inst.GetDirection(PlayerManager.inst.movement.rotate.transform));
         Interactor.inst.RenableInteraction();
-
-        if(newLocation.isCutScene){
-            CutsceneManager.inst.EnterCutscene(newLocation);
+       
+        if(newLocation.dialogToLoadOnEnter != null){
+ DialogManager.inst.StartConversation(newLocation.dialogToLoadOnEnter);
         }
-        else{
-            CutsceneManager.inst.LeaveCutscene();
-        }
+       
+           
+           
         OrgniseDict();
+
+
+   
+       
+       
     }
 
     public LocationSaveData Save(){

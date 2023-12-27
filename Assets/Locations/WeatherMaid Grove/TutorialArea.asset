@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 635a20c82770dea428c8eaf094a32c9d, type: 3}
-  m_Name: ForestEnterance
+  m_Name: TutorialArea
   m_EditorClassIdentifier: 
   locationName: Grove Enterance
-  prefab: {fileID: 4989676475327356945, guid: 1d549a75933db3445a000c0ea5e1bb02, type: 3}
+  prefab: {fileID: 3078020705889963824, guid: 1d549a75933db3445a000c0ea5e1bb02, type: 3}
   bgMusic:
     audioClip: {fileID: 8300000, guid: 9da2b25c552d5484caf152d80f65fbd3, type: 3}
     pitchRange: {x: 0.9, y: 0.9}
@@ -22,7 +22,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 657df7b565b84bf4894ddd827f5c7472, type: 3}
     pitchRange: {x: 0, y: 0}
     volume: 0
-  detectEncouters: 1
+  detectEncouters: 0
   beastsInLocation:
   - {fileID: 11400000, guid: aa34243842a3a8b4fa0882f1b73b980b, type: 2}
   cardRewards:
@@ -36,5 +36,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d94bb195f0af4bc4bac2943e94ff4b0b, type: 2}
   goldRewardRange: {x: 10, y: 50}
   levelRange: {x: 2, y: 2}
-  isCutScene: 0
-  dialogToLoadIfCutscene: {fileID: 0}
+  isCutScene: 1
+  dialogToLoadOnEnter: {fileID: 11400000, guid: a0a337f6b01c2e8469e129fd34b5b008,
+    type: 2}

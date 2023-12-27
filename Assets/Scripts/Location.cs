@@ -17,5 +17,5 @@ public class Location : ScriptableObject
     public Vector2 goldRewardRange;
     public Vector2 levelRange; //if mobs scale with player throughout game move this elsewhere.
     public bool isCutScene;
-    public Dialog dialogToLoadIfCutscene;
+    public Dialog dialogToLoadOnEnter;
 }

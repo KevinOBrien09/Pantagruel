@@ -94,7 +94,7 @@ public class DialogManager : Singleton<DialogManager>
                 dialogClick.Play();
             }
                 
-            if(Input.GetMouseButtonDown(0)|Input.GetKey(KeyCode.Space)) //CHANGE
+            if(Input.GetMouseButtonDown(0)|Input.GetKeyDown(KeyCode.Space) | Input.GetKey(KeyCode.PageUp)) //CHANGE
             { 
                 if(Talking)
                 {   
@@ -156,6 +156,7 @@ public class DialogManager : Singleton<DialogManager>
         }
 
         if(currentBlock.worldEvents.Length != 0){
+
 
             foreach (var item in currentBlock.worldEvents)
             {
@@ -272,13 +273,33 @@ public class DialogManager : Singleton<DialogManager>
         {
             if(currentConversation.locationDialog.subLoc != null)
             {
-                LocationManager.inst.ChangeSubLocationWithFade
+                 LocationManager.inst.ChangeSubLocationWithFade
                 (currentConversation.locationDialog.subLoc,currentConversation.locationDialog.subLocRot,currentConversation.locationDialog.subLocPos);
+                if(currentConversation.locationDialog.subLoc.dialogToLoadOnEnter != null){
+                    return;
+                }
+
+
+
+               
             }
             else if( currentConversation.locationDialog.mainLocation != null)
             {
                 LocationManager.inst.ChangeMainLocationWithFade(currentConversation.locationDialog.mainLocation);
+               
+                if(currentConversation.locationDialog.mainLocation.subLocations[0].dialogToLoadOnEnter != null){
+                          OverworldMovement.canMove = false;
+                    return;
+                }
+
+
+
             }
+            else{
+                 PlayerManager.inst.movement.InitPosRot(currentConversation.locationDialog.subLocPos,currentConversation.locationDialog.subLocRot);
+                  PlayerManager.inst.movement.rotate.InitRotation(NESW.inst.GetDirection(PlayerManager.inst.movement.rotate.transform));
+            }
+           
             CameraManager.inst.ChangeCameraState(CameraState.NORMAL);
             allowInput = false;
             inDialog = false;
