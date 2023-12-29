@@ -7,10 +7,12 @@ public class Interactor: Singleton<Interactor>
     public float rayDist;
     public LayerMask mask;
     public bool canInteract;
-    void Update(){
-        if(DialogManager.inst.inDialog){
-            return;
-        }
+    public GameObject interactText;
+      RaycastHit h;
+    void Update()
+    {
+        if(DialogManager.inst.inDialog)
+        {return;}
         if(canInteract)
         {
             if(InputManager.input.space)
@@ -19,7 +21,7 @@ public class Interactor: Singleton<Interactor>
                 if(Physics.Raycast(transform.position,transform.forward *rayDist,maxDistance: rayDist,hitInfo: out hit,layerMask:mask))
                 {
                     if(!PlayerManager.inst.movement.isMoving && !PlayerManager.inst.movement.rotate.isRotating){
-Interactable i = null;
+                    Interactable i = null;
                     bool dia = hit.transform.gameObject. TryGetComponent<Interactable>(out i);
                     if(dia){
                       i.Go();  
@@ -33,7 +35,37 @@ Interactable i = null;
                 
             }
         }
-            
+
+       
+        
+    }
+
+    public void CheckForInteraction(){
+        if(canInteract){
+if(InFrontOfInteractable()){
+            interactText.SetActive(true);
+        }
+        else{
+        interactText.SetActive(false);
+        }
+        }
+        
+    }
+
+    bool InFrontOfInteractable(){
+        if(Physics.Raycast(transform.position,transform.forward *rayDist,maxDistance: rayDist,hitInfo: out h,layerMask:mask))
+        {
+            Interactable i = null;
+            bool dia = h.transform.gameObject. TryGetComponent<Interactable>(out i);
+            if(dia){
+               return true;
+            }
+           
+        }
+
+        return false;
+
+
     }
 
     public void RenableInteraction()

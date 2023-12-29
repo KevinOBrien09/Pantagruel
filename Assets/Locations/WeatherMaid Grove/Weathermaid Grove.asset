@@ -14,10 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: f2f4fba0-3c7c-4262-b207-1f8369f87d18
   locName: Weathermaid Grove
-  bgMusic:
-    audioClip: {fileID: 8300000, guid: 29b509f8f0346434eb31b9f59c7606bf, type: 3}
-    pitchRange: {x: 1, y: 0}
-    volume: 0.5
   subLocations:
   - {fileID: 11400000, guid: 10d25ab258db8d246b89d18a7869d097, type: 2}
   - {fileID: 11400000, guid: 3b3b7b354f540d14c91478a22136406a, type: 2}

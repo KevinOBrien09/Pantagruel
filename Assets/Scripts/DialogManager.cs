@@ -57,6 +57,7 @@ public class DialogManager : Singleton<DialogManager>
         listOfBlocks.Clear();
         ToggleButtons(false);
         index = -1;
+         Interactor.inst. interactText.SetActive(false);
        // conversationState = newConversation.conversationType;
 
         // if(conversationState == ConversationType.DEBATE)
@@ -201,7 +202,7 @@ public class DialogManager : Singleton<DialogManager>
         }
 
         if(currentBlock.changeMusic.audioClip != null){
-            MusicManager.inst.ChangeBGMusic(currentBlock.changeMusic);
+            MusicManager.inst.ChangeMusic(currentBlock.changeMusic);
             musicWasChanged = true;
         }
         
@@ -249,7 +250,7 @@ public class DialogManager : Singleton<DialogManager>
 
     
       
-        typewriter.Play(dialog,40,()=>
+        typewriter.Play(Parse(dialog),40,()=>
         {
            
             Talking = false;
@@ -262,13 +263,28 @@ public class DialogManager : Singleton<DialogManager>
         
     }
 
+    public string Parse(string s){
+        if(s.Contains("@NEWCARD@"))
+        {
+            s = s.Replace("@NEWCARD@",CardCollection.inst.cardPickUp.cardName);
+            
+        }
+
+         if(s.Contains("@NEWITEM@"))
+        {
+            s = s.Replace("@NEWITEM@",Inventory.inst.itemPickedUp.itemName);
+            
+        }
+        return s;
+    }
+
     public void End()
     {
         if(BattleManager.inst.inTutorial){
             TutorialManager.inst.Leave();
             return;
         }
-
+CardCollection.inst.cardPickUp = null;
         if(currentConversation.locationDialog.moveAfterDialog)
         {
             if(currentConversation.locationDialog.subLoc != null)
@@ -313,7 +329,7 @@ public class DialogManager : Singleton<DialogManager>
             return;
         }
         if(musicWasChanged && currentConversation.changeMusicBack){
-            MusicManager.inst.ChangeBGMusic(LocationManager.inst.currentMainLoc.bgMusic);
+            MusicManager.inst.ChangeMusic(LocationManager.inst.currentSubLocation.overworldMusic);
             musicWasChanged = false;
         }
 
@@ -368,6 +384,7 @@ public class DialogManager : Singleton<DialogManager>
             IEnumerator q()
             {
                 yield return new WaitForSeconds(.175f);
+                  Interactor.inst.CheckForInteraction();
                 ToggleButtons(true);
             }
     }

@@ -45,10 +45,10 @@ public class Beast : Entity
         {item.onHit.Invoke(); }
         }
 
-        if(PlayerParty.inst.activeBeast == this){ 
+        // if(PlayerParty.inst.activeBeast == this){ 
             
-            BottomCornerBeastDisplayer.inst.RefreshLevel();
-        }
+        //     BottomCornerBeastDisplayer.inst.RefreshLevel();
+        // }
        
     }
 

@@ -33,7 +33,7 @@ MonoBehaviour:
     stunBirdHeight: 20
     playerStatusEffectPos: {x: 0, y: -4.5, z: 2, w: 1.5}
     enemyStatusEffectPos: {x: 0, y: -5.5, z: 2, w: 1.5}
-    bottomCornerPos: {x: 0, y: -1.5, z: 0}
+    bottomCornerPos: {x: 0, y: 0.4, z: 0}
     battlePos: {x: 0, y: 0, z: 2}
     beastGraphicPrefab: {fileID: 0}
     uiPicture: {fileID: 3465286685962602723, guid: 76cf50e4a037e7f489c5d05ca4ec2164,
@@ -46,7 +46,9 @@ MonoBehaviour:
     wildDeck: {fileID: 11400000, guid: b15190f2ce257c4468723438df8de56c, type: 2}
     baseStats:
       maxHealth: 20
-      maxMana: 101
+      maxMana: 9
+      maxDeckCost: 0
+      deckCostPerLevel: 0
       manaRegen: 1
       physical: 5
       magic: 25
@@ -54,7 +56,9 @@ MonoBehaviour:
       luck: 5
     statGrowthPerLevel:
       maxHealth: 4
-      maxMana: 0
+      maxMana: 0.25
+      maxDeckCost: 0
+      deckCostPerLevel: 0
       manaRegen: 0
       physical: 0
       magic: 2

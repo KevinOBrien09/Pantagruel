@@ -19,7 +19,7 @@ public class RewardManager : Singleton<RewardManager>
     List<Card> openCards = new List<Card>();
     List<PartyEXPRewardDisplay> partyEXPs = new List<PartyEXPRewardDisplay>();
     List<ShopCard> shopCards = new List<ShopCard>();
-    public SoundData addGold;
+    public SoundData addGold,rewardMusic;
     public int additionalGold;
     void Start()
     {
@@ -34,13 +34,13 @@ public class RewardManager : Singleton<RewardManager>
         else{
               instruction.text  =instructionTextTwoCard;
         }
-
+      
         gameObject.SetActive(true);
         BattleTicker.inst.Type("");
         CardManager.inst.LeaveBattle();
       CardStack.inst.ExitBattle();
         Inventory.inst.DisableItemDragOnAll();
-        MusicManager.inst.Reward();
+        MusicManager.inst.ChangeMusic(rewardMusic);
         partyHolderParent.DOAnchorPosX(-170,0);
         resultsHeader.DOAnchorPosX(-65,0);
         resultsHeaderBG.DOAnchorPosX(-65,0);

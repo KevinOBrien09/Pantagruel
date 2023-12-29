@@ -45,10 +45,7 @@ public class LocationManager : Singleton<LocationManager>
     {
         OverworldMovement.canMove = false;
         Interactor.inst.canInteract = false;
-        if(mainLocation.bgMusic.audioClip != null)
-        {
-            MusicManager.inst.ChangeBGMusicWithFade(mainLocation.bgMusic);
-        }
+        
         blackFade.DOFade(1,.25f).OnComplete(()=>
         {
             ChangeMainLocation(mainLocation);
@@ -74,6 +71,7 @@ public class LocationManager : Singleton<LocationManager>
             StartCoroutine(q());
             IEnumerator q()
             {
+                
                 yield return new WaitForSeconds(.2f);
                 blackFade.DOFade(0,.25f).OnComplete(()=>{  
                     if(DialogManager.inst.inDialog){
@@ -92,6 +90,9 @@ public class LocationManager : Singleton<LocationManager>
         BattleTicker.inst.Type(currentSubLocation.locationName);
         PlayerManager.inst.movement.detectEncouters = currentSubLocation.detectEncouters;
         PlayerManager.inst.movement.ChangeFootStepSFX(newLocation.footStep.audioClip);
+        if(newLocation.overworldMusic.audioClip != null){
+                    MusicManager.inst.ChangeMusic(newLocation.overworldMusic);
+                }
         if(!EDITINGINSTANCE)
         {  PlayerManager.inst.movement.InitPosRot(p,r);
         

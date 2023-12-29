@@ -20,8 +20,9 @@ public class StarterSelector : Singleton<StarterSelector>
     public GameObject arrows,confirm,confirmScreen;
     public Beast beastPrefab;
     public bool firstClick;
-   public AudioSource song;
-   public Dialog dialogToPlayAfter;
+    public SoundData song;
+    public Dialog dialogToPlayAfter;
+
     public void Open()
     {
         StartCoroutine(XD());
@@ -29,8 +30,7 @@ public class StarterSelector : Singleton<StarterSelector>
         selector.typewriter = this.typewriter;
         selector.desc = this.desc;
         bg.DOFade(1,.5f);
-        MusicManager.inst.dungeon.DOFade(0,.25f);
-        song.Play();
+        MusicManager.inst.ChangeMusic(song);
         Camera selectorCam = selector.cam;
         var tex = new RenderTexture (2140, 1376, 16);
         selectorCam.targetTexture = tex;
@@ -87,8 +87,9 @@ public class StarterSelector : Singleton<StarterSelector>
         });
       
         PlayerManager.inst.movement.ResetPOVTimer();
-        song.DOFade(0,.25f);
-        MusicManager.inst.dungeon.DOFade(  MusicManager.inst.dungvol,.25f);
+        
+        //MusicManager.inst.ChangeMusic
+        //dungeon.DOFade(  MusicManager.inst.dungvol,.25f);
         Beast b = Instantiate(beastPrefab,PlayerParty.inst.transform);
         EXP e = new EXP(); 
         e.PsudeoLevel(5,b);

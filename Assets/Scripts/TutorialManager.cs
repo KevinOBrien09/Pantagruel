@@ -12,7 +12,7 @@ public class TutorialProgress
 {
     public  GenericDictionary<TutorialEnum,bool> dict = new GenericDictionary<TutorialEnum, bool>();
 }
-public enum TutorialEnum{BASICS,BASICS2,BASICS3,BASICS4,STATUSEFFECTS,SUMMONS}
+public enum TutorialEnum{BASICS,BASICS2,BASICS3,BASICS4,STATUSEFFECTS,SUMMONS,CARDS}
 
 [System.Serializable]
 public class TutorialProgressSaveable{
@@ -28,10 +28,13 @@ public class TutorialManager: Singleton<TutorialManager>
     public GenericDictionary<string,TutorialArrow> tutorialArrowDict = new GenericDictionary<string, TutorialArrow>();
     public Dialog currentTutorial;
     public Dialog leaveFirstBattle;
+    public bool DEBUG;
 
    
     public bool ExecuteTutorial(TutorialEnum tutorial)
     {
+        if(DEBUG)
+        {return false;}
         return !(tutorialProgress.dict[tutorial]);
     }
 

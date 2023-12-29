@@ -14,11 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 311572c3-5a61-40df-b44a-d2736ef7241c
   locName: Debugging
-  bgMusic:
-    audioClip: {fileID: 0}
-    pitchRange: {x: 0, y: 0}
-    volume: 0
   subLocations:
-  - {fileID: 11400000, guid: d9d0deebd0ff2af4da47e15f578ef1f5, type: 2}
+  - {fileID: 11400000, guid: 3b3b7b354f540d14c91478a22136406a, type: 2}
   playerPos: {x: 0, y: 0, z: 0}
   playerRot: {x: 0, y: 0, z: 0}

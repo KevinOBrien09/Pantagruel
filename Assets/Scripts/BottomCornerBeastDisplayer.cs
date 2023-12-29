@@ -111,9 +111,9 @@ public class BottomCornerBeastDisplayer: Singleton<BottomCornerBeastDisplayer>
       
     }
 
-    public void RefreshLevel(){
-        beastLevel.text = beast.exp.level.ToString();
-        healthBar.onInit.Invoke();
-    }
+    // public void RefreshLevel(){
+    //     beastLevel.text = beast.exp.level.ToString();
+    //     healthBar.onInit.Invoke();
+    // }
 
 }

@@ -9,7 +9,7 @@ public class Location : ScriptableObject
    
     public string locationName;
     public GameObject prefab;
-    public SoundData bgMusic;
+    public SoundData overworldMusic,battleMusic;
     public SoundData footStep;
     public bool detectEncouters;
     public List<BeastScriptableObject> beastsInLocation = new List<BeastScriptableObject>();

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Item :GUIDScriptableObject 
 {
    
-    public int itemID;
+
     public string itemName;
     public Sprite picture;
     public bool castable;

@@ -93,10 +93,10 @@ public class BattleManager:Singleton<BattleManager>
                 AudioManager.inst.GetSoundEffect().Play(enter);
                 if(!TutorialManager.inst.ExecuteTutorial(TutorialEnum.BASICS))
                 {
-                    MusicManager.inst.EnterBattle();
+                    MusicManager.inst.ChangeMusic(LocationManager.inst.currentSubLocation.battleMusic);
                 }
                 else{
-                MusicManager.inst.SHUTUP();
+                    MusicManager.inst.Silent();
 
                 }
                 yield   return new WaitForSeconds(2f);
@@ -282,9 +282,7 @@ public class BattleManager:Singleton<BattleManager>
                 foreach (var item in CardManager.inst.hand)
                 {item.VaporousDissolve();}
                 inBattle = false;
-                MusicManager.inst.SHUTUP();
-                MusicManager.inst.ChangeBGMusic(LocationManager.inst.currentSubLocation.bgMusic);
-                MusicManager.inst.ChangeToDungeon();
+                MusicManager.inst.ChangeMusic(LocationManager.inst.currentSubLocation.overworldMusic);
                 yield return new WaitForEndOfFrame();
                 if(PetManager.inst.enemyPet!= null && !PetManager.inst.enemyPet.KO)
                 {PetManager.inst.enemyPet.Die(EntityOwnership.ERROR);}
@@ -309,7 +307,7 @@ public class BattleManager:Singleton<BattleManager>
             foreach (var item in CardManager.inst.hand)
             {item.VaporousDissolve();}
             inBattle = false;
-            MusicManager.inst.EndBattleMusic();
+
             yield return new WaitForEndOfFrame();
             if(PetManager.inst.enemyPet!= null && !PetManager.inst.enemyPet.KO)
             {PetManager.inst.enemyPet.Die(EntityOwnership.ERROR);}
@@ -631,7 +629,7 @@ public class BattleManager:Singleton<BattleManager>
         BottomPanel.inst.ChangeState(BottomPanel.inst.dialog);
         BottomLeftPanel.inst.SwapToOverworld();
         LeftPanel.inst.SwapToOverworld();
-        MusicManager.inst.ChangeToDungeon();
+        MusicManager.inst.ChangeMusic(LocationManager.inst.currentSubLocation.overworldMusic);
         CardManager.inst.LeaveBattle();
         EnemyAI.inst.manaHandler.Wipe();
         CardManager.inst.manaHandler.Wipe();

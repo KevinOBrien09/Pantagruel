@@ -5,83 +5,64 @@ using DG.Tweening;
 
 public class MusicManager : Singleton<MusicManager>
 {
-   public AudioSource dungeon;
-    public  AudioSource battle;
-public  AudioSource reward;
-   public float battlevol,dungvol,rewardVol;
-    float battleOg;
-    void Start()
-    { 
-        battleOg = battle.volume;
-        ResetVol();
-        battle.Play();
-        dungeon.Play();
-        battle.DOFade(0,0);
+    public List<AudioSource> sources = new List<AudioSource>();
+    Queue<AudioSource> q = new Queue<AudioSource>();
+    AudioSource currentSource;
+
+   protected override void Awake(){
+        base.Awake();
+        currentSource = GetSource();
     }
 
-    public void ResetVol(){
-        battlevol = battle.volume;
-        dungvol = dungeon.volume;
-        rewardVol = reward.volume;
-    }
+    public void ChangeMusic(SoundData newSong)
+    {   
+        if(newSong.audioClip == null){
+            Debug.LogAssertion("NO CLIP FOUND!!");
+            return;
+        }
+        currentSource.DOFade(0,.1f).OnComplete(()=>{
 
-    public void SHUTUP(){
-           battle.DOFade(0,0);
-           dungeon.DOFade(0,0);
-        reward.DOFade(0,0);
-    }
-
-    public void ChangeBGMusicWithFade(SoundData newSong){
-        dungeon.DOFade(0,.25f).OnComplete(()=>
-        {
-            StartCoroutine(q());
-            IEnumerator q()
-            {
-                ChangeBGMusic(newSong);
-                dungeon.DOFade(0,0);
-                yield return new WaitForSeconds(.2f);
-                dungeon.DOFade(dungvol,1);
-            }
+            AudioSource newSource =  GetSource();
+            newSource.clip = newSong.audioClip;
+            newSource.pitch = newSong.pitchRange.x;
+            newSource.volume = 0;
+            newSource.Play();
+            newSource.DOFade( newSong.volume,.1f).OnComplete(()=>{
+                currentSource.Stop();
+                currentSource = newSource;
+            });
+           
 
         });
     }
 
-    public void ChangeBGMusic(SoundData newSong){
-        dungeon.clip = newSong.audioClip;
-        dungeon.volume = newSong.volume;
-        dungeon.pitch = newSong.pitchRange.x;
-        dungeon.Play();
-        ResetVol();
+    public void Silent(){
+        if(currentSource != null){
+            currentSource.DOFade(0,.1F);
+        }
     }
 
-    public void ChangeToDungeon()
+    public AudioSource GetSource()
     {
-        //makes battle go down
-        battle.DOFade(0,2).OnComplete(() => dungeon.DOFade(dungvol,1));
-        reward.DOFade(0,2);
-    }
+        if(q.Count == 0)
+        {
+            q.Clear();
 
-    public void EnterBattle()
-    {   
-        battle.Play();
-        //makes dungeon go down
-        reward.DOFade(0,1);
-         battle.DOFade(battleOg,.0f);
-        dungeon.DOFade(0,.2f);
-      //  .OnComplete(() =>);
-    }
+            foreach (var item in sources)
+            {
+                item.clip = null;
+                item.pitch = 1;
+                item.volume = 1;
+                q.Enqueue(item);
+            }
+            return GetSource();
 
-    public void EndBattleMusic(){
- battle.DOFade(0,1f);
-    }
+        }
+        else
+        {return q.Dequeue();}
 
-    public void Reward()
-    {   
-        reward.Play();
-           reward.DOFade(rewardVol,.25f);
-        //makes dungeon go down
-       EndBattleMusic();
-        dungeon.DOFade(0,.25f);
+     
+       
     }
 
  

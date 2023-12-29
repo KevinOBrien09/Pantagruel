@@ -102,6 +102,7 @@ public class OverworldMovement : MonoBehaviour
         }
         else
         {
+            Interactor.inst. interactText.SetActive(false);
             torch.Bounce();
             torch.DeductStep();
             EventManager.inst.onStep.Invoke();
@@ -222,7 +223,7 @@ public class OverworldMovement : MonoBehaviour
     {
         if(!torch.torchOn)
         {CheckForEncounter();}
-          
+        Interactor.inst.CheckForInteraction();
         isMoving = false;
     }
     

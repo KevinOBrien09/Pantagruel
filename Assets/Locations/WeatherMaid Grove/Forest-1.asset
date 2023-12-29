@@ -14,18 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locationName: Weathermaid-1
   prefab: {fileID: 2393896197044781408, guid: 726faf5d0b3c81d41bbbf0d365127f88, type: 3}
-  bgMusic:
-    audioClip: {fileID: 8300000, guid: bff75666cfc3b73469c8bd4d161f7da3, type: 3}
-    pitchRange: {x: 0.9, y: 0.9}
-    volume: 1
+  overworldMusic:
+    audioClip: {fileID: 8300000, guid: 9e95b2c862e26d34ebd6010763dda4f5, type: 3}
+    pitchRange: {x: 1, y: 0}
+    volume: 0.35
+  battleMusic:
+    audioClip: {fileID: 8300000, guid: 5a8de7b361d4f2143afa4979db1c3e3a, type: 3}
+    pitchRange: {x: 1, y: 1}
+    volume: 0.35
   footStep:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
   detectEncouters: 0
-  beastsInLocation: []
-  cardRewards: []
+  beastsInLocation:
+  - {fileID: 11400000, guid: a958369a932061042940eebaffe08b0d, type: 2}
+  cardRewards:
+  - {fileID: 11400000, guid: ae20b8f25cbbacd4dbc6a5c7f37a0af6, type: 2}
+  - {fileID: 11400000, guid: ae20b8f25cbbacd4dbc6a5c7f37a0af6, type: 2}
+  - {fileID: 11400000, guid: ae20b8f25cbbacd4dbc6a5c7f37a0af6, type: 2}
+  - {fileID: 11400000, guid: ae20b8f25cbbacd4dbc6a5c7f37a0af6, type: 2}
   goldRewardRange: {x: 0, y: 0}
-  levelRange: {x: 0, y: 0}
+  levelRange: {x: 1, y: 10}
   isCutScene: 0
   dialogToLoadOnEnter: {fileID: 0}

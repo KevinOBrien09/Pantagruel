@@ -15,7 +15,7 @@ public class Inventory:Singleton<Inventory>
     public RectTransform holder;
     public List<ItemStack> itemsUsedThisTurn = new List<ItemStack>();
     public int gold;
-
+    public Item itemPickedUp;
     public void AddGold(int newGold){
         gold += newGold;
         goldText.text = "coin:" + gold;
@@ -64,7 +64,9 @@ public class Inventory:Singleton<Inventory>
             stack.Init(item);
             dict.Add(item,stack);
         }
+      
         dict[item].Add();
+        DeactivateDrag();
     }
 
     public void DeactivateDrag()

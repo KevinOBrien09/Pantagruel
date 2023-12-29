@@ -32,13 +32,15 @@ public class RotatePlayer : MonoBehaviour
             transform.DORotate(new Vector3(transform.rotation.eulerAngles.x,0,transform.rotation.eulerAngles.z),rotateSpeed).OnComplete(() => {
             isRotating = false;         
             transform.rotation =Quaternion.Euler(0,0,0);
-            InitRotation(NESW.inst.GetDirection(transform));});
+            InitRotation(NESW.inst.GetDirection(transform));
+            Interactor.inst.CheckForInteraction();});
         }
         else
         {
             transform.DORotate(new Vector3(transform.rotation.eulerAngles.x,y,transform.rotation.eulerAngles.z),rotateSpeed).OnComplete(() => {
             isRotating = false; 
-            InitRotation(NESW.inst.GetDirection(transform));});
+            InitRotation(NESW.inst.GetDirection(transform));
+             Interactor.inst.CheckForInteraction();});
         }
 
 
@@ -69,14 +71,26 @@ public class RotatePlayer : MonoBehaviour
         float newRot = transform.rotation.eulerAngles.y+num;
         CardinalDirection previousRot = currentRot;
         Debug.Log("new rot " + newRot);
+      
+        Interactor.inst. interactText.SetActive(false);
         if(newRot >= 360)
         {
-            transform.DORotate(new Vector3(transform.rotation.eulerAngles.x,0,transform.rotation.eulerAngles.z),rotateSpeed).OnComplete(() => {isRotating = false;         
-            transform.rotation =Quaternion.Euler(0,0,0);});
+            transform.DORotate(new Vector3(transform.rotation.eulerAngles.x,0,transform.rotation.eulerAngles.z),rotateSpeed).OnComplete(() => 
+            {
+                isRotating = false; 
+                transform.rotation =Quaternion.Euler(0,0,0);
+                Interactor.inst.CheckForInteraction();
+            });
         }
         else
-        {transform.DORotate(new Vector3(transform.rotation.eulerAngles.x,newRot,transform.rotation.eulerAngles.z),rotateSpeed).OnComplete(() => isRotating = false);}
-      
+        {
+            transform.DORotate(new Vector3(transform.rotation.eulerAngles.x,newRot,transform.rotation.eulerAngles.z),rotateSpeed).OnComplete(() => 
+            {
+                isRotating = false;
+                Interactor.inst.CheckForInteraction();
+            });
+        }
+       
         if(num < 0)
         {
             if(currentRot == CardinalDirection.N)

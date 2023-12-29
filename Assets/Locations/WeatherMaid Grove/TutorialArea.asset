@@ -14,10 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locationName: Grove Enterance
   prefab: {fileID: 3078020705889963824, guid: 1d549a75933db3445a000c0ea5e1bb02, type: 3}
-  bgMusic:
-    audioClip: {fileID: 8300000, guid: 9da2b25c552d5484caf152d80f65fbd3, type: 3}
-    pitchRange: {x: 0.9, y: 0.9}
-    volume: 1
+  overworldMusic:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
+  battleMusic:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
   footStep:
     audioClip: {fileID: 8300000, guid: 657df7b565b84bf4894ddd827f5c7472, type: 3}
     pitchRange: {x: 0, y: 0}
