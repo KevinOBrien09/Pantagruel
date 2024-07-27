@@ -13,27 +13,28 @@ MonoBehaviour:
   m_Name: Forest-1
   m_EditorClassIdentifier: 
   locationName: Weathermaid-1
-  prefab: {fileID: 2393896197044781408, guid: 726faf5d0b3c81d41bbbf0d365127f88, type: 3}
+  prefab: {fileID: 3750075090301995280, guid: 726faf5d0b3c81d41bbbf0d365127f88, type: 3}
   overworldMusic:
     audioClip: {fileID: 8300000, guid: 9e95b2c862e26d34ebd6010763dda4f5, type: 3}
     pitchRange: {x: 1, y: 0}
     volume: 0.35
   battleMusic:
-    audioClip: {fileID: 8300000, guid: 5a8de7b361d4f2143afa4979db1c3e3a, type: 3}
+    audioClip: {fileID: 8300000, guid: aa6ecdecc6920834fae69b58134df785, type: 3}
     pitchRange: {x: 1, y: 1}
-    volume: 0.35
+    volume: 0.5
   footStep:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
   detectEncouters: 0
+  encounterRate: 0
   beastsInLocation:
-  - {fileID: 11400000, guid: a958369a932061042940eebaffe08b0d, type: 2}
+  - {fileID: 11400000, guid: aa34243842a3a8b4fa0882f1b73b980b, type: 2}
   cardRewards:
-  - {fileID: 11400000, guid: ae20b8f25cbbacd4dbc6a5c7f37a0af6, type: 2}
-  - {fileID: 11400000, guid: ae20b8f25cbbacd4dbc6a5c7f37a0af6, type: 2}
-  - {fileID: 11400000, guid: ae20b8f25cbbacd4dbc6a5c7f37a0af6, type: 2}
-  - {fileID: 11400000, guid: ae20b8f25cbbacd4dbc6a5c7f37a0af6, type: 2}
+  - {fileID: 11400000, guid: ea117adaef8ad4d43a9ff396daf4d0b4, type: 2}
+  - {fileID: 11400000, guid: 483651f8ed593c14cbf577efd4640e41, type: 2}
+  - {fileID: 11400000, guid: b2d044160b58c03448309f7ed751e043, type: 2}
+  - {fileID: 11400000, guid: 5eb793ba08a0f0a4ca95ba786a9e033c, type: 2}
   goldRewardRange: {x: 0, y: 0}
   levelRange: {x: 1, y: 10}
   isCutScene: 0

@@ -18,6 +18,7 @@ MonoBehaviour:
   manaCost: 2
   vfxSetUp: 
   vfx: 
+  webLink: 
   castDelay: 0
   effects:
   - {fileID: 11400000, guid: 2721571baf93fc74b90f72b125391abc, type: 2}
@@ -26,7 +27,11 @@ MonoBehaviour:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
-  element: 5
+  missSound:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
+  element: 3
   beastClass: 0
   desc: heal for 20.
   flavourText: '"The Expulsion from Paradise-Albrecht Durer"'
@@ -34,3 +39,4 @@ MonoBehaviour:
   unplayable: 0
   cannotBeDiscard: 0
   destroyOnCast: 0
+  unDodgeable: 0

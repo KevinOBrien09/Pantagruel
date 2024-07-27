@@ -15,13 +15,17 @@ MonoBehaviour:
   animatedInstance: {fileID: 8106113633887863098, guid: 3151f3b0d537c234ba21b00d5d75755d,
     type: 3}
   uiPicture: {fileID: 507910716, guid: e48be9312070bb447969bf6b1eb89d85, type: 3}
+  petEffect: {fileID: 11400000, guid: bcae31c05906ee341bb5165dad8af036, type: 2}
   petName: Fish King
   stats:
     maxHealth: 20
-    def: 0
+    maxMana: 0
+    manaRegen: 0
+    maxDeckCost: 0
+    deckCostPerLevel: 0
     physical: 0
     magic: 0
-    charisma: 0
+    dodge: 0
     luck: 0
   dying:
     audioClip: {fileID: 8300000, guid: bc811125a6cac4546a31bb54c2095081, type: 3}

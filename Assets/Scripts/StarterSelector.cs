@@ -20,7 +20,7 @@ public class StarterSelector : Singleton<StarterSelector>
     public GameObject arrows,confirm,confirmScreen;
     public Beast beastPrefab;
     public bool firstClick;
-    public SoundData song;
+    public SoundData song,songAfterSelection;
     public Dialog dialogToPlayAfter;
 
     public void Open()
@@ -88,8 +88,7 @@ public class StarterSelector : Singleton<StarterSelector>
       
         PlayerManager.inst.movement.ResetPOVTimer();
         
-        //MusicManager.inst.ChangeMusic
-        //dungeon.DOFade(  MusicManager.inst.dungvol,.25f);
+        MusicManager.inst.ChangeMusic(songAfterSelection);
         Beast b = Instantiate(beastPrefab,PlayerParty.inst.transform);
         EXP e = new EXP(); 
         e.PsudeoLevel(5,b);

@@ -22,7 +22,7 @@ MonoBehaviour:
   castDelay: 0.2
   effects:
   - {fileID: 11400000, guid: 4d787eef2c34aa343a35c1e38211fc1f, type: 2}
-  - {fileID: 11400000, guid: 0117367ef39ab8945a8e115c474c5435, type: 2}
+  - {fileID: 11400000, guid: aa80f226919092d4e9c97c25946f09ce, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 8300000, guid: 6b935443c1785ba4885c7e10d8f9e387, type: 3}
@@ -34,7 +34,7 @@ MonoBehaviour:
     volume: 0
   element: 5
   beastClass: 0
-  desc: Deal 1 damage and apply a poision stack to the target.
+  desc: Deal 5 damage and apply a poision stack to the target.
   flavourText: From Robinson, W. Heath's Bill the Minder.
   deckCost: 6
   unplayable: 0

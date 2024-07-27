@@ -7,12 +7,12 @@ public class PlayerParty : Singleton<PlayerParty>
     public List<Beast> party = new List<Beast>(); 
     public Beast activeBeast;
     public Beast beastPrefab;
-    
+    public bool fakeSave;
     void Start()
     {
         if(!PlayerManager.inst.load)
         { 
-         
+            fakeSave = true;
             LocationManager.inst.   ChangeMainLocation(LocationManager.inst.   gameStart);
             List<Beast> p = new List<Beast>(party);
             List<BeastSaveData> saveDatas = new List<BeastSaveData>();
@@ -39,6 +39,7 @@ public class PlayerParty : Singleton<PlayerParty>
                 BottomCornerBeastDisplayer.inst.NoBeast();   
                 }
             }
+            fakeSave = false;
             Load(saveDatas);
          
       

@@ -57,7 +57,7 @@ MonoBehaviour:
       luck: 5
     statGrowthPerLevel:
       maxHealth: 4
-      maxMana: 0
+      maxMana: 0.25
       maxDeckCost: 0
       deckCostPerLevel: 0
       manaRegen: 0

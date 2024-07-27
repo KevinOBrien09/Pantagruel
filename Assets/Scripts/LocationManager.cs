@@ -89,6 +89,7 @@ public class LocationManager : Singleton<LocationManager>
            currentSubLocation = newLocation;
         BattleTicker.inst.Type(currentSubLocation.locationName);
         PlayerManager.inst.movement.detectEncouters = currentSubLocation.detectEncouters;
+        PlayerManager.inst.movement.encounterChance = currentSubLocation.encounterRate;
         PlayerManager.inst.movement.ChangeFootStepSFX(newLocation.footStep.audioClip);
         if(newLocation.overworldMusic.audioClip != null){
                     MusicManager.inst.ChangeMusic(newLocation.overworldMusic);

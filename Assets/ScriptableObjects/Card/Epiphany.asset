@@ -15,18 +15,28 @@ MonoBehaviour:
   Id: 74d9d65f-2f4e-4083-a3fe-dbf7cace54e7
   cardName: Epiphany
   picture: {fileID: 21300000, guid: d333d43c8926cc147842e1131150d24e, type: 3}
-  manaCost: 0
+  manaCost: 1
   vfxSetUp: 
   vfx: 
+  webLink: 
   castDelay: 0.2
-  effects: []
+  effects:
+  - {fileID: 11400000, guid: ab47312c1d338434091d92c828cd356f, type: 2}
   playVFXAfterDelay: 0
   soundEffect:
     audioClip: {fileID: 0}
     pitchRange: {x: 0, y: 0}
     volume: 0
+  missSound:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
   element: 6
   beastClass: 17
-  desc: 
+  desc: Gain 5 INT for 2 turns.
   flavourText: '"Justice-Albrecht Durer"'
   deckCost: 0
+  unplayable: 0
+  cannotBeDiscard: 0
+  destroyOnCast: 0
+  unDodgeable: 0

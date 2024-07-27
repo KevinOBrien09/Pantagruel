@@ -18,13 +18,13 @@ MonoBehaviour:
       note: Whereever I am, increase the duration of your burn effects by 1 turn.
     beastName: Ablaz
     spawn:
-      audioClip: {fileID: 0}
-      pitchRange: {x: 0, y: 0}
-      volume: 0
+      audioClip: {fileID: 8300000, guid: 0401a192a234bbb4789fc943dd87e60e, type: 3}
+      pitchRange: {x: 1.25, y: 1.5}
+      volume: 1
     die:
-      audioClip: {fileID: 0}
-      pitchRange: {x: 0, y: 0}
-      volume: 0
+      audioClip: {fileID: 8300000, guid: b3c928a393143274c840c8454e1e3943, type: 3}
+      pitchRange: {x: 1.25, y: 1.5}
+      volume: 1
     scream:
       audioClip: {fileID: 0}
       pitchRange: {x: 0, y: 0}

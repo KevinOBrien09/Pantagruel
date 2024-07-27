@@ -9,9 +9,13 @@ public class ZodiacPuzzleMainShrine: Interactable
     bool solved;
     public Dialog unsolved,solvedDialog;
     public GameObject result;
+    
 
     void Start(){
-           result?.gameObject.SetActive(false);
+        if(result != null){
+    result.gameObject.SetActive(false);
+        }
+       
     }
     public override void Go()
     {  
@@ -35,7 +39,9 @@ public class ZodiacPuzzleMainShrine: Interactable
             {return false;}
         }
         solved = true;
-        result?.gameObject.SetActive(true);
+        if(result != null){
+        result.gameObject.SetActive(true);
+        }
         return true;
     }
 }

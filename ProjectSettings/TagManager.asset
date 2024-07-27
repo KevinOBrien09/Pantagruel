@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - CameraHolder
+  - MinimapIconHolder
   layers:
   - Default
   - TransparentFX

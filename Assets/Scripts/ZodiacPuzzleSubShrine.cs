@@ -25,7 +25,7 @@ public class ZodiacPuzzleSubShrine: Interactable
   
         if( rotating|| mainShrine.Solved())
         {return;}
-        Interactor.inst.RenableInteraction();
+        
         rotating = true;
         index++;
         if(index >= dict.Count)
@@ -38,10 +38,16 @@ public class ZodiacPuzzleSubShrine: Interactable
     {
         currentZodiac = dict.ElementAt(index).Key;
         Vector3 v  = new Vector3(dict.ElementAt(index).Value,   cube.transform.localEulerAngles.y,   cube.transform.localEulerAngles.z);
-        cube.DOLocalRotate(v,.25f).OnComplete(()=>{rotating = false;});
+        cube.DOLocalRotate(v,.25f).OnComplete(()=>{rotating = false;Interactor.inst.RenableInteraction();});
         if(mainShrine != null){
             if(mainShrine.Solved()){
+                if(solved1 != null){
                 DialogManager.inst.StartConversation(solved1);
+                }
+                else{
+                    Debug.LogWarning("dialog is null");
+                }
+              
                 
             }
         }

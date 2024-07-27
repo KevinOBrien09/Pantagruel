@@ -15,9 +15,10 @@ MonoBehaviour:
   Id: 8ffbb451-f050-456b-a621-1cc280882569
   cardName: Witchblade
   picture: {fileID: 21300000, guid: 5aecd41a42a077244b8bc0d77dac685d, type: 3}
-  manaCost: 2
+  manaCost: 20
   vfxSetUp: 
   vfx: Slice1
+  webLink: 
   castDelay: 0
   effects:
   - {fileID: 11400000, guid: 5c62147102ed2534f8a4d12b8f4193eb, type: 2}
@@ -27,6 +28,10 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: af8c82cef33fbf14ebe688615ae0cb24, type: 3}
     pitchRange: {x: 0.9, y: 1}
     volume: 1
+  missSound:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
   element: 6
   beastClass: 17
   desc: Deal ({PHYS25%})+({MGK25%}) damage to the target.
@@ -35,3 +40,4 @@ MonoBehaviour:
   unplayable: 0
   cannotBeDiscard: 0
   destroyOnCast: 0
+  unDodgeable: 0

@@ -15,18 +15,19 @@ MonoBehaviour:
   locationName: Grove Enterance
   prefab: {fileID: 3078020705889963824, guid: 1d549a75933db3445a000c0ea5e1bb02, type: 3}
   overworldMusic:
-    audioClip: {fileID: 0}
-    pitchRange: {x: 0, y: 0}
-    volume: 0
+    audioClip: {fileID: 8300000, guid: e6d453e1c2903d140808919f0380a6b3, type: 3}
+    pitchRange: {x: 1, y: 1}
+    volume: 1
   battleMusic:
-    audioClip: {fileID: 0}
-    pitchRange: {x: 0, y: 0}
-    volume: 0
+    audioClip: {fileID: 8300000, guid: 5dd08f4362e8f5a459a7eabc298cd80f, type: 3}
+    pitchRange: {x: 1, y: 1}
+    volume: 1
   footStep:
     audioClip: {fileID: 8300000, guid: 657df7b565b84bf4894ddd827f5c7472, type: 3}
     pitchRange: {x: 0, y: 0}
     volume: 0
   detectEncouters: 0
+  encounterRate: 0
   beastsInLocation:
   - {fileID: 11400000, guid: aa34243842a3a8b4fa0882f1b73b980b, type: 2}
   cardRewards:

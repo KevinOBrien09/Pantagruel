@@ -7,9 +7,10 @@ public struct Stats
 {
     public float maxHealth;
     public float maxMana;
+    public float manaRegen;
     public float maxDeckCost;
     public float deckCostPerLevel;
-    public float manaRegen;
+ 
     public float physical;
     public float magic;
     public float dodge;

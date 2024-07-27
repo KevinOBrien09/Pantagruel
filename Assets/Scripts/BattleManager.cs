@@ -271,33 +271,36 @@ public class BattleManager:Singleton<BattleManager>
     {
         Debug.Log("Win");
         CardManager.inst.DeactivateHand();
-
-        if(TutorialManager.inst.currentTutorial == TutorialManager.inst.GetTutorial(TutorialEnum.BASICS4))
+        if(!TutorialManager.inst.DEBUG)
         {
-            StartCoroutine(a());
-            IEnumerator a()
+            if(TutorialManager.inst.currentTutorial == TutorialManager.inst.GetTutorial(TutorialEnum.BASICS4))
             {
-                EndTurnButton.inst.Deactivate();
-                CardManager.inst.DeactivateHand();
-                foreach (var item in CardManager.inst.hand)
-                {item.VaporousDissolve();}
-                inBattle = false;
-                MusicManager.inst.ChangeMusic(LocationManager.inst.currentSubLocation.overworldMusic);
-                yield return new WaitForEndOfFrame();
-                if(PetManager.inst.enemyPet!= null && !PetManager.inst.enemyPet.KO)
-                {PetManager.inst.enemyPet.Die(EntityOwnership.ERROR);}
-            
-                yield return new WaitForSeconds(1.5f);
-                LeaveBattle();
-                DialogManager.inst.  ToggleButtons(true);
-                Interactor.inst.RenableInteraction();
-                TutorialManager.inst.LeaveFirstBattle();
+                StartCoroutine(a());
+                IEnumerator a()
+                {
+                    EndTurnButton.inst.Deactivate();
+                    CardManager.inst.DeactivateHand();
+                    foreach (var item in CardManager.inst.hand)
+                    {item.VaporousDissolve();}
+                    inBattle = false;
+                    MusicManager.inst.ChangeMusic(LocationManager.inst.currentSubLocation.overworldMusic);
+                    yield return new WaitForEndOfFrame();
+                    if(PetManager.inst.enemyPet!= null && !PetManager.inst.enemyPet.KO)
+                    {PetManager.inst.enemyPet.Die(EntityOwnership.ERROR);}
+                
+                    yield return new WaitForSeconds(1.5f);
+                    LeaveBattle();
+                    DialogManager.inst.  ToggleButtons(true);
+                    Interactor.inst.RenableInteraction();
+                    TutorialManager.inst.LeaveFirstBattle();
 
+                }
+            
+                Debug.Log("XD");
+                return;
             }
-          
-            Debug.Log("XD");
-            return;
         }
+        
         StartCoroutine(q());
 
         IEnumerator q()
@@ -390,8 +393,8 @@ public class BattleManager:Singleton<BattleManager>
             
             CardManager.inst.DeactivateHand();
             Inventory.inst.ActivateDrag();
-            EnemyAI.inst.manaHandler.Gain(RivalBeastManager.inst.activeBeast.stats().manaRegen);
-            CardManager.inst.manaHandler.Gain(PlayerParty.inst.activeBeast.stats().manaRegen);
+            EnemyAI.inst.manaHandler.Regen(RivalBeastManager.inst.activeBeast.stats().manaRegen);
+            CardManager.inst.manaHandler.Regen(PlayerParty.inst.activeBeast.stats().manaRegen);
             // if(turn % 2 == 0)
             // {
             //     ManaManager.inst.IncreaseMaxMana();

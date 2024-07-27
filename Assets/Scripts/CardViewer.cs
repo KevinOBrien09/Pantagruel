@@ -9,9 +9,10 @@ using UnityEngine.EventSystems;
 public class CardViewer : Singleton<CardViewer>
 {
     public enum CardDescState{PERCENTAGE,VALUE}
-    public TextMeshProUGUI cardName,manaCost,deckCost,description,flavourText;
+    public TextMeshProUGUI cardName,manaCost,deckCost,description,flavourText,summonTopDesc,summonBottomDesc,summonFlavour;
     public Image classIcon,elementBG,mainPicture;
     public ToolTip[] toolTips;
+    public GameObject[] descHolders;
     public List<string> toolTipText = new List<string>();
     public Transform catalogHolder;
     public Button right,left,changeDescStateBut;
@@ -40,10 +41,7 @@ public class CardViewer : Singleton<CardViewer>
         manaCost.text = RomanNumerals.ToRoman(card.manaCost);
         deckCost.text = card.deckCost.ToString();
         RefreshDescStateButton();
-        description.text = CardDescParser.GetBeastValues(card,PlayerParty.inst.activeBeast);
-        descState = CardDescState.VALUE;
-        //card.desc;
-        flavourText.text = card.flavourText;
+        SetDesc(card);
         classIcon.sprite = BeastBank.inst.GetBeastClassSprite(card.beastClass);
         elementBG.color = BeastBank.inst.GetElementColour(card.element);
         mainPicture.sprite = card.picture;
@@ -70,6 +68,38 @@ public class CardViewer : Singleton<CardViewer>
         {right.gameObject.SetActive(false);}
         else
         {right.gameObject.SetActive(true);}
+    }
+
+    public void SetDesc(Card card)
+    {
+        foreach (var item in descHolders)
+        {item.SetActive(false);}
+        (SummonEffect, bool) t =   checkForSummon(card.effects);
+        bool b = t.Item2;
+        SummonEffect se = t.Item1;
+
+        if(b)
+        {
+            descHolders[1].SetActive(true);
+            summonTopDesc.text = card.desc;
+            summonBottomDesc.text =  se.pet.petEffect.desc;
+            summonFlavour.text = card.flavourText;
+
+        }
+        else
+        {
+            descHolders[0].SetActive(true);
+            description.text = CardDescParser.GetBeastValues(card,PlayerParty.inst.activeBeast);
+            descState = CardDescState.VALUE;
+            flavourText.text = card.flavourText;
+        }
+
+        (SummonEffect, bool) checkForSummon(List<Effect> cardEffects)
+        {
+            foreach(Effect e in cardEffects)
+            {if(e is SummonEffect) return ((SummonEffect) e, true);}
+            return (null, false);
+        }
     }
 
     public void ChangeDescState(){

@@ -7,31 +7,34 @@ using DG.Tweening;
 
 public class ManaHandler:MonoBehaviour             
 {
-    public int currentMana,maxMana;
+    public int currentMana;
     public int currentRegen;
     public Image manaBarFill;
-    public TextMeshProUGUI manaText;
+    public TextMeshProUGUI manaText,regenText;
     Beast beast;
 
-    public void SwapBeast(Beast b){
-        maxMana = (int) b.stats().maxMana;
-        currentMana = maxMana;
-        ////2;
+    public void SwapBeast(Beast b)
+    {
         beast = b;
+        currentMana = (int) beast.stats().maxMana;
         Refresh();
-   
     }
 
     public void Wipe(){
 
     }
 
-    public void Gain(float gain){
+    public void Regen(float gain){
+        if(currentMana > beast. stats().maxMana ){
+            currentMana = (int) beast. stats().maxMana;
+            Refresh();
+            return;
+        }
         float gainedMana = Mathf.Min(beast. stats().maxMana -  currentMana, gain);
         currentMana += (int) gainedMana;
         Refresh();
     }
-
+    
     public void Spend(int cost){
         currentMana -= cost;
 
@@ -39,8 +42,12 @@ public class ManaHandler:MonoBehaviour
     }
 
     public void Refresh()
-    {
-        manaBarFill.DOFillAmount((float) currentMana/(float) maxMana,.25f);
-        manaText.text = currentMana.ToString() + "/" + maxMana.ToString();
+    {  int x = (int) beast.stats().maxMana;
+        manaBarFill.DOFillAmount((float) currentMana/(float)x,.25f);
+        if(regenText != null){
+   regenText.text = "INT: " + (int) beast.stats().manaRegen;
+        }
+   
+        manaText.text = currentMana.ToString() + "/" + x .ToString();
     }
 }

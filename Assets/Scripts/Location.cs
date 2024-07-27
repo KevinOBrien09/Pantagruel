@@ -12,6 +12,7 @@ public class Location : ScriptableObject
     public SoundData overworldMusic,battleMusic;
     public SoundData footStep;
     public bool detectEncouters;
+   [Range(0,100)] public int encounterRate;
     public List<BeastScriptableObject> beastsInLocation = new List<BeastScriptableObject>();
     public List<Card> cardRewards = new List<Card>();
     public Vector2 goldRewardRange;

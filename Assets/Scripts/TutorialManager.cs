@@ -81,6 +81,9 @@ public class TutorialManager: Singleton<TutorialManager>
     }
 
     public void LeaveFirstBattle(){
+        if(DEBUG){
+            return;
+        }
         PlayerManager.inst.movement.InitPosRot(PlayerManager.inst.movement.transform.position,leaveFirstBattle.locationDialog.subLocRot);
         PlayerManager.inst.movement.rotate.InitRotation(NESW.inst.GetDirection(PlayerManager.inst.movement.rotate.transform));
 

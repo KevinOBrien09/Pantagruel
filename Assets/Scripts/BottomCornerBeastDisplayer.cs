@@ -10,7 +10,7 @@ public class BottomCornerBeastDisplayer: Singleton<BottomCornerBeastDisplayer>
     public Transform animatedPrefabHolder;
     public SpriteRenderer basicRenderer;    
     public BeastAnimatedInstance animatedInstance;
-    public TextMeshProUGUI beastName,beastLevel,lvlText;
+    public TextMeshProUGUI beastName;
     public HealthBar healthBar;
     public Image bg;
     public GameObject manaBar;
@@ -81,12 +81,13 @@ public class BottomCornerBeastDisplayer: Singleton<BottomCornerBeastDisplayer>
 
     public void ChangeActiveBeast(Beast b,bool playAnim)
     {
+           beast = b;
         beastName.text = "Lvl."+ b.exp.level.ToString() + " " + b.scriptableObject.beastData.beastName;
         healthBar.entity = b;
        // beastLevel.text = ;
         b.currentHealthBars.Add(healthBar);
         healthBar.onInit.Invoke();
-        beast = b;
+      
        CardManager.inst.manaHandler.SwapBeast(PlayerParty.inst.activeBeast);
         if(playAnim)
         {
@@ -108,12 +109,15 @@ public class BottomCornerBeastDisplayer: Singleton<BottomCornerBeastDisplayer>
             instances[b].ToggleSpringBones(true);
             animatedPrefabHolder.DOMoveX(0,.33f);
         }
-      
+     
     }
 
-    // public void RefreshLevel(){
-    //     beastLevel.text = beast.exp.level.ToString();
-    //     healthBar.onInit.Invoke();
-    // }
+    public void RefreshLevel(){
+        if(!PlayerParty.inst.fakeSave){
+beastName.text = "Lvl."+ beast.exp.level.ToString() + " " + beast.scriptableObject.beastData.beastName;
+      healthBar.onInit.Invoke();
+        }
+     
+    }
 
 }

@@ -102,6 +102,9 @@ public class Entity : MonoBehaviour
     public void ModifyStat(StatMod mod){
         mods.Add(mod);
         statMods.ModStat(mod);
+        if(OwnedByPlayer()){
+            CardManager.inst.manaHandler.Refresh();
+        }
     }
 
     public float ShieldHandler(float damage)

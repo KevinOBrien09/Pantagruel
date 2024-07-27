@@ -15,13 +15,17 @@ MonoBehaviour:
   animatedInstance: {fileID: 2268372406204202056, guid: 4ce25008816617d4fb52684cd28fac42,
     type: 3}
   uiPicture: {fileID: -1227480640, guid: e6d4782822ecb6849943e0415e667e90, type: 3}
+  petEffect: {fileID: 11400000, guid: 0f8ed5893842e114dae9d6d6a36588ad, type: 2}
   petName: Corpse
   stats:
     maxHealth: 1
-    def: 0
+    maxMana: 0
+    manaRegen: 0
+    maxDeckCost: 0
+    deckCostPerLevel: 0
     physical: 0
     magic: 0
-    charisma: 0
+    dodge: 0
     luck: 0
   dying:
     audioClip: {fileID: 8300000, guid: 92c006188b694d442a4e1d4d2188c0fc, type: 3}

@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 635a20c82770dea428c8eaf094a32c9d, type: 3}
+  m_Name: DebugArea
+  m_EditorClassIdentifier: 
+  locationName: Debug
+  prefab: {fileID: 5822110522937385260, guid: f293ccbec1266894b943f48453f1e9e6, type: 3}
+  overworldMusic:
+    audioClip: {fileID: 8300000, guid: 898904da691ba7b4d8614ef875c74712, type: 3}
+    pitchRange: {x: 1, y: 1}
+    volume: 0.7
+  battleMusic:
+    audioClip: {fileID: 8300000, guid: 606d803e90147614bb9814d0b11641bc, type: 3}
+    pitchRange: {x: 1, y: 1}
+    volume: 0.4
+  footStep:
+    audioClip: {fileID: 0}
+    pitchRange: {x: 0, y: 0}
+    volume: 0
+  detectEncouters: 1
+  encounterRate: 100
+  beastsInLocation:
+  - {fileID: 11400000, guid: 561a0fe7d242fb245ae9e2cdfa1bd646, type: 2}
+  cardRewards: []
+  goldRewardRange: {x: 0, y: 0}
+  levelRange: {x: 1, y: 10}
+  isCutScene: 0
+  dialogToLoadOnEnter: {fileID: 0}

@@ -15,7 +15,7 @@ MonoBehaviour:
   Id: f2f4fba0-3c7c-4262-b207-1f8369f87d18
   locName: Weathermaid Grove
   subLocations:
-  - {fileID: 11400000, guid: 10d25ab258db8d246b89d18a7869d097, type: 2}
   - {fileID: 11400000, guid: 3b3b7b354f540d14c91478a22136406a, type: 2}
+  - {fileID: 11400000, guid: 10d25ab258db8d246b89d18a7869d097, type: 2}
   playerPos: {x: 0, y: 0, z: 0}
   playerRot: {x: 0, y: 0, z: 0}

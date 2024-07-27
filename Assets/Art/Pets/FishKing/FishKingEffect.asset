@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a8c346e96ac9846b16fd64aaded519, type: 3}
+  m_Name: FishKingEffect
+  m_EditorClassIdentifier: 
+  effects:
+  - {fileID: 11400000, guid: 8c5a08a34b4591d4189638d15678611c, type: 2}
+  desc: When I am alive, It always <i>rains</i>. I tackle the opponent dealing 5
+    damage at the start of each turn.
